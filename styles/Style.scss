@@ -1,0 +1,166 @@
+// @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fjalla+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:wght@300&family=Source+Code+Pro:wght@300&display=swap");
+
+// global variables
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+  overflow: hidden;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(65, 105, 225, 0);
+}
+
+$font-family: "Poppins", sans-serif;
+$bg-light: #f9f9f9;
+$bg-gray: #eee;
+$bg-dark-gray: #aaaaaa;
+$bg-dark: #342e37;
+$txt-blue: #3c91e6;
+$txt-light-blue: #cfe8ff;
+$red: #db504a;
+$yelow: #db504a;
+$light-yellow: #fff2c6;
+$orange: #fd7238;
+$light-orange: #ffe0d3;
+
+@mixin flexDisplay($justifyProp, $alignProp, $flexDirection) {
+  display: flex;
+  justify-content: $justifyProp;
+  align-items: $alignProp;
+  flex-direction: $flexDirection;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint==phone {
+    @media only screen and (min-width: 480px) {
+      @content;
+    }
+  }
+  @if $breakpoint==bigphone {
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
+  }
+  @if $breakpoint==tablet {
+    @media only screen and (min-width: 1023px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+// icons
+.icon {
+  font-size: 30px;
+  color: $txt-blue;
+  @include responsive(bigphone) {
+    font-size: 40px;
+  }
+}
+
+// TOP BAR
+
+.topbar-main-con {
+  @include flexDisplay(space-around, center, column);
+  // border: 1px solid red;
+  width: 100%;
+
+  .topbar-top-con {
+    @include flexDisplay(space-between, center, row);
+    width: 100%;
+    padding: 3px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    // border: 1px solid red;
+
+    .topbar-top-con-left {
+      @include flexDisplay(space-between, center, row);
+    }
+    .topbar-top-con-right {
+      @include flexDisplay(space-between, center, row);
+      .cart-icon-con {
+        @include flexDisplay(space-between, center, row);
+        position: relative;
+        padding-right: 11px;
+        p {
+          position: absolute;
+          right: 0;
+          top: -5px;
+          font-weight: bolder;
+          font-size: 19px;
+          color: $txt-blue;
+        }
+      }
+    }
+  }
+
+  // NAVBAR
+  .navbar-main-con {
+    // border: 1px solid red;
+    position: absolute;
+    bottom: 0;
+    background: $txt-blue;
+    @include responsive(bigphone) {
+      position: relative;
+      height: 50px;
+    }
+
+    @include flexDisplay(space-between, center, row);
+    width: 100%;
+    nav {
+      // border: 1px solid red;
+      width: 100%;
+
+      @include flexDisplay(space-between, center, row);
+      ul {
+        // border: 1px solid red;
+
+        width: 100%;
+        margin: 0 auto;
+        padding: 3px 0;
+        @include flexDisplay(space-between, center, row);
+
+        @include responsive(bigphone) {
+          height: 30px;
+          width: 500px;
+          padding: 0;
+          @include flexDisplay(space-between, center, row);
+        }
+        li {
+          @include flexDisplay(space-between, center, column);
+          padding: 0px 15px;
+          height: 100%;
+          font-size: 10px;
+          color: $bg-light;
+          cursor: pointer;
+          @include responsive(bigphone) {
+            font-size: 20px;
+          }
+          span {
+            @include flexDisplay(space-between, center, column);
+            font-size: 30px;
+            @include responsive(bigphone) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
