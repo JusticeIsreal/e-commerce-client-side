@@ -226,14 +226,14 @@ $txt-light-blue: #cfe8ff;
         font-weight: bolder;
       }
       p {
-        font-size: 12px;
+        font-size: 15px;
         line-height: 1.5;
         color: $font-light;
         text-align: center;
       }
       a {
         font-size: 15px;
-        padding: 3px 5px;
+        padding: 3px 8px;
         margin-top: 5px;
         border-radius: 3px;
         color: $bg-light;
@@ -246,12 +246,14 @@ $txt-light-blue: #cfe8ff;
     }
     .banner-product-img-main-con {
       // border: 2px solid rgb(43, 0, 255);
+
       margin-top: 20px;
       @include flexDisplay(space-between, center, column);
 
       .swiper-wrapper {
         // border: 2px solid red !important;
-        width: 50px;
+        // width: 50px;
+        // height: 20px;
         position: relative;
         margin-bottom: 170px; // position: absolute;
         @include flexDisplay(space-between, center, row);
@@ -259,6 +261,7 @@ $txt-light-blue: #cfe8ff;
         img {
           width: 120px;
           height: 170px;
+          margin: 0 10px;
           position: absolute;
           // margin: 5px;
           // border: 2px solid red;
