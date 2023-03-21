@@ -219,17 +219,27 @@ $txt-light-blue: #cfe8ff;
     .text-content {
       // border: 2px solid red;
       @include flexDisplay(space-between, center, column);
-
+      position: relative;
+      width: 100%;
+      height: 100px;
       h3 {
         font-size: 16px;
         color: $txt-blue;
         font-weight: bolder;
+      }
+      .p {
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        margin-top: 20px;
       }
       p {
         font-size: 15px;
         line-height: 1.5;
         color: $font-light;
         text-align: center;
+        position: absolute;
       }
       a {
         font-size: 15px;
@@ -261,11 +271,8 @@ $txt-light-blue: #cfe8ff;
         img {
           width: 120px;
           height: 170px;
-          // margin: 0 10px;
           margin-left: 10px;
           position: absolute;
-          // margin: 5px;
-          // border: 2px solid red;
         }
       }
       img {
