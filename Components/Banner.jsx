@@ -10,7 +10,7 @@ function Banner() {
     {
       id: 2,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211856/jayflix%20vid%20posters/photo_2022-09-02_18-43-21_hx0vs6.jpg",
-      desc: "This is a short description about this produt and the offer you are giving on this particular brand and poany at all",
+      desc: "This is a short sdescription about this produt and the offer you are giving on this particular brand and poany at all",
     },
     {
       id: 3,
@@ -36,13 +36,8 @@ function Banner() {
     <div className="banner-main-con">
       <div className="content">
         <div className="text-content">
-          <h3>Up to 75% off</h3>
-          {/* <p>
-            Get to read over many books of different types offline. Rentals also
-            provides you with most of the best books with affordable rates{" "}
-          </p> */}
-          <div className="p">
-            {" "}
+          <h3>AJIS STORE</h3>
+          <div className="banner-text-con">
             <Fade arrows={false}>
               {promo.map((item, index) => (
                 <p key={item.id}>{item.desc}</p>
