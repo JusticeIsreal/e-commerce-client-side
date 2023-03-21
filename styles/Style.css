@@ -248,7 +248,7 @@
 .banner-main-con .content .banner-product-img-main-con .swiper-wrapper img {
   width: 120px;
   height: 170px;
-  margin: 0 10px;
+  margin-left: 10px;
   position: absolute;
 }
 .banner-main-con .content .banner-product-img-main-con img {

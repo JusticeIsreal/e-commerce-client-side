@@ -252,7 +252,7 @@ $txt-light-blue: #cfe8ff;
 
       .swiper-wrapper {
         // border: 2px solid red !important;
-        // width: 50px;
+        // width: 10px;
         // height: 20px;
         position: relative;
         margin-bottom: 170px; // position: absolute;
@@ -261,7 +261,8 @@ $txt-light-blue: #cfe8ff;
         img {
           width: 120px;
           height: 170px;
-          margin: 0 10px;
+          // margin: 0 10px;
+          margin-left: 10px;
           position: absolute;
           // margin: 5px;
           // border: 2px solid red;
