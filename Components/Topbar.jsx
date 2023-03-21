@@ -33,31 +33,31 @@ function Topbar() {
           <ul>
             <li>
               <span>
-                <BsShop />
+                <BsShop className="menu-icon"/>
               </span>
               Home
             </li>
             <li>
               <span>
-                <FiGrid />
+                <FiGrid className="menu-icon"/>
               </span>
               Products
             </li>
             <li>
               <span>
-                <RiRefund2Fill />
+                <RiRefund2Fill className="menu-icon"/>
               </span>
               Promo
             </li>
             <li>
               <span>
-                <MdOutlineRateReview />
+                <MdOutlineRateReview className="menu-icon"/>
               </span>
               Review
             </li>
             <li>
               <span>
-                <AiOutlinePhone />
+                <AiOutlinePhone className="menu-icon"/>
               </span>
               Contact
             </li>

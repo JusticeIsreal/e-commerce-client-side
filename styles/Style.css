@@ -1,11 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: "Orbitron", sans-serif;
-  overflow: hidden;
 }
 
 *::-webkit-scrollbar-track {
@@ -26,12 +25,24 @@
   }
 }
 
+.homepage-main-con {
+  padding: 50px 0;
+}
+@media only screen and (min-width: 768px) {
+  .homepage-main-con {
+    padding: 0;
+  }
+}
+
 .topbar-main-con {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 200;
   width: 100%;
+  box-shadow: 5px 5px 10px #eee;
 }
 .topbar-main-con .topbar-top-con {
   display: flex;
@@ -39,10 +50,13 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
+  height: 50px;
   padding: 3px;
   position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  background: whitesmoke;
 }
 .topbar-main-con .topbar-top-con .topbar-top-con-left {
   display: flex;
@@ -73,19 +87,28 @@
   color: #3c91e6;
 }
 .topbar-main-con .navbar-main-con {
-  position: absolute;
-  bottom: 0;
   background: #3c91e6;
+  position: absolute;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
   width: 100%;
 }
+@media only screen and (max-width: 320px) {
+  .topbar-main-con .navbar-main-con {
+    width: 100%;
+  }
+}
 @media only screen and (min-width: 768px) {
   .topbar-main-con .navbar-main-con {
     position: relative;
     height: 50px;
+    margin-top: 50px;
   }
 }
 .topbar-main-con .navbar-main-con nav {
@@ -126,6 +149,11 @@
   color: #f9f9f9;
   cursor: pointer;
 }
+@media only screen and (max-width: 320px) {
+  .topbar-main-con .navbar-main-con nav ul li {
+    padding: 0px 10px;
+  }
+}
 @media only screen and (min-width: 768px) {
   .topbar-main-con .navbar-main-con nav ul li {
     font-size: 20px;
@@ -136,10 +164,93 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  font-size: 30px;
+  font-size: 33px;
+}
+@media only screen and (max-width: 320px) {
+  .topbar-main-con .navbar-main-con nav ul li span {
+    font-size: 25px;
+  }
+}
+.topbar-main-con .navbar-main-con nav ul li span .menu-icon:hover {
+  transform: scale(0.9);
 }
 @media only screen and (min-width: 768px) {
   .topbar-main-con .navbar-main-con nav ul li span {
     display: none;
   }
+}
+
+.banner-main-con {
+  background: url(https://res.cloudinary.com/isreal/image/upload/v1679349263/E-Commerce%20Project/banner-bg_v0db6l.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 5px;
+}
+.banner-main-con .content {
+  flex-wrap: wrap;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .banner-main-con .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+.banner-main-con .content .text-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.banner-main-con .content .text-content h3 {
+  font-size: 16px;
+  color: #3c91e6;
+  font-weight: bolder;
+}
+.banner-main-con .content .text-content p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666;
+  text-align: center;
+}
+.banner-main-con .content .text-content a {
+  font-size: 15px;
+  padding: 3px 5px;
+  margin-top: 5px;
+  border-radius: 3px;
+  color: #f9f9f9;
+  background: #3c91e6;
+}
+.banner-main-con .content .text-content a:hover {
+  background: #444;
+}
+.banner-main-con .content .banner-product-img-main-con {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.banner-main-con .content .banner-product-img-main-con .swiper-wrapper {
+  width: 50px;
+  position: relative;
+  margin-bottom: 170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.banner-main-con .content .banner-product-img-main-con .swiper-wrapper img {
+  width: 120px;
+  height: 170px;
+  position: absolute;
+}
+.banner-main-con .content .banner-product-img-main-con img {
+  width: 90%;
 }/*# sourceMappingURL=Style.css.map */
