@@ -298,14 +298,14 @@
   .banner-main-con .content .text-content a {
     margin-top: 100px;
     font-size: 25px;
-    width: 200px;
+    width: 210px;
+    font-weight: bold;
   }
 }
 @media only screen and (min-width: 1023px) {
   .banner-main-con .content .text-content a {
     margin-top: 125px;
     font-size: 25px;
-    width: 200px;
   }
 }
 .banner-main-con .content .text-content a:hover {
@@ -395,7 +395,7 @@
   background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.355);
-  box-shadow: 2px 2px 10px gray;
+  box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -421,4 +421,78 @@
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case p {
   color: #3c91e6;
   font-weight: bolder;
+}
+
+.product-session-con {
+  margin-top: 20px;
+  padding: 5px 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+.product-session-con .product-main-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.product-session-con .product-main-con h1 {
+  color: #3c91e6;
+  margin-left: 5px;
+  font-size: 30px;
+}
+@media only screen and (min-width: 1023px) {
+  .product-session-con .product-main-con h1 {
+    font-size: 50px;
+  }
+}
+.product-session-con .product-main-con .category-con {
+  border: 2px solid red;
+  margin-top: 20px;
+}
+.product-session-con .product-main-con .products-con {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  width: 100%;
+}
+.product-session-con .product-main-con .products-con .products {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 45%;
+  padding: 3px;
+  margin: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.355);
+}
+.product-session-con .product-main-con .products-con .products .product-name {
+  text-align: center;
+}
+.product-session-con .product-main-con .products-con .products .product-img {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+.product-session-con .product-main-con .products-con .products .product-img img {
+  height: 200px;
+  transition: transform 0.3s linear;
+}
+.product-session-con .product-main-con .products-con .products .product-img img:hover {
+  transform: scale(1.1);
+}
+.product-session-con .product-main-con .products-con .products .price {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 5px;
 }/*# sourceMappingURL=Style.css.map */

@@ -300,13 +300,13 @@ $txt-light-blue: #cfe8ff;
         @include responsive(bigphone) {
           margin-top: 100px;
           font-size: 25px;
-          width: 200px;
-          // height: 160px;
+          width: 210px;
+          font-weight: bold;
         }
         @include responsive(tablet) {
           margin-top: 125px;
           font-size: 25px;
-          width: 200px;
+          // width: 200px;
         }
 
         &:hover {
@@ -383,7 +383,7 @@ $txt-light-blue: #cfe8ff;
         background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
         border-radius: 5px;
         border: 1px solid rgba(128, 128, 128, 0.355);
-        box-shadow: 2px 2px 10px gray;
+        box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
         @include flexDisplay(space-between, center, column);
 
         .new-products {
@@ -409,6 +409,80 @@ $txt-light-blue: #cfe8ff;
           color: $txt-blue;
           font-weight: bolder;
           // margin-top: -5px;
+        }
+      }
+    }
+  }
+}
+
+// PRODUCT
+.product-session-con {
+  // border: 2px solid red;
+  margin-top: 20px;
+  padding: 5px 0;
+  width: 100vw;
+  overflow-x: hidden;
+
+  .product-main-con {
+    @include flexDisplay(space-between, center, column);
+    width: 100%;
+
+    h1 {
+      color: $txt-blue;
+      margin-left: 5px;
+      font-size: 30px;
+
+      @include responsive(tablet) {
+        font-size: 50px;
+      }
+    }
+    .category-con {
+      border: 2px solid red;
+      margin-top: 20px;
+    }
+    .products-con {
+      @include flexDisplay(space-evenly, center, row);
+      flex-wrap: wrap;
+      margin-top: 30px;
+      // border: 2px solid rgb(0, 255, 13);
+      width: 100%;
+
+      .products {
+        @include flexDisplay(space-evenly, center, column);
+        width: 45%;
+        padding: 3px;
+        // max-width: 110px;
+        margin: 10px 5px;
+        border-radius: 5px;
+        border: 1px solid rgba(128, 128, 128, 0.355);
+
+        .product-name {
+          text-align: center;
+        }
+
+        .product-img {
+          margin-top: 5px;
+          width: 100%;
+          @include flexDisplay(space-evenly, center, column);
+          overflow: hidden;
+          // border: 2px solid red;
+          img {
+            height: 200px;
+            transition: transform 0.3s linear;
+            // transform: scale(0.9);
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .price {
+          @include flexDisplay(space-evenly, center, row);
+          margin-top: 5px;
+
+          .product-price {
+          }
         }
       }
     }
