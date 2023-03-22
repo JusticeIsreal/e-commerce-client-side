@@ -142,6 +142,7 @@ $txt-light-blue: #cfe8ff;
     bottom: 0;
     left: 0;
     width: 100vw;
+    height: 50px;
     @include flexDisplay(space-between, center, row);
 
     // top: 10%;
@@ -179,7 +180,7 @@ $txt-light-blue: #cfe8ff;
           font-size: 10px;
           color: $bg-light;
           cursor: pointer;
-
+          // border: 1px solid red;
           @include responsive(phone) {
             padding: 0px 10px;
           }
@@ -187,9 +188,31 @@ $txt-light-blue: #cfe8ff;
           @include responsive(bigphone) {
             font-size: 20px;
           }
+
+          .nav-active {
+            // border: 2px solid red;
+            position: absolute;
+
+            border-radius: 50% 50% 0 0;
+            width: 20vw;
+            margin-top: -30px;
+            height: 20vw;
+            background: $txt-blue;
+            // z-index: 50;
+            @include responsive(bigphone) {
+              display: none;
+            }
+          }
+
+          p {
+            z-index: 30;
+          }
           span {
             @include flexDisplay(space-between, center, column);
             font-size: 33px;
+            position: relative;
+            z-index: 100;
+
             @include responsive(phone) {
               font-size: 25px;
             }

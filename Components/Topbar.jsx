@@ -32,32 +32,33 @@ function Topbar() {
         <nav>
           <ul>
             <li>
+              <div className="nav-active"></div>
               <span>
-                <BsShop className="menu-icon"/>
+                <BsShop className="menu-icon" />
               </span>
-              Home
+              <p> Home</p>
             </li>
             <li>
               <span>
-                <FiGrid className="menu-icon"/>
+                <FiGrid className="menu-icon" />
               </span>
               Products
             </li>
             <li>
               <span>
-                <RiRefund2Fill className="menu-icon"/>
+                <RiRefund2Fill className="menu-icon" />
               </span>
               Promo
             </li>
             <li>
               <span>
-                <MdOutlineRateReview className="menu-icon"/>
+                <MdOutlineRateReview className="menu-icon" />
               </span>
               Review
             </li>
             <li>
               <span>
-                <AiOutlinePhone className="menu-icon"/>
+                <AiOutlinePhone className="menu-icon" />
               </span>
               Contact
             </li>
