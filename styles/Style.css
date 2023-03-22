@@ -438,8 +438,11 @@
   transform: scale(0.9);
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case p {
-  color: #3c91e6;
-  font-weight: bolder;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666;
+  margin: 5px 0;
 }
 
 .product-session-con {
@@ -467,8 +470,25 @@
   }
 }
 .product-session-con .product-main-con .category-con {
-  border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 90%;
   margin-top: 20px;
+}
+.product-session-con .product-main-con .category-con .category {
+  border: 1px solid rgba(128, 128, 128, 0.355);
+  box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
+  padding: 5px 10px;
+  color: #3c91e6;
+}
+.product-session-con .product-main-con .category-con .category:hover {
+  border: none;
+  box-shadow: -1px -1px 0px rgba(128, 128, 128, 0.478);
+  padding: 5px 10px;
+  color: #eee;
+  background: #3c91e6;
 }
 .product-session-con .product-main-con .products-con {
   display: flex;
@@ -492,6 +512,9 @@
 }
 .product-session-con .product-main-con .products-con .products .product-name {
   text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666;
 }
 .product-session-con .product-main-con .products-con .products .product-img {
   margin-top: 5px;
@@ -511,8 +534,37 @@
 }
 .product-session-con .product-main-con .products-con .products .price {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  width: 90%;
   margin-top: 5px;
+  font-size: 20px;
+}
+.product-session-con .product-main-con .products-con .products .price .product-price {
+  text-align: center;
+  line-height: 1.5;
+}
+.product-session-con .product-main-con .products-con .products .price .product-oldprice {
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666;
+  font-style: italic;
+  text-decoration: line-through;
+}
+.product-session-con .product-main-con .products-con .products .addto-cart {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  border: 1px solid #3c91e6;
+  color: #3c91e6;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+.product-session-con .product-main-con .products-con .products .addto-cart:hover {
+  background: #3c91e6;
+  color: white;
 }/*# sourceMappingURL=Style.css.map */

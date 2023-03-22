@@ -429,9 +429,12 @@ $txt-light-blue: #cfe8ff;
           }
         }
         p {
-          color: $txt-blue;
-          font-weight: bolder;
-          // margin-top: -5px;
+          text-align: center;
+          font-size: 15px;
+          line-height: 1.5;
+          color: $font-light;
+          margin: 5px 0;
+          // font-style: italic;
         }
       }
     }
@@ -461,8 +464,24 @@ $txt-light-blue: #cfe8ff;
       }
     }
     .category-con {
-      border: 2px solid red;
+      @include flexDisplay(space-between, center, row);
+      width: 90%;
       margin-top: 20px;
+
+      .category {
+        border: 1px solid rgba(128, 128, 128, 0.355);
+        box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
+        padding: 5px 10px;
+        color: $txt-blue;
+
+        &:hover {
+          border: none;
+          box-shadow: -1px -1px 0px rgba(128, 128, 128, 0.478);
+          padding: 5px 10px;
+          color: $bg-gray;
+          background: $txt-blue;
+        }
+      }
     }
     .products-con {
       @include flexDisplay(space-evenly, center, row);
@@ -482,6 +501,10 @@ $txt-light-blue: #cfe8ff;
 
         .product-name {
           text-align: center;
+          font-size: 15px;
+          line-height: 1.5;
+          color: $font-light;
+          // font-style: italic;
         }
 
         .product-img {
@@ -502,10 +525,43 @@ $txt-light-blue: #cfe8ff;
         }
 
         .price {
-          @include flexDisplay(space-evenly, center, row);
+          @include flexDisplay(space-between, center, row);
+          // border: 1px solid red;
+          width: 90%;
           margin-top: 5px;
+          font-size: 20px;
 
           .product-price {
+            text-align: center;
+            line-height: 1.5;
+            // color: $font-light;
+          }
+
+          .product-oldprice {
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.5;
+            color: $font-light;
+            font-style: italic;
+            text-decoration: line-through;
+          }
+        }
+
+        .addto-cart {
+          // border: 1px solid red;
+          width: 90%;
+          margin: 0 auto;
+          text-align: center;
+          font-size: 15px;
+          line-height: 1.5;
+          border: 1px solid $txt-blue;
+          color: $txt-blue;
+          border-radius: 5px;
+          margin: 5px 0;
+
+          &:hover {
+            background: $txt-blue;
+            color: white;
           }
         }
       }

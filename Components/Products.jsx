@@ -6,7 +6,7 @@ function Products() {
       id: 122,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211856/jayflix%20vid%20posters/photo_2022-09-02_18-43-21_hx0vs6.jpg",
       price: 200,
-      oldprice: 500,
+      // oldprice: 500,
       productname: "Product name",
     },
     {
@@ -20,7 +20,7 @@ function Products() {
       id: 42311,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211865/jayflix%20vid%20posters/photo_2022-09-02_18-45-55_numjln.jpg",
       price: 200,
-      oldprice: 500,
+      // oldprice: 500,
       productname: "Product name",
     },
     {
@@ -34,7 +34,7 @@ function Products() {
       id: 413,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg",
       price: 200,
-      oldprice: 500,
+      // oldprice: 500,
       productname: "Product name",
     },
     {
@@ -160,13 +160,13 @@ function Products() {
             All
           </a>
           <a href="" className="category">
-            Category 1
+            Category
           </a>
           <a href="" className="category">
-            Category 2
+            Category
           </a>
           <a href="" className="category">
-            Category 3
+            Category
           </a>
         </div>
         {/* PRODUCTS ARRAY */}
@@ -190,8 +190,8 @@ function Product({ img, price, oldprice, productname }) {
         <img src={img} alt="" />
       </div>
       <div className="price">
-        <p className="product-price">{price}</p>
-        <p className="product-price">{oldprice}</p>
+        <p className="product-price">₦ {price}</p>
+        <p className="product-oldprice"> {oldprice && "₦ " + oldprice}</p>
       </div>
 
       <a href="" className="addto-cart">
