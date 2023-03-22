@@ -424,8 +424,9 @@
 }
 
 .product-session-con {
-  margin-top: 20px;
-  padding: 5px 0;
+  background: whitesmoke;
+  margin-top: 70px;
+  padding: 10px 0;
   width: 100vw;
   overflow-x: hidden;
 }
