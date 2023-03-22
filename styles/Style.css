@@ -35,7 +35,6 @@
 
 .homepage-main-con {
   padding: 50px 0;
-  background: #eee;
 }
 @media only screen and (min-width: 768px) {
   .homepage-main-con {
@@ -235,18 +234,17 @@
     margin-top: -100px;
   }
 }
-.banner-main-con .content .text-content h3 {
-  font-size: 16px;
+.banner-main-con .content .text-content h2 {
   color: #3c91e6;
   font-weight: bolder;
 }
 @media only screen and (min-width: 768px) {
-  .banner-main-con .content .text-content h3 {
+  .banner-main-con .content .text-content h2 {
     font-size: 40px;
   }
 }
 @media only screen and (min-width: 1023px) {
-  .banner-main-con .content .text-content h3 {
+  .banner-main-con .content .text-content h2 {
     font-size: 70px;
   }
 }
@@ -255,7 +253,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 28px;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con .content .text-content .banner-text-con {
@@ -314,7 +312,7 @@
   background: #444;
 }
 .banner-main-con .content .banner-product-img-main-con {
-  margin-top: 40px;
+  margin-top: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -360,15 +358,26 @@
   margin-top: 20px;
   overflow-x: hidden;
 }
+@media only screen and (min-width: 1023px) {
+  .new-arrivals-main-con {
+    margin-top: 30px;
+  }
+}
 .new-arrivals-main-con .new-arrivals-con {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
 }
 .new-arrivals-main-con .new-arrivals-con h1 {
   color: #3c91e6;
   margin-left: 5px;
+  font-size: 30px;
+}
+@media only screen and (min-width: 1023px) {
+  .new-arrivals-main-con .new-arrivals-con h1 {
+    font-size: 50px;
+  }
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con {
   display: flex;
@@ -378,6 +387,7 @@
   overflow: scroll;
   margin-top: 10px;
   width: 100%;
+  padding: 10px 0;
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case {
   padding: 0 10px;
@@ -385,17 +395,30 @@
   background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.355);
+  box-shadow: 2px 2px 10px gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products {
   height: 200px;
   transition: transform 0.5s ease;
 }
+@media only screen and (min-width: 768px) {
+  .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products {
+    height: 250px;
+  }
+}
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products img {
   height: 100%;
   transform: scale(0.85);
-  box-shadow: 2px 2px 10px #3c91e6;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s linear;
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products:hover img {
   transform: scale(0.9);
+}
+.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case p {
+  color: #3c91e6;
+  font-weight: bolder;
 }/*# sourceMappingURL=Style.css.map */

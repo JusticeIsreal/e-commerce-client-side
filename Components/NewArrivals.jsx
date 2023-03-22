@@ -91,9 +91,7 @@ function NewArrivals() {
     <div className="new-arrivals-main-con">
       <div className="new-arrivals-con">
         {/* heading */}
-        <h1>
-          NEW <br /> ARRIVALS
-        </h1>
+        <h1>NEW ARRIVALS</h1>
         {/* product container */}
         <div className="new-products-con">
           {prom.map((item, index) => (
@@ -108,8 +106,7 @@ function NewArrivals() {
                   }}
                 />
               </div>
-              <p>200</p>
-              <p>200</p>
+              <p>Product Name</p>
             </div>
           ))}
         </div>

@@ -36,7 +36,7 @@ function Banner() {
     <div className="banner-main-con">
       <div className="content">
         <div className="text-content">
-          <h3>AJIS STORE</h3>
+          <h2>AJIS STORE</h2>
           <div className="banner-text-con">
             <Fade arrows={false}>
               {promo.map((item, index) => (
