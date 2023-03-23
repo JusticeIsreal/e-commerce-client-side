@@ -534,7 +534,7 @@ $txt-light-blue: #cfe8ff;
         margin: 10px 5px;
         border-radius: 5px;
         background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
-        border: 1px solid rgba(128, 128, 128, 0.149);
+        border: 1px solid rgba(128, 128, 128, 0.157);
 
         @include responsive(bigphone) {
           width: 30%;
@@ -552,7 +552,7 @@ $txt-light-blue: #cfe8ff;
         .product-name {
           text-align: center;
           font-size: 15px;
-          line-height: 1.5;
+          // line-height: 1.5;
           color: $font-light;
           // font-style: italic;
           @include responsive(bigphone) {
@@ -565,7 +565,7 @@ $txt-light-blue: #cfe8ff;
           width: 100%;
           @include flexDisplay(space-evenly, center, column);
           overflow: hidden;
-          // border: 2px solid red;
+
           img {
             height: 200px;
             transition: transform 0.3s linear;
@@ -591,18 +591,18 @@ $txt-light-blue: #cfe8ff;
         .price {
           @include flexDisplay(space-between, center, row);
           width: 90%;
-          margin-top: 5px;
+          // margin-top: 5px;
           font-size: 15px;
 
           .product-price {
             text-align: center;
-            line-height: 1.5;
+            // line-height: 1.5;
             color: $bg-dark-gray;
           }
 
           .product-oldprice {
             text-align: center;
-            line-height: 1.5;
+            // line-height: 1.5;
             font-size: 12px;
             color: $font-light;
             font-style: italic;
@@ -616,7 +616,7 @@ $txt-light-blue: #cfe8ff;
           margin: 0 auto;
           text-align: center;
           font-size: 15px;
-          line-height: 1.5;
+          line-height: 1.9;
           border: 1px solid $txt-blue;
           color: $txt-blue;
           border-radius: 5px;
@@ -635,40 +635,60 @@ $txt-light-blue: #cfe8ff;
 // NEWS LETTER
 
 .newsletter {
-  background: url(https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg) no-repeat;
+  // background: url(https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg)
+  //   no-repeat;
+  background: #000000b3;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
+  @include flexDisplay(center, center, row);
+  margin-top: 20px;
+  padding: 10px 0;
 
-.newsletter form {
-  max-width: 45rem;
-  /* margin-left: auto; */
-  text-align: center;
-  padding: 5rem 0;
-}
+  form {
+    width: 90%;
+    text-align: center;
+    padding: 5px 0;
+    // border: 1px solid red;
+    @include flexDisplay(center, center, column);
 
-.newsletter form h3 {
-  font-size: 2.2rem;
-  color: #fff;
-  padding-bottom: 0.7rem;
-  font-weight: normal;
-}
+    @include responsive(bigphone) {
+      max-width: 500px;
+    }
+   
 
-.newsletter form .box {
-  width: 100%;
-  margin: 0.7rem 0;
-  padding: 1rem 1.2rem;
-  font-size: 1.6rem;
-  color: var(--black);
-  border-radius: 0.5rem;
-  text-transform: none;
-}
+    .btn {
+      width: 150px;
+      height: 40px;
+      background: $txt-blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      margin-top: 10px;
+    }
 
-.newsletter form .box:focus {
-  border: 2px solid blue;
+    h3 {
+      // font-size: 2;
+      color: #fff;
+      padding-bottom: 0.7rem;
+      font-weight: normal;
+    }
+
+    .box {
+      width: 100%;
+      margin: 0.7rem 0;
+      padding: 12px 5px;
+      font-size: 17px;
+      color: var(--black);
+      border-radius: 5px;
+      text-transform: none;
+      border: none;
+
+      &:focus {
+        border: 1px solid $txt-blue;
+      }
+    }
+  }
 }

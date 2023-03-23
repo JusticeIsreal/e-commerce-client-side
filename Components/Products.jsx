@@ -3,6 +3,34 @@ import React from "react";
 function Products() {
   const prom = [
     {
+      id: 1761250762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1661646436/cld-sample-5.jpg",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
+    },
+    {
+      id: 17650762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679563074/jayflix%20vid%20posters/images_jk6d9o.jpg",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
+    },
+    {
+      id: 1765762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679562932/jayflix%20vid%20posters/oxford-shoe-black_phpgca.jpg",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
+    },
+    {
+      id: 176225762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679580920/jayflix%20vid%20posters/images-removebg-preview_wciudo.png",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
+    },
+    {
       id: 122,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211856/jayflix%20vid%20posters/photo_2022-09-02_18-43-21_hx0vs6.jpg",
       price: 200,
