@@ -71,7 +71,7 @@ function NewArrivals() {
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg",
     },
     {
-      id: 31,
+      id: 3187,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211865/jayflix%20vid%20posters/photo_2022-09-02_18-45-55_numjln.jpg",
     },
     {
@@ -95,7 +95,7 @@ function NewArrivals() {
         {/* product container */}
         <div className="new-products-con">
           {prom.map((item, index) => (
-            <div className="new-products-case">
+            <div className="new-products-case" key={item.id}>
               <div className="new-products">
                 <img src={item.img} alt="" key={item.id} />
               </div>

@@ -452,6 +452,12 @@
   width: 100vw;
   overflow-x: hidden;
 }
+@media only screen and (min-width: 768px) {
+  .product-session-con {
+    margin-top: 100px;
+    padding: 20px 0;
+  }
+}
 .product-session-con .product-main-con {
   display: flex;
   justify-content: space-between;
@@ -469,24 +475,58 @@
     font-size: 50px;
   }
 }
+.product-session-con .product-main-con p {
+  cursor: pointer;
+  color: #3c91e6;
+  margin-top: 20px;
+}
 .product-session-con .product-main-con .category-con {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
-  width: 90%;
+  width: 95%;
+  height: 70px;
+  border-radius: 5px;
   margin-top: 20px;
+  position: relative;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .category-con {
+    max-width: 650px;
+    margin-top: 40px;
+    height: 90px;
+    border-radius: 10px;
+  }
+}
+.product-session-con .product-main-con .category-con p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  font-size: 15px;
+  top: -10px;
+  padding: 0 20px 3px 20px;
+  color: #3c91e6;
+  border-radius: 5px;
 }
 .product-session-con .product-main-con .category-con .category {
   border: 1px solid rgba(128, 128, 128, 0.355);
   box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
   padding: 5px 10px;
   color: #3c91e6;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .category-con .category {
+    width: 20%;
+    padding: 10px;
+  }
 }
 .product-session-con .product-main-con .category-con .category:hover {
   border: none;
   box-shadow: -1px -1px 0px rgba(128, 128, 128, 0.478);
-  padding: 5px 10px;
   color: #eee;
   background: #3c91e6;
 }
@@ -496,8 +536,12 @@
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 30px;
   width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con {
+    margin-top: 30px;
+  }
 }
 .product-session-con .product-main-con .products-con .products {
   display: flex;
@@ -510,11 +554,34 @@
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.355);
 }
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products {
+    width: 30%;
+    max-width: 180px;
+  }
+}
+@media only screen and (min-width: 1023px) {
+  .product-session-con .product-main-con .products-con .products {
+    width: 20%;
+    max-width: 250px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .product-session-con .product-main-con .products-con .products {
+    width: 20%;
+    max-width: 250px;
+  }
+}
 .product-session-con .product-main-con .products-con .products .product-name {
   text-align: center;
   font-size: 15px;
   line-height: 1.5;
   color: #666;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products .product-name {
+    font-size: 20px;
+  }
 }
 .product-session-con .product-main-con .products-con .products .product-img {
   margin-top: 5px;
@@ -529,6 +596,16 @@
   height: 200px;
   transition: transform 0.3s linear;
 }
+@media only screen and (min-width: 1023px) {
+  .product-session-con .product-main-con .products-con .products .product-img img {
+    height: 250px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .product-session-con .product-main-con .products-con .products .product-img img {
+    height: 300px;
+  }
+}
 .product-session-con .product-main-con .products-con .products .product-img img:hover {
   transform: scale(1.1);
 }
@@ -539,7 +616,7 @@
   flex-direction: row;
   width: 90%;
   margin-top: 5px;
-  font-size: 20px;
+  font-size: 15px;
 }
 .product-session-con .product-main-con .products-con .products .price .product-price {
   text-align: center;
@@ -547,7 +624,6 @@
 }
 .product-session-con .product-main-con .products-con .products .price .product-oldprice {
   text-align: center;
-  font-size: 15px;
   line-height: 1.5;
   color: #666;
   font-style: italic;

@@ -450,6 +450,10 @@ $txt-light-blue: #cfe8ff;
   width: 100vw;
   overflow-x: hidden;
 
+  @include responsive(bigphone) {
+    margin-top: 100px;
+    padding: 20px 0;
+  }
   .product-main-con {
     @include flexDisplay(space-between, center, column);
     width: 100%;
@@ -463,21 +467,51 @@ $txt-light-blue: #cfe8ff;
         font-size: 50px;
       }
     }
-    .category-con {
-      @include flexDisplay(space-between, center, row);
-      width: 90%;
+    p {
+      cursor: pointer;
+      color: $txt-blue;
       margin-top: 20px;
+    }
+    .category-con {
+      @include flexDisplay(space-evenly, center, row);
+      width: 95%;
+      height: 70px;
+      border-radius: 5px;
+      margin-top: 20px;
+      // border: 1px solid $txt-blue;
+      position: relative;
 
+      @include responsive(bigphone) {
+        max-width: 650px;
+        margin-top: 40px;
+        height: 90px;
+        border-radius: 10px;
+      }
+      p {
+        @include flexDisplay(center, center, row);
+        position: absolute;
+        font-size: 15px;
+        top: -10px;
+        padding: 0 20px 3px 20px;
+        color: $txt-blue;
+        // background: $txt-blue;
+        border-radius: 5px;
+      }
       .category {
         border: 1px solid rgba(128, 128, 128, 0.355);
         box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
         padding: 5px 10px;
         color: $txt-blue;
+        text-align: center;
+
+        @include responsive(bigphone) {
+          width: 20%;
+          padding: 10px;
+        }
 
         &:hover {
           border: none;
           box-shadow: -1px -1px 0px rgba(128, 128, 128, 0.478);
-          padding: 5px 10px;
           color: $bg-gray;
           background: $txt-blue;
         }
@@ -486,10 +520,13 @@ $txt-light-blue: #cfe8ff;
     .products-con {
       @include flexDisplay(space-evenly, center, row);
       flex-wrap: wrap;
-      margin-top: 30px;
+      // margin-top: 20px;
       // border: 2px solid rgb(0, 255, 13);
       width: 100%;
 
+      @include responsive(bigphone) {
+        margin-top: 30px;
+      }
       .products {
         @include flexDisplay(space-evenly, center, column);
         width: 45%;
@@ -499,12 +536,28 @@ $txt-light-blue: #cfe8ff;
         border-radius: 5px;
         border: 1px solid rgba(128, 128, 128, 0.355);
 
+        @include responsive(bigphone) {
+          width: 30%;
+          max-width: 180px;
+        }
+        @include responsive(tablet) {
+          width: 20%;
+          max-width: 250px;
+        }
+        @include responsive(desktop) {
+          width: 20%;
+          max-width: 250px;
+        }
+
         .product-name {
           text-align: center;
           font-size: 15px;
           line-height: 1.5;
           color: $font-light;
           // font-style: italic;
+          @include responsive(bigphone) {
+            font-size: 20px;
+          }
         }
 
         .product-img {
@@ -517,7 +570,16 @@ $txt-light-blue: #cfe8ff;
             height: 200px;
             transition: transform 0.3s linear;
             // transform: scale(0.9);
+            // @include responsive(bigphone) {
+            //   height: 270px;
+            // }
 
+            @include responsive(tablet) {
+              height: 250px;
+            }
+            @include responsive(desktop) {
+              height: 300px;
+            }
             &:hover {
               transform: scale(1.1);
             }
@@ -526,20 +588,17 @@ $txt-light-blue: #cfe8ff;
 
         .price {
           @include flexDisplay(space-between, center, row);
-          // border: 1px solid red;
           width: 90%;
           margin-top: 5px;
-          font-size: 20px;
+          font-size: 15px;
 
           .product-price {
             text-align: center;
             line-height: 1.5;
-            // color: $font-light;
           }
 
           .product-oldprice {
             text-align: center;
-            font-size: 15px;
             line-height: 1.5;
             color: $font-light;
             font-style: italic;

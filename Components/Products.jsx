@@ -122,7 +122,7 @@ function Products() {
       productname: "Product name",
     },
     {
-      id: 31,
+      id: 3100,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211865/jayflix%20vid%20posters/photo_2022-09-02_18-45-55_numjln.jpg",
       price: 200,
       oldprice: 500,
@@ -156,6 +156,7 @@ function Products() {
         <h1>PRODUCTS</h1>
         {/* CATEGORY FILTER */}
         <div className="category-con">
+          {/* <p>category</p> */}
           <a href="" className="category">
             All
           </a>
@@ -175,6 +176,8 @@ function Products() {
             <Product key={item.id} {...item} />
           ))}
         </div>
+        {/* SEE MORE */}
+        <p>See more . . .</p>
       </div>
     </div>
   );
