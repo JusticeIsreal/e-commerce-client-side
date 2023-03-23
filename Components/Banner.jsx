@@ -3,6 +3,20 @@ import { Fade, Slide } from "react-slideshow-image";
 function Banner() {
   const promo = [
     {
+      id: 1761250762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1661646436/cld-sample-5.jpg",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
+    },
+    {
+      id: 17650762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679563074/jayflix%20vid%20posters/images_jk6d9o.jpg",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
+    },
+    {
       id: 1,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211865/jayflix%20vid%20posters/photo_2022-09-02_18-45-55_numjln.jpg",
       desc: "This is a short description about this produtthis particular brand and possible discounts if any at all",
