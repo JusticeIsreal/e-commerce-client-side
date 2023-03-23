@@ -5,6 +5,7 @@ import Topbar from "../Components/Topbar";
 import Banner from "../Components/Banner";
 import NewArrivals from "../Components/NewArrivals";
 import Products from "../Components/Products";
+import NewsLetter from "../Components/NewsLetter";
 
 function HomePage() {
   return (
@@ -18,7 +19,7 @@ function HomePage() {
       {/* MAIN PRODUCT */}
       <Products />
       {/* SUBSCRIBE */}
-
+      <NewsLetter />
       {/* PROMO */}
 
       {/* REVIEWS */}

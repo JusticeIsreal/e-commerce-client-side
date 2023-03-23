@@ -413,8 +413,8 @@
   margin: 0 10px;
   background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
   border-radius: 5px;
-  border: 1px solid rgba(128, 128, 128, 0.355);
-  box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
+  border: 1px solid rgba(128, 128, 128, 0.132);
+  box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -552,7 +552,8 @@
   padding: 3px;
   margin: 10px 5px;
   border-radius: 5px;
-  border: 1px solid rgba(128, 128, 128, 0.355);
+  background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
+  border: 1px solid rgba(128, 128, 128, 0.149);
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products {
@@ -621,10 +622,12 @@
 .product-session-con .product-main-con .products-con .products .price .product-price {
   text-align: center;
   line-height: 1.5;
+  color: #444;
 }
 .product-session-con .product-main-con .products-con .products .price .product-oldprice {
   text-align: center;
   line-height: 1.5;
+  font-size: 12px;
   color: #666;
   font-style: italic;
   text-decoration: line-through;
@@ -643,4 +646,43 @@
 .product-session-con .product-main-con .products-con .products .addto-cart:hover {
   background: #3c91e6;
   color: white;
+}
+
+.newsletter {
+  background: url(https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.newsletter form {
+  max-width: 45rem;
+  /* margin-left: auto; */
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.newsletter form h3 {
+  font-size: 2.2rem;
+  color: #fff;
+  padding-bottom: 0.7rem;
+  font-weight: normal;
+}
+
+.newsletter form .box {
+  width: 100%;
+  margin: 0.7rem 0;
+  padding: 1rem 1.2rem;
+  font-size: 1.6rem;
+  color: var(--black);
+  border-radius: 0.5rem;
+  text-transform: none;
+}
+
+.newsletter form .box:focus {
+  border: 2px solid blue;
 }/*# sourceMappingURL=Style.css.map */
