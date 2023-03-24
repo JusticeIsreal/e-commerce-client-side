@@ -411,7 +411,7 @@
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case {
   padding: 0 10px;
   margin: 0 10px;
-  background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
+  background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.132);
   box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
@@ -469,6 +469,7 @@
 .product-session-con .product-main-con h1 {
   color: #3c91e6;
   margin-left: 5px;
+  margin-top: 20px;
   font-size: 30px;
 }
 @media only screen and (min-width: 1023px) {
@@ -537,6 +538,7 @@
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 30px;
   width: 100%;
 }
 @media only screen and (min-width: 768px) {
@@ -550,11 +552,11 @@
   align-items: center;
   flex-direction: column;
   width: 45%;
-  padding: 3px;
+  padding: 0 3px;
   margin: 10px 5px;
   border-radius: 5px;
-  background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
-  border: 1px solid rgba(128, 128, 128, 0.157);
+  background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
+  border: 1px solid rgba(128, 128, 128, 0.261);
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products {
@@ -577,7 +579,9 @@
 .product-session-con .product-main-con .products-con .products .product-name {
   text-align: center;
   font-size: 15px;
+  line-height: 2;
   color: #666;
+  margin-top: -1px;
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products .product-name {
@@ -585,7 +589,6 @@
   }
 }
 .product-session-con .product-main-con .products-con .products .product-img {
-  margin-top: 5px;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -819,7 +822,6 @@
 .footer {
   background: #3c91e6;
   margin: 150px 0 0 0;
-  border-top-left-radius: 60px;
 }
 .footer .box-container {
   max-width: 1800px;
@@ -853,15 +855,14 @@
 }
 .footer .box-container .box a {
   display: block;
-  font-size: 16px;
+  font-size: 15px;
   color: #eee;
   line-height: 2;
 }
 .footer .box-container .box a i {
-  color: #fff;
   padding-right: 0.5rem;
 }
-.footer .box-container .box a i:hover {
+.footer .box-container .box a:hover {
   padding-right: 2rem;
 }
 .footer .box-container .box .map {
@@ -875,7 +876,7 @@
   height: 5rem;
   width: 5rem;
   line-height: 5rem;
-  font-size: 2rem;
+  font-size: 15px;
   color: #fff;
   margin: 0 0.3rem;
   border-radius: 50%;
@@ -888,7 +889,6 @@
   margin-top: 20px;
   padding: 30px 0;
   font-size: 20px;
-  color: var(--light-color);
   text-align: center;
 }
 .footer .credit span {

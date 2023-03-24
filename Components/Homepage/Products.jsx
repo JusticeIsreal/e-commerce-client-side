@@ -183,9 +183,9 @@ function Products() {
       <div className="product-main-con">
         <h1>PRODUCTS</h1>
         {/* CATEGORY FILTER */}
-        <div className="category-con">
+        {/* <div className="category-con"> */}
           {/* <p>category</p> */}
-          <a href="" className="category">
+          {/* <a href="" className="category">
             All
           </a>
           <a href="" className="category">
@@ -196,8 +196,8 @@ function Products() {
           </a>
           <a href="" className="category">
             Category
-          </a>
-        </div>
+          </a> */}
+        {/* </div> */}
         {/* PRODUCTS ARRAY */}
         <div className="products-con">
           {prom.map((item) => (

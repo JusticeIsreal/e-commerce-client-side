@@ -409,7 +409,7 @@ $txt-light-blue: #cfe8ff;
       .new-products-case {
         padding: 0 10px;
         margin: 0 10px;
-        background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
+        background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border-radius: 5px;
         border: 1px solid rgba(128, 128, 128, 0.132);
         box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
@@ -467,6 +467,7 @@ $txt-light-blue: #cfe8ff;
     h1 {
       color: $txt-blue;
       margin-left: 5px;
+      margin-top: 20px;
       font-size: 30px;
 
       @include responsive(tablet) {
@@ -526,8 +527,7 @@ $txt-light-blue: #cfe8ff;
     .products-con {
       @include flexDisplay(space-evenly, center, row);
       flex-wrap: wrap;
-      // margin-top: 20px;
-      // border: 2px solid rgb(0, 255, 13);
+      margin-top: 30px;
       width: 100%;
 
       @include responsive(bigphone) {
@@ -536,11 +536,12 @@ $txt-light-blue: #cfe8ff;
       .products {
         @include flexDisplay(space-evenly, center, column);
         width: 45%;
-        padding: 3px;
+        padding: 0 3px;
         margin: 10px 5px;
         border-radius: 5px;
-        background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
-        border: 1px solid rgba(128, 128, 128, 0.157);
+        background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
+        border: 1px solid rgba(128, 128, 128, 0.261);
+        // border: 2px solid red;
 
         @include responsive(bigphone) {
           width: 30%;
@@ -556,10 +557,12 @@ $txt-light-blue: #cfe8ff;
         }
 
         .product-name {
+          // border: 2px solid red;
           text-align: center;
           font-size: 15px;
-          // line-height: 1.5;
+          line-height: 2;
           color: $font-light;
+          margin-top: -1px;
           // font-style: italic;
           @include responsive(bigphone) {
             font-size: 20px;
@@ -567,7 +570,7 @@ $txt-light-blue: #cfe8ff;
         }
 
         .product-img {
-          margin-top: 5px;
+          // margin-top: 5px;
           width: 100%;
           @include flexDisplay(space-evenly, center, column);
           overflow: hidden;
@@ -829,7 +832,7 @@ $txt-light-blue: #cfe8ff;
 
   background: $txt-blue;
   margin: 150px 0 0 0;
-  border-top-left-radius: 60px;
+  // border-top-left-radius: 40px;
 
   .box-container {
     // border: 2px solid red;
@@ -863,26 +866,19 @@ $txt-light-blue: #cfe8ff;
       }
       a {
         display: block;
-        font-size: 16px;
+        font-size: 15px;
         color: $bg-gray;
         line-height: 2;
-        // padding: 1rem 0;
         i {
-          color: #fff;
+          // color: #fff;
           padding-right: 0.5rem;
-          &:hover {
-            padding-right: 2rem;
-          }
+        }
+        &:hover {
+          padding-right: 2rem;
         }
       }
       .map {
         width: 100%;
-        // max-width: 500px;
-        // border: 2px solid red;
-        // top: 50%;
-        // left: 50%;
-        // transform: translate(50%, 0%);
-        // margin: 0 auto;
       }
     }
   }
@@ -893,13 +889,10 @@ $txt-light-blue: #cfe8ff;
       height: 5rem;
       width: 5rem;
       line-height: 5rem;
-      font-size: 2rem;
+      font-size: 15px;
       color: #fff;
-      // background: var(--green);
-      // border: 2px solid white;
       margin: 0 0.3rem;
       border-radius: 50%;
-
       &:hover {
         background: var(--black);
       }
@@ -909,10 +902,8 @@ $txt-light-blue: #cfe8ff;
   .credit {
     border-top: 1px solid $bg-gray;
     margin-top: 20px;
-    // padding: 0 1rem;
     padding: 30px 0;
     font-size: 20px;
-    color: var(--light-color);
     text-align: center;
 
     span {

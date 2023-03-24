@@ -11,54 +11,44 @@ function Footer() {
       <div className="box-container">
         <div className="box">
           <h3>Our Location</h3>
-          <a href="#">
-            {" "}
+          <a href="">
             <i className="fas fa-map-marker-alt"></i> Nigeria
           </a>
         </div>
 
         <div className="box">
           <h3>Quick Links</h3>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> home{" "}
+          <a href="">
+            <i></i> home
           </a>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> Products{" "}
+          <a href="">
+            <i></i> Products
           </a>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> Promo{" "}
+          <a href="">
+            <i></i> Promo
           </a>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> Review{" "}
+          <a href="">
+            <i></i> Review
           </a>
         </div>
 
         <div className="box">
           <h3>Extra links</h3>
 
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> ordered items{" "}
+          <a href="">
+            <i></i> ordered items
           </a>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> privacy policy{" "}
+          <a href="">
+            <i></i> privacy policy
           </a>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> payment method{" "}
+          <a href="">
+            <i></i> payment method
           </a>
-          <a href="#">
-            {" "}
-            <i className="fas fa-arrow-right"></i> our serivces{" "}
+          <a href="">
+            <i></i> our serivces
           </a>
           <a>
-            {" "}
-            <i className="fas fa-arrow-right"></i> Admin Login{" "}
+            <i></i>Admin Login 
           </a>
         </div>
 

@@ -1,13 +1,13 @@
 import React from "react";
 
 // components
-import Topbar from "../Components/Topbar";
-import Banner from "../Components/Banner";
-import NewArrivals from "../Components/NewArrivals";
-import Products from "../Components/Products";
-import NewsLetter from "../Components/NewsLetter";
-import Promo from "../Components/Promo";
-import Footer from "../Components/Footer";
+import Topbar from "../Components/Homepage/Topbar";
+import Banner from "../Components/Homepage/Banner";
+import NewArrivals from "../Components/Homepage/NewArrivals";
+import Products from "../Components/Homepage/Products";
+import NewsLetter from "../Components/Homepage/NewsLetter";
+import Promo from "../Components/Homepage/Promo";
+import Footer from "../Components/Homepage/Footer";
 
 function HomePage() {
   return (
