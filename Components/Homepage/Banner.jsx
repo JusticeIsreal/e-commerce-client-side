@@ -3,47 +3,48 @@ import { Fade, Slide } from "react-slideshow-image";
 function Banner() {
   const promo = [
     {
+      id: 233,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679693121/E-Commerce%20Project/anastasia-malysh-G_wA7CKDXFs-unsplash-removebg-preview_1_ixwho1.png",
+      price: 200,
+      oldprice: 500,
+      desc: "Tription about this produt and the offer you are giving on this particular brand and possible discounts if any at all",
+    },
+    {
+      id: 143,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679692898/E-Commerce%20Project/jonathan-borba-BI9NjChWn6s-unsplash-removebg-preview_zmdi5e.png",
+      price: 200,
+      oldprice: 500,
+      desc: "This is a short sdescription about this produt and the offer you are giving on this particular brand and poany at all",
+    },
+    {
+      id: 17650762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679693180/E-Commerce%20Project/ryan-plomp-jvoZ-Aux9aw-unsplash-removebg-preview_kexemj.png",
+      price: 200,
+      desc: "This is a short description about this produtthis particular brand and possible discounts if any at all",
+    },
+  ];
+  const prom = [
+    {
       id: 1761250762,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1661646436/cld-sample-5.jpg",
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679693180/E-Commerce%20Project/ryan-plomp-jvoZ-Aux9aw-unsplash-removebg-preview_kexemj.png",
       price: 200,
       // oldprice: 500,
       productname: "Prodct name",
     },
     {
       id: 17650762,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679563074/jayflix%20vid%20posters/images_jk6d9o.jpg",
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679693155/E-Commerce%20Project/irene-kredenets-8j4DiAOBAMo-unsplash-removebg-preview_u84vsi.png",
       price: 200,
       // oldprice: 500,
       productname: "Prodct name",
     },
+
     {
-      id: 1,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1662211865/jayflix%20vid%20posters/photo_2022-09-02_18-45-55_numjln.jpg",
-      desc: "This is a short description about this produtthis particular brand and possible discounts if any at all",
-    },
-    {
-      id: 2,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1662211856/jayflix%20vid%20posters/photo_2022-09-02_18-43-21_hx0vs6.jpg",
-      desc: "This is a short sdescription about this produt and the offer you are giving on this particular brand and poany at all",
-    },
-    {
-      id: 3,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg",
-      desc: "Tription about this produt and the offer you are giving on this particular brand and possible discounts if any at all",
-    },
-  ];
-  const prom = [
-    {
-      id: 2,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1662211856/jayflix%20vid%20posters/photo_2022-09-02_18-43-21_hx0vs6.jpg",
-    },
-    {
-      id: 3,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg",
-    },
-    {
-      id: 1,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1662211865/jayflix%20vid%20posters/photo_2022-09-02_18-45-55_numjln.jpg",
+      id: 176225762,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679693137/E-Commerce%20Project/antonio-manaligod-wo_1RjWOh9I-unsplash-removebg-preview_osna3s.png",
+      price: 200,
+      // oldprice: 500,
+      productname: "Prodct name",
     },
   ];
   return (
