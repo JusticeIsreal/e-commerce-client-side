@@ -646,7 +646,7 @@
 }
 
 .newsletter {
-  background: rgba(0, 0, 0, 0.7019607843);
+  background: #3c91e6;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -677,7 +677,7 @@
   height: 40px;
   background: #3c91e6;
   color: white;
-  border: none;
+  border: 1px solid #eee;
   border-radius: 5px;
   font-size: 18px;
   margin-top: 10px;
@@ -702,7 +702,7 @@
 }
 
 .deal {
-  margin-top: 20px;
+  margin-top: 50px;
   align-items: center;
   position: relative;
   padding: 5px;
@@ -818,7 +818,7 @@
 }
 .footer {
   background: #3c91e6;
-  margin: 100px 0 0 0;
+  margin: 150px 0 0 0;
   border-top-left-radius: 60px;
 }
 .footer .box-container {

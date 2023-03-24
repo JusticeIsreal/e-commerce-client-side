@@ -644,7 +644,8 @@ $txt-light-blue: #cfe8ff;
 .newsletter {
   // background: url(https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg)
   //   no-repeat;
-  background: #000000b3;
+  // background: #000000b3;
+  background: $txt-blue;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -670,7 +671,7 @@ $txt-light-blue: #cfe8ff;
       height: 40px;
       background: $txt-blue;
       color: white;
-      border: none;
+      border: 1px solid $bg-gray;
       border-radius: 5px;
       font-size: 18px;
       margin-top: 10px;
@@ -703,7 +704,7 @@ $txt-light-blue: #cfe8ff;
 // PROMO
 .deal {
   // border: 2px solid red;
-  margin-top: 20px;
+  margin-top: 50px;
   align-items: center;
   position: relative;
   padding: 5px;
@@ -825,8 +826,9 @@ $txt-light-blue: #cfe8ff;
 // FOOTER
 .footer {
   // background: #000000b3;
+
   background: $txt-blue;
-  margin: 100px 0 0 0;
+  margin: 150px 0 0 0;
   border-top-left-radius: 60px;
 
   .box-container {
