@@ -706,7 +706,7 @@ $txt-light-blue: #cfe8ff;
   margin-top: 20px;
   align-items: center;
   position: relative;
-  padding: 0 10px 0 0;
+  padding: 5px;
 
   @include responsive(bigphone) {
     margin: 0 auto;
@@ -819,5 +819,102 @@ $txt-light-blue: #cfe8ff;
   }
   .deal .content a {
     padding: 5px 15px;
+  }
+}
+
+// FOOTER
+.footer {
+  // background: #000000b3;
+  background: $txt-blue;
+  margin: 100px 0 0 0;
+  border-top-left-radius: 60px;
+
+  .box-container {
+    // border: 2px solid red;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 5px;
+    @include flexDisplay(space-between, start, row);
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    // gap: 1.5rem;
+
+    .box {
+      // border: 2px solid red;
+      margin-top: 20px;
+      width: 100%;
+
+      @include responsive(bigphone) {
+        width: 20%;
+        min-width: 300px;
+      }
+      @include responsive(tablet) {
+        width: 10%;
+        min-width: 250px;
+      }
+
+      h3 {
+        font-size: 20px;
+        color: #fff;
+        // padding: 1rem 0;
+      }
+      a {
+        display: block;
+        font-size: 16px;
+        color: $bg-gray;
+        line-height: 2;
+        // padding: 1rem 0;
+        i {
+          color: #fff;
+          padding-right: 0.5rem;
+          &:hover {
+            padding-right: 2rem;
+          }
+        }
+      }
+      .map {
+        width: 100%;
+        // max-width: 500px;
+        // border: 2px solid red;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(50%, 0%);
+        // margin: 0 auto;
+      }
+    }
+  }
+  .share {
+    padding: 1rem 0;
+    text-align: center;
+    a {
+      height: 5rem;
+      width: 5rem;
+      line-height: 5rem;
+      font-size: 2rem;
+      color: #fff;
+      // background: var(--green);
+      // border: 2px solid white;
+      margin: 0 0.3rem;
+      border-radius: 50%;
+
+      &:hover {
+        background: var(--black);
+      }
+    }
+  }
+
+  .credit {
+    border-top: 1px solid $bg-gray;
+    margin-top: 20px;
+    // padding: 0 1rem;
+    padding: 30px 0;
+    font-size: 20px;
+    color: var(--light-color);
+    text-align: center;
+
+    span {
+      color: #fff;
+    }
   }
 }
