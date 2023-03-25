@@ -17,7 +17,7 @@ function HomePage() {
       <Topbar />
       {/* BANNER */}
       <Banner />
-      <MyPage />
+      {/* <MyPage /> */}
       {/* NEW ARRIVALS */}
       <NewArrivals />
       {/* MAIN PRODUCT */}

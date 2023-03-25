@@ -19,7 +19,6 @@ export default function Home() {
       <main className="app-main-con">
         {/* HOOME PAGE */}
         <HomePage />
-        
       </main>
     </section>
   );
