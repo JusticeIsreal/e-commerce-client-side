@@ -88,7 +88,7 @@ function Products() {
       productname: "Product name",
     },
     {
-      id: 2532,
+      id: 252,
       img: "https://res.cloudinary.com/isreal/image/upload/v1679692900/E-Commerce%20Project/maxim-hopman-8cT5ja0P_N4-unsplash-removebg-preview_uewufd.png",
       price: 200,
       oldprice: 500,

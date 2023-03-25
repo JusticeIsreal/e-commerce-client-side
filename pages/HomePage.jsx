@@ -8,6 +8,7 @@ import Products from "../Components/Homepage/Products";
 import NewsLetter from "../Components/Homepage/NewsLetter";
 import Promo from "../Components/Homepage/Promo";
 import Footer from "../Components/Homepage/Footer";
+import MyPage from "../Components/Homepage/Install";
 
 function HomePage() {
   return (
@@ -16,6 +17,7 @@ function HomePage() {
       <Topbar />
       {/* BANNER */}
       <Banner />
+      <MyPage />
       {/* NEW ARRIVALS */}
       <NewArrivals />
       {/* MAIN PRODUCT */}

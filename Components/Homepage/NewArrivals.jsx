@@ -102,11 +102,11 @@ function NewArrivals() {
       productname: "Product name",
     },
     {
-      id: 2532,
+      id: 232,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211856/jayflix%20vid%20posters/photo_2022-09-02_18-43-21_hx0vs6.jpg",
     },
     {
-      id: 143,
+      id: 13,
       img: "https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg",
     },
     {
