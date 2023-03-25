@@ -758,10 +758,15 @@ $txt-light-blue: #cfe8ff;
     }
 
     h3 {
-      // font-size: 2;
+      font-size: 15px;
       color: #fff;
       padding-bottom: 0.7rem;
       font-weight: normal;
+
+      @include responsive(bigphone) {
+        font-size: 20px;
+       
+      }
     }
 
     .box {
@@ -923,7 +928,7 @@ $txt-light-blue: #cfe8ff;
     // border: 2px solid red;
     max-width: 1800px;
     margin: 0 auto;
-    padding: 5px;
+    padding: 10px;
     @include flexDisplay(space-between, start, row);
     flex-wrap: wrap;
     // display: grid;
@@ -971,7 +976,7 @@ $txt-light-blue: #cfe8ff;
       height: 5rem;
       width: 5rem;
       line-height: 5rem;
-      font-size: 15px;
+      font-size: 20px;
       color: #fff;
       margin: 0 0.3rem;
       border-radius: 50%;
@@ -982,11 +987,15 @@ $txt-light-blue: #cfe8ff;
     border-top: 1px solid $bg-gray;
     margin-top: 20px;
     padding: 30px 0;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
 
     span {
       color: #fff;
+    }
+
+    @include responsive(bigphone) {
+      margin-top: 20px;
     }
   }
 }

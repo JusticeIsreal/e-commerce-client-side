@@ -13,7 +13,9 @@ function NewsLetter() {
             id=""
             className="box"
           />
-          <input type="submit" value="subscribe" className="btn" />
+          <a href="" className="btn">
+            subscribe
+          </a>
         </form>
       </section>
     </div>
