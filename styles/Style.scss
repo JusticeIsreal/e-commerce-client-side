@@ -168,7 +168,7 @@ $txt-light-blue: #cfe8ff;
         @include flexDisplay(space-between, center, row);
 
         @include responsive(bigphone) {
-          height: 30px;
+          height: 100%;
           width: 500px;
           padding: 0;
           @include flexDisplay(space-between, center, row);
@@ -182,7 +182,7 @@ $txt-light-blue: #cfe8ff;
           cursor: pointer;
           // border: 1px solid red;
           @include responsive(phone) {
-            padding: 0px 10px;
+            padding: 5px 10px;
           }
 
           @include responsive(bigphone) {
@@ -225,6 +225,13 @@ $txt-light-blue: #cfe8ff;
             @include responsive(bigphone) {
               display: none;
             }
+          }
+        }
+
+        @include responsive(bigphone) {
+          .listactive {
+            background: white;
+            color: $txt-blue;
           }
         }
       }

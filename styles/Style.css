@@ -142,7 +142,7 @@
 }
 @media only screen and (min-width: 768px) {
   .topbar-main-con .navbar-main-con nav ul {
-    height: 30px;
+    height: 100%;
     width: 500px;
     padding: 0;
     display: flex;
@@ -164,7 +164,7 @@
 }
 @media only screen and (min-width: 320px) {
   .topbar-main-con .navbar-main-con nav ul li {
-    padding: 0px 10px;
+    padding: 5px 10px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -208,6 +208,12 @@
 @media only screen and (min-width: 768px) {
   .topbar-main-con .navbar-main-con nav ul li span {
     display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .topbar-main-con .navbar-main-con nav ul .listactive {
+    background: white;
+    color: #3c91e6;
   }
 }
 

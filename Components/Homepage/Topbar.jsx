@@ -31,7 +31,7 @@ function Topbar() {
       <div className="navbar-main-con">
         <nav>
           <ul>
-            <li>
+            <li className="listactive">
               <div className="nav-active"></div>
               <span>
                 <BsShop className="menu-icon" />
