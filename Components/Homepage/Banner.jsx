@@ -4,49 +4,30 @@ function Banner() {
   const promo = [
     {
       id: 233,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679693121/E-Commerce%20Project/anastasia-malysh-G_wA7CKDXFs-unsplash-removebg-preview_1_ixwho1.png",
-      price: 200,
-      oldprice: 500,
-      desc: "Tription about this produt and the offer you are giving on this particular brand and possible discounts if any at all",
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679725095/E-Commerce%20Project/aaron-burden-9RpDzXTlNh8-unsplash_syzdew.jpg",
+      cat: "Classic Pack",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 143,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679692898/E-Commerce%20Project/jonathan-borba-BI9NjChWn6s-unsplash-removebg-preview_zmdi5e.png",
-      price: 200,
-      oldprice: 500,
-      desc: "This is a short sdescription about this produt and the offer you are giving on this particular brand and poany at all",
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679725028/E-Commerce%20Project/joseph-greve-dPw0N01onxE-unsplash_qiayzv.jpg",
+      cat: "Sun shades",
+      desc: "Perfect sun shade for that summer outing, keep you on the VIP list and great personality on the 001 sun shade",
     },
     {
       id: 17650762,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679693180/E-Commerce%20Project/ryan-plomp-jvoZ-Aux9aw-unsplash-removebg-preview_kexemj.png",
-      price: 200,
-      desc: "This is a short description about this produtthis particular brand and possible discounts if any at all",
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679725015/E-Commerce%20Project/daniel-storek-JM-qKEd1GMI-unsplash_tghekk.jpg",
+      cat: "Shoes",
+      desc: "Your number 1 go to shop for all the standard shoe fit, strong durable and original to keep you on top of your game",
+    },
+    {
+      id: 172,
+      img: "https://res.cloudinary.com/isreal/image/upload/v1679725083/E-Commerce%20Project/maarten-van-den-heuvel-1t-sb-SgAxs-unsplash_k9fblx.jpg",
+      cat: "Phones",
+      desc: "gardget and  obile accessories for all the standard shoe fit, strong durable and original to keep you on",
     },
   ];
-  const prom = [
-    {
-      id: 1761250762,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679693180/E-Commerce%20Project/ryan-plomp-jvoZ-Aux9aw-unsplash-removebg-preview_kexemj.png",
-      price: 200,
-      // oldprice: 500,
-      productname: "Prodct name",
-    },
-    {
-      id: 17650762,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679693155/E-Commerce%20Project/irene-kredenets-8j4DiAOBAMo-unsplash-removebg-preview_u84vsi.png",
-      price: 200,
-      // oldprice: 500,
-      productname: "Prodct name",
-    },
 
-    {
-      id: 176225762,
-      img: "https://res.cloudinary.com/isreal/image/upload/v1679693137/E-Commerce%20Project/antonio-manaligod-wo_1RjWOh9I-unsplash-removebg-preview_osna3s.png",
-      price: 200,
-      // oldprice: 500,
-      productname: "Prodct name",
-    },
-  ];
   return (
     <div className="banner-main-con">
       <div className="content">
@@ -55,37 +36,30 @@ function Banner() {
           <div className="banner-text-con">
             <Fade arrows={false}>
               {promo.map((item, index) => (
-                <p key={item.id}>{item.desc}</p>
+                <div key={item.id} className="cat-desc">
+                  <h3>{item.cat}</h3>
+                  <p>{item.desc}</p>
+                </div>
               ))}
             </Fade>
           </div>
-
-          <a href="#">Shop now</a>
         </div>
         <div className="banner-product-img-main-con">
           <div className="swiper-wrapper">
             <Fade arrows={false}>
               {promo.map((item, index) => (
-                <img
-                  src={item.img}
-                  alt=""
-                  key={item.id}
-                  style={{
-                    right: "0",
-                  }}
-                />
-              ))}
-            </Fade>
-            <Fade arrows={false}>
-              {prom.map((item, index) => (
-                <img
-                  src={item.img}
-                  alt=""
-                  key={item.id}
-                  style={{
-                    left: "0",
-                  }}
-                />
+                <div className="banner-img-con" key={item.id}>
+                  <div className="div-2">
+                    
+                    <img
+                      src={item.img}
+                      alt=""
+                      style={{
+                        right: "0",
+                      }}
+                    />
+                  </div>
+                </div>
               ))}
             </Fade>
           </div>
@@ -95,6 +69,7 @@ function Banner() {
             className="stand"
             alt=""
           />
+          <a href="#">Shop now</a>
         </div>
       </div>
     </div>
