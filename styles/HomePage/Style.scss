@@ -497,6 +497,10 @@ $txt-light-blue: #cfe8ff;
         box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
         @include flexDisplay(space-between, center, column);
 
+        &:hover {
+          border: 3px solid $txt-blue;
+        }
+
         .new-products {
           height: 200px;
           transition: transform 0.5s ease;
@@ -580,7 +584,9 @@ $txt-light-blue: #cfe8ff;
         background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border: 1px solid rgba(128, 128, 128, 0.261);
         // border: 2px solid red;
-
+        &:hover {
+          border: 3px solid $txt-blue;
+        }
         @include responsive(bigphone) {
           width: 30%;
           max-width: 180px;

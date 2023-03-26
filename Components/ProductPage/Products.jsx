@@ -10,6 +10,8 @@ function Products() {
       price: 200,
       // oldprice: 500,
       productname: "Prodct name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 17650762,
@@ -17,6 +19,8 @@ function Products() {
       price: 200,
       // oldprice: 500,
       productname: "Prodct name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
 
     {
@@ -25,6 +29,8 @@ function Products() {
       price: 200,
       // oldprice: 500,
       productname: "Prodct name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 122,
@@ -32,6 +38,8 @@ function Products() {
       price: 200,
       // oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 233,
@@ -39,6 +47,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 42311,
@@ -46,6 +56,8 @@ function Products() {
       price: 200,
       // oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 41342,
@@ -53,6 +65,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 413,
@@ -60,6 +74,8 @@ function Products() {
       price: 200,
       // oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 1411,
@@ -67,6 +83,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 412,
@@ -74,6 +92,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 2543,
@@ -81,6 +101,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 32151,
@@ -88,6 +110,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 252,
@@ -95,6 +119,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
     {
       id: 143,
@@ -102,6 +128,8 @@ function Products() {
       price: 200,
       oldprice: 500,
       productname: "Product name",
+      cat: "category",
+      desc: "Classic pack for you classic look, wallets, glasses, pure leather belt, tie and great scent. we got you covereed for classic look",
     },
   ];
   return (
@@ -129,14 +157,11 @@ function Products() {
 
       {/* PRODUCTS */}
 
-      <div>
-        {" "}
-        {/* PRODUCTS ARRAY */}
-        <div className="products-con">
-          {prom.map((item) => (
-            <SingleProduct key={item.id} {...item} />
-          ))}
-        </div>
+      {/* PRODUCTS ARRAY */}
+      <div className="product">
+        {prom.map((item) => (
+          <SingleProduct key={item.id} {...item} />
+        ))}
       </div>
     </div>
   );
@@ -144,17 +169,21 @@ function Products() {
 
 export default Products;
 
-function SingleProduct({ id, img, price, oldprice, productname }) {
+function SingleProduct({ id, img, price, oldprice, productname, desc, cat }) {
   return (
-    <div>
-      <div>
+    <div className="single-product">
+      <h3>{productname}</h3>
+      <div className="product-img">
         <img src={img} alt="img" />
       </div>
-      <div>
-        <h3>{productname}</h3>
-        <div>
-          <p></p>
-          <p></p>
+      <div className="product-details">
+        <div className="price">
+          <span className="current-price"> {"₦" + price}</span>
+          <span className="old-price"> {oldprice && "₦" + oldprice}</span>
+        </div>
+        <div className="detail">
+          <span className="category">{cat}</span>
+          <span className="desc">{desc}</span>
         </div>
       </div>
     </div>

@@ -4,9 +4,8 @@ import Link from "next/link";
 import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
 import { BsShop } from "react-icons/bs";
-import { FiGrid } from "react-icons/fi";
-import { RiRefund2Fill } from "react-icons/ri";
-import { MdOutlineRateReview, MdContactSupport } from "react-icons/md";
+import { FiGrid, FiTruck } from "react-icons/fi";
+import { MdContactSupport } from "react-icons/md";
 
 function Topbar() {
   return (
@@ -50,15 +49,9 @@ function Topbar() {
             </Link>
             <li>
               <span>
-                <RiRefund2Fill className="menu-icon" />
+                <FiTruck className="menu-icon" />
               </span>
-              Promo
-            </li>
-            <li>
-              <span>
-                <MdOutlineRateReview className="menu-icon" />
-              </span>
-              Transactions
+              Order
             </li>
             <li>
               <span>

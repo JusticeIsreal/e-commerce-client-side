@@ -483,6 +483,9 @@
   align-items: center;
   flex-direction: column;
 }
+.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case:hover {
+  border: 3px solid #3c91e6;
+}
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products {
   height: 200px;
   transition: transform 0.5s ease;
@@ -570,6 +573,9 @@
   border-radius: 5px;
   background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
   border: 1px solid rgba(128, 128, 128, 0.261);
+}
+.product-session-con .product-main-con .products-con .products:hover {
+  border: 3px solid #3c91e6;
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products {
