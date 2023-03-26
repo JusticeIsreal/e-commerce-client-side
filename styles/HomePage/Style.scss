@@ -489,34 +489,41 @@ $txt-light-blue: #cfe8ff;
       // border: 2px solid red;
 
       .new-products-case {
-        padding: 0 10px;
+        padding: 5px;
+        width: 250px;
         margin: 0 10px;
-        background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
+        background: white !important;
         border-radius: 5px;
         border: 1px solid rgba(128, 128, 128, 0.132);
         box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
         @include flexDisplay(space-between, center, column);
-
-        &:hover {
-          border: 3px solid $txt-blue;
-        }
+        // border: 2px solid red;
 
         .new-products {
           height: 200px;
+          width: 200px;
+          overflow: hidden;
           transition: transform 0.5s ease;
+          background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
+          // border: 2px solid red;
+          background: whitesmoke;
+          @include flexDisplay(space-between, center, column);
+
           @include responsive(bigphone) {
             height: 250px;
           }
 
           img {
+            // border: 2px solid red;
             height: 100%;
-            transform: scale(0.85);
+            object-fit: cover;
+            transform: scale(1.2);
             transition: transform 0.3s linear;
           }
 
           &:hover {
             img {
-              transform: scale(0.9);
+              transform: scale(1.3);
             }
           }
         }
@@ -578,64 +585,88 @@ $txt-light-blue: #cfe8ff;
       .products {
         @include flexDisplay(space-evenly, center, column);
         width: 45%;
-        padding: 0 3px;
+        padding: 5px;
         margin: 10px 5px;
         border-radius: 5px;
-        background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
+        background: white;
+        // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border: 1px solid rgba(128, 128, 128, 0.261);
         // border: 2px solid red;
-        &:hover {
-          border: 3px solid $txt-blue;
-        }
+        flex-wrap: wrap;
+        // height: 300px;
+
         @include responsive(bigphone) {
           width: 30%;
-          max-width: 180px;
+          max-width: 200px;
         }
         @include responsive(tablet) {
           width: 20%;
-          max-width: 250px;
+          max-width: 300px;
         }
         @include responsive(desktop) {
-          width: 20%;
-          max-width: 250px;
+          width: 30%;
+          max-width: 300px;
         }
 
         .product-name {
           // border: 2px solid red;
-          text-align: center;
+          // text-align: center;
           font-size: 15px;
-          line-height: 2;
+          // line-height: 2;
           color: $font-light;
-          margin-top: -1px;
+          // margin-top: -1px;
+          width: 100%;
           // font-style: italic;
           @include responsive(bigphone) {
-            font-size: 20px;
+            font-size: 15px;
+          }
+          @include responsive(tablet) {
+            font-size: 18px;
           }
         }
 
         .product-img {
           // margin-top: 5px;
+          border: 1px solid rgba(128, 128, 128, 0.261);
           width: 100%;
+          height: 150px;
+          border-radius: 5px;
+          // background: whitesmoke;
+          background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
           @include flexDisplay(space-evenly, center, column);
           overflow: hidden;
 
+          @include responsive(phone) {
+            height: 200px;
+          }
+          @include responsive(bigphone) {
+            height: 230px;
+          }
+          @include responsive(tablet) {
+            height: 270px;
+          }
+          @include responsive(desktop) {
+            height: 400px;
+          }
+
           img {
-            height: 150px;
-            transform: scale(1.3);
+            // height: 150px;
+            width: 100%;
+            // transform: scale(1.3);
             transition: transform 0.3s linear;
             // border: 1px solid red;
             &:hover {
-              transform: scale(1.4);
+              transform: scale(1.1);
             }
             @include responsive(tablet) {
-              height: 250px;
+              // height: 250px;
               transform: scale(1.1);
               &:hover {
                 transform: scale(1.3);
               }
             }
             @include responsive(desktop) {
-              height: 300px;
+              // height: 300px;
               transform: scale(1.1);
 
               &:hover {
@@ -647,19 +678,24 @@ $txt-light-blue: #cfe8ff;
 
         .price {
           @include flexDisplay(space-between, center, row);
-          width: 90%;
+          width: 100%;
+          // border: 2px solid red;
+          // height: 30px;
           // margin-top: 5px;
           font-size: 15px;
 
           .product-price {
+            // border: 2px solid red;
             text-align: center;
             // line-height: 1.5;
+            margin-top: 5px;
             color: $bg-dark-gray;
           }
 
           .product-oldprice {
             text-align: center;
             // line-height: 1.5;
+            margin-top: 5px;
             font-size: 12px;
             color: $font-light;
             font-style: italic;
@@ -669,7 +705,7 @@ $txt-light-blue: #cfe8ff;
 
         .addto-cart {
           // border: 1px solid red;
-          width: 90%;
+          width: 100%;
           margin: 0 auto;
           text-align: center;
           font-size: 15px;

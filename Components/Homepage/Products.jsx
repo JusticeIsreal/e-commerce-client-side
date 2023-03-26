@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+
 function Products() {
   const prom = [
     {
@@ -114,7 +115,9 @@ function Products() {
           ))}
         </div>
         {/* SEE MORE */}
-        <p>See more . . .</p>
+        <Link href="/ProductsPage">
+          <p>See more . . .</p>
+        </Link>
       </div>
     </div>
   );
@@ -125,14 +128,15 @@ export default Products;
 function Product({ img, price, oldprice, productname }) {
   return (
     <div className="products">
-      <p className="product-name">{productname}</p>
       <div className="product-img">
         <img src={img} alt="" />
       </div>
+      <p className="product-name">{productname}</p>
       <div className="price">
         <p className="product-price">₦ {price}</p>
         <p className="product-oldprice"> {oldprice && "₦ " + oldprice}</p>
       </div>
+
       <Link href="/" className="addto-cart">
         Add to cart
       </Link>

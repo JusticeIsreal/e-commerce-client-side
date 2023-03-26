@@ -124,8 +124,9 @@ $txt-light-blue: #cfe8ff;
         border-radius: 10px;
       }
       .category {
-        border: 1px solid rgba(128, 128, 128, 0.355);
-        box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.478);
+        border: 1px solid rgba(128, 128, 128, 0.238);
+        border-radius: 5px;
+        box-shadow: -1px -2px 5px rgba(128, 128, 128, 0.107);
         padding: 5px;
         color: $txt-blue;
         text-align: center;
@@ -174,7 +175,7 @@ $txt-light-blue: #cfe8ff;
         border-radius: 5px;
         overflow: hidden;
         &:hover {
-          border: 2px solid $txt-blue;
+          border: 1px solid $txt-blue;
         }
 
         @include responsive(bigphone) {
@@ -189,9 +190,9 @@ $txt-light-blue: #cfe8ff;
 
         h3 {
           font-size: 12px;
-          text-align: center;
+          // text-align: center;
           color: $txt-blue;
-          margin-bottom: 5px;
+          margin-top: 5px;
 
           @include responsive(phone) {
             font-size: 15px;
@@ -268,7 +269,6 @@ $txt-light-blue: #cfe8ff;
           }
 
           .detail {
-            // border: 2px solid red;
             margin-top: 5px;
             width: 100%;
             overflow: hidden;
@@ -276,21 +276,18 @@ $txt-light-blue: #cfe8ff;
             @include flexDisplay(space-between, start, column);
 
             .category {
-              // border: 2px solid red;
+              border: 1px solid $txt-blue;
               padding: 2px 5px;
               border-radius: 5px;
-              font-style: italic;
-              background: $txt-blue;
+              background: #3c91e6;
+              text-align: center;
               color: white;
               font-size: 12px;
 
               @include responsive(phone) {
-                font-size: 15px;
+                font-size: 14px;
               }
-              @include responsive(bigphone) {
-                font-size: 20px;
-                padding: 3px 15px;
-              }
+             
             }
             .desc {
               margin-top: 5px;
