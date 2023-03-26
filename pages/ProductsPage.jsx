@@ -7,7 +7,7 @@ import Footer from "../Components/Homepage/Footer";
 
 function ProductsPage() {
   return (
-    <div>
+    <div className="product-page-main-con">
       {/* TOPBAR */}
       <Topbar />
       {/* PRODUCT DETAILS */}
