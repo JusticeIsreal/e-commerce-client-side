@@ -6,7 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@mantine/carousel": "^6.0.2",
+    "@mantine/carousel": "^6.0.4",
     "embla-carousel-react": "^7.1.0",
     "next": "latest",
     "next-pwa": "^5.6.0",

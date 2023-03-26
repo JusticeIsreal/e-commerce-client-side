@@ -373,7 +373,7 @@ $txt-light-blue: #cfe8ff;
         .banner-img-con {
           // border: 2px solid rgb(60, 255, 0);
           position: absolute;
-          overflow: hidden;
+          // overflow: hidden;
           width: 250px;
           height: 190px;
 
@@ -406,6 +406,7 @@ $txt-light-blue: #cfe8ff;
           display: flex;
           justify-content: center;
           align-items: center;
+
           // overflow: hidden;
         }
         img {
@@ -416,6 +417,9 @@ $txt-light-blue: #cfe8ff;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+          border-radius: 5px;
+          border: 1px solid rgba(128, 128, 128, 0.132);
+          box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.271);
         }
       }
 
@@ -729,7 +733,6 @@ $txt-light-blue: #cfe8ff;
 .newsletter {
   // background: url(https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg)
   //   no-repeat;
-  // background: #000000b3;
   background: $txt-blue;
   background-size: cover;
   background-position: center;
@@ -930,12 +933,71 @@ $txt-light-blue: #cfe8ff;
   }
 }
 
+// REVIEW
+.review-main-con {
+  // border: 2px solid red;
+
+  background: whitesmoke;
+  padding: 0 5px;
+  margin: 0 auto;
+  margin: 130px 0 0 0;
+  width: 100vw;
+
+  @include responsive(bigphone) {
+   height: 350px;
+  }
+
+  h1 {
+    text-align: center;
+    color: $txt-blue;
+    // margin-left: 5px;
+    padding: 20px;
+    font-size: 30px;
+
+    @include responsive(tablet) {
+      font-size: 50px;
+    }
+  }
+  .review {
+    @include flexDisplay(center, flex-start, column);
+    height: 100%;
+    // border: 2px solid red;
+    .review-con {
+      border-radius: 5px;
+      padding: 5px;
+      border: 1px solid rgba(128, 128, 128, 0.132);
+      box-shadow: 5px 10px 15px rgba(128, 128, 128, 0.162);
+    }
+    h3 {
+      color: $txt-blue;
+      // border: 2px solid red;
+    }
+
+    .review-text {
+      // border: 2px solid red;
+      // @include flexDisplay(center, center, column);
+      color: $txt-blue;
+      margin-top: 10px;
+      p {
+        color: $font-light;
+        font-size: 15px;
+        line-height: 1.5;
+        font-style: italic;
+
+        @include responsive(tablet) {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
 // FOOTER
 .footer {
   // background: #000000b3;
 
   background: $txt-blue;
-  margin: 150px 0 0 0;
+  // margin: 150px 0 0 0;
   // border-top-left-radius: 40px;
 
   .box-container {
@@ -943,7 +1005,7 @@ $txt-light-blue: #cfe8ff;
     max-width: 1800px;
     margin: 0 auto;
     padding: 10px;
-    @include flexDisplay(space-between, start, row);
+    @include flexDisplay(space-between, flex-start, row);
     flex-wrap: wrap;
     // display: grid;
     // grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 // components
 import Topbar from "../Components/Homepage/Topbar";
 import Banner from "../Components/Homepage/Banner";
@@ -8,7 +8,7 @@ import Products from "../Components/Homepage/Products";
 import NewsLetter from "../Components/Homepage/NewsLetter";
 import Promo from "../Components/Homepage/Promo";
 import Footer from "../Components/Homepage/Footer";
-import MyPage from "../Components/Homepage/Install";
+import Review from "../Components/Homepage/Review";
 
 function HomePage() {
   return (
@@ -27,8 +27,9 @@ function HomePage() {
       {/* PROMO */}
       <Promo />
       {/* REVIEWS */}
-      <Footer />
+      <Review />
       {/* FOOTER */}
+      <Footer />
     </div>
   );
 }

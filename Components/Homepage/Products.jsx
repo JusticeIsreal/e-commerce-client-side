@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 function Products() {
   const prom = [
     {
@@ -148,10 +148,9 @@ function Product({ img, price, oldprice, productname }) {
         <p className="product-price">₦ {price}</p>
         <p className="product-oldprice"> {oldprice && "₦ " + oldprice}</p>
       </div>
-
-      <a href="" className="addto-cart">
+      <Link href="/" className="addto-cart">
         Add to cart
-      </a>
+      </Link>
     </div>
   );
 }

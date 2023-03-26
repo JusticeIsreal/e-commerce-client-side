@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { Fade, Slide } from "react-slideshow-image";
 function Banner() {
   const promo = [
@@ -33,6 +35,8 @@ function Banner() {
       <div className="content">
         <div className="text-content">
           <h2>AJIS STORE</h2>
+
+          {/* SIAPLAYING PRODUCTS DETAILS*/}
           <div className="banner-text-con">
             <Fade arrows={false}>
               {promo.map((item, index) => (
@@ -44,6 +48,8 @@ function Banner() {
             </Fade>
           </div>
         </div>
+
+        {/* SIAPLAYING PRODUCTS IMAGES*/}
         <div className="banner-product-img-main-con">
           <div className="swiper-wrapper">
             <Fade arrows={false}>
@@ -68,7 +74,9 @@ function Banner() {
             className="stand"
             alt=""
           />
-          <a href="#">Shop now</a>
+
+          {/* PRODUCT BUTTON */}
+          <Link href="/ProductsPage">Shop now</Link>
         </div>
       </div>
     </div>

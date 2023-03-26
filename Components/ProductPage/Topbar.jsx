@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+
 // ICONS
 import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -32,8 +33,7 @@ function Topbar() {
         <nav>
           <ul>
             <Link href="/">
-              <li className="listactive">
-                <div className="nav-active"></div>
+              <li>
                 <span>
                   <BsShop className="menu-icon" />
                 </span>
@@ -41,11 +41,12 @@ function Topbar() {
               </li>
             </Link>
             <Link href="/ProductsPage">
-              <li>
+              <li className="listactive">
+                <div className="nav-active"></div>
                 <span>
                   <FiGrid className="menu-icon" />
                 </span>
-                <p> Products</p>
+                <p>Products</p>
               </li>
             </Link>
             <li>

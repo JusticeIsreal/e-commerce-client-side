@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 // PAGES
 import HomePage from "./HomePage";
+import ProductsPage from "./ProductsPage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="app-main-con">
         {/* HOOME PAGE */}
         <HomePage />
+        {/* <ProductsPage /> */}
       </main>
     </section>
   );
