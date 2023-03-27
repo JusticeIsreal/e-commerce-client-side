@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
 import axios from "axios";
 import { HiRefresh } from "react-icons/hi";
 // import Loader from "../Loader";
@@ -35,36 +35,33 @@ function StoreItems() {
           </div>
         </div>
         <div className="order" style={{ position: "relative" }}>
-         
-            <table
-              className="table"
-              style={{
-                width: "100%",
-                minWidth: "500px",
-              }}
-            >
-              <thead>
-                <tr>
-                  <th>Img</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Slash</th>
-                  <th>ISBN</th>
-                  <th>Cat</th>
-                  <th>Class</th>
-                  <th>Desc</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              
-                <StoreItemsIndividual
-                  // key={product._id}
-                  // {...product}
-                  // fetchProducts={fetchProducts}
-                />
-             
-            </table>
-          
+          <table
+            className="table"
+            style={{
+              width: "100%",
+              minWidth: "500px",
+            }}
+          >
+            <thead>
+              <tr>
+                <th>Img</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Slash</th>
+                <th>ISBN</th>
+                <th>Cat</th>
+                <th>Class</th>
+                <th>Desc</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+
+            <StoreItemsIndividual
+            // key={product._id}
+            // {...product}
+            // fetchProducts={fetchProducts}
+            />
+          </table>
         </div>
       </div>
     </div>
@@ -87,7 +84,6 @@ function StoreItemsIndividual() {
     //     //   // },
     //     // }
     //   )
-
     //   .then((resp) => {
     //     // window.location.reload();
     //     fetchProducts();
@@ -107,9 +103,7 @@ function StoreItemsIndividual() {
             style={{ width: "40px", borderRadius: "0%", margin: "5px" }}
           />
         </td>
-        <td style={{ width: "11%" }}>
-          {/* <p>{productname}</p> */}
-        </td>
+        <td style={{ width: "11%" }}>{/* <p>{productname}</p> */}</td>
         {/* <td style={{ width: "10%", margin: "5px" }}>{productprice}</td>
         <td style={{ width: "10%", margin: "5px" }}>{productoldprice}</td>
         <td style={{ width: "10%", margin: "5px" }}>{productnumber}</td>

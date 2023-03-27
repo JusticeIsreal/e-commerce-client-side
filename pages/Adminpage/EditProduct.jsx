@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import  useForm  from "react-hook-form";
-import axios from "axios";
+// import  useForm  from "react-hook-form";
+// import axios from "axios";
 import Topbar from "../../Components/AdminPageComponents/Topbar";
 import Sidebar from "../../Components/AdminPageComponents/Sidebar";
 // import Loader from "../../Components/Loader";

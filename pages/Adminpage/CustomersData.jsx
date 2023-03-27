@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
+// import { useForm } from "react-hook-form";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
 import Topbar from "../../Components/AdminPageComponents/Topbar";
@@ -187,12 +187,12 @@ export default CustomersData;
 
 function UserTable() {
   // useForm config setup
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors },
+  // } = useForm();
 
   // update user position via API END POINT
   const onSubmit = (data) => {
@@ -205,35 +205,7 @@ function UserTable() {
           {/* <td>{email}</td> */}
           {/* <td>{verified ? "True" : "False"}</td> */}
           <td>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <select
-                {...register("position", { required: true })}
-                // style={{
-                //   backgroundColor: (() => {
-                //     switch (position) {
-                //       case "client":
-                //         return "#db504a";
-                //       case "staff":
-                //         return "#ffce26";
-                //       case "owner":
-                //         return "#3d91e6";
-                //       default:
-                //         return "#3d91e6";
-                //     }
-                //   })(),
-                //   color: "white",
-                //   padding: "0 5px",
-                //   borderRadius: "5px",
-                //   fontSize: "12px",
-                // }}
-              >
-                {/* <option value={position}>{position}</option> */}
-                <option value="client">Client</option>
-                <option value="staff">Staff</option>
-                <option value="admin">Admin</option>
-              </select>
-              <input type="submit" className="submit-btn" />
-            </form>
+            {/*  */}
           </td>
         </tr>
       </tbody>

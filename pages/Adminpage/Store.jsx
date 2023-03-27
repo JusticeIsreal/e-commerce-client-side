@@ -1,8 +1,6 @@
 import StoreItems from "../../Components/AdminPageComponents/StoreItems";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import Topbar from "../../Components/AdminPageComponents/Topbar";
 import Sidebar from "../../Components/AdminPageComponents/Sidebar";
 
@@ -32,7 +30,7 @@ function Store() {
   };
 
   // base 64 conversion
-  const convertBase64 = (file) => {
+  const convertBase64 = () => {
     // return new Promise((resolve, reject) => {
     //   const fileReader = new FileReader();
     //   fileReader.readAsDataURL(file);
@@ -44,26 +42,26 @@ function Store() {
   };
 
   // POST PRODUCT
-  const postProductAPI = "http://localhost:1234/api/v1/products/addproduct";
+  // const postProductAPI = "http://localhost:1234/api/v1/products/addproduct";
 
-  const onSubmit = (data, e) => {
-    const productDetails = { ...data, productimage: imageBase64 };
+  // const onSubmit = () => {
+  //   const productDetails = { ...data, productimage: imageBase64 };
 
-    // axios
-    //   .post(postProductAPI, productDetails)
-    //   .then((resp) => {
-    //     fetchProducts();
-    //     e.target.reset();
-    //     setImageBase64("");
-    //     setPreviewImg(null);
-    //   })
-    //   .catch((error) => {
-    //     throw new Error(error);
-    //   });
-  };
+  //   // axios
+  //   //   .post(postProductAPI, productDetails)
+  //   //   .then((resp) => {
+  //   //     fetchProducts();
+  //   //     e.target.reset();
+  //   //     setImageBase64("");
+  //   //     setPreviewImg(null);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     throw new Error(error);
+  //   //   });
+  // };
 
   // display form on and of
-  const [formShow, setFormShow] = useState(false);
+  // const [formShow, setFormShow] = useState(false);
   // NAVIGATE PAGE BACK
   // const history = useNavigate();
   return (
