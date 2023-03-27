@@ -36,7 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 # firebase
-/Firebase.jsx
+
 
 # next-pwa
 /public/precache.*.*.js
