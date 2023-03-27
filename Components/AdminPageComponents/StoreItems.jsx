@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import axios from "axios";
+
 import { HiRefresh } from "react-icons/hi";
 // import Loader from "../Loader";
 // ICONS

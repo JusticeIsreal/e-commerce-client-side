@@ -195,8 +195,7 @@ function UserTable() {
   // } = useForm();
 
   // update user position via API END POINT
-  const onSubmit = (data) => {
-    const productDetails = { ...users, position: data.position };
+  
 
     return (
       <tbody style={{ color: "black" }}>
@@ -211,4 +210,4 @@ function UserTable() {
       </tbody>
     );
   };
-}
+
