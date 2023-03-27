@@ -26,12 +26,9 @@ function DashboardMain() {
             </ul>
           </div>
           <a href="" className="btn-download">
-            {/* <i className="bx bxs-cloud-download"></i> */}
-           
-              <span className="text" style={{ color: "white" }}>
-                Client Page
-              </span>
-           
+            <span className="text" style={{ color: "white" }}>
+              Client Page
+            </span>
           </a>
         </div>
 
@@ -66,79 +63,76 @@ function DashboardMain() {
               <i className="bx bx-search"></i>
               <i className="bx bx-filter"></i>
             </div>
-          
-              <table
-                className="table"
-                style={{
-                  width: "100%",
-                  minWidth: "500px",
-                }}
-              >
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Address</th>
-                    <th>Time</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
 
-              
-                  <tbody style={{ color: "black" }} >
-                    <tr>
-                      <td
-                        style={{
-                          display: "block",
-                          fontSize: "13px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        {/* {transaction.user[0].name} <br /> */}
-                        {/* {transaction.user[0].email} */}
-                        <br />
-                        {/* {transaction.usernumber} */}
-                      </td>
+            <table
+              className="table"
+              style={{
+                width: "100%",
+                minWidth: "500px",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Address</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
 
-                      <td
-                        style={{
-                          fontSize: "13px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        {/* {transaction.deliveryaddress} */}
-                      </td>
-                      <td style={{ fontSize: "12px" }}>
-                        {/* {transaction.timestamp.substring(0, 19)} */}
-                      </td>
-                      <td>
-                        <b
-                          // style={{
-                          //   backgroundColor: (() => {
-                          //     switch (transaction.status) {
-                          //       case "Open":
-                          //         return "#db504a";
-                          //       case "Processing":
-                          //         return "#ffce26";
-                          //       case "Delivered":
-                          //         return "#3d91e6";
-                          //       default:
-                          //         return "#3d91e6";
-                          //     }
-                          //   })(),
-                          //   color: "white",
-                          //   padding: "0 5px",
-                          //   borderRadius: "5px",
-                          //   fontSize: "12px",
-                          // }}
-                        >
-                          {/* {transaction.status} */}
-                        </b>
-                      </td>
-                    </tr>
-                  </tbody>
-                
-              </table>
-           
+              <tbody style={{ color: "black" }}>
+                <tr>
+                  <td
+                    style={{
+                      display: "block",
+                      fontSize: "13px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    {/* {transaction.user[0].name} <br /> */}
+                    {/* {transaction.user[0].email} */}
+                    <br />
+                    {/* {transaction.usernumber} */}
+                  </td>
+
+                  <td
+                    style={{
+                      fontSize: "13px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    {/* {transaction.deliveryaddress} */}
+                  </td>
+                  <td style={{ fontSize: "12px" }}>
+                    {/* {transaction.timestamp.substring(0, 19)} */}
+                  </td>
+                  <td>
+                    <b
+                    // style={{
+                    //   backgroundColor: (() => {
+                    //     switch (transaction.status) {
+                    //       case "Open":
+                    //         return "#db504a";
+                    //       case "Processing":
+                    //         return "#ffce26";
+                    //       case "Delivered":
+                    //         return "#3d91e6";
+                    //       default:
+                    //         return "#3d91e6";
+                    //     }
+                    //   })(),
+                    //   color: "white",
+                    //   padding: "0 5px",
+                    //   borderRadius: "5px",
+                    //   fontSize: "12px",
+                    // }}
+                    >
+                      {/* {transaction.status} */}
+                    </b>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </main>

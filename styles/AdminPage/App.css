@@ -265,7 +265,6 @@ body {
 }
 /* CONTENT */
 #content {
-  padding: 5px;
   position: relative;
   width: 100vw;
   transition: 0.3s ease;
@@ -280,9 +279,11 @@ body {
   align-items: center;
   font-family: var(--lato);
   position: sticky;
+  padding: 0 10px;
   top: 0;
   left: 0;
-  width: 96%;
+  right: 0;
+  width: 100vw;
   z-index: 1000;
   margin: 0 auto;
 }
@@ -308,12 +309,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80px;
 }
 
 #content nav .notification {
   font-size: 23px;
   position: relative;
+}
+
+#content nav .notification .bxs-bell {
+  color: var(--blue);
 }
 
 #content nav .notification .num {
@@ -659,6 +663,11 @@ body {
   margin-top: 10px;
   font-size: 15px;
 }
+@media only screen and (min-width: 768px) {
+  .store-main-con .store-form-container form label {
+    font-size: 20px;
+  }
+}
 .store-main-con .store-form-container form input,
 .store-main-con .store-form-container form select {
   width: 100%;
@@ -666,9 +675,22 @@ body {
   padding: 5px;
   border: 1px solid var(--blue);
 }
+@media only screen and (min-width: 768px) {
+  .store-main-con .store-form-container form input,
+  .store-main-con .store-form-container form select {
+    height: 50px;
+  }
+}
 .store-main-con .store-form-container form .file-input {
   border: none;
   outline: none;
+  width: 30%;
+}
+@media only screen and (min-width: 768px) {
+  .store-main-con .store-form-container form .file-input {
+    border: 2px solid red;
+    width: 40%;
+  }
 }
 .store-main-con .store-form-container form .submit-btn {
   background: var(--blue);
@@ -681,7 +703,6 @@ body {
   color: var(--blue);
   border: 2px solid var(--blue);
 }
-
 #content .transaction-ul {
   width: 100%;
 }

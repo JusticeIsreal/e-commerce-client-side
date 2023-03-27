@@ -21,7 +21,7 @@ function StoreItems() {
           <div className="head">
             <h3>Product List</h3>
           </div>
-          <div
+          {/* <div
             className="head"
             // onClick={() => fetchProducts()}
             style={{
@@ -32,7 +32,7 @@ function StoreItems() {
           >
             <HiRefresh />
             Re-Fresh
-          </div>
+          </div> */}
         </div>
         <div className="order" style={{ position: "relative" }}>
           <table

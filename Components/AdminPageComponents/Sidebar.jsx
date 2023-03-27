@@ -38,12 +38,12 @@ function Sidebar() {
     } else {
       dashboard.className = "";
     }
-    if (e.target.innerHTML === "Transactions") {
+    if (e.target.innerHTML === "Order") {
       transaction.className = "active";
     } else {
       transaction.className = "";
     }
-    if (e.target.innerHTML === "Notification") {
+    if (e.target.innerHTML === "Review") {
       message.className = "active";
     } else {
       message.className = "";
@@ -74,33 +74,33 @@ function Sidebar() {
         </a>
         <ul className="side-menu top">
           <li ref={dashboardRef} onClick={(e) => addActive(e)}>
-            <Link className="list-items" href="/">
+            <Link className="list-items" href="/Adminpage/AdminDashboard">
               <MdDashboard className="list-icons" />
               <span className="text">Dashboard</span>
             </Link>
           </li>
           <li ref={storeRef} onClick={(e) => addActive(e)}>
-            <Link className="list-items" href="/">
+            <Link className="list-items" href="/Adminpage/Store">
               <FaStore className="list-icons" />
               <span className="text">My Store</span>
             </Link>
           </li>
 
           <li ref={transactionRef} onClick={(e) => addActive(e)}>
-            <Link href="/" className="list-items">
+            <Link href="/Adminpage/Transaction" className="list-items">
               <FaMoneyCheckAlt className="list-icons" />
-              <span className="text">Transactions</span>
+              <span className="text">Order</span>
             </Link>
           </li>
           <li ref={messageRef} onClick={(e) => addActive(e)}>
-            <a href="#" className="list-items">
+            <Link href="/Adminpage/Notification" className="list-items">
               <RiMessage2Fill className="list-icons" />
-              <span className="text">Notification</span>
-            </a>
+              <span className="text">Review</span>
+            </Link>
           </li>
 
           <li ref={teamRef} onClick={(e) => addActive(e)}>
-            <Link href="/" className="list-items">
+            <Link href="/Adminpage/CustomersData" className="list-items">
               <MdGroup className="list-icons" />
               <span className="text">Users</span>
             </Link>

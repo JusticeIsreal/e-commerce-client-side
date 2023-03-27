@@ -277,8 +277,8 @@ body {
 
 /* CONTENT */
 #content {
-  padding: 5px;
-  //   border: 2px solid red;
+  // padding: 5px;
+  // border: 2px solid red;
   position: relative;
   width: 100vw;
   transition: 0.3s ease;
@@ -286,7 +286,7 @@ body {
 
 /* NAVBAR */
 #content nav {
-  //   border: 2px solid red;
+  // border: 2px solid red;
   height: 56px;
   background: var(--light);
   display: flex;
@@ -294,9 +294,11 @@ body {
   align-items: center;
   font-family: var(--lato);
   position: sticky;
+  padding: 0 10px;
   top: 0;
   left: 0;
-  width: 96%;
+  right: 0;
+  width: 100vw;
   z-index: 1000;
   margin: 0 auto;
 }
@@ -323,11 +325,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80px;
+  // padding: 0 10px;
+  // width: 80px;
 }
 #content nav .notification {
+  // border: 2px solid red;
   font-size: 23px;
   position: relative;
+}
+#content nav .notification .bxs-bell {
+  color: var(--blue);
 }
 #content nav .notification .num {
   position: absolute;
@@ -656,26 +663,24 @@ $light-orange: #ffe0d3;
 }
 
 @mixin responsive($breakpoint) {
-  @if $breakpoint==smallPhone {
-    @media only screen and (min-width: 300px) {
+  @if $breakpoint==phone {
+    @media only screen and (min-width: 320px) {
       @content;
     }
   }
-
+  @if $breakpoint==bigphone {
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
+  }
   @if $breakpoint==tablet {
-    @media only screen and (min-width: 481px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint==laptop {
-    @media only screen and (min-width: 769px) {
+    @media only screen and (min-width: 1023px) {
       @content;
     }
   }
 
   @if $breakpoint==desktop {
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: 1200px) {
       @content;
     }
   }
@@ -727,6 +732,14 @@ $light-orange: #ffe0d3;
       .file-input {
         border: none;
         outline: none;
+        // border: 2px solid red;
+        width: 30%;
+        // max-width: 190px;
+
+        @include responsive(bigphone) {
+          border: 2px solid red;
+          width: 40%;
+        }
       }
 
       .submit-btn {
