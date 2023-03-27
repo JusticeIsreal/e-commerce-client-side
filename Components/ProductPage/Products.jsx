@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 // ICONS
 import { BsSearch } from "react-icons/bs";
@@ -172,9 +173,12 @@ export default Products;
 function SingleProduct({ id, img, price, oldprice, productname, desc, cat }) {
   return (
     <div className="single-product">
-      <div className="product-img">
-        <img src={img} alt="img" />
-      </div>
+      <Link href="/[id]" as={`/${id}`}>
+        <div className="product-img">
+          <img src={img} alt="img" />
+        </div>
+      </Link>
+
       <h3>{productname}</h3>
       <div className="product-details">
         <div className="price">

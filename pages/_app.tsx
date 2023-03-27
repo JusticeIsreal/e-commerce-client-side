@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import "../styles/HomePage/Style.css";
 import "../styles/ProductPage/style.css";
+import "../styles/AdminPage/App.css";
 import { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {

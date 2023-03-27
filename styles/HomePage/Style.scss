@@ -142,7 +142,8 @@ $txt-light-blue: #cfe8ff;
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 50px;
+    height: 60px;
+    padding-bottom: 15px;
     @include flexDisplay(space-between, center, row);
 
     // top: 10%;
@@ -150,6 +151,7 @@ $txt-light-blue: #cfe8ff;
       width: 100%;
     }
     @include responsive(bigphone) {
+      padding-bottom: 0;
       position: relative;
       height: 50px;
       margin-top: 50px;
