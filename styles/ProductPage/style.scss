@@ -240,7 +240,7 @@ $txt-light-blue: #cfe8ff;
             flex-wrap: wrap;
             width: 100%;
             font-size: 15px;
-            @include flexDisplay(space-between, start, row);
+            @include flexDisplay(space-between, flex-start, row);
 
             @include responsive(phone) {
               font-size: 18px;
@@ -273,7 +273,7 @@ $txt-light-blue: #cfe8ff;
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            @include flexDisplay(space-between, start, column);
+            @include flexDisplay(space-between, flex-start, column);
 
             .category {
               border: 1px solid $txt-blue;
@@ -287,7 +287,6 @@ $txt-light-blue: #cfe8ff;
               @include responsive(phone) {
                 font-size: 14px;
               }
-             
             }
             .desc {
               margin-top: 5px;

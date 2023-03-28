@@ -220,7 +220,7 @@
   font-size: 15px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: row;
 }
 @media only screen and (min-width: 320px) {
@@ -260,7 +260,7 @@
   white-space: nowrap;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
 }
 .product-page-main-con .product-page-con .product .single-product .product-details .detail .category {

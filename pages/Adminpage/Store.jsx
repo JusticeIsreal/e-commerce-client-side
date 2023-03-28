@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 // firebase imports
@@ -7,6 +7,9 @@ import {
   addDoc,
   collection,
   doc,
+  onSnapshot,
+  orderBy,
+  query,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -19,9 +22,6 @@ import StoreItems from "../../Components/AdminPageComponents/StoreItems";
 
 // ICONS
 import { MdArrowBackIos } from "react-icons/md";
-
-const img =
-  "https://res.cloudinary.com/isreal/image/upload/v1675285922/My%20portfolio%20Project/1671744344371-removebg-preview_dxwbbb.png";
 
 function Store() {
   // display form on and of
@@ -40,11 +40,10 @@ function Store() {
   const filePickerRef1 = useRef();
   const filePickerRef2 = useRef();
   const filePickerRef3 = useRef();
-  const filePickerRef4 = useRef();
+
   const [selectedFile1, setSelectedFile1] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
   const [selectedFile3, setSelectedFile3] = useState(null);
-  const [selectedFile4, setSelectedFile4] = useState(null);
 
   const addImageToPost1 = (e) => {
     const reader = new FileReader();
@@ -98,6 +97,7 @@ function Store() {
     setSingleProduct(productDetails);
 
     upLoadPost();
+
     reset();
     setFormShow(false);
   };
@@ -113,9 +113,10 @@ function Store() {
       const docRef = await addDoc(collection(db, "products"), {
         ...singleProduct,
       });
-
+      console.log(singleProduct);
       // upload the images to firebase storage
       const uploadedProductImages = [];
+      const uploadedProductDetails = [singleProduct];
       if (selectedFile1) {
         const fileRef = ref(storage, `products/${docRef.id}/image1`);
         const snapshot = await uploadString(fileRef, selectedFile1, "data_url");
@@ -137,15 +138,9 @@ function Store() {
         uploadedProductImages.push(downloadURL);
       }
 
-      if (selectedFile4) {
-        const fileRef = ref(storage, `products/${docRef.id}/image4`);
-        const snapshot = await uploadString(fileRef, selectedFile4, "data_url");
-        const downloadURL = await getDownloadURL(snapshot.ref);
-        uploadedProductImages.push(downloadURL);
-      }
-
       // update the original post with images
       await updateDoc(doc(db, "products", docRef.id), {
+        ...singleProduct,
         productimages: uploadedProductImages,
       });
 
@@ -158,6 +153,18 @@ function Store() {
       console.error(error);
     }
   };
+
+  // SERVER SIDE RENDERING OF DATA
+  const [productDetails, setProductDetails] = useState([]);
+
+  useEffect(() => {
+    return onSnapshot(
+      query(collection(db, "products"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        setProductDetails(snapshot.docs);
+      }
+    );
+  }, [db]);
 
   return (
     <div className="store-main-con">
@@ -381,26 +388,12 @@ function Store() {
                     alt="img"
                     style={{ width: "40px", marginBottom: "10px" }}
                   />
-                  {/* IMAGE 4 */}
-                  <input
-                    className="file-input"
-                    type="file"
-                    placeholder="Enter Product Number"
-                    ref={filePickerRef4}
-                    onChange={addImageToPost4}
-                  />
-                  <img
-                    src={selectedFile4}
-                    onClick={() => setSelectedFile4(null)}
-                    alt="img"
-                    style={{ width: "40px", marginBottom: "10px" }}
-                  />
                 </div>
                 <input type="submit" className="submit-btn" />
               </form>
             </div>
           )}
-          <StoreItems />
+          <StoreItems productDetails={productDetails} />
         </main>
       </div>
     </div>

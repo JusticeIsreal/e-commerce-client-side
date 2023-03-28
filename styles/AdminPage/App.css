@@ -78,7 +78,7 @@ body {
   margin-top: 48px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   padding: 0 5px;
   position: fixed;
   bottom: 0;
@@ -682,13 +682,12 @@ body {
   }
 }
 .store-main-con .store-form-container form .file-input {
-  border: none;
+  border: none !important;
   outline: none;
   width: 30%;
 }
 @media only screen and (min-width: 768px) {
   .store-main-con .store-form-container form .file-input {
-    border: 2px solid red;
     width: 40%;
   }
 }

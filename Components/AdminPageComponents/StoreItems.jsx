@@ -5,7 +5,8 @@ import { HiRefresh } from "react-icons/hi";
 // import Loader from "../Loader";
 // ICONS
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-function StoreItems() {
+function StoreItems({ productDetails }) {
+  // console.log(productDetails.map((product) => {));
   return (
     <div>
       <div className="table-data">
@@ -48,19 +49,27 @@ function StoreItems() {
                 <th>Name</th>
                 <th>Price</th>
                 <th>Slash</th>
-                <th>ISBN</th>
                 <th>Cat</th>
                 <th>Class</th>
                 <th>Desc</th>
                 <th>Edit</th>
               </tr>
             </thead>
-
-            <StoreItemsIndividual
-            // key={product._id}
-            // {...product}
-            // fetchProducts={fetchProducts}
-            />
+            {productDetails.map((product) => {
+              return (
+                <StoreItemsIndividual
+                  key={product.id}
+                  id={product.id}
+                  productcategory={product.data().productcategory}
+                  productclass={product.data().productclass}
+                  productdescription={product.data().productdescription}
+                  productimages={product.data().productimages}
+                  productname={product.data().productname}
+                  productprice={product.data().productprice}
+                  productoldprice={product.data().productoldprice}
+                />
+              );
+            })}
           </table>
         </div>
       </div>
@@ -70,48 +79,40 @@ function StoreItems() {
 
 export default StoreItems;
 
-function StoreItemsIndividual() {
-  const deleteProduct = async () => {
-    //     const tokenSaved = localStorage.getItem("token");
-    // const jsonData = JSON.parse(tokenSaved);
-    // const token = jsonData.token;
-    // await axios
-    //   .delete(
-    //     `http://localhost:1234/api/v1/products/deleteproduct/${_id}`
-    //     // {
-    //     //   // headers: {
-    //     //   //   authorization: `Bearer ${token}`,
-    //     //   // },
-    //     // }
-    //   )
-    //   .then((resp) => {
-    //     // window.location.reload();
-    //     fetchProducts();
-    //   })
-    //   .catch((err) => {
-    //     throw err;
-    //   });
-  };
+function StoreItemsIndividual({
+  id,
+  productcategory,
+  productclass,
+  productdescription,
+  productimages,
+  productname,
+  productprice,
+  productoldprice,
+}) {
+  // console.log(productimages);
+  const deleteProduct = async () => {};
   return (
     //
     <tbody style={{ color: "black" }}>
       <tr>
         <td>
           <img
-            // src={productimage}
+            src={productimages && productimages[0]}
             // alt={productname}
             style={{ width: "40px", borderRadius: "0%", margin: "5px" }}
           />
         </td>
-        <td style={{ width: "11%" }}>{/* <p>{productname}</p> */}</td>
-        {/* <td style={{ width: "10%", margin: "5px" }}>{productprice}</td>
+        <td style={{ width: "11%" }}>
+          <p>{productname}</p>
+        </td>
+        <td style={{ width: "10%", margin: "5px" }}>{productprice}</td>
         <td style={{ width: "10%", margin: "5px" }}>{productoldprice}</td>
-        <td style={{ width: "10%", margin: "5px" }}>{productnumber}</td>
+        {/* <td style={{ width: "10%", margin: "5px" }}>{productnumber}</td> */}
         <td style={{ width: "10%", margin: "5px" }}>{productcategory}</td>
         <td style={{ width: "10%", margin: "5px" }}>{productclass}</td>
         <td style={{ width: "27%", margin: "5px" }}>
           {productdescription.substring(0, 70)} . . .
-        </td> */}
+        </td>
         <td
           style={{
             display: "flex",
