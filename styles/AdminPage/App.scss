@@ -709,6 +709,11 @@ $light-orange: #ffe0d3;
 
     form {
       @include flexDisplay(space-around, flex-start, column);
+      margin: 0 auto;
+      width: 95%;
+      @include responsive(bigphone) {
+        width: 100%;
+      }
 
       label {
         color: var(--blue);
@@ -732,7 +737,7 @@ $light-orange: #ffe0d3;
       .file-input {
         border: none !important;
         outline: none;
-       
+
         width: 30%;
         // max-width: 190px;
 

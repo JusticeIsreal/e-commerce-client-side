@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 
-import { HiRefresh } from "react-icons/hi";
-// import Loader from "../Loader";
-// ICONS
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-function StoreItems({ productDetails }) {
+function BannerItems({ bannerDetails }) {
   // console.log(productDetails.map((product) => {));
+
   return (
     <div>
       <div className="table-data">
@@ -20,7 +18,7 @@ function StoreItems({ productDetails }) {
           }}
         >
           <div className="head">
-            <h3>Product List</h3>
+            <h3>Banner Post</h3>
           </div>
         </div>
         <div className="order" style={{ position: "relative" }}>
@@ -35,26 +33,20 @@ function StoreItems({ productDetails }) {
               <tr>
                 <th>Img</th>
                 <th>Name</th>
-                <th>Price</th>
-                <th>Slash</th>
                 <th>Cat</th>
-                <th>Class</th>
                 <th>Desc</th>
                 <th>Edit</th>
               </tr>
             </thead>
-            {productDetails.map((product) => {
+            {bannerDetails.map((product) => {
               return (
                 <StoreItemsIndividual
                   key={product.id}
                   id={product.id}
-                  productcategory={product.data().productcategory}
-                  productclass={product.data().productclass}
-                  productdescription={product.data().productdescription}
-                  productimages={product.data().image}
-                  productname={product.data().productname}
-                  productprice={product.data().productprice}
-                  productoldprice={product.data().productoldprice}
+                  bannercategory={product.data().bannercategory}
+                  bannerdescription={product.data().bannerscription}
+                  bannerimage={product.data().bannerimage}
+                  bannername={product.data().bannername}
                 />
               );
             })}
@@ -65,17 +57,14 @@ function StoreItems({ productDetails }) {
   );
 }
 
-export default StoreItems;
+export default BannerItems;
 
 function StoreItemsIndividual({
   id,
-  productcategory,
-  productclass,
-  productdescription,
-  productimages,
-  productname,
-  productprice,
-  productoldprice,
+  bannercategory,
+  bannerdescription,
+  bannerimage,
+  bannername,
 }) {
   const deleteProduct = async () => {};
   return (
@@ -84,21 +73,17 @@ function StoreItemsIndividual({
       <tr>
         <td>
           <img
-            src={productimages && productimages[0]}
-            alt={productname}
+            src={bannerimage}
+            alt={bannername}
             style={{ width: "40px", borderRadius: "0%", margin: "5px" }}
           />
         </td>
         <td style={{ width: "11%" }}>
-          <p>{productname}</p>
+          <p>{bannername}</p>
         </td>
-        <td style={{ width: "10%", margin: "5px" }}>{productprice}</td>
-        <td style={{ width: "10%", margin: "5px" }}>{productoldprice}</td>
-        {/* <td style={{ width: "10%", margin: "5px" }}>{productnumber}</td> */}
-        <td style={{ width: "10%", margin: "5px" }}>{productcategory}</td>
-        <td style={{ width: "10%", margin: "5px" }}>{productclass}</td>
+        <td style={{ width: "10%", margin: "5px" }}>{bannercategory}</td>
         <td style={{ width: "27%", margin: "5px" }}>
-          {productdescription.substring(0, 70)} . . .
+          {bannerdescription.substring(0, 70)} . . .
         </td>
         <td
           style={{

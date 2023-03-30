@@ -1,5 +1,5 @@
 // import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 // icopns
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
@@ -47,9 +47,9 @@ function Footer() {
           <a href="">
             <i></i> our serivces
           </a>
-          <a>
-            <i></i>Admin Login 
-          </a>
+          <Link href="/Adminpage/AdminDashboard">
+            <i></i>Admin Login
+          </Link>
         </div>
 
         <div

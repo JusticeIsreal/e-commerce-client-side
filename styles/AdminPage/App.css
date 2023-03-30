@@ -657,6 +657,13 @@ body {
   justify-content: space-around;
   align-items: flex-start;
   flex-direction: column;
+  margin: 0 auto;
+  width: 95%;
+}
+@media only screen and (min-width: 768px) {
+  .store-main-con .store-form-container form {
+    width: 100%;
+  }
 }
 .store-main-con .store-form-container form label {
   color: var(--blue);
