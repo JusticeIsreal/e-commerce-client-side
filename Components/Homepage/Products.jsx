@@ -62,13 +62,15 @@ function Product({
 }) {
   return (
     <div className="products">
-      
       <div className="product-img">
         <Link
           href="/ClientDynamic/[productID]"
           as={`/ClientDynamic/${id}`}
-        ></Link>
-        <img src={productimages[0]} alt="" className="home-product-img" />
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          {" "}
+          <img src={productimages[0]} alt="" className="home-product-img" />
+        </Link>
       </div>
       <p className="product-name">{productname}</p>
       <div className="price">
