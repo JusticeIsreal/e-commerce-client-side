@@ -63,7 +63,7 @@ function StoreItems({ productDetails }) {
                   productcategory={product.data().productcategory}
                   productclass={product.data().productclass}
                   productdescription={product.data().productdescription}
-                  productimages={product.data().productimages}
+                  productimages={product.data().image}
                   productname={product.data().productname}
                   productprice={product.data().productprice}
                   productoldprice={product.data().productoldprice}
@@ -89,7 +89,6 @@ function StoreItemsIndividual({
   productprice,
   productoldprice,
 }) {
-  // console.log(productimages);
   const deleteProduct = async () => {};
   return (
     //
@@ -98,7 +97,7 @@ function StoreItemsIndividual({
         <td>
           <img
             src={productimages && productimages[0]}
-            // alt={productname}
+            alt={productname}
             style={{ width: "40px", borderRadius: "0%", margin: "5px" }}
           />
         </td>
