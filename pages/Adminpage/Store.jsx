@@ -15,6 +15,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import BannerForm from "../../Components/AdminPageComponents/BannerForm";
 import ProductForm from "../../Components/AdminPageComponents/ProductForm";
 import BannerItems from "../../Components/AdminPageComponents/BannerItems";
+import Loader from "../../Components/Loader";
 
 function Store() {
   // display form on and of
@@ -92,6 +93,7 @@ function Store() {
               <ProductForm />
             </div>
           )}
+
           <BannerItems bannerDetails={bannerDetails} />
           <StoreItems productDetails={productDetails} />
         </main>

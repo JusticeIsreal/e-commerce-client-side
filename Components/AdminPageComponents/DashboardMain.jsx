@@ -1,6 +1,6 @@
 import React from "react";
 // import Loader from "../Loader";
-// import { Link } from "react-router-dom";
+import Link from "next/link";
 import { FaStoreAlt } from "react-icons/fa";
 const img =
   "https://res.cloudinary.com/isreal/image/upload/v1675285922/My%20portfolio%20Project/1671744344371-removebg-preview_dxwbbb.png";
@@ -25,11 +25,11 @@ function DashboardMain() {
               </li>
             </ul>
           </div>
-          <a href="" className="btn-download">
+          <Link href="/" className="btn-download">
             <span className="text" style={{ color: "white" }}>
               Client Page
             </span>
-          </a>
+          </Link>
         </div>
 
         <ul className="box-info">

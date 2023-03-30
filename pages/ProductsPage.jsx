@@ -12,6 +12,8 @@ function ProductsPage() {
       <Topbar />
       {/* PRODUCT DETAILS */}
       <Products />
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }
