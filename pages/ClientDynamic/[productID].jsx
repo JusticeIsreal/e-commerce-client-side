@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import {
   collection,
@@ -9,6 +9,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "../../Firebase";
+import Image from "next/image";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -39,12 +40,41 @@ export const getStaticProps = async ({ params }) => {
 function Details({ product }) {
   const router = useRouter();
   const { productID } = router.query;
+  const pic = useRef();
+  // console.log(product);
 
-  console.log(product);
-
+  const [disimg, setDisimg] = useState(0);
+  const changeIMG = (index) => {
+    console.log(index);
+    setDisimg(index);
+    // console.log(product.image);
+    // console.log(pic.current);
+  };
   return (
-    <div>
-      <img src={product.image[0]} alt="" />
+    <div className="client-single-product">
+      <div className="single-product">
+        <div className="big-display-img">
+          <img src={product.image[disimg]} alt="img" />
+        </div>
+        <div className="small-display-img-con">
+          {product.image.map(
+            (img, index) =>
+              img && (
+                <div className="small-display-img">
+                  <Image
+                    src={img}
+                    alt="img"
+                    width={100}
+                    height={100}
+                    key={index}
+                    ref={pic}
+                    onClick={() => changeIMG(index)}
+                  />
+                </div>
+              )
+          )}
+        </div>
+      </div>
     </div>
   );
 }

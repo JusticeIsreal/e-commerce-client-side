@@ -2,6 +2,7 @@ import Head from "next/head";
 import "../styles/HomePage/Style.css";
 import "../styles/ProductPage/style.css";
 import "../styles/AdminPage/App.css";
+import "../styles/DynamicPage/clientSingleproduct/style.css";
 import { AppProps } from "next/app";
 import Topbar from "../Components/Topbar";
 

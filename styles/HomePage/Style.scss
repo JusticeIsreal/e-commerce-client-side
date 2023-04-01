@@ -411,7 +411,6 @@ $txt-light-blue: #cfe8ff;
           overflow: hidden;
         }
         .img {
-         
           max-width: 100%; /* make sure the image does not exceed the container width */
           max-height: 100%;
           object-fit: cover;
@@ -576,11 +575,11 @@ $txt-light-blue: #cfe8ff;
     }
 
     .products-con {
-      @include flexDisplay(space-evenly, center, row);
+      @include flexDisplay(space-evenly, flex-start, row);
       flex-wrap: wrap;
       margin-top: 30px;
       width: 100%;
-
+      // border: 2px solid red;
       @include responsive(bigphone) {
         margin-top: 30px;
       }

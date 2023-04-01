@@ -560,7 +560,7 @@
 .product-session-con .product-main-con .products-con {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 30px;
