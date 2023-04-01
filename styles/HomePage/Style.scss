@@ -515,11 +515,11 @@ $txt-light-blue: #cfe8ff;
             height: 250px;
           }
 
-          img {
+          .img {
             // border: 2px solid red;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.2);
+            transform: scale(1);
             transition: transform 0.3s linear;
           }
 

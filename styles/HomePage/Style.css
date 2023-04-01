@@ -502,11 +502,11 @@
     height: 250px;
   }
 }
-.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products img {
+.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products .img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  transform: scale(1.2);
+  transform: scale(1);
   transition: transform 0.3s linear;
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products:hover img {

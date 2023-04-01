@@ -67,7 +67,7 @@ function TrendingProducts({
             <Image
               src={productimages[0]}
               alt="img"
-              className="home-product-img"
+              className="img"
               fill
               sizes="100vw"
             />
