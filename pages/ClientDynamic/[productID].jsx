@@ -60,9 +60,9 @@ function Details({ product }) {
 
         <div className="small-display-img-con">
           {product.image.map(
-            (img) =>
+            (img, index) =>
               img && (
-                <div className="small-display-img" key={img}>
+                <div className="small-display-img" key={index}>
                   <Image
                     src={img}
                     alt="img"
