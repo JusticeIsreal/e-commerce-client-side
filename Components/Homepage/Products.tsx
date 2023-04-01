@@ -5,8 +5,10 @@ import Loader from "../Loader";
 import { db, storage } from "../../Firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+
 function Products() {
-  const [products, setProducts] = useState([]);
+  // Products from firebase
+  const [products, setProducts] = useState<any[]>([]);
   useEffect(() => {
     return onSnapshot(
       query(collection(db, "products"), orderBy("timestamp", "desc")),
@@ -30,9 +32,6 @@ function Products() {
               <Product
                 key={product.id}
                 id={product.id}
-                productcategory={product.data().productcategory}
-                productclass={product.data().productclass}
-                productdescription={product.data().productdescription}
                 productimages={product.data().image}
                 productname={product.data().productname}
                 productprice={product.data().productprice}
@@ -59,6 +58,12 @@ function Product({
   productname,
   productprice,
   productoldprice,
+}: {
+  id: string;
+  productimages: string;
+  productname: string;
+  productprice: number;
+  productoldprice: number;
 }) {
   return (
     <div className="products">

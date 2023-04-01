@@ -10,7 +10,7 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 function Banner() {
   // SFETCHIN BANNER SORTED FROM FIREBABSE
-  const [bannerDetails, setBannerDetails] = useState([]);
+  const [bannerDetails, setBannerDetails] = useState<any[]>([]);
 
   useEffect(() => {
     return onSnapshot(

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 // firebase imports
@@ -14,6 +14,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { BannerObject } from "../../customtypes";
 function BannerForm() {
   // UPLOAD FORM DETAILS TO FIREBASE
   // useform config
@@ -25,12 +26,12 @@ function BannerForm() {
     formState: { errors },
   } = useForm();
   // BANNER POST
-  const bannerFilePickerRef1 = useRef();
-  const [selectedBanner, setSelectedBanner] = useState(null);
+  const bannerFilePickerRef1 = useRef<HTMLInputElement>("" || null);
+  const [selectedBanner, setSelectedBanner] = useState("");
   const [imageBase64Banner, setImageBase64Banner] = useState("");
   const [loadingBanner, setLoadingBannr] = useState(false);
   // image 1
-  const uploadBannerImg = async (file) => {
+  const uploadBannerImg = async (file: any) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -46,7 +47,7 @@ function BannerForm() {
       console.error("File upload failed:", error);
     }
   };
-  const addImageToBanner = async (e) => {
+  const addImageToBanner = async (e: ChangeEvent<any>) => {
     const file = e.target.files[0];
 
     if (file) {
@@ -55,7 +56,7 @@ function BannerForm() {
 
       const reader = new FileReader();
 
-      reader.onload = (readerEvent) => {
+      reader.onload = (readerEvent: any) => {
         const selectedFile = readerEvent.target.result;
         setSelectedBanner(selectedFile);
       };
@@ -64,11 +65,11 @@ function BannerForm() {
     }
   };
 
-  const onSubmitBanner = async (data, e) => {
+  const onSubmitBanner = async (data: any, e: any) => {
     e.preventDefault();
     if (loadingBanner) return;
     setLoadingBannr(true);
-
+    console.log(data);
     const bannerDetails = {
       ...data,
       timestamp: serverTimestamp(),
@@ -85,7 +86,7 @@ function BannerForm() {
 
     reset();
     setLoadingBannr(false);
-    setSelectedBanner(null);
+    setSelectedBanner("");
   };
   return (
     <div className="store-form-container">
@@ -157,7 +158,7 @@ function BannerForm() {
         <p style={{ fontSize: "12px", fontStyle: "italic", color: "gray" }}>
           <span style={{ color: "red" }}>Note:</span> This images uploaded
           should be{" "}
-          <span style={{ fontWeight: "bolder" }}> LandScape Dimension </span> 
+          <span style={{ fontWeight: "bolder" }}> LandScape Dimension </span>
           with product item aligned to the center
         </p>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -171,7 +172,7 @@ function BannerForm() {
           />
           <img
             src={selectedBanner}
-            onClick={() => setSelectedFile1(null)}
+            onClick={() => setSelectedBanner("")}
             alt="img"
             style={{ width: "40px", marginBottom: "10px" }}
           />

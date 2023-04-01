@@ -3,7 +3,10 @@ import Link from "next/link";
 
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../Loader";
-function BannerItems({ bannerDetails }) {
+
+import { BannerObject } from "../../customtypes";
+
+function BannerItems({ bannerDetails }: { bannerDetails: any[] }) {
   // console.log(productDetails.map((product) => {));
 
   return (
@@ -71,6 +74,12 @@ function StoreItemsIndividual({
   bannerdescription,
   bannerimage,
   bannername,
+}: {
+  id: string;
+  bannercategory: string;
+  bannerdescription: string;
+  bannerimage: string;
+  bannername: string;
 }) {
   const deleteProduct = async () => {};
   return (
@@ -100,7 +109,7 @@ function StoreItemsIndividual({
             width: "100px",
           }}
         >
-          <Link href="/AdminDynamic/[bannerItemID]" as={`/AdminDynamic/${id}`}>
+          <Link href={`/Adminpage/${id}`}>
             <FaEdit
               style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
             />

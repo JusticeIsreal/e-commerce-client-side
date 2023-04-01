@@ -465,8 +465,8 @@
 }
 .new-arrivals-main-con .new-arrivals-con .new-products-con {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: row;
   overflow: scroll;
   margin-top: 10px;

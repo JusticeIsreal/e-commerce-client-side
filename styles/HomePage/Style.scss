@@ -483,7 +483,7 @@ $txt-light-blue: #cfe8ff;
       }
     }
     .new-products-con {
-      @include flexDisplay(space-between, center, row);
+      @include flexDisplay( flex-start, flex-start, row);
       overflow: scroll;
       margin-top: 10px;
       width: 100%;

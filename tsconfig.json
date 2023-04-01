@@ -19,8 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "Components/Homepage/Banner.jsx",
-    "Components/Homepage/Topbar.jsx"
-  ],
+    "Components/Homepage/Banner.tsx",
+    "Components/Homepage/Topbar.tsx"
+, "Components/AdminPageComponents/Sidebar.jsx"  ],
   "exclude": ["node_modules"]
 }

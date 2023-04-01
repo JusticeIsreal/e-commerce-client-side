@@ -13,7 +13,7 @@ import {
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 function NewArrivals() {
-  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [trendingProducts, setTrendingProducts] = useState<any[]>([]);
   useEffect(() => {
     return onSnapshot(
       query(
@@ -52,10 +52,18 @@ function NewArrivals() {
 
 export default NewArrivals;
 
-function TrendingProducts({ id, productimages, productname }) {
+function TrendingProducts({
+  id,
+  productimages,
+  productname,
+}: {
+  id: string;
+  productimages: string;
+  productname: string;
+}) {
   return (
     <div className="new-products-case">
-      <Link href="/ClientDynamic/[productID]" as={`/ClientDynamic/${id}`}>
+      <Link href={`/ClientDynamic/${id}`}>
         <div className="new-products">
           <img src={productimages[0]} alt="" />
         </div>

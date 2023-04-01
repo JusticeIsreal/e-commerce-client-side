@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 // firebase imports
@@ -7,23 +7,23 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 function ProductForm() {
   // GENERATE IMAGE REVIEW
-  const filePickerRef1 = useRef();
-  const filePickerRef2 = useRef();
-  const filePickerRef3 = useRef();
-  const filePickerRef4 = useRef();
-  const [selectedFile1, setSelectedFile1] = useState(null);
+  const filePickerRef1 = useRef<HTMLInputElement>("" || null);
+  const filePickerRef2 = useRef<HTMLInputElement>("" || null);
+  const filePickerRef3 = useRef<HTMLInputElement>("" || null);
+  const filePickerRef4 = useRef<HTMLInputElement>("" || null);
+  const [selectedFile1, setSelectedFile1] = useState("");
   const [imageBase64File1, setImageBase64File1] = useState("");
-  const [selectedFile2, setSelectedFile2] = useState(null);
+  const [selectedFile2, setSelectedFile2] = useState<string>("");
   const [imageBase64File2, setImageBase64File2] = useState("");
-  const [selectedFile3, setSelectedFile3] = useState(null);
+  const [selectedFile3, setSelectedFile3] = useState("");
   const [imageBase64File3, setImageBase64File3] = useState("");
-  const [selectedFile4, setSelectedFile4] = useState(null);
+  const [selectedFile4, setSelectedFile4] = useState("");
   const [imageBase64File4, setImageBase64File4] = useState("");
 
   // CONVERT ALL IMAGE FILE TO BASE 64 STRING AND CREATE PREVIEW
 
   // image 1
-  const uploadFile1 = async (file) => {
+  const uploadFile1 = async (file: any) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -39,7 +39,7 @@ function ProductForm() {
       console.error("File upload failed:", error);
     }
   };
-  const addImageToPost1 = async (e) => {
+  const addImageToPost1 = async (e: ChangeEvent<any>) => {
     const file = e.target.files[0];
 
     if (file) {
@@ -49,15 +49,15 @@ function ProductForm() {
       const reader = new FileReader();
 
       reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target.result;
-        setSelectedFile1(selectedFile);
+        const selectedFile = readerEvent.target?.result;
+        setSelectedFile1(selectedFile as string);
       };
 
       reader.readAsDataURL(file);
     }
   };
   // image 2
-  const uploadFile2 = async (file) => {
+  const uploadFile2 = async (file: any) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -73,7 +73,7 @@ function ProductForm() {
       console.error("File upload failed:", error);
     }
   };
-  const addImageToPost2 = async (e) => {
+  const addImageToPost2 = async (e: ChangeEvent<any>) => {
     const file = e.target.files[0];
 
     if (file) {
@@ -83,15 +83,15 @@ function ProductForm() {
       const reader = new FileReader();
 
       reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target.result;
-        setSelectedFile2(selectedFile);
+        const selectedFile = readerEvent.target?.result;
+        setSelectedFile2(selectedFile as string);
       };
 
       reader.readAsDataURL(file);
     }
   };
   // image 3
-  const uploadFile3 = async (file) => {
+  const uploadFile3 = async (file: any) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -107,7 +107,7 @@ function ProductForm() {
       console.error("File upload failed:", error);
     }
   };
-  const addImageToPost3 = async (e) => {
+  const addImageToPost3 = async (e: ChangeEvent<any>) => {
     const file = e.target.files[0];
 
     if (file) {
@@ -117,15 +117,15 @@ function ProductForm() {
       const reader = new FileReader();
 
       reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target.result;
-        setSelectedFile3(selectedFile);
+        const selectedFile = readerEvent.target?.result;
+        setSelectedFile3(selectedFile as string);
       };
 
       reader.readAsDataURL(file);
     }
   };
   // image 4
-  const uploadFile4 = async (file) => {
+  const uploadFile4 = async (file: any) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -141,7 +141,7 @@ function ProductForm() {
       console.error("File upload failed:", error);
     }
   };
-  const addImageToPost4 = async (e) => {
+  const addImageToPost4 = async (e: ChangeEvent<any>) => {
     const file = e.target.files[0];
 
     if (file) {
@@ -151,8 +151,8 @@ function ProductForm() {
       const reader = new FileReader();
 
       reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target.result;
-        setSelectedFile4(selectedFile);
+        const selectedFile = readerEvent.target?.result;
+        setSelectedFile4(selectedFile as string);
       };
 
       reader.readAsDataURL(file);
@@ -172,7 +172,7 @@ function ProductForm() {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(true);
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
     if (loading) return;
     setLoading(true);
@@ -200,10 +200,10 @@ function ProductForm() {
     // setFormShow(false);
 
     setLoading(false);
-    setSelectedFile1(null);
-    setSelectedFile2(null);
-    setSelectedFile3(null);
-    setSelectedFile4(null);
+    setSelectedFile1("");
+    setSelectedFile2("");
+    setSelectedFile3("");
+    setSelectedFile4("");
   };
   return (
     <div>
@@ -346,8 +346,11 @@ function ProductForm() {
         <label>Product Image</label>
         <p style={{ fontSize: "12px", fontStyle: "italic", color: "gray" }}>
           <span style={{ color: "red" }}>Note:</span> This images uploaded
-          should be 
-          <span style={{ fontWeight: "bolder" }}> Potraite Dimension </span>{" "}
+          should be
+          <span style={{ fontWeight: "bolder" }}>
+            {" "}
+            Potraite Dimension{" "}
+          </span>{" "}
           with product item aligned to the center
         </p>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -361,7 +364,7 @@ function ProductForm() {
           />
           <img
             src={selectedFile1}
-            onClick={() => setSelectedFile1(null)}
+            onClick={() => setSelectedFile1("")}
             alt="img"
             style={{ width: "40px", marginBottom: "10px" }}
           />
@@ -375,7 +378,7 @@ function ProductForm() {
           />
           <img
             src={selectedFile2}
-            onClick={() => setSelectedFile2(null)}
+            onClick={() => setSelectedFile2("")}
             alt="img"
             style={{ width: "40px", marginBottom: "10px" }}
           />
@@ -389,7 +392,7 @@ function ProductForm() {
           />
           <img
             src={selectedFile3}
-            onClick={() => setSelectedFile3(null)}
+            onClick={() => setSelectedFile3("")}
             alt="img"
             style={{ width: "40px", marginBottom: "10px" }}
           />
@@ -403,7 +406,7 @@ function ProductForm() {
           />
           <img
             src={selectedFile4}
-            onClick={() => setSelectedFile4(null)}
+            onClick={() => setSelectedFile4("")}
             alt="img"
             style={{ width: "40px", marginBottom: "10px" }}
           />
