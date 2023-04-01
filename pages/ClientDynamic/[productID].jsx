@@ -41,7 +41,7 @@ function Details({ product }) {
   const router = useRouter();
   const { productID } = router.query;
   const pic = useRef();
-  // console.log(product);
+  console.log(product);
 
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
@@ -60,15 +60,14 @@ function Details({ product }) {
 
         <div className="small-display-img-con">
           {product.image.map(
-            (img, index) =>
+            (img) =>
               img && (
-                <div className="small-display-img">
+                <div className="small-display-img" key={img}>
                   <Image
                     src={img}
                     alt="img"
                     fill
                     sizes="100vw"
-                    key={index}
                     ref={pic}
                     onClick={() => changeIMG(index)}
                   />
