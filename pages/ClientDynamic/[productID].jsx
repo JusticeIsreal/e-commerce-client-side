@@ -45,17 +45,19 @@ function Details({ product }) {
 
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
-    console.log(index);
     setDisimg(index);
-    // console.log(product.image);
-    // console.log(pic.current);
+    console.log(pic.current.classList);
   };
   return (
     <div className="client-single-product">
       <div className="single-product">
-        <div className="big-display-img">
-          <img src={product.image[disimg]} alt="img" />
+        <div className="big-display-con">
+          {" "}
+          <div className="big-display-img">
+            <Image src={product.image[disimg]} alt="img" fill sizes="100vw" />
+          </div>
         </div>
+
         <div className="small-display-img-con">
           {product.image.map(
             (img, index) =>
@@ -64,8 +66,8 @@ function Details({ product }) {
                   <Image
                     src={img}
                     alt="img"
-                    width={100}
-                    height={100}
+                    fill
+                    sizes="100vw"
                     key={index}
                     ref={pic}
                     onClick={() => changeIMG(index)}

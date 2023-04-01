@@ -64,32 +64,59 @@ $txt-light-blue: #cfe8ff;
 
 // CLIENT SINGLE PRODUCT DYNAMIC PAGE STYLE
 .client-single-product {
-  border: 2px solid red;
+  //   border: 2px solid red;
   width: 100vw;
 
   .single-product {
-    border: 2px solid rgb(0, 26, 255);
+    // border: 2px solid rgb(0, 26, 255);
     width: 100%;
     @include flexDisplay(space-between, center, column);
 
-    .big-display-img {
-      border: 2px solid red;
-      position: relative;
-      width: 100%;
-    //   height: 600px;
-
-      //   order: 2;
-
-      img {
+    .big-display-con {
+      width: 100vw;
+      height: 500px;
+      .big-display-img {
+        // border: 2px solid red;
+        position: relative;
         width: 100%;
-        // height: 100%;
-        object-fit: cover;
+        height: 100%;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+        }
       }
     }
 
     .small-display-img-con {
-      @include flexDisplay(space-between, center, row);
+      @include flexDisplay(center, center, row);
       margin: 10px 0;
+      width: 100%;
+      height: 100px;
+      position: relative;
+
+      .small-display-img {
+        border: 1px solid gray;
+        border-radius: 2px;
+        position: relative;
+        margin: 5px;
+        width: 22%;
+        height: 100%;
+
+        &:hover {
+          transform: scale(1.1);
+          border: 2px solid $txt-blue;
+        }
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+    //   .active-view {
+    //     border: 2px solid $txt-blue;
+    //     transform: scale(1.1);
+    //   }
     }
   }
 }
