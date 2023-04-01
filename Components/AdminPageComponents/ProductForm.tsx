@@ -251,20 +251,8 @@ function ProductForm() {
         <input
           type="Number"
           placeholder="Enter Product Old Price"
-          {...register("productoldprice", { required: true })}
+          {...register("productoldprice")}
         />
-        {errors.productoldprice && (
-          <span
-            className="errror-msg"
-            style={{
-              fontSize: "12px",
-              fontStyle: "italic",
-              color: "red",
-            }}
-          >
-            Kindly Enter Product Old Price
-          </span>
-        )}
         {/* PRODUCT NUMBER */}
         <label>Product Specs</label>
         <input

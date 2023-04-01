@@ -4,9 +4,6 @@ import { Inter } from "next/font/google";
 
 // PAGES
 import HomePage from "./HomePage";
-import ProductsPage from "./ProductsPage";
-import Footer from "../Components/Footer";
-import Topbar from "../Components/Topbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +18,8 @@ export default function Home() {
       </Head>
       <main className="app-main-con">
         {/* HOOME PAGE */}
-       
+
         <HomePage />
-        {/* <ProductsPage /> */}
-        <Footer />
       </main>
     </section>
   );

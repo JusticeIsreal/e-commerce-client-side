@@ -47,27 +47,23 @@ function Banner() {
 
         {/* SIAPLAYING PRODUCTS IMAGES*/}
         <div className="banner-product-img-main-con">
-          {bannerDetails.length < 1 ? (
-            <Loader />
-          ) : (
-            <div className="swiper-wrapper">
-              <Fade arrows={false}>
-                {bannerDetails.map((item, index) => (
-                  <div className="banner-img-con" key={item.id}>
-                    <div className="div-2">
-                      <img
-                        src={item.data().bannerimage}
-                        alt=""
-                        style={{
-                          right: "0",
-                        }}
-                      />
-                    </div>
+          <div className="swiper-wrapper">
+            <Fade arrows={false}>
+              {bannerDetails.map((item, index) => (
+                <div className="banner-img-con" key={item.id}>
+                  <div className="div-2">
+                    <img
+                      src={item.data().bannerimage}
+                      alt=""
+                      style={{
+                        right: "0",
+                      }}
+                    />
                   </div>
-                ))}
-              </Fade>
-            </div>
-          )}
+                </div>
+              ))}
+            </Fade>
+          </div>
 
           <img
             src="https://res.cloudinary.com/isreal/image/upload/v1679349295/E-Commerce%20Project/stand_kzmbbh.png"

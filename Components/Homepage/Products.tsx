@@ -1,45 +1,25 @@
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import Loader from "../Loader";
-// firebase
-import { db, storage } from "../../Firebase";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
-function Products() {
-  // Products from firebase
-  const [products, setProducts] = useState<any[]>([]);
-  useEffect(() => {
-    return onSnapshot(
-      query(collection(db, "products"), orderBy("timestamp", "desc")),
-      (snapshot) => {
-        setProducts(snapshot.docs);
-      }
-    );
-  }, [db]);
-
+function Products({ products }: { products: any[] }) {
   return (
     <div className="product-session-con">
       <div className="product-main-con">
         <h1>PRODUCTS</h1>
 
         {/* PRODUCTS ARRAY */}
-        {products.length < 1 ? (
-          <Loader />
-        ) : (
-          <div className="products-con">
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                id={product.id}
-                productimages={product.data().image}
-                productname={product.data().productname}
-                productprice={product.data().productprice}
-                productoldprice={product.data().productoldprice}
-              />
-            ))}
-          </div>
-        )}
+
+        <div className="products-con">
+          {products.map((product) => (
+            <Product
+              key={product.id}
+              id={product.id}
+              productimages={product.data().image}
+              productname={product.data().productname}
+              productprice={product.data().productprice}
+              productoldprice={product.data().productoldprice}
+            />
+          ))}
+        </div>
 
         {/* SEE MORE */}
         <Link href="/ProductsPage">

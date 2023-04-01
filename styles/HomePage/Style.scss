@@ -119,11 +119,11 @@ $txt-light-blue: #cfe8ff;
       .cart-icon-con {
         @include flexDisplay(space-between, center, row);
         position: relative;
-        padding-right: 11px;
+        padding-right: 15px;
 
         p {
           position: absolute;
-          right: 0;
+          right: 2px;
           top: -5px;
           font-weight: bolder;
           font-size: 19px;
@@ -1062,8 +1062,8 @@ $txt-light-blue: #cfe8ff;
 
   .credit {
     border-top: 1px solid $bg-gray;
-    margin-top: 20px;
-    padding: 30px 0;
+    // margin-top: 20px;
+    // padding: 30px 0;
     font-size: 15px;
     text-align: center;
 
@@ -1072,7 +1072,7 @@ $txt-light-blue: #cfe8ff;
     }
 
     @include responsive(bigphone) {
-      margin-top: 20px;
+      // margin-top: 20px;
     }
   }
 }

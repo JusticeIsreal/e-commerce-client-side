@@ -31,20 +31,17 @@ function NewArrivals() {
         {/* heading */}
         <h1>TRENDING</h1>
         {/* product container */}
-        {trendingProducts.length < 1 ? (
-          <Loader />
-        ) : (
-          <div className="new-products-con">
-            {trendingProducts.map((product) => (
-              <TrendingProducts
-                key={product.id}
-                id={product.id}
-                productname={product.data().productname}
-                productimages={product.data().image}
-              />
-            ))}
-          </div>
-        )}
+
+        <div className="new-products-con">
+          {trendingProducts.map((product) => (
+            <TrendingProducts
+              key={product.id}
+              id={product.id}
+              productname={product.data().productname}
+              productimages={product.data().image}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

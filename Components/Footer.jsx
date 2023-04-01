@@ -25,7 +25,7 @@ function Footer() {
             <i></i> Products
           </a>
           <a href="">
-            <i></i> Promo
+            <i></i> Transaction
           </a>
           <a href="">
             <i></i> Review
@@ -34,10 +34,6 @@ function Footer() {
 
         <div className="box">
           <h3>Extra links</h3>
-
-          <a href="">
-            <i></i> ordered items
-          </a>
           <a href="">
             <i></i> privacy policy
           </a>
