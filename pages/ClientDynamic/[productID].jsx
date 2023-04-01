@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     params: { productID: doc.id },
   }));
 
-  return { paths, fallback: true };
+  return { paths, fallback: "blocking" };
 }
 
 export const getStaticProps = async ({ params }) => {
@@ -41,7 +41,7 @@ function Details({ product }) {
   const router = useRouter();
   const { productID } = router.query;
   const pic = useRef();
-  // console.log(product);
+  console.log(product);
 
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
