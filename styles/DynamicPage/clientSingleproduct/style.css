@@ -34,11 +34,9 @@
   border: 2px solid red;
   position: relative;
   width: 100%;
-  height: 600px;
 }
 .client-single-product .single-product .big-display-img img {
   width: 100%;
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
