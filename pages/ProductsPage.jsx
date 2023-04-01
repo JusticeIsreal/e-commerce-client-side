@@ -1,7 +1,7 @@
 import React from "react";
 
 // COMPONENTS
-import Topbar from "../Components/ProductPage/Topbar";
+import Topbar from "../Components/Topbar";
 import Products from "../Components/ProductPage/Products";
 import Footer from "../Components/Footer";
 
@@ -9,7 +9,7 @@ function ProductsPage() {
   return (
     <div className="product-page-main-con">
       {/* TOPBAR */}
-      {/* <Topbar /> */}
+      <Topbar />
       {/* PRODUCT DETAILS */}
       <Products />
       {/* FOOTER */}

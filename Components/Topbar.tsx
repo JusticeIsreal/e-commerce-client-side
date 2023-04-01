@@ -46,7 +46,10 @@ function Topbar() {
         <nav>
           <ul>
             <Link href="/">
-              <li className="listactive">
+              <li
+                className={`${active === 1 ? "listactive" : ""}`}
+                onClick={() => setActive(1)}
+              >
                 {active == 1 ? <div className="nav-active"></div> : ""}
                 <span>
                   <BsShop className="menu-icon" />
@@ -55,7 +58,10 @@ function Topbar() {
               </li>
             </Link>
             <Link href="/ProductsPage">
-              <li>
+              <li
+                className={`${active === 2 ? "listactive" : ""}`}
+                onClick={() => setActive(2)}
+              >
                 {active == 2 ? <div className="nav-active"></div> : ""}
                 <span>
                   <FiGrid className="menu-icon" />

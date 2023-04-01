@@ -54,7 +54,7 @@ function Sidebar() {
         <ul className="side-menu top">
           <li
             className={`${active === 1 ? "active" : ""}`}
-            onClick={() => setActive(0)}
+            onClick={() => setActive(1)}
           >
             <Link className="list-items" href="/Adminpage/AdminDashboard">
               <MdDashboard className="list-icons" />

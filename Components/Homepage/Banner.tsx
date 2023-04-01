@@ -7,6 +7,7 @@ import { Fade, Slide } from "react-slideshow-image";
 import { db, storage } from "../../Firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import Loader from "../Loader";
 
 function Banner() {
   // SFETCHIN BANNER SORTED FROM FIREBABSE
@@ -46,23 +47,27 @@ function Banner() {
 
         {/* SIAPLAYING PRODUCTS IMAGES*/}
         <div className="banner-product-img-main-con">
-          <div className="swiper-wrapper">
-            <Fade arrows={false}>
-              {bannerDetails.map((item, index) => (
-                <div className="banner-img-con" key={item.id}>
-                  <div className="div-2">
-                    <img
-                      src={item.data().bannerimage}
-                      alt=""
-                      style={{
-                        right: "0",
-                      }}
-                    />
+          {bannerDetails.length < 1 ? (
+            <Loader />
+          ) : (
+            <div className="swiper-wrapper">
+              <Fade arrows={false}>
+                {bannerDetails.map((item, index) => (
+                  <div className="banner-img-con" key={item.id}>
+                    <div className="div-2">
+                      <img
+                        src={item.data().bannerimage}
+                        alt=""
+                        style={{
+                          right: "0",
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </Fade>
-          </div>
+                ))}
+              </Fade>
+            </div>
+          )}
 
           <img
             src="https://res.cloudinary.com/isreal/image/upload/v1679349295/E-Commerce%20Project/stand_kzmbbh.png"
