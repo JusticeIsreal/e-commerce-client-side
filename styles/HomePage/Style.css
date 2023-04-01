@@ -284,6 +284,7 @@
 .banner-main-con .content .text-content .banner-text-con .cat-desc h3 {
   width: 100%;
   font-size: 15px;
+  line-height: 1.5;
   color: #3c91e6;
   font-weight: bolder;
   text-align: center;
@@ -389,16 +390,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
-.banner-main-con .content .banner-product-img-main-con .swiper-wrapper img {
+.banner-main-con .content .banner-product-img-main-con .swiper-wrapper .img {
   max-width: 100%; /* make sure the image does not exceed the container width */
   max-height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.132);
   box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.271);

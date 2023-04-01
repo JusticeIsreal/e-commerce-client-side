@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 // ICONS
@@ -72,11 +73,15 @@ function SingleProduct({
     <div className="single-product">
       <Link href={`/ClientDynamic/${id}`}>
         <div className="product-img">
-          <img
-            src={productimages[0]}
-            alt="img"
-            className="product-page-product-img"
-          />
+          <div style={{ width: "100%", height: "100%", position: "relative" }}>
+            <Image
+              src={productimages[0]}
+              alt="img"
+              className="product-page-product-img"
+              fill
+              sizes="100vw"
+            />
+          </div>
         </div>
       </Link>
       <h3>{productname}</h3>

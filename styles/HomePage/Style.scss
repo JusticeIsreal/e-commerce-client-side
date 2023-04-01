@@ -306,7 +306,7 @@ $txt-light-blue: #cfe8ff;
           h3 {
             width: 100%;
             font-size: 15px;
-            // line-height: 1.5;
+            line-height: 1.5;
             color: $txt-blue;
             font-weight: bolder;
             text-align: center;
@@ -408,17 +408,17 @@ $txt-light-blue: #cfe8ff;
           display: flex;
           justify-content: center;
           align-items: center;
-
-          // overflow: hidden;
+          overflow: hidden;
         }
-        img {
+        .img {
+         
           max-width: 100%; /* make sure the image does not exceed the container width */
           max-height: 100%;
           object-fit: cover;
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          // top: 50%;
+          // left: 50%;
+          // transform: translate(-50%, -50%);
           border-radius: 5px;
           border: 1px solid rgba(128, 128, 128, 0.132);
           box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.271);
@@ -483,7 +483,7 @@ $txt-light-blue: #cfe8ff;
       }
     }
     .new-products-con {
-      @include flexDisplay( flex-start, flex-start, row);
+      @include flexDisplay(flex-start, flex-start, row);
       overflow: scroll;
       margin-top: 10px;
       width: 100%;

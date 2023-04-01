@@ -52,13 +52,24 @@ function Banner() {
               {bannerDetails.map((item, index) => (
                 <div className="banner-img-con" key={item.id}>
                   <div className="div-2">
-                    <img
+                    <Image
+                      src={item.data().bannerimage}
+                      alt="img"
+                      className="img"
+                      fill
+                      sizes="100vw"
+                      style={{
+                        right: "0",
+                      }}
+                    />
+
+                    {/* <img
                       src={item.data().bannerimage}
                       alt=""
                       style={{
                         right: "0",
                       }}
-                    />
+                    /> */}
                   </div>
                 </div>
               ))}

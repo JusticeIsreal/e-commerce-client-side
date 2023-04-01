@@ -44,8 +44,7 @@ function Details({ product }) {
 
   return (
     <div>
-      <h1>Product Details - {productID}</h1>
-      client
+      <img src={product.image[0]} alt="" />
     </div>
   );
 }

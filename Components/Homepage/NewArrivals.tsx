@@ -11,6 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import Image from "next/image";
 
 function NewArrivals() {
   const [trendingProducts, setTrendingProducts] = useState<any[]>([]);
@@ -62,7 +63,16 @@ function TrendingProducts({
     <div className="new-products-case">
       <Link href={`/ClientDynamic/${id}`}>
         <div className="new-products">
-          <img src={productimages[0]} alt="" />
+          <div style={{ width: "100%", height: "100%", position: "relative" }}>
+            <Image
+              src={productimages[0]}
+              alt="img"
+              className="home-product-img"
+              fill
+              sizes="100vw"
+            />
+          </div>
+          {/* <img src={productimages[0]} alt="" /> */}
         </div>
       </Link>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 function Products({ products }: { products: any[] }) {
   return (
     <div className="product-session-con">
@@ -53,8 +53,15 @@ function Product({
           as={`/ClientDynamic/${id}`}
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          {" "}
-          <img src={productimages[0]} alt="" className="home-product-img" />
+          <div style={{ width: "100%", height: "100%", position: "relative" }}>
+            <Image
+              src={productimages[0]}
+              alt="img"
+              className="home-product-img"
+              fill
+              sizes="100vw"
+            />
+          </div>
         </Link>
       </div>
       <p className="product-name">{productname}</p>

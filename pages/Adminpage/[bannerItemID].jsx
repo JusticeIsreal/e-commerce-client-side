@@ -1,6 +1,3 @@
-
-
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
@@ -43,12 +40,9 @@ function AdminProduct({ product }) {
   const router = useRouter();
   const { bannerItemID } = router.query;
 
-
-
   return (
     <div>
-      <h1>Product Details - {bannerItemID}</h1>
-      client
+     
     </div>
   );
 }
