@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 // components
-import Topbar from "../Components/Homepage/Topbar";
+import Topbar from "../Components/Topbar";
 import Banner from "../Components/Homepage/Banner";
 import NewArrivals from "../Components/Homepage/NewArrivals";
 import Products from "../Components/Homepage/Products";

@@ -1,6 +1,7 @@
 import React from "react";
-import { useRef } from "react";
-import  Link  from "next/link";
+import { useRef, useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 // react icons
 import { GiBookCover } from "react-icons/gi";
@@ -10,96 +11,89 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { FaStore, FaMoneyCheckAlt } from "react-icons/fa";
 // import AdminDashboard from "../../Pages/Adminpage/AdminDashboard";
 function Sidebar() {
-  const dashboardRef = useRef();
-  const transactionRef = useRef();
-  const storeRef = useRef();
-  const messageRef = useRef();
-  const teamRef = useRef();
-  const settingRef = useRef();
-  const logoutRef = useRef();
+  const [active, setActive] = useState<number>(1);
+  const router = useRouter();
 
-  const addActive = (e) => {
-    let dashboard = dashboardRef.current;
-    let transaction = transactionRef.current;
-    let store = storeRef.current;
-    let message = messageRef.current;
-    let team = teamRef.current;
-    let setting = settingRef.current;
-    let logout = logoutRef.current;
-    // console.log(thislist);
-
-    if (e.target.innerHTML === "My Store") {
-      store.className = "active";
-    } else {
-      store.className = "";
+  useEffect(() => {
+    if (router.asPath === "/Adminpage/AdminDashboard") {
+      setActive(1);
+      return;
     }
-    if (e.target.innerHTML === "Dashboard") {
-      dashboard.className = "active";
-    } else {
-      dashboard.className = "";
+    if (router.asPath === "/Adminpage/Store") {
+      setActive(2);
+      return;
     }
-    if (e.target.innerHTML === "Order") {
-      transaction.className = "active";
-    } else {
-      transaction.className = "";
+    if (router.asPath === "/Adminpage/Transaction") {
+      setActive(3);
+      return;
     }
-    if (e.target.innerHTML === "Review") {
-      message.className = "active";
-    } else {
-      message.className = "";
+    if (router.asPath === "/Adminpage/Store") {
+      setActive(4);
+      return;
     }
-    if (e.target.innerHTML === "Users") {
-      team.className = "active";
-    } else {
-      team.className = "";
+    if (router.asPath === "/Adminpage/Store") {
+      setActive(5);
+      return;
     }
-    if (e.target.innerHTML === "Settings") {
-      setting.className = "active";
-    } else {
-      setting.className = "";
+    if (router.asPath === "/Adminpage/Store") {
+      setActive(6);
+      return;
     }
-    if (e.target.innerHTML === "Logout") {
-      logout.className = "active";
-    } else {
-      logout.className = "";
+    if (router.asPath === "/Adminpage/Store") {
+      setActive(7);
+      return;
     }
-  };
-
+  }, [router.pathname]);
   return (
     <div>
       <section id="sidebar" className="sidebar">
         <a className="brand">
           <GiBookCover className="bx" />
-          <span className="text">TOP MINDS</span>
+          <span className="text">AJIS STORE</span>
         </a>
         <ul className="side-menu top">
-          <li ref={dashboardRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 1 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <Link className="list-items" href="/Adminpage/AdminDashboard">
               <MdDashboard className="list-icons" />
               <span className="text">Dashboard</span>
             </Link>
           </li>
-          <li ref={storeRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 2 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <Link className="list-items" href="/Adminpage/Store">
               <FaStore className="list-icons" />
               <span className="text">My Store</span>
             </Link>
           </li>
 
-          <li ref={transactionRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 3 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <Link href="/Adminpage/Transaction" className="list-items">
               <FaMoneyCheckAlt className="list-icons" />
               <span className="text">Order</span>
             </Link>
           </li>
-          <li ref={messageRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 4 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <Link href="/Adminpage/Notification" className="list-items">
               <RiMessage2Fill className="list-icons" />
               <span className="text">Review</span>
             </Link>
           </li>
 
-          <li ref={teamRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 5 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <Link href="/Adminpage/CustomersData" className="list-items">
               <MdGroup className="list-icons" />
               <span className="text">Users</span>
@@ -107,13 +101,19 @@ function Sidebar() {
           </li>
         </ul>
         <ul className="side-menu down">
-          <li ref={settingRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 6 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <a href="#" className="list-items">
               <MdSettings className="list-icons" />
               <span className="text">Settings</span>
             </a>
           </li>
-          <li ref={logoutRef} onClick={(e) => addActive(e)}>
+          <li
+            className={`${active === 7 ? "active" : ""}`}
+            onClick={() => setActive(0)}
+          >
             <a href="#" className="logout">
               <BiLogOutCircle className="list-icons" />
               <span className="text">Logout</span>

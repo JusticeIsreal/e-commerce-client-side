@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // ICONS
 import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -8,6 +9,20 @@ import { FiGrid, FiTruck } from "react-icons/fi";
 import { MdContactSupport } from "react-icons/md";
 
 function Topbar() {
+  const [active, setActive] = useState<number>(0);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.asPath === "/") {
+      setActive(1);
+      return;
+    }
+    if (router.asPath === "/ProductsPage") {
+      setActive(2);
+      return;
+    }
+  }, [router.pathname]);
+
   return (
     <div className="topbar-main-con">
       {/* TOPBAR  */}
@@ -32,7 +47,7 @@ function Topbar() {
           <ul>
             <Link href="/">
               <li className="listactive">
-                <div className="nav-active"></div>
+                {active == 1 ? <div className="nav-active"></div> : ""}
                 <span>
                   <BsShop className="menu-icon" />
                 </span>
@@ -41,6 +56,7 @@ function Topbar() {
             </Link>
             <Link href="/ProductsPage">
               <li>
+                {active == 2 ? <div className="nav-active"></div> : ""}
                 <span>
                   <FiGrid className="menu-icon" />
                 </span>

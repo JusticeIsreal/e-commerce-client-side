@@ -3,6 +3,7 @@ import "../styles/HomePage/Style.css";
 import "../styles/ProductPage/style.css";
 import "../styles/AdminPage/App.css";
 import { AppProps } from "next/app";
+import Topbar from "../Components/Topbar";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -35,6 +36,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#317EFB" />
       </Head>
       <Component {...pageProps} />
+      <Topbar />
     </>
   );
 }

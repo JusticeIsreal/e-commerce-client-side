@@ -9,7 +9,7 @@ function ProductsPage() {
   return (
     <div className="product-page-main-con">
       {/* TOPBAR */}
-      <Topbar />
+      {/* <Topbar /> */}
       {/* PRODUCT DETAILS */}
       <Products />
       {/* FOOTER */}
