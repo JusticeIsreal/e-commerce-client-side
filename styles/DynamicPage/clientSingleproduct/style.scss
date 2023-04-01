@@ -74,7 +74,9 @@ $txt-light-blue: #cfe8ff;
 
     .big-display-con {
       width: 100vw;
-      height: 500px;
+      height: 600px;
+
+
       .big-display-img {
         // border: 2px solid red;
         position: relative;
@@ -82,8 +84,9 @@ $txt-light-blue: #cfe8ff;
         height: 100%;
 
         img {
-          object-fit: cover;
-          width: 100%;
+        //   object-fit: contain;
+        
+        //   width: 100%;
         }
       }
     }
@@ -113,10 +116,10 @@ $txt-light-blue: #cfe8ff;
         }
       }
 
-    //   .active-view {
-    //     border: 2px solid $txt-blue;
-    //     transform: scale(1.1);
-    //   }
+      //   .active-view {
+      //     border: 2px solid $txt-blue;
+      //     transform: scale(1.1);
+      //   }
     }
   }
 }
