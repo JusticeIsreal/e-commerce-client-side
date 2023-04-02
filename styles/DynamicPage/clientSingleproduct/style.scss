@@ -74,10 +74,10 @@ $txt-light-blue: #cfe8ff;
 
     .big-display-con {
       width: 100vw;
-      height: 400px;
+      height: 450px;
 
       @include responsive(phone) {
-        height: 550px;
+        // height: 550px;
       }
 
       .big-display-img {
