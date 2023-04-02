@@ -108,7 +108,7 @@ function Details({ product }) {
         <div className="add-to-cart-con">
           <div className="add">Add to cart</div>
           <div className="buy">Buy Noe</div>
-          <div className="view">View in Cart</div>
+          <div className="view">View Cart</div>
         </div>
 
         <div>
