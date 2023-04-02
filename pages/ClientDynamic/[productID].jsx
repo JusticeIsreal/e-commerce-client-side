@@ -56,7 +56,7 @@ function Details({ product }) {
       <div className="single-product">
         <div className="big-display-con">
           <div className="big-display-img">
-            <Image src={product.image[disimg]} alt="img" fill sizes="100vw" />
+            <Image src={product.image[disimg]} alt="img" fill sizes="100vw" className="img"/>
           </div>
         </div>
 
