@@ -98,8 +98,12 @@ function StoreItemsIndividual({
         <td style={{ width: "11%" }}>
           <p>{productname}</p>
         </td>
-        <td style={{ width: "10%", margin: "5px" }}>{productprice}</td>
-        <td style={{ width: "10%", margin: "5px" }}>{productoldprice}</td>
+        <td style={{ width: "10%", margin: "5px" }}>
+          {Number(productprice).toLocaleString()}
+        </td>
+        <td style={{ width: "10%", margin: "5px" }}>
+          {Number(productoldprice).toLocaleString()}
+        </td>
         <td style={{ width: "10%", margin: "5px" }}>{productcategory}</td>
         <td style={{ width: "10%", margin: "5px" }}>{productclass}</td>
         <td style={{ width: "27%", margin: "5px" }}>
@@ -111,7 +115,7 @@ function StoreItemsIndividual({
             justifyContent: "space-between",
             alignItems: "center",
             fontSize: "20px",
-            width:"100px"
+            width: "100px",
           }}
         >
           <Link href="/">

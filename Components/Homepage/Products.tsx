@@ -66,10 +66,12 @@ function Product({
       </div>
       <p className="product-name">{productname}</p>
       <div className="price">
-        <p className="product-price">₦ {productprice}</p>
+        <p className="product-price">
+          ₦ {Number(productprice).toLocaleString()}
+        </p>
         <p className="product-oldprice">
           {" "}
-          {productoldprice && "₦ " + productoldprice}
+          {productoldprice && "₦ " + Number(productoldprice).toLocaleString()}
         </p>
       </div>
 

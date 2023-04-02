@@ -68,7 +68,7 @@ $txt-light-blue: #cfe8ff;
   width: 100vw;
 
   .single-product {
-    border: 2px solid rgb(0, 26, 255);
+    // border: 2px solid rgb(0, 26, 255);
     width: 100%;
     @include flexDisplay(space-between, center, column);
 
@@ -88,9 +88,8 @@ $txt-light-blue: #cfe8ff;
         height: 100%;
 
         .img {
-        //   border: 2px solid red;
+          //   border: 2px solid red;
           width: 100%;
-        
         }
       }
     }
@@ -134,7 +133,8 @@ $txt-light-blue: #cfe8ff;
 
   //   single product details style
   .single-product-details {
-    border: 2px solid red;
+    // border: 2px solid red;
+    margin-top: 30px;
     padding: 5px;
     @include flexDisplay(space-between, flex-start, column);
 
@@ -145,21 +145,78 @@ $txt-light-blue: #cfe8ff;
       line-height: 1.5;
       color: $font-light;
       font-style: italic;
+      margin-top: 10px;
+      span {
+        font-weight: bolder;
+        font-size: 16px;
+      }
     }
     .p-number {
       font-style: normal;
+      margin-top: 10px;
     }
     .product-qty-price-con {
-      @include flexDisplay(space-between, flex-start, row);
+      @include flexDisplay(space-between, center, row);
       width: 100%;
+      margin-top: 15px;
       flex-wrap: wrap;
-      border: 2px solid red;
+      //   border: 2px solid red;
 
       .qty-con {
-        border: 2px solid red;
-        @include flexDisplay(space-between, center, row);
-        padding: 5px 20px;
-        width: 150px;
+        // border: 2px solid $txt-blue;
+        border-radius: 15px;
+        @include flexDisplay(space-around, center, row);
+        padding: 8px 10px;
+        width: 50%;
+        margin-right: 20px;
+        font-size: 25px;
+        background: $font-light;
+        color: white;
+        // background: $txt-blue;
+
+        span {
+          font-weight: bolder;
+          //   border: 2px solid red;
+          width: 100%;
+          @include flexDisplay(center, center, row);
+        }
+        h3 {
+          font-size: 30px;
+        }
+      }
+      h1 {
+        margin-right: auto;
+      }
+    }
+    .add-to-cart-con {
+      //   border: 2px solid red;
+      @include flexDisplay(space-between, center, row);
+      width: 95%;
+      max-width: 370px;
+      margin: 0 auto;
+      margin-top: 30px;
+
+      .add,
+      .buy,
+      .view {
+        // border: 2px solid rgb(13, 0, 255);
+        width: 100%;
+        text-align: center;
+        margin: 2px;
+        padding: 10px 5px;
+        font-size: 18px;
+        font-weight: bolder;
+        background: $txt-blue;
+        color: white;
+      }
+
+      .add {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+      .view {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
       }
     }
   }

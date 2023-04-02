@@ -87,10 +87,12 @@ function SingleProduct({
       <h3>{productname}</h3>
       <div className="product-details">
         <div className="price">
-          <span className="current-price"> {"₦" + productprice}</span>
+          <span className="current-price">
+            ₦ {Number(productprice).toLocaleString()}
+          </span>
           <span className="old-price">
             {" "}
-            {productoldprice && "₦" + productoldprice}
+            {productoldprice && "₦" + Number(productoldprice).toLocaleString()}
           </span>
         </div>
         <div className="detail">

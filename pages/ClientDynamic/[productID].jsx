@@ -56,7 +56,13 @@ function Details({ product }) {
       <div className="single-product">
         <div className="big-display-con">
           <div className="big-display-img">
-            <Image src={product.image[disimg]} alt="img" fill sizes="100vw" className="img"/>
+            <Image
+              src={product.image[disimg]}
+              alt="img"
+              fill
+              sizes="100vw"
+              className="img"
+            />
           </div>
         </div>
 
@@ -80,8 +86,13 @@ function Details({ product }) {
       </div>
       <div className="single-product-details">
         <h1 className="p-name">{product.productname}</h1>
-        <p className="p-number">{product.productnumber}</p>
-        <p className="p-desc">{product.productdescription}</p>
+        <p className="p-number">
+          {" "}
+          <span>Product spec :</span> {product.productnumber}
+        </p>
+        <p className="p-desc">
+          <span>Product description :</span> <br /> {product.productdescription}
+        </p>
         <div className="product-qty-price-con">
           <div className="qty-con">
             <span>
@@ -92,12 +103,12 @@ function Details({ product }) {
               <FiPlusCircle />
             </span>
           </div>
-          <h1>₦ {product.productprice}</h1>
+          <h1>₦ {Number(product.productprice).toLocaleString()}</h1>
         </div>
-        <div>
-          <div>Add to cart</div>
-          <div>Buy Noe</div>
-          <div>View in Cart</div>
+        <div className="add-to-cart-con">
+          <div className="add">Add to cart</div>
+          <div className="buy">Buy Noe</div>
+          <div className="view">View in Cart</div>
         </div>
 
         <div>
