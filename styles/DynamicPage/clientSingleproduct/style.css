@@ -33,6 +33,20 @@
   height: 500px;
   padding: 10px;
 }
+.client-single-product .single-product .big-display-con .go-back {
+  position: absolute;
+  z-index: 20;
+  position: fixed;
+  top: 10px;
+  background: rgba(60, 145, 230, 0.7764705882);
+  border: 1px solid rgba(128, 128, 128, 0.168627451);
+  color: white;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
 .client-single-product .single-product .big-display-con .big-display-img {
   position: relative;
   width: 100%;

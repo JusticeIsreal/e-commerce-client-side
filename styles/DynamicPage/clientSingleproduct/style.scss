@@ -80,6 +80,21 @@ $txt-light-blue: #cfe8ff;
         // height: 550px;
       }
 
+      .go-back {
+        position: absolute;
+        z-index: 20;
+        position: fixed;
+        top: 10px;
+        background: #3c91e6c6;
+        border: 1px solid #8080802b;
+        color: white;
+        width: 70px;
+        height: 30px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 18px;
+        
+      }
       .big-display-img {
         // border: 2px solid red;
         // padding: 5px;

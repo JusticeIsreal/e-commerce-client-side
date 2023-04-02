@@ -14,7 +14,7 @@ import { Blockquote } from "@mantine/core";
 
 // ICONS
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
-import { GoPlus } from "react-icons/go";
+import { TiArrowBack } from "react-icons/ti";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -53,10 +53,19 @@ function Details({ product }) {
     setDisimg(index);
     // console.log(pic.current.classList);
   };
+
+  // GO BACK
+
+  function goBack() {
+    router.back();
+  }
   return (
     <div className="client-single-product">
       <div className="single-product">
         <div className="big-display-con">
+          <button onClick={goBack} className="go-back">
+            <TiArrowBack />Back
+          </button>
           <div className="big-display-img">
             <Image
               src={product.image[disimg]}
