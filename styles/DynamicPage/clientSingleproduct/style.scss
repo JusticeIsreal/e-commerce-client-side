@@ -245,18 +245,24 @@ $txt-light-blue: #cfe8ff;
 
       .review-con {
         position: relative;
-        border: 2px solid red;
+        border-top: 1px solid #8080803f;
+        // overflow-y: scroll;
         .add-review {
           position: absolute;
           padding: 3px 5px;
           right: 0;
           top: -35px;
-          font-size: 20px;
+          font-size: 15px;
           text-align: center;
           color: $txt-blue;
+          z-index: 4;
+
           //   border: 2px solid red;
           align-content: center;
           cursor: pointer;
+          span {
+            font-size: 20px;
+          }
           a {
             text-align: center;
             color: $txt-blue;
@@ -265,7 +271,10 @@ $txt-light-blue: #cfe8ff;
         }
 
         .reviews {
-          border: 2px solid red;
+          border: 1px solid #8080802b;
+          width: 95%;
+          margin: 0 auto;
+          border-radius: 10px;
           margin-top: 10px;
         }
       }

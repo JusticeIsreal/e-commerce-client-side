@@ -185,18 +185,22 @@
 }
 .client-single-product .single-product-details .product-review .review-con {
   position: relative;
-  border: 2px solid red;
+  border-top: 1px solid rgba(128, 128, 128, 0.2470588235);
 }
 .client-single-product .single-product-details .product-review .review-con .add-review {
   position: absolute;
   padding: 3px 5px;
   right: 0;
   top: -35px;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   color: #3c91e6;
+  z-index: 4;
   align-content: center;
   cursor: pointer;
+}
+.client-single-product .single-product-details .product-review .review-con .add-review span {
+  font-size: 20px;
 }
 .client-single-product .single-product-details .product-review .review-con .add-review a {
   text-align: center;
@@ -204,6 +208,9 @@
   padding: 0px 5px 0px 5px;
 }
 .client-single-product .single-product-details .product-review .review-con .reviews {
-  border: 2px solid red;
+  border: 1px solid rgba(128, 128, 128, 0.168627451);
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 10px;
   margin-top: 10px;
 }/*# sourceMappingURL=style.css.map */

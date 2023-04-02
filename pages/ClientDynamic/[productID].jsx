@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../Firebase";
 import Image from "next/image";
+import { Blockquote } from "@mantine/core";
 
 // ICONS
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
@@ -116,13 +117,28 @@ function Details({ product }) {
           <h1>REVIEW</h1>
           <div className="review-con">
             <div className="add-review">
-              <GoPlus />
+              <span>+</span>
               <a href="">Add Review</a>
             </div>
             <div className="reviews">
-              <p>Date / time</p>
-              <p>Review text using mantine</p>
-              <p>User name</p>
+              <div className="quote">
+                <Blockquote cite="Date/time">
+                  <p>user name</p>
+                  <p>
+                    this is the best place to get all you fashion out fit, they
+                    delivered in 2 days , no story
+                  </p>
+                </Blockquote>
+              </div>
+              <div className="quote">
+                <Blockquote cite="Date/time">
+                  <p>user name</p>
+                  <p>
+                    this is the best place to get all you fashion out fit, they
+                    delivered in 2 days , no story
+                  </p>
+                </Blockquote>
+              </div>
             </div>
           </div>
         </div>
