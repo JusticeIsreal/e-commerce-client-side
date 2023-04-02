@@ -55,7 +55,6 @@ function Details({ product }) {
     <div className="client-single-product">
       <div className="single-product">
         <div className="big-display-con">
-         
           <div className="big-display-img">
             <Image src={product.image[disimg]} alt="img" fill sizes="100vw" />
           </div>
@@ -79,13 +78,12 @@ function Details({ product }) {
           )}
         </div>
       </div>
-      <div>
-        <h1>{product.productname}</h1>
-        <p>{product.productnumber}</p>
-        <p>{product.productdescription}</p>
-        <div>
-          <div>
-            {" "}
+      <div className="single-product-details">
+        <h1 className="p-name">{product.productname}</h1>
+        <p className="p-number">{product.productnumber}</p>
+        <p className="p-desc">{product.productdescription}</p>
+        <div className="product-qty-price-con">
+          <div className="qty-con">
             <span>
               <FiMinusCircle />
             </span>
@@ -94,7 +92,6 @@ function Details({ product }) {
               <FiPlusCircle />
             </span>
           </div>
-
           <h1>₦ {product.productprice}</h1>
         </div>
         <div>
