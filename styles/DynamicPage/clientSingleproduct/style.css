@@ -213,4 +213,10 @@
   margin: 0 auto;
   border-radius: 10px;
   margin-top: 10px;
+  overflow-y: scroll;
+  height: 300px;
+}
+.client-single-product .single-product-details .product-review .review-con .reviews .quote .quote-text {
+  font-size: 15px;
+  color: #666;
 }/*# sourceMappingURL=style.css.map */

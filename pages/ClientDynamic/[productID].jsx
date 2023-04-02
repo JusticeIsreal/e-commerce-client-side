@@ -120,11 +120,12 @@ function Details({ product }) {
               <span>+</span>
               <a href="">Add Review</a>
             </div>
+
             <div className="reviews">
               <div className="quote">
                 <Blockquote cite="Date/time">
                   <p>user name</p>
-                  <p>
+                  <p className="quote-text">
                     this is the best place to get all you fashion out fit, they
                     delivered in 2 days , no story
                   </p>
@@ -132,8 +133,26 @@ function Details({ product }) {
               </div>
               <div className="quote">
                 <Blockquote cite="Date/time">
-                  <p>user name</p>
-                  <p>
+                  <p className="user-name">user name</p>
+                  <p className="quote-text">
+                    this is the best place to get all you fashion out fit, they
+                    delivered in 2 days , no story
+                  </p>
+                </Blockquote>
+              </div>
+              <div className="quote">
+                <Blockquote cite="Date/time">
+                  <p className="user-name">user name</p>
+                  <p className="quote-text">
+                    this is the best place to get all you fashion out fit, they
+                    delivered in 2 days , no story
+                  </p>
+                </Blockquote>
+              </div>
+              <div className="quote">
+                <Blockquote cite="Date/time">
+                  <p className="user-name">user name</p>
+                  <p className="quote-text">
                     this is the best place to get all you fashion out fit, they
                     delivered in 2 days , no story
                   </p>
