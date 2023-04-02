@@ -13,6 +13,7 @@ import Image from "next/image";
 
 // ICONS
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import { GoPlus } from "react-icons/go";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -107,17 +108,18 @@ function Details({ product }) {
         </div>
         <div className="add-to-cart-con">
           <div className="add">Add to cart</div>
-          <div className="buy">Buy Noe</div>
+          <div className="buy">Buy Now</div>
           <div className="view">View Cart</div>
         </div>
 
-        <div>
-          <h3>REVIEW</h3>
-          <div>
-            <div>
-              <button>Add Review in position absolute</button>
+        <div className="product-review">
+          <h1>REVIEW</h1>
+          <div className="review-con">
+            <div className="add-review">
+              <GoPlus />
+              <a href="">Add Review</a>
             </div>
-            <div>
+            <div className="reviews">
               <p>Date / time</p>
               <p>Review text using mantine</p>
               <p>User name</p>

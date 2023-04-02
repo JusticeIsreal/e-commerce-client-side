@@ -218,6 +218,10 @@ $txt-light-blue: #cfe8ff;
         font-weight: bolder;
         background: $txt-blue;
         color: white;
+
+        &:hover {
+          background: #215586;
+        }
       }
 
       .add {
@@ -227,6 +231,43 @@ $txt-light-blue: #cfe8ff;
       .view {
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
+      }
+    }
+
+    // SINGLE PRODUCT REVIEW
+    .product-review {
+      width: 100%;
+      margin-top: 50px;
+
+      h1 {
+        color: $txt-blue;
+      }
+
+      .review-con {
+        position: relative;
+        border: 2px solid red;
+        .add-review {
+          position: absolute;
+          padding: 3px 5px;
+          right: 0;
+          top: -35px;
+          font-size: 20px;
+          text-align: center;
+          color: $txt-blue;
+          //   border: 2px solid red;
+          align-content: center;
+          cursor: pointer;
+          a {
+            text-align: center;
+            color: $txt-blue;
+            padding: 0px 5px 0px 5px;
+          }
+        }
+
+        .reviews {
+          border: 2px solid red;
+          margin-top: 10px;
+        }
       }
     }
   }
