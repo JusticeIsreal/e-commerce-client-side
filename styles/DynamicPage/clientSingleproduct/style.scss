@@ -73,7 +73,11 @@ $txt-light-blue: #cfe8ff;
     width: 100%;
     @include flexDisplay(space-between, center, column);
 
+    @include responsive(bigphone) {
+      margin-top: 100px;
+   }
     @include responsive(tablet) {
+      margin-top: 100px;
       @include flexDisplay(flex-start, flex-start, row);
     }
 

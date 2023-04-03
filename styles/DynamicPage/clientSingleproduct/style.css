@@ -29,8 +29,14 @@
   align-items: center;
   flex-direction: column;
 }
+@media only screen and (min-width: 768px) {
+  .client-single-product .single-product {
+    margin-top: 100px;
+  }
+}
 @media only screen and (min-width: 1023px) {
   .client-single-product .single-product {
+    margin-top: 100px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
