@@ -190,6 +190,7 @@
 }
 .client-single-product .single-product .lower-details {
   width: 100%;
+  padding: 5px;
 }
 @media only screen and (min-width: 1023px) {
   .client-single-product .single-product .lower-details {

@@ -75,7 +75,7 @@ $txt-light-blue: #cfe8ff;
 
     @include responsive(bigphone) {
       margin-top: 100px;
-   }
+    }
     @include responsive(tablet) {
       margin-top: 100px;
       @include flexDisplay(flex-start, flex-start, row);
@@ -210,7 +210,7 @@ $txt-light-blue: #cfe8ff;
     // lower part
     .lower-details {
       width: 100%;
-
+      padding: 5px;
       @include responsive(tablet) {
         width: 50%;
         // border: 2px solid red;
@@ -219,7 +219,6 @@ $txt-light-blue: #cfe8ff;
       }
 
       @include responsive(tablet) {
-       
       }
 
       h1 {

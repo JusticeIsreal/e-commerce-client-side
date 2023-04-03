@@ -60,6 +60,7 @@ function Details({ product }) {
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
     setDisimg(index);
+    console.log(disimg);
     // console.log(pic.current.classList);
   };
 
@@ -364,9 +365,6 @@ function SimilarProducts({
               src={productimages[0]}
               alt="img"
               className="home-product-img"
-              // style={{
-              //   width: "100px",
-              // }}
               fill
               sizes="100vw"
             />
