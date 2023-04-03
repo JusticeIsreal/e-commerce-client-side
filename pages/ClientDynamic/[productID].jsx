@@ -308,30 +308,26 @@ function Details({ product }) {
           </div>
           {/* similar products */}
 
-          {similarProducts.length < 1 ? (
-            <Loader />
-          ) : (
-            <>
-              <h3 style={{ marginTop: "50px", color: "#3c91e6" }}>
-                SIMILAR PRODUCTS
-              </h3>{" "}
-              <div className="similar-products">
-                <div className="single-product-con">
-                  {similarProducts.map((product) => (
-                    <SimilarProducts
-                      key={product.id}
-                      id={product.id}
-                      productimages={product.data().image}
-                      productname={product.data().productname}
-                      productprice={product.data().productprice}
-                      productoldprice={product.data().productoldprice}
-                      product={product}
-                    />
-                  ))}
-                </div>
+          <>
+            <h3 style={{ marginTop: "100px", color: "#3c91e6" }}>
+              SIMILAR PRODUCTS
+            </h3>{" "}
+            <div className="similar-products">
+              <div className="single-product-con">
+                {similarProducts.map((product) => (
+                  <SimilarProducts
+                    key={product.id}
+                    id={product.id}
+                    productimages={product.data().image}
+                    productname={product.data().productname}
+                    productprice={product.data().productprice}
+                    productoldprice={product.data().productoldprice}
+                    product={product}
+                  />
+                ))}
               </div>
-            </>
-          )}
+            </div>
+          </>
         </div>
         <Footer />
       </div>
