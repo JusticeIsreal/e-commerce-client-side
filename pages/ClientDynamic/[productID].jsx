@@ -139,67 +139,73 @@ function Details({ product }) {
       <Topbar />
       <div className="client-single-product">
         <div className="single-product">
-          <div className="big-display-con">
-            <button onClick={goBack} className="go-back">
-              <TiArrowBack />
-              Back
-            </button>
-            <div className="big-display-img">
-              <Image
-                src={product.image[disimg]}
-                alt="img"
-                fill
-                sizes="100vw"
-                className="img"
-              />
+          <div className="top-container">
+            {" "}
+            <div className="big-display-con">
+              <button onClick={goBack} className="go-back">
+                <TiArrowBack />
+                Back
+              </button>
+              <div className="big-display-img">
+                <Image
+                  src={product.image[disimg]}
+                  alt="img"
+                  fill
+                  sizes="100vw"
+                  className="img"
+                />
+              </div>
+            </div>
+            <div className="small-display-img-con">
+              {product.image.map(
+                (img, index) =>
+                  img && (
+                    <div className="small-display-img" key={index}>
+                      <Image
+                        src={img}
+                        alt="img"
+                        fill
+                        sizes="100vw"
+                        ref={pic}
+                        onClick={() => changeIMG(index)}
+                      />
+                    </div>
+                  )
+              )}
             </div>
           </div>
 
-          <div className="small-display-img-con">
-            {product.image.map(
-              (img, index) =>
-                img && (
-                  <div className="small-display-img" key={index}>
-                    <Image
-                      src={img}
-                      alt="img"
-                      fill
-                      sizes="100vw"
-                      ref={pic}
-                      onClick={() => changeIMG(index)}
-                    />
-                  </div>
-                )
-            )}
+          {/* lower part */}
+          <div className="lower-details">
+            <h1 className="p-name">{product.productname}</h1>
+            <p className="p-number">
+              <span>Product spec :</span> {product.productnumber}
+            </p>
+            <p className="p-desc">
+              <span>Product description :</span> <br />{" "}
+              {product.productdescription}
+            </p>
+            <div className="product-qty-price-con">
+              <div className="qty-con">
+                <span>
+                  <FiMinusCircle />
+                </span>
+                <h3>1</h3>
+                <span>
+                  <FiPlusCircle />
+                </span>
+              </div>
+              <h1>₦ {Number(product.productprice).toLocaleString()}</h1>
+            </div>
+            <div className="add-to-cart-con">
+              <div className="add">Add to cart</div>
+              <div className="buy">Buy Now</div>
+              <div className="view">View Cart</div>
+            </div>
           </div>
         </div>
         <div className="single-product-details">
-          <h1 className="p-name">{product.productname}</h1>
-          <p className="p-number">
-            <span>Product spec :</span> {product.productnumber}
-          </p>
-          <p className="p-desc">
-            <span>Product description :</span> <br />{" "}
-            {product.productdescription}
-          </p>
-          <div className="product-qty-price-con">
-            <div className="qty-con">
-              <span>
-                <FiMinusCircle />
-              </span>
-              <h3>1</h3>
-              <span>
-                <FiPlusCircle />
-              </span>
-            </div>
-            <h1>₦ {Number(product.productprice).toLocaleString()}</h1>
-          </div>
-          <div className="add-to-cart-con">
-            <div className="add">Add to cart</div>
-            <div className="buy">Buy Now</div>
-            <div className="view">View Cart</div>
-          </div>
-
+          {" "}
           <div className="product-review">
             <h1>REVIEW</h1>
             <div className="review-con">
@@ -239,7 +245,7 @@ function Details({ product }) {
                     <label>User Email</label>
                     <input
                       type="email"
-                      placeholder="Enter Product Price"
+                      placeholder="Enter Your Email"
                       {...register("useremail", { required: true })}
                     />
                     {errors.useremail && (
@@ -258,7 +264,7 @@ function Details({ product }) {
                     <label>Your Review</label>
                     <textarea
                       type="text"
-                      placeholder="Enter Product Specs"
+                      placeholder="Make Your Review"
                       {...register("yourreview", { required: true })}
                     />
                     {errors.yourreview && (
@@ -307,7 +313,6 @@ function Details({ product }) {
             </div>
           </div>
           {/* similar products */}
-
           <>
             <h3 style={{ marginTop: "100px", color: "#3c91e6" }}>
               SIMILAR PRODUCTS
