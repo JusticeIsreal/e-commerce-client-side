@@ -64,8 +64,9 @@ $txt-light-blue: #cfe8ff;
 
 // CLIENT SINGLE PRODUCT DYNAMIC PAGE STYLE
 .client-single-product {
-  //   border: 2px solid red;
+  // border: 2px solid red;
   width: 100vw;
+  margin-top: 45px;
 
   .single-product {
     // border: 2px solid rgb(0, 26, 255);
@@ -77,6 +78,7 @@ $txt-light-blue: #cfe8ff;
       height: 500px;
       padding: 10px;
       @include responsive(phone) {
+        position: relative;
         // height: 550px;
       }
 
@@ -84,7 +86,8 @@ $txt-light-blue: #cfe8ff;
         position: absolute;
         z-index: 20;
         position: fixed;
-        top: 10px;
+        top: 60px;
+        left: 15px;
         background: #3c91e6c6;
         border: 1px solid #8080802b;
         color: white;
@@ -93,6 +96,8 @@ $txt-light-blue: #cfe8ff;
         text-align: center;
         border-radius: 10px;
         font-size: 18px;
+        // right: 0;
+        // border: 2px solid red;
       }
       .big-display-img {
         // border: 2px solid red;
@@ -413,7 +418,7 @@ $txt-light-blue: #cfe8ff;
       }
       .products {
         @include flexDisplay(space-evenly, center, column);
-        // width: 250px;
+        width: 170px;
         padding: 5px;
         margin: 5px;
         border-radius: 5px;
@@ -424,7 +429,7 @@ $txt-light-blue: #cfe8ff;
         border: 1px solid rgba(128, 128, 128, 0.261);
         // border: 2px solid red;
         // flex-wrap: wrap;
-        // height: 300px;
+        // height: 350px;
 
         @include responsive(bigphone) {
           width: 30%;
@@ -445,7 +450,7 @@ $txt-light-blue: #cfe8ff;
           font-size: 15px;
           // line-height: 2;
           color: $font-light;
-          // margin-top: -1px;
+          margin-top: 5px;
           width: 100%;
           // font-style: italic;
           @include responsive(bigphone) {
@@ -460,13 +465,14 @@ $txt-light-blue: #cfe8ff;
           // margin-top: 5px;
           border: 1px solid rgba(128, 128, 128, 0.157);
           width: 100%;
-          height: 150px;
+          // height: 250px;
           border-radius: 5px;
           display: flex;
           justify-content: center;
           background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
           // @include flexDisplay(center, center, row);
-          overflow: hidden;
+          // overflow: hidden;
+          // border: 2px solid red;
 
           @include responsive(phone) {
             height: 200px;
@@ -512,7 +518,7 @@ $txt-light-blue: #cfe8ff;
           width: 100%;
           // border: 2px solid red;
           // height: 30px;
-          // margin-top: 5px;
+          margin-top: 5px;
           font-size: 15px;
 
           .product-price {
@@ -545,6 +551,7 @@ $txt-light-blue: #cfe8ff;
           color: $txt-blue;
           border-radius: 5px;
           margin: 5px 0;
+          margin-top: 10px;
 
           &:hover {
             background: $txt-blue;

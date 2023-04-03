@@ -30,7 +30,9 @@ function Topbar() {
       <div className="topbar-top-con">
         {/* logo side */}
         <div className="topbar-top-con-left">
-          <SiCoinmarketcap className="icon" />
+          <Link href="/">
+            <SiCoinmarketcap className="icon" />
+          </Link>
         </div>
         {/* cart and user icon */}
         <div className="topbar-top-con-right">

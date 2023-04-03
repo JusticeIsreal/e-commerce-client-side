@@ -1,4 +1,5 @@
 import Loader from "../../Components/Loader";
+import Topbar from "../../Components/Topbar";
 import Footer from "../../Components/Footer";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
@@ -134,200 +135,207 @@ function Details({ product }) {
   const displayedReviews = showAll ? review : review.slice(0, maxComments);
 
   return (
-    <div className="client-single-product">
-      <div className="single-product">
-        <div className="big-display-con">
-          <button onClick={goBack} className="go-back">
-            <TiArrowBack />
-            Back
-          </button>
-          <div className="big-display-img">
-            <Image
-              src={product.image[disimg]}
-              alt="img"
-              fill
-              sizes="100vw"
-              className="img"
-            />
+    <>
+      <Topbar />
+      <div className="client-single-product">
+        <div className="single-product">
+          <div className="big-display-con">
+            <button onClick={goBack} className="go-back">
+              <TiArrowBack />
+              Back
+            </button>
+            <div className="big-display-img">
+              <Image
+                src={product.image[disimg]}
+                alt="img"
+                fill
+                sizes="100vw"
+                className="img"
+              />
+            </div>
+          </div>
+
+          <div className="small-display-img-con">
+            {product.image.map(
+              (img, index) =>
+                img && (
+                  <div className="small-display-img" key={index}>
+                    <Image
+                      src={img}
+                      alt="img"
+                      fill
+                      sizes="100vw"
+                      ref={pic}
+                      onClick={() => changeIMG(index)}
+                    />
+                  </div>
+                )
+            )}
           </div>
         </div>
+        <div className="single-product-details">
+          <h1 className="p-name">{product.productname}</h1>
+          <p className="p-number">
+            <span>Product spec :</span> {product.productnumber}
+          </p>
+          <p className="p-desc">
+            <span>Product description :</span> <br />{" "}
+            {product.productdescription}
+          </p>
+          <div className="product-qty-price-con">
+            <div className="qty-con">
+              <span>
+                <FiMinusCircle />
+              </span>
+              <h3>1</h3>
+              <span>
+                <FiPlusCircle />
+              </span>
+            </div>
+            <h1>₦ {Number(product.productprice).toLocaleString()}</h1>
+          </div>
+          <div className="add-to-cart-con">
+            <div className="add">Add to cart</div>
+            <div className="buy">Buy Now</div>
+            <div className="view">View Cart</div>
+          </div>
 
-        <div className="small-display-img-con">
-          {product.image.map(
-            (img, index) =>
-              img && (
-                <div className="small-display-img" key={index}>
-                  <Image
-                    src={img}
-                    alt="img"
-                    fill
-                    sizes="100vw"
-                    ref={pic}
-                    onClick={() => changeIMG(index)}
-                  />
+          <div className="product-review">
+            <h1>REVIEW</h1>
+            <div className="review-con">
+              <div
+                className="add-review"
+                onClick={() => setShowForm(!showForm)}
+              >
+                <span>{!showForm ? "+" : "-"}</span>
+                <span>{!showForm ? "Add Review" : "Close form"}</span>
+              </div>
+
+              {/* REVIEW FORM */}
+              {showForm && (
+                <div className="review-form-con">
+                  {" "}
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* PRODUCT PRICE */}
+                    <label>User Name</label>
+                    <input
+                      type="text"
+                      placeholder="eg. John Doe"
+                      {...register("username", { required: true })}
+                    />
+                    {errors.username && (
+                      <span
+                        className="errror-msg"
+                        style={{
+                          fontSize: "12px",
+                          fontStyle: "italic",
+                          color: "red",
+                        }}
+                      >
+                        Kindly Enter Your Name
+                      </span>
+                    )}
+                    {/* USER EMAAIL*/}
+                    <label>User Email</label>
+                    <input
+                      type="email"
+                      placeholder="Enter Product Price"
+                      {...register("useremail", { required: true })}
+                    />
+                    {errors.useremail && (
+                      <span
+                        className="errror-msg"
+                        style={{
+                          fontSize: "12px",
+                          fontStyle: "italic",
+                          color: "red",
+                        }}
+                      >
+                        Kindly Enter Your Email
+                      </span>
+                    )}
+                    {/* PRODUCT NUMBER */}
+                    <label>Your Review</label>
+                    <textarea
+                      type="text"
+                      placeholder="Enter Product Specs"
+                      {...register("yourreview", { required: true })}
+                    />
+                    {errors.yourreview && (
+                      <span
+                        className="errror-msg"
+                        style={{
+                          fontSize: "12px",
+                          fontStyle: "italic",
+                          color: "red",
+                        }}
+                      >
+                        Kindly Enter Your Review
+                      </span>
+                    )}
+                    <input type="submit" className="submit-btn" value="SEND" />
+                  </form>
                 </div>
-              )
+              )}
+
+              <div className="reviews">
+                {displayedReviews.map((comment) => (
+                  <div className="quote" key={comment.id}>
+                    <Blockquote cite="time">
+                      <p>{comment.data().username} </p>
+                      <sup>{comment.data().useremail}</sup>
+                      <p className="quote-text">{comment.data().yourreview}</p>
+                    </Blockquote>
+                  </div>
+                ))}
+                <div className="see-more">
+                  {review.length ? (
+                    <p onClick={() => setShowAll(!showAll)}>
+                      {!showAll || review.length === 1
+                        ? "See more..."
+                        : "Close..."}
+                    </p>
+                  ) : (
+                    <p>No Reviews</p>
+                  )}
+                </div>
+                <p className="review-count">
+                  Total of {review.length}{" "}
+                  {review.length > 1 ? "reviews" : "review"}
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* similar products */}
+
+          {similarProducts.length < 1 ? (
+            <Loader />
+          ) : (
+            <>
+              <h3 style={{ marginTop: "50px", color: "#3c91e6" }}>
+                SIMILAR PRODUCTS
+              </h3>{" "}
+              <div className="similar-products">
+                <div className="single-product-con">
+                  {similarProducts.map((product) => (
+                    <SimilarProducts
+                      key={product.id}
+                      id={product.id}
+                      productimages={product.data().image}
+                      productname={product.data().productname}
+                      productprice={product.data().productprice}
+                      productoldprice={product.data().productoldprice}
+                      product={product}
+                    />
+                  ))}
+                </div>
+              </div>
+            </>
           )}
         </div>
+        <Footer />
       </div>
-      <div className="single-product-details">
-        <h1 className="p-name">{product.productname}</h1>
-        <p className="p-number">
-          <span>Product spec :</span> {product.productnumber}
-        </p>
-        <p className="p-desc">
-          <span>Product description :</span> <br /> {product.productdescription}
-        </p>
-        <div className="product-qty-price-con">
-          <div className="qty-con">
-            <span>
-              <FiMinusCircle />
-            </span>
-            <h3>1</h3>
-            <span>
-              <FiPlusCircle />
-            </span>
-          </div>
-          <h1>₦ {Number(product.productprice).toLocaleString()}</h1>
-        </div>
-        <div className="add-to-cart-con">
-          <div className="add">Add to cart</div>
-          <div className="buy">Buy Now</div>
-          <div className="view">View Cart</div>
-        </div>
-
-        <div className="product-review">
-          <h1>REVIEW</h1>
-          <div className="review-con">
-            <div className="add-review" onClick={() => setShowForm(!showForm)}>
-              <span>{!showForm ? "+" : "-"}</span>
-              <span>{!showForm ? "Add Review" : "Close form"}</span>
-            </div>
-
-            {/* REVIEW FORM */}
-            {showForm && (
-              <div className="review-form-con">
-                {" "}
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* PRODUCT PRICE */}
-                  <label>User Name</label>
-                  <input
-                    type="text"
-                    placeholder="eg. John Doe"
-                    {...register("username", { required: true })}
-                  />
-                  {errors.username && (
-                    <span
-                      className="errror-msg"
-                      style={{
-                        fontSize: "12px",
-                        fontStyle: "italic",
-                        color: "red",
-                      }}
-                    >
-                      Kindly Enter Your Name
-                    </span>
-                  )}
-                  {/* USER EMAAIL*/}
-                  <label>User Email</label>
-                  <input
-                    type="email"
-                    placeholder="Enter Product Price"
-                    {...register("useremail", { required: true })}
-                  />
-                  {errors.useremail && (
-                    <span
-                      className="errror-msg"
-                      style={{
-                        fontSize: "12px",
-                        fontStyle: "italic",
-                        color: "red",
-                      }}
-                    >
-                      Kindly Enter Your Email
-                    </span>
-                  )}
-                  {/* PRODUCT NUMBER */}
-                  <label>Your Review</label>
-                  <textarea
-                    type="text"
-                    placeholder="Enter Product Specs"
-                    {...register("yourreview", { required: true })}
-                  />
-                  {errors.yourreview && (
-                    <span
-                      className="errror-msg"
-                      style={{
-                        fontSize: "12px",
-                        fontStyle: "italic",
-                        color: "red",
-                      }}
-                    >
-                      Kindly Enter Your Review
-                    </span>
-                  )}
-                  <input type="submit" className="submit-btn" value="SEND" />
-                </form>
-              </div>
-            )}
-
-            <div className="reviews">
-              {displayedReviews.map((comment) => (
-                <div className="quote" key={comment.id}>
-                  <Blockquote cite="time">
-                    <p>{comment.data().username} </p>
-                    <sup>{comment.data().useremail}</sup>
-                    <p className="quote-text">{comment.data().yourreview}</p>
-                  </Blockquote>
-                </div>
-              ))}
-              <div className="see-more">
-                {review.length ? (
-                  <p onClick={() => setShowAll(!showAll)}>
-                    {!showAll || review.length === 1
-                      ? "See more..."
-                      : "Close..."}
-                  </p>
-                ) : (
-                  <p>No Reviews</p>
-                )}
-              </div>
-              <p className="review-count">
-                Total of {review.length}{" "}
-                {review.length > 1 ? "reviews" : "review"}
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* similar products */}
-
-        {similarProducts.length < 1 ? (
-          <Loader />
-        ) : (
-          <>
-            <h3 style={{ marginTop: "50px", color: "#3c91e6" }}>
-              SIMILAR PRODUCTS
-            </h3>{" "}
-            <div className="similar-products">
-              <div className="single-product-con">
-                {similarProducts.map((product) => (
-                  <SimilarProducts
-                    key={product.id}
-                    id={product.id}
-                    productimages={product.data().image}
-                    productname={product.data().productname}
-                    productprice={product.data().productprice}
-                    productoldprice={product.data().productoldprice}
-                    product={product}
-                  />
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 
@@ -351,15 +359,15 @@ function SimilarProducts({
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
-            <img
+            <Image
               src={productimages[0]}
               alt="img"
               className="home-product-img"
               // style={{
               //   width: "100px",
               // }}
-              // fill
-              // sizes="100vw"
+              fill
+              sizes="100vw"
             />
           </div>
         </Link>
