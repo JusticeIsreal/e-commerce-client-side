@@ -334,7 +334,7 @@ function Details({ product }) {
           {/* similar products */}
           <>
             <h3 style={{ marginTop: "100px", color: "#3c91e6" }}>
-              SIMILAR PRODUCTS
+              {similarProducts.length > 0 && "SIMILAR PRODUCTS"}
             </h3>{" "}
             <div className="similar-products">
               <div className="single-product-con">
