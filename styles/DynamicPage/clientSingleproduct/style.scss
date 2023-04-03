@@ -69,9 +69,15 @@ $txt-light-blue: #cfe8ff;
   margin-top: 45px;
 
   .single-product {
-    // border: 2px solid rgb(0, 26, 255);
     width: 100%;
     @include flexDisplay(space-between, center, column);
+
+    @include responsive(bigphone) {
+      // border: 2px solid red;
+      padding: 5px 0 0 10px;
+      margin-top: 100px;
+      @include flexDisplay(center, center, row);
+    }
 
     .big-display-con {
       width: 100vw;
@@ -79,9 +85,13 @@ $txt-light-blue: #cfe8ff;
       padding: 10px;
       @include responsive(phone) {
         position: relative;
-        // height: 550px;
       }
-
+      @include responsive(bigphone) {
+        // border: 2px solid red;
+        width: 550px;
+        height: 750px;
+        order: 2;
+      }
       .go-back {
         position: absolute;
         z-index: 20;
@@ -96,8 +106,10 @@ $txt-light-blue: #cfe8ff;
         text-align: center;
         border-radius: 10px;
         font-size: 18px;
-        // right: 0;
-        // border: 2px solid red;
+
+        @include responsive(bigphone) {
+          top: 110px;
+        }
       }
       .big-display-img {
         // border: 2px solid red;
@@ -105,6 +117,12 @@ $txt-light-blue: #cfe8ff;
         position: relative;
         width: 100%;
         height: 100%;
+
+        @include responsive(bigphone) {
+          // border: 2px solid red;
+          width: 100%;
+          margin: 0 auto;
+        }
 
         .img {
           //   border: 2px solid red;
@@ -120,6 +138,13 @@ $txt-light-blue: #cfe8ff;
       height: 100px;
       position: relative;
 
+      @include responsive(bigphone) {
+        @include flexDisplay(center, center, column);
+        width: 150px;
+        height: 600px;
+        // border: 2px solid red;
+      }
+
       .small-display-img {
         border: 1px solid gray;
         border-radius: 2px;
@@ -131,6 +156,11 @@ $txt-light-blue: #cfe8ff;
         @include responsive(phone) {
           width: 22%;
           height: 100%;
+        }
+        @include responsive(bigphone) {
+          @include flexDisplay(center, center, column);
+          width: 100%;
+          height: 22%;
         }
 
         &:hover {
@@ -160,29 +190,47 @@ $txt-light-blue: #cfe8ff;
     color: $bg-dark;
     @include flexDisplay(space-between, flex-start, column);
 
+    h1 {
+      @include responsive(bigphone) {
+        font-size: 50px;
+      }
+    }
     .p-number,
     .p-desc {
       width: 100%;
       font-size: 15px;
       line-height: 1.5;
       color: $font-light;
-      font-style: italic;
+      // font-style: italic;
       margin-top: 10px;
+      // border: 1px solid red;
+
+      @include responsive(bigphone) {
+        font-size: 21px;
+        // border: 1px solid red;
+      }
       span {
         font-weight: bolder;
         font-size: 16px;
+
+        @include responsive(bigphone) {
+          font-size: 25px;
+          // border: 1px solid red;
+        }
       }
     }
     .p-number {
       font-style: normal;
       margin-top: 10px;
+      // border: 1px solid red;
     }
     .product-qty-price-con {
       @include flexDisplay(space-between, center, row);
       width: 100%;
       margin-top: 20px;
       flex-wrap: wrap;
-      //   border: 2px solid red;
+
+      // border: 2px solid red;
 
       .qty-con {
         border: 1px solid #8080802b;
@@ -200,6 +248,10 @@ $txt-light-blue: #cfe8ff;
         background: #8080802b;
         overflow-y: scroll;
 
+        @include responsive(bigphone) {
+          height: 67px;
+          width: 300px;
+        }
         span {
           font-weight: bolder;
           // border: 2px solid red;
@@ -209,6 +261,9 @@ $txt-light-blue: #cfe8ff;
           color: $font-light;
           @include flexDisplay(center, center, row);
 
+          @include responsive(bigphone) {
+            font-size: 50px;
+          }
           &:hover {
             background: gray;
           }
@@ -221,11 +276,14 @@ $txt-light-blue: #cfe8ff;
       h1 {
         margin-right: auto;
         color: $bg-dark;
-        // border: 2px solid red;
+
+        @include responsive(bigphone) {
+          font-size: 55px;
+        }
       }
     }
     .add-to-cart-con {
-      //   border: 2px solid red;
+      // border: 2px solid red;
       @include flexDisplay(space-between, center, row);
       width: 100%;
       //   max-width: 370px;
@@ -239,7 +297,7 @@ $txt-light-blue: #cfe8ff;
         width: 100%;
         text-align: center;
         margin: 2px;
-        padding: 13px 5px;
+        padding: 23px 5px;
         font-size: 18px;
         font-weight: bolder;
         background: $txt-blue;
@@ -247,6 +305,10 @@ $txt-light-blue: #cfe8ff;
 
         &:hover {
           background: #215586;
+        }
+
+        @include responsive(bigphone) {
+          font-size: 28px;
         }
       }
 
@@ -265,32 +327,39 @@ $txt-light-blue: #cfe8ff;
       width: 100%;
       margin-top: 100px;
 
+      @include responsive(bigphone) {
+        margin-top: 150px;
+      }
+
       h1 {
         color: $txt-blue;
       }
 
       .review-con {
         position: relative;
-        // border-top: 1px solid #8080803f;
+        border-top: 1px solid #80808000;
         // overflow-y: scroll;
         .add-review {
           position: absolute;
           padding: 3px 5px;
           right: 0;
-          top: -35px;
+          top: -45px;
           font-size: 15px;
           text-align: center;
           color: $txt-blue;
           z-index: 4;
-
-          //   border: 2px solid red;
           align-content: center;
           cursor: pointer;
+
           span {
             font-size: 15px;
             text-align: center;
             color: $txt-blue;
             padding: 0px 5px 0px 5px;
+
+            @include responsive(bigphone) {
+              font-size: 25px;
+            }
           }
         }
 
@@ -300,8 +369,7 @@ $txt-light-blue: #cfe8ff;
           margin: 0 auto;
           border-radius: 10px;
           margin-top: 10px;
-          // overflow-y: scroll;
-          // height: 300px;
+
           .review-count {
             font-size: 11px;
             font-style: italic;
@@ -316,6 +384,10 @@ $txt-light-blue: #cfe8ff;
               font-size: 15px;
               font-weight: bold;
               padding: 0;
+
+              @include responsive(bigphone) {
+                font-size: 20px;
+              }
             }
             sup {
               font-size: 12px;
@@ -330,6 +402,10 @@ $txt-light-blue: #cfe8ff;
               font-weight: normal;
               font-style: italic;
               color: $font-light;
+
+              @include responsive(bigphone) {
+                font-size: 20px;
+              }
             }
           }
 
@@ -414,6 +490,7 @@ $txt-light-blue: #cfe8ff;
 
       .single-product-con {
         display: flex;
+
         // border: 2px solid red;
       }
       .products {
@@ -432,8 +509,7 @@ $txt-light-blue: #cfe8ff;
         // height: 350px;
 
         @include responsive(bigphone) {
-          width: 30%;
-          max-width: 200px;
+          width: 200px;
         }
         @include responsive(tablet) {
           width: 20%;
