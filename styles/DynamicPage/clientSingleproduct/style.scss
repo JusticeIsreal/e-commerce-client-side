@@ -150,6 +150,9 @@ $txt-light-blue: #cfe8ff;
     // border: 2px solid red;
     margin-top: 30px;
     padding: 5px;
+    width: 100vw;
+    overflow: hidden;
+    color: $bg-dark;
     @include flexDisplay(space-between, flex-start, column);
 
     .p-number,
@@ -181,15 +184,16 @@ $txt-light-blue: #cfe8ff;
         border-radius: 20px;
         @include flexDisplay(space-around, center, row);
         padding: 5px;
-        height: 50px;
+        height: 47px;
         width: 50%;
+
         margin-right: 20px;
         font-size: 25px;
         // background: $font-light;
         // color: white;
         // background: $txt-blue;
         background: #8080802b;
-        overflow: scroll;
+        overflow-y: scroll;
 
         span {
           font-weight: bolder;
@@ -197,6 +201,7 @@ $txt-light-blue: #cfe8ff;
           border-radius: 20px;
           width: 80px;
           height: 100%;
+          color: $font-light;
           @include flexDisplay(center, center, row);
 
           &:hover {
@@ -205,10 +210,12 @@ $txt-light-blue: #cfe8ff;
         }
         h3 {
           font-size: 30px;
+          color: $bg-dark;
         }
       }
       h1 {
         margin-right: auto;
+        color: $bg-dark;
         // border: 2px solid red;
       }
     }
@@ -227,7 +234,7 @@ $txt-light-blue: #cfe8ff;
         width: 100%;
         text-align: center;
         margin: 2px;
-        padding: 15px 5px;
+        padding: 13px 5px;
         font-size: 18px;
         font-weight: bolder;
         background: $txt-blue;
@@ -259,7 +266,7 @@ $txt-light-blue: #cfe8ff;
 
       .review-con {
         position: relative;
-        border-top: 1px solid #8080803f;
+        // border-top: 1px solid #8080803f;
         // overflow-y: scroll;
         .add-review {
           position: absolute;
@@ -275,9 +282,7 @@ $txt-light-blue: #cfe8ff;
           align-content: center;
           cursor: pointer;
           span {
-            font-size: 20px;
-          }
-          a {
+            font-size: 15px;
             text-align: center;
             color: $txt-blue;
             padding: 0px 5px 0px 5px;
@@ -286,17 +291,107 @@ $txt-light-blue: #cfe8ff;
 
         .reviews {
           border: 1px solid #8080802b;
-          width: 95%;
+          width: 100%;
           margin: 0 auto;
           border-radius: 10px;
           margin-top: 10px;
           // overflow-y: scroll;
           // height: 300px;
-
+          .review-count {
+            font-size: 11px;
+            font-style: italic;
+            color: $font-light;
+            padding: 3px;
+            // border: 2px solid red;
+          }
           .quote {
-            .quote-text {
+            p {
+              text-transform: capitalize;
+              // border: 2px solid red;
               font-size: 15px;
+              font-weight: bold;
+              padding: 0;
+            }
+            sup {
+              font-size: 12px;
+              font-weight: normal;
+              font-style: italic;
               color: $font-light;
+              // border: 2px solid red;
+            }
+            .quote-text {
+              text-transform: none;
+              font-size: 15px;
+              font-weight: normal;
+              font-style: italic;
+              color: $font-light;
+            }
+          }
+
+          .see-more {
+            // border: 2px solid red;
+            height: 30px;
+            @include flexDisplay(space-between, center, row);
+
+            p {
+              cursor: pointer;
+              // border: 2px solid red;
+              margin: 0 auto;
+              color: $txt-blue;
+            }
+          }
+        }
+
+        .review-form-con {
+          // border: 2px solid red;
+          padding: 10px 0;
+          overflow: hidden;
+          animation: reviewform 0.3s linear;
+
+          @keyframes reviewform {
+            0% {
+              padding: 0;
+              height: 0;
+            }
+            100% {
+              padding: 10px 0;
+              height: 300px;
+            }
+          }
+          form {
+            width: 95%;
+            margin: 0 auto;
+            // border: 2px solid red;
+            @include flexDisplay(space-between, flex-start, column);
+
+            label {
+              font-size: 15px;
+              text-align: center;
+              color: $txt-blue;
+              // margin-top: 10px;
+            }
+            input {
+              padding: 0 5px;
+              margin-bottom: 20px;
+              width: 100%;
+              height: 40px;
+              outline: none;
+              color: $txt-blue;
+              border: 1px solid $txt-blue;
+            }
+            textarea {
+              margin-bottom: 20px;
+              padding: 0 5px;
+              width: 100%;
+              height: 70px;
+              outline: none;
+              color: $txt-blue;
+              border: 1px solid $txt-blue;
+            }
+
+            .submit-btn {
+              background: $txt-blue;
+              color: white;
             }
           }
         }
@@ -305,23 +400,29 @@ $txt-light-blue: #cfe8ff;
 
     // similar brands
     .similar-products {
-      border: 2px solid red;
+      // border: 2px solid red;
       @include flexDisplay(flex-start, flex-start, row);
       overflow: scroll;
-      margin-top: 10px;
+      // margin-top: 10px;
       width: 100%;
       padding: 10px 0;
+
+      .single-product-con {
+        display: flex;
+        // border: 2px solid red;
+      }
       .products {
         @include flexDisplay(space-evenly, center, column);
-        width: 250px;
+        // width: 250px;
         padding: 5px;
-        margin: 10px 5px;
+        margin: 5px;
         border-radius: 5px;
         background: white;
         overflow: hidden;
+
         // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border: 1px solid rgba(128, 128, 128, 0.261);
-        border: 2px solid red;
+        // border: 2px solid red;
         // flex-wrap: wrap;
         // height: 300px;
 

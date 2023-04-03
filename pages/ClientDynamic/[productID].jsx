@@ -1,4 +1,5 @@
 import Loader from "../../Components/Loader";
+import Footer from "../../Components/Footer";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -11,6 +12,8 @@ import {
   orderBy,
   where,
   onSnapshot,
+  serverTimestamp,
+  addDoc,
 } from "firebase/firestore";
 import { db } from "../../Firebase";
 import Image from "next/image";
@@ -19,6 +22,7 @@ import { Blockquote } from "@mantine/core";
 // ICONS
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { TiArrowBack } from "react-icons/ti";
+import { useForm } from "react-hook-form";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -76,14 +80,59 @@ function Details({ product }) {
       (snapshot) => {
         setSimilarProducts(
           snapshot.docs.filter(
-            (item) => item.category !== `${product.productcategory}`
+            (item) =>
+              item.data().productdescription !== `${product.productdescription}`
           )
         );
       }
     );
-  }, [db]);
-  console.log(similarProducts);
-  // console.log(product.productcategory);
+  }, [db, product.productcategory, product.productname]);
+
+  // useform config
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  // submit review
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
+    // console.log(product);
+
+    // post coment func
+    await addDoc(collection(db, "products", productID, "review"), {
+      ...data,
+      timestamp: serverTimestamp(),
+    });
+
+    reset();
+  };
+  // fetch comment rom firebase
+  const [review, setReview] = useState([]);
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, "products", productID, "review"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setReview(snapshot.docs)
+      ),
+    [db, productID]
+  );
+
+  // toggle review form
+  const [showForm, setShowForm] = useState(false);
+  // toggle review view
+  const [showAll, setShowAll] = useState(false);
+  const maxComments = 1;
+
+  const displayedReviews = showAll ? review : review.slice(0, maxComments);
+
   return (
     <div className="client-single-product">
       <div className="single-product">
@@ -124,7 +173,6 @@ function Details({ product }) {
       <div className="single-product-details">
         <h1 className="p-name">{product.productname}</h1>
         <p className="p-number">
-          {" "}
           <span>Product spec :</span> {product.productnumber}
         </p>
         <p className="p-desc">
@@ -151,48 +199,103 @@ function Details({ product }) {
         <div className="product-review">
           <h1>REVIEW</h1>
           <div className="review-con">
-            <div className="add-review">
-              <span>+</span>
-              <a href="">Add Review</a>
+            <div className="add-review" onClick={() => setShowForm(!showForm)}>
+              <span>{!showForm ? "+" : "-"}</span>
+              <span>{!showForm ? "Add Review" : "Close form"}</span>
             </div>
 
+            {/* REVIEW FORM */}
+            {showForm && (
+              <div className="review-form-con">
+                {" "}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  {/* PRODUCT PRICE */}
+                  <label>User Name</label>
+                  <input
+                    type="text"
+                    placeholder="eg. John Doe"
+                    {...register("username", { required: true })}
+                  />
+                  {errors.username && (
+                    <span
+                      className="errror-msg"
+                      style={{
+                        fontSize: "12px",
+                        fontStyle: "italic",
+                        color: "red",
+                      }}
+                    >
+                      Kindly Enter Your Name
+                    </span>
+                  )}
+                  {/* USER EMAAIL*/}
+                  <label>User Email</label>
+                  <input
+                    type="email"
+                    placeholder="Enter Product Price"
+                    {...register("useremail", { required: true })}
+                  />
+                  {errors.useremail && (
+                    <span
+                      className="errror-msg"
+                      style={{
+                        fontSize: "12px",
+                        fontStyle: "italic",
+                        color: "red",
+                      }}
+                    >
+                      Kindly Enter Your Email
+                    </span>
+                  )}
+                  {/* PRODUCT NUMBER */}
+                  <label>Your Review</label>
+                  <textarea
+                    type="text"
+                    placeholder="Enter Product Specs"
+                    {...register("yourreview", { required: true })}
+                  />
+                  {errors.yourreview && (
+                    <span
+                      className="errror-msg"
+                      style={{
+                        fontSize: "12px",
+                        fontStyle: "italic",
+                        color: "red",
+                      }}
+                    >
+                      Kindly Enter Your Review
+                    </span>
+                  )}
+                  <input type="submit" className="submit-btn" value="SEND" />
+                </form>
+              </div>
+            )}
+
             <div className="reviews">
-              <div className="quote">
-                <Blockquote cite="Date/time">
-                  <p>user name</p>
-                  <p className="quote-text">
-                    this is the best place to get all you fashion out fit, they
-                    delivered in 2 days , no story
+              {displayedReviews.map((comment) => (
+                <div className="quote" key={comment.id}>
+                  <Blockquote cite="time">
+                    <p>{comment.data().username} </p>
+                    <sup>{comment.data().useremail}</sup>
+                    <p className="quote-text">{comment.data().yourreview}</p>
+                  </Blockquote>
+                </div>
+              ))}
+              <div className="see-more">
+                {review.length ? (
+                  <p onClick={() => setShowAll(!showAll)}>
+                    {!showAll || review.length === 1
+                      ? "See more..."
+                      : "Close..."}
                   </p>
-                </Blockquote>
+                ) : (
+                  <p>No Reviews</p>
+                )}
               </div>
-              <div className="quote">
-                <Blockquote cite="Date/time">
-                  <p className="user-name">user name</p>
-                  <p className="quote-text">
-                    this is the best place to get all you fashion out fit, they
-                    delivered in 2 days , no story
-                  </p>
-                </Blockquote>
-              </div>
-              <div className="quote">
-                <Blockquote cite="Date/time">
-                  <p className="user-name">user name</p>
-                  <p className="quote-text">
-                    this is the best place to get all you fashion out fit, they
-                    delivered in 2 days , no story
-                  </p>
-                </Blockquote>
-              </div>
-              <div className="quote">
-                <Blockquote cite="Date/time">
-                  <p className="user-name">user name</p>
-                  <p className="quote-text">
-                    this is the best place to get all you fashion out fit, they
-                    delivered in 2 days , no story
-                  </p>
-                </Blockquote>
-              </div>
+              <p className="review-count">
+                Total of {review.length}{" "}
+                {review.length > 1 ? "reviews" : "review"}
+              </p>
             </div>
           </div>
         </div>
@@ -201,20 +304,29 @@ function Details({ product }) {
         {similarProducts.length < 1 ? (
           <Loader />
         ) : (
-          <div className="similar-products">
-            {similarProducts.map((product) => (
-              <SimilarProducts
-                key={product.id}
-                id={product.id}
-                productimages={product.data().image}
-                productname={product.data().productname}
-                productprice={product.data().productprice}
-                productoldprice={product.data().productoldprice}
-              />
-            ))}
-          </div>
+          <>
+            <h3 style={{ marginTop: "50px", color: "#3c91e6" }}>
+              SIMILAR PRODUCTS
+            </h3>{" "}
+            <div className="similar-products">
+              <div className="single-product-con">
+                {similarProducts.map((product) => (
+                  <SimilarProducts
+                    key={product.id}
+                    id={product.id}
+                    productimages={product.data().image}
+                    productname={product.data().productname}
+                    productprice={product.data().productprice}
+                    productoldprice={product.data().productoldprice}
+                    product={product}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
@@ -222,12 +334,14 @@ function Details({ product }) {
 export default Details;
 
 function SimilarProducts({
+  product,
   id,
   productimages,
   productname,
   productprice,
   productoldprice,
 }) {
+  console.log(product);
   return (
     <div className="products">
       <div className="product-img">
