@@ -97,6 +97,9 @@ $txt-light-blue: #cfe8ff;
         width: 50%;
         max-width: 650px;
       }
+      @include responsive(desktop) {
+        @include flexDisplay(flex-start, center, column);
+      }
       .big-display-con {
         width: 100vw;
         height: 500px;
@@ -117,6 +120,7 @@ $txt-light-blue: #cfe8ff;
           height: 450px;
         }
         @include responsive(desktop) {
+          margin-top: 0;
           width: 100%;
           height: 680px;
         }
@@ -177,6 +181,13 @@ $txt-light-blue: #cfe8ff;
           width: 100px;
           height: 400px;
         }
+        @include responsive(desktop) {
+          order: 2;
+          width: 100%;
+          height: 100px;
+          @include flexDisplay(flex-start, center, row);
+        }
+
         .small-display-img {
           border: 1px solid gray;
           border-radius: 2px;
@@ -193,6 +204,11 @@ $txt-light-blue: #cfe8ff;
             @include flexDisplay(center, center, column);
             width: 100%;
             height: 22%;
+          }
+          @include responsive(desktop) {
+            // @include flexDisplay(center, center, column);
+            width: 100px;
+            height: 100px;
           }
 
           &:hover {
