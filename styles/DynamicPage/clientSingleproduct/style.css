@@ -565,6 +565,10 @@
 .client-single-product .single-product-details .product-review .review-con .review-form-con form .submit-btn {
   background: #3c91e6;
   color: white;
+  cursor: pointer;
+}
+.client-single-product .single-product-details .product-review .review-con .review-form-con form .submit-btn:hover {
+  background: #19426b;
 }
 .client-single-product .single-product-details .similar-products {
   display: flex;

@@ -182,10 +182,28 @@ function Details({ product }) {
             <p className="p-number">
               <span>Product spec :</span> {product.productnumber}
             </p>
+            <div>
+              <p className="p-desc">
+                <span>Product category :</span> {product.productcategory}
+              </p>
+              <p className="p-desc">
+                <span>Product promo :</span>
+                {product.productoldprice
+                  ? " YES :" +
+                    " " +
+                    "(old price" +
+                    " " +
+                    "~" +
+                    " " +
+                    `${Number(product.productoldprice).toLocaleString()})`
+                  : "NO"}
+              </p>
+            </div>
             <p className="p-desc">
               <span>Product description :</span> <br />{" "}
               {product.productdescription}
             </p>
+
             <div className="product-qty-price-con">
               <div className="qty-con">
                 <span>

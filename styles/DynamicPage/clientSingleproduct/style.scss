@@ -562,6 +562,11 @@ $txt-light-blue: #cfe8ff;
             .submit-btn {
               background: $txt-blue;
               color: white;
+              cursor: pointer;
+
+              &:hover {
+                background: #19426b;
+              }
             }
           }
         }
