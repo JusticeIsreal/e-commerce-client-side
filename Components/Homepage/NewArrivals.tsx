@@ -96,7 +96,7 @@ function TrendingProducts({
         </div>
       </Link>
 
-      <p>{productname}</p>
+      <p className="pname">{productname}</p>
     </div>
   );
 }

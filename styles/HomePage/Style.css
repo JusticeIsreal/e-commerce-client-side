@@ -507,7 +507,7 @@
   z-index: 20;
   height: 45px;
   border-bottom-right-radius: 15px;
-  top: -5px;
+  top: 0px;
   left: 0px;
   background: #3c91e6;
   color: white;
@@ -524,7 +524,7 @@
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products:hover img {
   transform: scale(1.3);
 }
-.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case p {
+.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .pname {
   text-align: center;
   font-size: 15px;
   line-height: 1.5;

@@ -518,7 +518,7 @@ $txt-light-blue: #cfe8ff;
             z-index: 20;
             height: 45px;
             border-bottom-right-radius: 15px;
-            top: -5px;
+            top: 0px;
             left: 0px;
             background: $txt-blue;
             color: white;
@@ -539,7 +539,7 @@ $txt-light-blue: #cfe8ff;
             }
           }
         }
-        p {
+        .pname {
           text-align: center;
           font-size: 15px;
           line-height: 1.5;
