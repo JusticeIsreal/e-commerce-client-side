@@ -477,6 +477,13 @@ $txt-light-blue: #cfe8ff;
             // border: 2px solid red;
           }
           .quote {
+            .chatit {
+              background:#80808013;
+              margin: 5px;
+              width: auto;
+              border-radius: 10px;
+            }
+
             p {
               text-transform: capitalize;
               // border: 2px solid red;
@@ -504,6 +511,15 @@ $txt-light-blue: #cfe8ff;
 
               @include responsive(bigphone) {
                 font-size: 20px;
+              }
+            }
+
+            .time-posted {
+              font-size: 12px;
+              font-style: italic;
+
+              @include responsive(bigphone) {
+                font-size: 15px;
               }
             }
           }

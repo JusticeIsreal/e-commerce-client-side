@@ -1,6 +1,7 @@
 import Loader from "../../Components/Loader";
 import Topbar from "../../Components/Topbar";
 import Footer from "../../Components/Footer";
+import Moment from "react-moment";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -364,10 +365,13 @@ function Details({ product }) {
               <div className="reviews">
                 {displayedReviews.map((comment) => (
                   <div className="quote" key={comment.id}>
-                    <Blockquote cite="time">
+                    <Blockquote cite="" className="chatit">
                       <p>{comment.data().username} </p>
                       <sup>{comment.data().useremail}</sup>
                       <p className="quote-text">{comment.data().yourreview}</p>
+                      <Moment fromNow className="time-posted">
+                        {comment.data().timestamp?.toDate()}
+                      </Moment>
                     </Blockquote>
                   </div>
                 ))}

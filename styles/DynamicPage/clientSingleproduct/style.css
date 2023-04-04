@@ -483,6 +483,12 @@
   color: #666;
   padding: 3px;
 }
+.client-single-product .single-product-details .product-review .review-con .reviews .quote .chatit {
+  background: rgba(128, 128, 128, 0.0745098039);
+  margin: 5px;
+  width: auto;
+  border-radius: 10px;
+}
 .client-single-product .single-product-details .product-review .review-con .reviews .quote p {
   text-transform: capitalize;
   font-size: 15px;
@@ -510,6 +516,15 @@
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product-details .product-review .review-con .reviews .quote .quote-text {
     font-size: 20px;
+  }
+}
+.client-single-product .single-product-details .product-review .review-con .reviews .quote .time-posted {
+  font-size: 12px;
+  font-style: italic;
+}
+@media only screen and (min-width: 768px) {
+  .client-single-product .single-product-details .product-review .review-con .reviews .quote .time-posted {
+    font-size: 15px;
   }
 }
 .client-single-product .single-product-details .product-review .review-con .reviews .see-more {
