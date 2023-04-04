@@ -3,28 +3,66 @@ import Link from "next/link";
 
 // ICONS
 import { BsSearch } from "react-icons/bs";
-function Products({ displayedProducts }: { displayedProducts: any[] }) {
+import { FC, useEffect, useState } from "react";
+
+interface ProductsProps {
+  displayedProducts: any[];
+}
+const Products: FC<ProductsProps> = ({ displayedProducts }) => {
+  // filter products by category
+  const dynamicBtn = [
+    "All",
+    ...new Set(
+      displayedProducts.map((category) => category.data().productcategory)
+    ),
+  ];
+
+  // state for category
+  const [category, setCategory] = useState("All");
+
+  // state for products
+  const [products, setProducts] = useState(displayedProducts);
+
+  // filter products based on category
+  useEffect(() => {
+    if (category === "All") {
+      setProducts(displayedProducts);
+    } else {
+      setProducts(
+        displayedProducts.filter(
+          (item) => item.data().productcategory === category
+        )
+      );
+    }
+  }, [category, displayedProducts]);
+
+  // search by input value
+  const [search, setSearch] = useState(" ");
   return (
     <div className="product-page-con">
       {/* CATEGORY FILTER */}
 
       <form>
         <BsSearch />
-        <input type="text" placeholder="Search by name" />
+        <input
+          type="text"
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search ..."
+        />
       </form>
       <div className="category-con">
-        <a href="" className="category">
-          All
-        </a>
-        <a href="" className="category">
-          Category
-        </a>
-        <a href="" className="category">
-          Category
-        </a>
-        <a href="" className="category">
-          Category
-        </a>
+        {dynamicBtn.map((btn, index) => (
+          <button
+            key={index}
+            // className="category"
+            className={`${
+              btn === category ? "category active-category" : "category"
+            }`}
+            onClick={() => setCategory(btn)}
+          >
+            {btn}
+          </button>
+        ))}
       </div>
 
       {/* PRODUCTS */}
@@ -32,23 +70,36 @@ function Products({ displayedProducts }: { displayedProducts: any[] }) {
       {/* PRODUCTS ARRAY */}
 
       <div className="product">
-        {displayedProducts.map((product) => (
-          <SingleProduct
-            key={product.id}
-            id={product.id}
-            productcategory={product.data().productcategory}
-            // productclass={product.data().productclass}
-            productdescription={product.data().productdescription}
-            productimages={product.data().image}
-            productname={product.data().productname}
-            productprice={product.data().productprice}
-            productoldprice={product.data().productoldprice}
-          />
-        ))}
+        {products
+          .filter((item) => {
+            if (item.data().productname === "") {
+              return item;
+            } else if (
+              item
+                .data()
+                .productname.toLowerCase()
+                .includes(search.toLowerCase())
+            ) {
+              return item;
+            }
+          })
+          .map((product) => (
+            <SingleProduct
+              key={product.id}
+              id={product.id}
+              productcategory={product.data().productcategory}
+              // productclass={product.data().productclass}
+              productdescription={product.data().productdescription}
+              productimages={product.data().image}
+              productname={product.data().productname}
+              productprice={product.data().productprice}
+              productoldprice={product.data().productoldprice}
+            />
+          ))}
       </div>
     </div>
   );
-}
+};
 
 export default Products;
 
