@@ -24,7 +24,7 @@ function HomePage() {
         setProducts(snapshot.docs);
       }
     );
-  }, [db]);
+  }, []);
   return (
     <div className="homepage-main-con">
       {/* TOPBAR */}

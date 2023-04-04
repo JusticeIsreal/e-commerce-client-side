@@ -21,7 +21,6 @@ function ProductsPage() {
     );
   }, [db]);
 
-
   return (
     <div className="product-page-main-con">
       {/* TOPBAR */}

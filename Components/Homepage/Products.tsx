@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 function Products({ products }: { products: any[] }) {
   return (
     <div className="product-session-con">
