@@ -60,7 +60,7 @@ function Details({ product }) {
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
     setDisimg(index);
-    console.log(disimg);
+    // console.log(disimg);
     // console.log(pic.current.classList);
   };
 
@@ -135,6 +135,38 @@ function Details({ product }) {
 
   const displayedReviews = showAll ? review : review.slice(0, maxComments);
 
+  // maths
+  const [priceNumber, setPriceNumber] = useState(
+    parseFloat(product.productprice)
+  );
+
+  // qty
+  const [count, setCount] = useState(1);
+
+  const addProductQTY = () => {
+    const total = parseFloat(product.productprice) * count;
+    setPriceNumber(total);
+  };
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+  useEffect(() => {
+    addProductQTY();
+    // setPriceNumber(parseFloat(product.productprice));
+  }, [count]);
+
+  // REST PRICE AND QTY WHEN ROUTED TO NEW PRODUCT
+  const originalPrice = parseFloat(product.productprice);
+  const resetPrice = async () => {
+    setCount(1);
+    setPriceNumber(originalPrice);
+  };
+
+  useEffect(() => {
+    resetPrice();
+  }, [originalPrice]);
+
   return (
     <>
       <Topbar />
@@ -196,25 +228,29 @@ function Details({ product }) {
                     "~" +
                     " " +
                     `${Number(product.productoldprice).toLocaleString()})`
-                  : "NO"}
+                  : " NO"}
               </p>
             </div>
             <p className="p-desc">
-              <span>Product description :</span> <br />{" "}
+              <span>Product description : </span>
               {product.productdescription}
             </p>
 
             <div className="product-qty-price-con">
               <div className="qty-con">
-                <span>
-                  <FiMinusCircle />
-                </span>
-                <h3>1</h3>
-                <span>
+                {count < 1 ? (
+                  ""
+                ) : (
+                  <span onClick={() => setCount(count - 1)}>
+                    <FiMinusCircle />
+                  </span>
+                )}
+                <h3>{count}</h3>
+                <span onClick={() => handleIncrement()}>
                   <FiPlusCircle />
                 </span>
               </div>
-              <h1>₦ {Number(product.productprice).toLocaleString()}</h1>
+              <h1>₦ {priceNumber.toLocaleString()}</h1>
             </div>
             <div className="add-to-cart-con">
               <div className="add">Add to cart</div>
@@ -346,7 +382,7 @@ function Details({ product }) {
                     productname={product.data().productname}
                     productprice={product.data().productprice}
                     productoldprice={product.data().productoldprice}
-                    product={product}
+                    resetPrice={resetPrice}
                   />
                 ))}
               </div>
@@ -362,14 +398,13 @@ function Details({ product }) {
 export default Details;
 
 function SimilarProducts({
-  product,
+  resetPrice,
   id,
   productimages,
   productname,
   productprice,
   productoldprice,
 }) {
-  console.log(product);
   return (
     <div className="products">
       <div className="product-img">
@@ -385,6 +420,7 @@ function SimilarProducts({
               className="home-product-img"
               fill
               sizes="100vw"
+              onClick={() => resetPrice()}
             />
           </div>
         </Link>

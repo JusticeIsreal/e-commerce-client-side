@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "downlevelIteration": true
   },
   "include": [
     "next-env.d.ts",
@@ -21,7 +22,8 @@
     "**/*.tsx",
     "Components/Homepage/Banner.tsx",
     "Components/Topbar.tsx",
-    "Components/AdminPageComponents/Sidebar.tsx"
+    "Components/AdminPageComponents/Sidebar.tsx",
+    "pages/ClientDynamic/[productID].jsx"
   ],
   "exclude": ["node_modules"]
 }

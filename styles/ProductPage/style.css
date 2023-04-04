@@ -50,7 +50,7 @@
   height: 30px;
   border: none;
   padding: 0 10px;
-  font-size: 15px;
+  font-size: 20px;
   color: #3c91e6;
   background: whitesmoke;
   margin-left: 8px;
@@ -113,6 +113,10 @@
   box-shadow: -1px -1px 0px rgba(128, 128, 128, 0.478);
   color: #eee;
   background: #3c91e6;
+}
+.product-page-main-con .product-page-con .category-con .active-category {
+  background: #3c91e6;
+  color: white;
 }
 .product-page-main-con .product-page-con .product {
   width: 100vw;
@@ -333,6 +337,6 @@
 }
 @media only screen and (min-width: 768px) {
   .product-page-main-con .product-page-con .product .single-product .product-details .detail .desc {
-    font-size: 20px;
+    font-size: 17px;
   }
 }/*# sourceMappingURL=style.css.map */
