@@ -39,6 +39,8 @@ function NewArrivals() {
               key={product.id}
               id={product.id}
               productname={product.data().productname}
+              productprice={product.data().productprice}
+              productoldprice={product.data().productoldprice}
               productimages={product.data().image}
             />
           ))}
@@ -52,18 +54,36 @@ export default NewArrivals;
 
 function TrendingProducts({
   id,
+  productprice,
+  productoldprice,
   productimages,
   productname,
 }: {
   id: string;
+  productprice: number;
+  productoldprice: number;
   productimages: string;
   productname: string;
 }) {
+  // percentage of peomo
+  const priceDifference =
+    parseFloat(productoldprice.toString()) -
+    parseFloat(productprice.toString());
+
+  const percentageDifference = Math.floor(
+    (priceDifference / parseFloat(productoldprice.toString())) * 100
+  );
   return (
     <div className="new-products-case">
       <Link href={`/ClientDynamic/${id}`}>
         <div className="new-products">
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
+            {productoldprice && (
+              <p className="percentage-off">
+                {percentageDifference}% <br />
+                <span>off</span>
+              </p>
+            )}
             <Image
               src={productimages[0]}
               alt="img"

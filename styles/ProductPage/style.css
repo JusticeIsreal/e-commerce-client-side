@@ -196,6 +196,13 @@
     font-size: 18px;
   }
 }
+.product-page-main-con .product-page-con .product .single-product .p-name {
+  text-transform: lowercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
 .product-page-main-con .product-page-con .product .single-product .product-img {
   border: 1px solid rgba(128, 128, 128, 0.146);
   width: 100%;

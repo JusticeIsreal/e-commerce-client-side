@@ -225,6 +225,13 @@ $txt-light-blue: #cfe8ff;
             font-size: 18px;
           }
         }
+        .p-name {
+          text-transform: lowercase;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          text-transform: capitalize;
+        }
         .product-img {
           border: 1px solid rgba(128, 128, 128, 0.146);
           width: 100%;

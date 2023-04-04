@@ -151,7 +151,7 @@ function SingleProduct({
           </div>
         </div>
       </Link>
-      <h3>{productname}</h3>
+      <h3 className="p-name">{productname}</h3>
       <div className="product-details">
         <div className="price">
           <span className="current-price">

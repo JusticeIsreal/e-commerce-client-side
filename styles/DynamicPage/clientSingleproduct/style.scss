@@ -255,6 +255,9 @@ $txt-light-blue: #cfe8ff;
           font-size: 50px;
         }
       }
+      .p-name {
+        text-transform: capitalize;
+      }
       .p-number,
       .p-desc {
         width: 100%;
@@ -625,6 +628,7 @@ $txt-light-blue: #cfe8ff;
 
         .product-name {
           // border: 2px solid red;
+          text-transform: capitalize;
           // text-align: center;
           font-size: 15px;
           // line-height: 2;

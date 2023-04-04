@@ -502,6 +502,18 @@
     height: 250px;
   }
 }
+.new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products .percentage-off {
+  position: absolute;
+  z-index: 20;
+  height: 45px;
+  border-bottom-right-radius: 15px;
+  top: -5px;
+  left: 0px;
+  background: #3c91e6;
+  color: white;
+  text-align: center;
+  padding: 3px;
+}
 .new-arrivals-main-con .new-arrivals-con .new-products-con .new-products-case .new-products .img {
   height: 100%;
   -o-object-fit: cover;
@@ -518,6 +530,9 @@
   line-height: 1.5;
   color: #666;
   margin: 5px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .product-session-con {
@@ -606,6 +621,10 @@
   font-size: 15px;
   color: #666;
   width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products .product-name {

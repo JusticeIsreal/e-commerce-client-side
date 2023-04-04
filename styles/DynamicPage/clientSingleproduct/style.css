@@ -242,6 +242,9 @@
     font-size: 50px;
   }
 }
+.client-single-product .single-product .lower-details .p-name {
+  text-transform: capitalize;
+}
 .client-single-product .single-product .lower-details .p-number,
 .client-single-product .single-product .lower-details .p-desc {
   width: 100%;
@@ -618,6 +621,7 @@
   }
 }
 .client-single-product .single-product-details .similar-products .products .product-name {
+  text-transform: capitalize;
   font-size: 15px;
   color: #666;
   margin-top: 5px;

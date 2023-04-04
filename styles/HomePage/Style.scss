@@ -513,7 +513,18 @@ $txt-light-blue: #cfe8ff;
           @include responsive(bigphone) {
             height: 250px;
           }
-
+          .percentage-off {
+            position: absolute;
+            z-index: 20;
+            height: 45px;
+            border-bottom-right-radius: 15px;
+            top: -5px;
+            left: 0px;
+            background: $txt-blue;
+            color: white;
+            text-align: center;
+            padding: 3px;
+          }
           .img {
             // border: 2px solid red;
             height: 100%;
@@ -534,6 +545,9 @@ $txt-light-blue: #cfe8ff;
           line-height: 1.5;
           color: $font-light;
           margin: 5px 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
           // font-style: italic;
         }
       }
@@ -618,6 +632,10 @@ $txt-light-blue: #cfe8ff;
           color: $font-light;
           // margin-top: -1px;
           width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          text-transform: capitalize;
           // font-style: italic;
           @include responsive(bigphone) {
             font-size: 15px;
