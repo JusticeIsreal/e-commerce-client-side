@@ -38,6 +38,7 @@ const Products: FC<ProductsProps> = ({ displayedProducts }) => {
 
   // search by input value
   const [search, setSearch] = useState(" ");
+
   return (
     <div className="product-page-con">
       {/* CATEGORY FILTER */}
@@ -120,10 +121,29 @@ function SingleProduct({
   productcategory: string;
   productdescription: string;
 }) {
+  // percentage of peomo
+  const priceDifference =
+    parseFloat(productoldprice) - parseFloat(productprice);
+
+  const percentageDifference = Math.floor(
+    (priceDifference / parseFloat(productoldprice)) * 100
+  );
+  // console.log(
+  //   (parseFloat(priceDifference) / parseFloat(productoldprice)) * 100
+  // );
+
+  console.log(percentageDifference);
+
   return (
     <div className="single-product">
       <Link href={`/ClientDynamic/${id}`}>
         <div className="product-img">
+          {productoldprice && (
+            <p className="percentage-off">
+              {percentageDifference}% <br />
+              <span>off</span>
+            </p>
+          )}
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
             <Image
               src={productimages[0]}

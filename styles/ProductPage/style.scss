@@ -232,7 +232,21 @@ $txt-light-blue: #cfe8ff;
           border-radius: 5px;
           background: whitesmoke;
           overflow: hidden;
+          position: relative;
           @include flexDisplay(space-evenly, center, column);
+
+          .percentage-off {
+            position: absolute;
+            z-index: 20;
+            height: 45px;
+            border-bottom-right-radius: 15px;
+            top: 0;
+            left: 0px;
+            background: $txt-blue;
+            color: white;
+            text-align: center;
+            padding: 3px;
+          }
 
           @include responsive(phone) {
             height: 200px;
