@@ -123,16 +123,12 @@ function SingleProduct({
 }) {
   // percentage of peomo
   const priceDifference =
-    parseFloat(productoldprice) - parseFloat(productprice);
+    parseFloat(productoldprice.toString()) -
+    parseFloat(productprice.toString());
 
   const percentageDifference = Math.floor(
-    (priceDifference / parseFloat(productoldprice)) * 100
+    (priceDifference / parseFloat(productoldprice.toString())) * 100
   );
-  // console.log(
-  //   (parseFloat(priceDifference) / parseFloat(productoldprice)) * 100
-  // );
-
-  console.log(percentageDifference);
 
   return (
     <div className="single-product">

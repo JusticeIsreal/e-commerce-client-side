@@ -46,9 +46,23 @@ function Product({
   productprice: number;
   productoldprice: number;
 }) {
+  // percentage of peomo
+  const priceDifference =
+    parseFloat(productoldprice.toString()) -
+    parseFloat(productprice.toString());
+
+  const percentageDifference = Math.floor(
+    (priceDifference / parseFloat(productoldprice.toString())) * 100
+  );
   return (
     <div className="products">
       <div className="product-img">
+        {productoldprice && (
+          <p className="percentage-off">
+            {percentageDifference}% <br />
+            <span>off</span>
+          </p>
+        )}
         <Link
           href="/ClientDynamic/[productID]"
           as={`/ClientDynamic/${id}`}

@@ -167,6 +167,14 @@ function Details({ product }) {
     resetPrice();
   }, [originalPrice]);
 
+  // percentage of peomo
+  const priceDifference =
+    parseFloat(product.productoldprice.toString()) -
+    parseFloat(product.productprice.toString());
+
+  const percentageDifference = Math.floor(
+    (priceDifference / parseFloat(product.productoldprice.toString())) * 100
+  );
   return (
     <>
       <Topbar />
@@ -179,6 +187,12 @@ function Details({ product }) {
                 <TiArrowBack />
                 Back
               </button>
+              {product.productoldprice && (
+                <p className="percentage-off">
+                  {percentageDifference}% <br />
+                  <span>off</span>
+                </p>
+              )}
               <div className="big-display-img">
                 <Image
                   src={product.image[disimg]}
@@ -234,6 +248,14 @@ function Details({ product }) {
             <p className="p-desc">
               <span>Product description : </span>
               {product.productdescription}
+            </p>
+            <p className="p-desc">
+              <span>Product delivery : </span>
+              maximum delivery period of 7 days within nigeria.
+            </p>
+            <p className="p-desc">
+              <span>Return Policy : </span>
+              Product warrante lasts 48hrs after delievery notice.
             </p>
 
             <div className="product-qty-price-con">
@@ -405,9 +427,23 @@ function SimilarProducts({
   productprice,
   productoldprice,
 }) {
+  // percentage of peomo
+  const priceDifference =
+    parseFloat(productoldprice.toString()) -
+    parseFloat(productprice.toString());
+
+  const percentageDifference = Math.floor(
+    (priceDifference / parseFloat(productoldprice.toString())) * 100
+  );
   return (
     <div className="products">
       <div className="product-img">
+        {productoldprice && (
+          <p className="percentage-off">
+            {percentageDifference}% <br />
+            <span>off</span>
+          </p>
+        )}
         <Link
           href="/ClientDynamic/[productID]"
           as={`/ClientDynamic/${id}`}
