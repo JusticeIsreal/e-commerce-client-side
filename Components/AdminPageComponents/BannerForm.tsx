@@ -136,8 +136,8 @@ function BannerForm() {
 
         {/* BANNER DISCRIPTION */}
         <label>Banner Description</label>
-        <input
-          type="text"
+        <textarea
+          // type="text"
           placeholder="Enter Banner Description"
           {...register("bannerscription", { required: true })}
         />

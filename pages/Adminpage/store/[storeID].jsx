@@ -231,6 +231,7 @@ function StoreID() {
     formState: { errors },
   } = useForm();
 
+  const [formShow, setFormShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(true);
 
@@ -259,7 +260,7 @@ function StoreID() {
     }
 
     reset();
-    // setFormShow(false);
+    setFormShow(false);
     location.reload();
     setLoading(false);
     setSelectedFile1("");
@@ -269,195 +270,200 @@ function StoreID() {
   };
   return (
     <div className="store-item-dynamic-con">
-      <div className="store-item-con">
-        {" "}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* PRODUCT NAME */}
-          <label>Product Name</label>
-          <input
-            type="text"
-            placeholder="Enter Product Name"
-            {...register("productname", { required: true })}
-          />
-          {errors.productname && (
-            <span
-              className="errror-msg"
-              style={{
-                fontSize: "12px",
-                fontStyle: "italic",
-                color: "red",
-              }}
-            >
-              Kindly Enter Product Name
-            </span>
-          )}
-          {/* PRODUCT PRICE */}
-          <label>Product Price</label>
-          <input
-            type="Number"
-            placeholder="Enter Product Price"
-            {...register("productprice", { required: true })}
-          />
-          {errors.productprice && (
-            <span
-              className="errror-msg"
-              style={{
-                fontSize: "12px",
-                fontStyle: "italic",
-                color: "red",
-              }}
-            >
-              Kindly Enter Product Price
-            </span>
-          )}
-          {/* PRODUCT OLD PRICE */}
-          <label>Product Old Price</label>
-          <input
-            type="Number"
-            placeholder="Enter Product Old Price"
-            {...register("productoldprice")}
-          />
-          {/* PRODUCT NUMBER */}
-          <label>Product Specs</label>
-          <input
-            type="text"
-            placeholder="Enter Product Specs"
-            {...register("productnumber", { required: true })}
-          />
-          {errors.productnumber && (
-            <span
-              className="errror-msg"
-              style={{
-                fontSize: "12px",
-                fontStyle: "italic",
-                color: "red",
-              }}
-            >
-              Kindly Enter Product Specs
-            </span>
-          )}
-          {/* PRODUCT CATEGORY */}
-          <label>Product Category</label>
-          <select {...register("productcategory", { required: true })}>
-            <option value="">Select</option>
-            <option value="Shoe">Shoe</option>
-            <option value="Cloth">Cloth</option>
-            <option value="Phone">Phone</option>
-          </select>
-          {errors.productcategory && (
-            <span
-              className="errror-msg"
-              style={{
-                fontSize: "12px",
-                fontStyle: "italic",
-                color: "red",
-              }}
-            >
-              Kindly Enter Product Category
-            </span>
-          )}
-          {/* PRODUCT CLASS */}
-          <label>Product Class</label>
-          <select {...register("productclass")}>
-            <option value="">Select</option>
-            <option value="promo">Promo</option>
-            <option value="trending">Trending</option>
-          </select>
-          {/* PRODUCT DISCRIPTION */}
-          <label>Product Description</label>
-          <input
-            type="text"
-            placeholder="Enter Product Description"
-            {...register("productdescription", { required: true })}
-          />
-          {errors.productdescription && (
-            <span
-              className="errror-msg"
-              style={{
-                fontSize: "12px",
-                fontStyle: "italic",
-                color: "red",
-              }}
-            >
-              Kindly Enter Product Description
-            </span>
-          )}
-          {/* PRODUCT IMAGE*/}
-          <label>Product Image</label>
-          <p style={{ fontSize: "12px", fontStyle: "italic", color: "gray" }}>
-            <span style={{ color: "red" }}>Note:</span> This images uploaded
-            should be
-            <span style={{ fontWeight: "bolder" }}>
-              {" "}
-              Potraite Dimension{" "}
-            </span>{" "}
-            with product item aligned to the center
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
-            {/* IMAGE 1 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef1}
-              onChange={addImageToPost1}
-            />
-            <img
-              src={selectedFile1}
-              onClick={() => setSelectedFile1("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-            {/* IMAGE 2 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef2}
-              onChange={addImageToPost2}
-            />
-            <img
-              src={selectedFile2}
-              onClick={() => setSelectedFile2("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-            {/* IMAGE 3 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef3}
-              onChange={addImageToPost3}
-            />
-            <img
-              src={selectedFile3}
-              onClick={() => setSelectedFile3("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-            {/* IMAGE 4 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef4}
-              onChange={addImageToPost4}
-            />
-            <img
-              src={selectedFile4}
-              onClick={() => setSelectedFile4("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-          </div>
-          <input
-            type="submit"
-            className="submit-btn"
-            value={loading ? "Uploading..." : "Upload Product"}
-          />
-        </form>
+      <div className="edit-product" onClick={() => setFormShow(!formShow)}>
+        <p>{formShow ? "Close Form" : "Edit Product"}</p>
       </div>
+      {formShow && (
+        <div className="store-item-con">
+          {" "}
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* PRODUCT NAME */}
+            <label>Product Name</label>
+            <input
+              type="text"
+              placeholder="Enter Product Name"
+              {...register("productname", { required: true })}
+            />
+            {errors.productname && (
+              <span
+                className="errror-msg"
+                style={{
+                  fontSize: "12px",
+                  fontStyle: "italic",
+                  color: "red",
+                }}
+              >
+                Kindly Enter Product Name
+              </span>
+            )}
+            {/* PRODUCT PRICE */}
+            <label>Product Price</label>
+            <input
+              type="Number"
+              placeholder="Enter Product Price"
+              {...register("productprice", { required: true })}
+            />
+            {errors.productprice && (
+              <span
+                className="errror-msg"
+                style={{
+                  fontSize: "12px",
+                  fontStyle: "italic",
+                  color: "red",
+                }}
+              >
+                Kindly Enter Product Price
+              </span>
+            )}
+            {/* PRODUCT OLD PRICE */}
+            <label>Product Old Price</label>
+            <input
+              type="Number"
+              placeholder="Enter Product Old Price"
+              {...register("productoldprice")}
+            />
+            {/* PRODUCT NUMBER */}
+            <label>Product Specs</label>
+            <input
+              type="text"
+              placeholder="Enter Product Specs"
+              {...register("productnumber", { required: true })}
+            />
+            {errors.productnumber && (
+              <span
+                className="errror-msg"
+                style={{
+                  fontSize: "12px",
+                  fontStyle: "italic",
+                  color: "red",
+                }}
+              >
+                Kindly Enter Product Specs
+              </span>
+            )}
+            {/* PRODUCT CATEGORY */}
+            <label>Product Category</label>
+            <select {...register("productcategory", { required: true })}>
+              <option value="">Select</option>
+              <option value="Shoe">Shoe</option>
+              <option value="Cloth">Cloth</option>
+              <option value="Bag">Bag</option>
+            </select>
+            {errors.productcategory && (
+              <span
+                className="errror-msg"
+                style={{
+                  fontSize: "12px",
+                  fontStyle: "italic",
+                  color: "red",
+                }}
+              >
+                Kindly Enter Product Category
+              </span>
+            )}
+            {/* PRODUCT CLASS */}
+            <label>Product Class</label>
+            <select {...register("productclass")}>
+              <option value="">Select</option>
+              <option value="promo">Promo</option>
+              <option value="trending">Trending</option>
+            </select>
+            {/* PRODUCT DISCRIPTION */}
+            <label>Product Description</label>
+            <textarea
+              placeholder="Enter Product Description"
+              {...register("productdescription", { required: true })}
+            />
+            {errors.productdescription && (
+              <span
+                className="errror-msg"
+                style={{
+                  fontSize: "12px",
+                  fontStyle: "italic",
+                  color: "red",
+                }}
+              >
+                Kindly Enter Product Description
+              </span>
+            )}
+            {/* PRODUCT IMAGE*/}
+            <label>Product Image</label>
+            <p style={{ fontSize: "12px", fontStyle: "italic", color: "gray" }}>
+              <span style={{ color: "red" }}>Note:</span> This images uploaded
+              should be
+              <span style={{ fontWeight: "bolder" }}>
+                {" "}
+                Potraite Dimension{" "}
+              </span>{" "}
+              with product item aligned to the center
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {/* IMAGE 1 */}
+              <input
+                className="file-input"
+                type="file"
+                placeholder="Enter Product Number"
+                ref={filePickerRef1}
+                onChange={addImageToPost1}
+              />
+              <img
+                src={selectedFile1}
+                onClick={() => setSelectedFile1("")}
+                alt="img"
+                style={{ width: "40px", marginBottom: "10px" }}
+              />
+              {/* IMAGE 2 */}
+              <input
+                className="file-input"
+                type="file"
+                placeholder="Enter Product Number"
+                ref={filePickerRef2}
+                onChange={addImageToPost2}
+              />
+              <img
+                src={selectedFile2}
+                onClick={() => setSelectedFile2("")}
+                alt="img"
+                style={{ width: "40px", marginBottom: "10px" }}
+              />
+              {/* IMAGE 3 */}
+              <input
+                className="file-input"
+                type="file"
+                placeholder="Enter Product Number"
+                ref={filePickerRef3}
+                onChange={addImageToPost3}
+              />
+              <img
+                src={selectedFile3}
+                onClick={() => setSelectedFile3("")}
+                alt="img"
+                style={{ width: "40px", marginBottom: "10px" }}
+              />
+              {/* IMAGE 4 */}
+              <input
+                className="file-input"
+                type="file"
+                placeholder="Enter Product Number"
+                ref={filePickerRef4}
+                onChange={addImageToPost4}
+              />
+              <img
+                src={selectedFile4}
+                onClick={() => setSelectedFile4("")}
+                alt="img"
+                style={{ width: "40px", marginBottom: "10px" }}
+              />
+            </div>
+            <input
+              type="submit"
+              className="submit-btn"
+              value={loading ? "Uploading..." : "Upload Product"}
+            />
+          </form>
+        </div>
+      )}
+
       <div className="single-product">
         <div className="top-container">
           {" "}
@@ -466,18 +472,6 @@ function StoreID() {
               <TiArrowBack />
               Back
             </button>
-
-            {/* <div className="big-display-img">
-              <Image
-                src={product.image[0]}
-                alt="img"
-                // fill
-                // sizes="100vw"
-                width={50}
-                height={50}
-                className="img"
-              />
-            </div> */}
           </div>
           <div className="small-display-img-con">
             {product?.image.map(
@@ -487,10 +481,10 @@ function StoreID() {
                     <Image
                       src={img}
                       alt="img"
-                      //   fill
-                      width={50}
-                      height={50}
-                      //   sizes="100vw"
+                      fill
+                      //   width={50}
+                      //   height={50}
+                      sizes="100vw"
                       //   ref={pic}
                       onClick={() => changeIMG(index)}
                     />

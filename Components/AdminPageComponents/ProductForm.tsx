@@ -301,8 +301,8 @@ function ProductForm() {
         </select>
         {/* PRODUCT DISCRIPTION */}
         <label>Product Description</label>
-        <input
-          type="text"
+        <textarea
+          // type="text"
           placeholder="Enter Product Description"
           {...register("productdescription", { required: true })}
         />

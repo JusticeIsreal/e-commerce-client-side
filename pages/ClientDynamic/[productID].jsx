@@ -80,6 +80,7 @@ function Details() {
       // Extract the data from the document and return it
       const itemData = itemDoc.data();
       setProduct(itemData);
+      setDisimg(0);
     } else {
       // Document does not exist
       return null;
@@ -88,7 +89,7 @@ function Details() {
 
   useEffect(() => {
     fetchItemFromFirestore();
-  }, [product]);
+  }, [productID]);
 
   // simillar product
   const [similarProducts, setSimilarProducts] = useState([]);
