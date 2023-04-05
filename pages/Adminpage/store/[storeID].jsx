@@ -250,14 +250,13 @@ function StoreID({ product }) {
     setSelectedFile4("");
   };
   return (
-    <div>
-      <div>
+    <div className="store-item-dynamic-con">
+      <div className="store-item-con">
         {" "}
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* PRODUCT NAME */}
           <label>Product Name</label>
           <input
-            defaultValue={product?.productname}
             type="text"
             placeholder="Enter Product Name"
             {...register("productname", { required: true })}
@@ -277,7 +276,6 @@ function StoreID({ product }) {
           {/* PRODUCT PRICE */}
           <label>Product Price</label>
           <input
-            defaultValue={product?.productprice}
             type="Number"
             placeholder="Enter Product Price"
             {...register("productprice", { required: true })}
@@ -297,7 +295,6 @@ function StoreID({ product }) {
           {/* PRODUCT OLD PRICE */}
           <label>Product Old Price</label>
           <input
-            defaultValue={product?.productoldprice}
             type="Number"
             placeholder="Enter Product Old Price"
             {...register("productoldprice")}
@@ -305,7 +302,6 @@ function StoreID({ product }) {
           {/* PRODUCT NUMBER */}
           <label>Product Specs</label>
           <input
-            defaultValue={product?.productnumber}
             type="text"
             placeholder="Enter Product Specs"
             {...register("productnumber", { required: true })}
@@ -325,9 +321,7 @@ function StoreID({ product }) {
           {/* PRODUCT CATEGORY */}
           <label>Product Category</label>
           <select {...register("productcategory", { required: true })}>
-            <option defaultValue={product?.productcategory}>
-              {product?.productcategory}
-            </option>
+            <option value="">Select</option>
             <option value="Shoe">Shoe</option>
             <option value="Cloth">Cloth</option>
             <option value="Phone">Phone</option>
@@ -347,16 +341,13 @@ function StoreID({ product }) {
           {/* PRODUCT CLASS */}
           <label>Product Class</label>
           <select {...register("productclass")}>
-            <option defaultValue={product?.productclass}>
-              {product?.productclass}
-            </option>
+            <option value="">Select</option>
             <option value="promo">Promo</option>
             <option value="trending">Trending</option>
           </select>
           {/* PRODUCT DISCRIPTION */}
           <label>Product Description</label>
           <input
-            defaultValue={product?.productdescription}
             type="text"
             placeholder="Enter Product Description"
             {...register("productdescription", { required: true })}
@@ -392,20 +383,7 @@ function StoreID({ product }) {
               placeholder="Enter Product Number"
               ref={filePickerRef1}
               onChange={addImageToPost1}
-              {...register("img1", { required: true })}
             />
-            {errors.img1 && (
-              <span
-                className="errror-msg"
-                style={{
-                  fontSize: "12px",
-                  fontStyle: "italic",
-                  color: "red",
-                }}
-              >
-                Kindly Enter product image 1
-              </span>
-            )}
             <img
               src={selectedFile1}
               onClick={() => setSelectedFile1("")}
@@ -419,20 +397,7 @@ function StoreID({ product }) {
               placeholder="Enter Product Number"
               ref={filePickerRef2}
               onChange={addImageToPost2}
-              {...register("img2", { required: true })}
             />
-            {errors.img2 && (
-              <span
-                className="errror-msg"
-                style={{
-                  fontSize: "12px",
-                  fontStyle: "italic",
-                  color: "red",
-                }}
-              >
-                Kindly Enter product image 2
-              </span>
-            )}
             <img
               src={selectedFile2}
               onClick={() => setSelectedFile2("")}
@@ -446,20 +411,7 @@ function StoreID({ product }) {
               placeholder="Enter Product Number"
               ref={filePickerRef3}
               onChange={addImageToPost3}
-              {...register("img3", { required: true })}
             />
-            {errors.img3 && (
-              <span
-                className="errror-msg"
-                style={{
-                  fontSize: "12px",
-                  fontStyle: "italic",
-                  color: "red",
-                }}
-              >
-                Kindly Enter product image 3
-              </span>
-            )}
             <img
               src={selectedFile3}
               onClick={() => setSelectedFile3("")}
@@ -473,20 +425,7 @@ function StoreID({ product }) {
               placeholder="Enter Product Number"
               ref={filePickerRef4}
               onChange={addImageToPost4}
-              {...register("img4", { required: true })}
             />
-            {errors.img4 && (
-              <span
-                className="errror-msg"
-                style={{
-                  fontSize: "12px",
-                  fontStyle: "italic",
-                  color: "red",
-                }}
-              >
-                Kindly Enter product image 4
-              </span>
-            )}
             <img
               src={selectedFile4}
               onClick={() => setSelectedFile4("")}
@@ -509,6 +448,18 @@ function StoreID({ product }) {
               <TiArrowBack />
               Back
             </button>
+
+            {/* <div className="big-display-img">
+              <Image
+                src={product.image[0]}
+                alt="img"
+                // fill
+                // sizes="100vw"
+                width={50}
+                height={50}
+                className="img"
+              />
+            </div> */}
           </div>
           <div className="small-display-img-con">
             {product.image.map(
