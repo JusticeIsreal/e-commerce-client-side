@@ -16,7 +16,15 @@ import axios from "axios";
 // firebase imports
 
 import { addDoc, serverTimestamp } from "firebase/firestore";
+export async function getStaticPaths() {
+  const colRef = collection(db, "products");
+  const snapshot = await getDocs(colRef);
+  const paths = snapshot.docs.map((doc) => ({
+    params: { storeID: doc.id },
+  }));
 
+  return { paths, fallback: "blocking" };
+}
 export const getStaticProps = async ({ params }) => {
   const { storeID } = params;
   const productDoc = doc(db, "products", storeID);
