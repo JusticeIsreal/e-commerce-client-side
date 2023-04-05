@@ -62,56 +62,59 @@ $txt-light-blue: #cfe8ff;
   }
 }
 
-.single-product {
-  // border: 2px solid red;
-  width: 100%;
-  margin-top: 50px;
-  @include flexDisplay(space-between, center, column);
-
-  @include responsive(tablet) {
-    // margin-top: 100px;
-    @include flexDisplay(flex-start, flex-start, row);
-  }
-
-  .top-container {
+.admin-dynamic-product {
+  .single-product {
+    // border: 2px solid red;
     width: 100%;
-    // border: 2px solid rgb(0, 81, 255);
-    // margin-top: 50px;
-
-    @include responsive(bigphone) {
-      padding: 5px 0 0 10px;
-      @include flexDisplay(center, center, row);
-    }
+    margin-top: 50px;
+    @include flexDisplay(space-between, center, column);
 
     @include responsive(tablet) {
-      @include flexDisplay(flex-start, center, row);
-      width: 50%;
-      max-width: 600px;
+      // margin-top: 100px;
+      @include flexDisplay(flex-start, flex-start, row);
     }
 
-    @include responsive(desktop) {
-      @include flexDisplay(flex-start, center, column);
-    }
-    .big-display-con {
-      .go-back {
-        position: absolute;
-        z-index: 20;
-        cursor: pointer;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        background: #3c91e6c6;
-        border: 1px solid #8080802b;
-        color: white;
-        width: 70px;
-        height: 30px;
-        text-align: center;
-        border-radius: 10px;
-        font-size: 18px;
+    .top-container {
+      width: 100%;
+      // border: 2px solid rgb(0, 81, 255);
+      // margin-top: 50px;
+
+      @include responsive(bigphone) {
+        padding: 5px 0 0 10px;
+        @include flexDisplay(center, center, row);
+      }
+
+      @include responsive(tablet) {
+        @include flexDisplay(flex-start, center, row);
+        width: 50%;
+        max-width: 600px;
+      }
+
+      @include responsive(desktop) {
+        @include flexDisplay(flex-start, center, column);
+      }
+      .big-display-con {
+        .go-back {
+          position: absolute;
+          z-index: 20;
+          cursor: pointer;
+          position: fixed;
+          top: 15px;
+          left: 15px;
+          background: #3c91e6c6;
+          border: 1px solid #8080802b;
+          color: white;
+          width: 70px;
+          height: 30px;
+          text-align: center;
+          border-radius: 10px;
+          font-size: 18px;
+        }
       }
     }
   }
 }
+
 .store-item-dynamic-con {
   // border: 2px solid red;
   padding: 5px;
@@ -246,7 +249,7 @@ $txt-light-blue: #cfe8ff;
 
       img {
         // object-fit: cover;
-
+        // border: 2px solid red;
         @include responsive(tablet) {
           width: 200px;
           height: 300px !important;

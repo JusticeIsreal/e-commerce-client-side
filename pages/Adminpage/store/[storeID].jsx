@@ -473,69 +473,72 @@ function StoreID() {
         </div>
       )}
 
-      <div className="single-product">
-        <div className="top-container">
-          {" "}
-          <div className="big-display-con">
-            <button onClick={goBack} className="go-back">
-              <TiArrowBack />
-              Back
-            </button>
+      <div className="admin-dynamic-product">
+        {" "}
+        <div className="single-product">
+          <div className="top-container">
+            {" "}
+            <div className="big-display-con">
+              <button onClick={goBack} className="go-back">
+                <TiArrowBack />
+                Back
+              </button>
+            </div>
+            <div className="small-display-img-con">
+              {product?.image.map(
+                (img, index) =>
+                  img && (
+                    <div className="small-display-img" key={index}>
+                      <Image
+                        src={img}
+                        alt="img"
+                        fill
+                        sizes="100vw"
+                        //   ref={pic}
+                        onClick={() => changeIMG(index)}
+                      />
+                    </div>
+                  )
+              )}
+            </div>
           </div>
-          <div className="small-display-img-con">
-            {product?.image.map(
-              (img, index) =>
-                img && (
-                  <div className="small-display-img" key={index}>
-                    <Image
-                      src={img}
-                      alt="img"
-                      fill
-                      sizes="100vw"
-                      //   ref={pic}
-                      onClick={() => changeIMG(index)}
-                    />
-                  </div>
-                )
-            )}
-          </div>
-        </div>
 
-        {/* lower part */}
-        <div className="lower-details">
-          <h1 className="p-name">{product?.productname}</h1>
-          <p className="p-number">
-            <span>Product spec :</span> {product?.productnumber}
-          </p>
-          <div>
+          {/* lower part */}
+          <div className="lower-details">
+            <h1 className="p-name">{product?.productname}</h1>
+            <p className="p-number">
+              <span>Product spec :</span> {product?.productnumber}
+            </p>
+            <div>
+              <p className="p-desc">
+                <span>Product category :</span> {product?.productcategory}
+              </p>
+              <p className="p-desc">
+                <span>Product promo :</span>
+                {product?.productoldprice
+                  ? " YES :" +
+                    " " +
+                    "(old price" +
+                    " " +
+                    "~" +
+                    " " +
+                    `${Number(product?.productoldprice).toLocaleString()})`
+                  : " NO"}
+              </p>
+            </div>
             <p className="p-desc">
-              <span>Product category :</span> {product?.productcategory}
+              <span>Product description : </span>
+              {product?.productdescription}
             </p>
             <p className="p-desc">
-              <span>Product promo :</span>
-              {product?.productoldprice
-                ? " YES :" +
-                  " " +
-                  "(old price" +
-                  " " +
-                  "~" +
-                  " " +
-                  `${Number(product?.productoldprice).toLocaleString()})`
-                : " NO"}
+              <span>Product delivery : </span>
+              maximum delivery period of 7 days within nigeria.
+            </p>
+            <p className="p-desc">
+              <span>Return Policy : </span>
+              Product warrante lasts 48hrs after delievery notice.
             </p>
           </div>
-          <p className="p-desc">
-            <span>Product description : </span>
-            {product?.productdescription}
-          </p>
-          <p className="p-desc">
-            <span>Product delivery : </span>
-            maximum delivery period of 7 days within nigeria.
-          </p>
-          <p className="p-desc">
-            <span>Return Policy : </span>
-            Product warrante lasts 48hrs after delievery notice.
-          </p>
         </div>
       </div>
     </div>

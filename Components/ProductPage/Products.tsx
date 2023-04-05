@@ -16,7 +16,7 @@ const Products: FC<ProductsProps> = ({ displayedProducts }) => {
       displayedProducts.map((category) => category.data().productcategory)
     ),
   ];
-
+  // console.log(displayedProducts);
   // state for category
   const [category, setCategory] = useState("All");
 
@@ -130,6 +130,7 @@ function SingleProduct({
     (priceDifference / parseFloat(productoldprice.toString())) * 100
   );
 
+  // console.log(productimages);
   return (
     <div className="single-product">
       <Link href={`/ClientDynamic/${id}`}>

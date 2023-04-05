@@ -18,7 +18,7 @@
   background-color: rgba(65, 105, 225, 0);
 }
 
-.single-product {
+.admin-dynamic-product .single-product {
   width: 100%;
   margin-top: 50px;
   display: flex;
@@ -27,18 +27,18 @@
   flex-direction: column;
 }
 @media only screen and (min-width: 1023px) {
-  .single-product {
+  .admin-dynamic-product .single-product {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: row;
   }
 }
-.single-product .top-container {
+.admin-dynamic-product .single-product .top-container {
   width: 100%;
 }
 @media only screen and (min-width: 768px) {
-  .single-product .top-container {
+  .admin-dynamic-product .single-product .top-container {
     padding: 5px 0 0 10px;
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@
   }
 }
 @media only screen and (min-width: 1023px) {
-  .single-product .top-container {
+  .admin-dynamic-product .single-product .top-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -57,14 +57,14 @@
   }
 }
 @media only screen and (min-width: 1200px) {
-  .single-product .top-container {
+  .admin-dynamic-product .single-product .top-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
   }
 }
-.single-product .top-container .big-display-con .go-back {
+.admin-dynamic-product .single-product .top-container .big-display-con .go-back {
   position: absolute;
   z-index: 20;
   cursor: pointer;
