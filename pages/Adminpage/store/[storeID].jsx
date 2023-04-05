@@ -42,7 +42,7 @@ export const getStaticProps = async ({ params }) => {
     },
   };
 };
-function StoreID({ product }) {
+function StoreID() {
   const router = useRouter();
   const { storeID } = router.query;
   // GO BACK
@@ -50,6 +50,24 @@ function StoreID({ product }) {
     router.back();
   }
 
+  // fetch product by id
+  const [product, setProduct] = useState();
+  async function fetchItemFromFirestore() {
+    const itemRef = doc(db, "products", storeID);
+    const itemDoc = await getDoc(itemRef);
+    if (itemDoc.exists()) {
+      // Extract the data from the document and return it
+      const itemData = itemDoc.data();
+      setProduct(itemData);
+    } else {
+      // Document does not exist
+      return null;
+    }
+  }
+
+  useEffect(() => {
+    fetchItemFromFirestore();
+  }, []);
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef("");
   const filePickerRef2 = useRef("");
@@ -462,7 +480,7 @@ function StoreID({ product }) {
             </div> */}
           </div>
           <div className="small-display-img-con">
-            {product.image.map(
+            {product?.image.map(
               (img, index) =>
                 img && (
                   <div className="small-display-img" key={index}>
@@ -484,30 +502,30 @@ function StoreID({ product }) {
 
         {/* lower part */}
         <div className="lower-details">
-          <h1 className="p-name">{product.productname}</h1>
+          <h1 className="p-name">{product?.productname}</h1>
           <p className="p-number">
-            <span>Product spec :</span> {product.productnumber}
+            <span>Product spec :</span> {product?.productnumber}
           </p>
           <div>
             <p className="p-desc">
-              <span>Product category :</span> {product.productcategory}
+              <span>Product category :</span> {product?.productcategory}
             </p>
             <p className="p-desc">
               <span>Product promo :</span>
-              {product.productoldprice
+              {product?.productoldprice
                 ? " YES :" +
                   " " +
                   "(old price" +
                   " " +
                   "~" +
                   " " +
-                  `${Number(product.productoldprice).toLocaleString()})`
+                  `${Number(product?.productoldprice).toLocaleString()})`
                 : " NO"}
             </p>
           </div>
           <p className="p-desc">
             <span>Product description : </span>
-            {product.productdescription}
+            {product?.productdescription}
           </p>
           <p className="p-desc">
             <span>Product delivery : </span>
