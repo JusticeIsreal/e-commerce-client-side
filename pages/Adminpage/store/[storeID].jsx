@@ -67,7 +67,7 @@ function StoreID() {
 
   useEffect(() => {
     fetchItemFromFirestore();
-  }, [product]);
+  }, [storeID]);
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef("");
   const filePickerRef2 = useRef("");
@@ -280,6 +280,7 @@ function StoreID() {
             {/* PRODUCT NAME */}
             <label>Product Name</label>
             <input
+              defaultValue={product?.productname}
               type="text"
               placeholder="Enter Product Name"
               {...register("productname", { required: true })}
@@ -299,6 +300,7 @@ function StoreID() {
             {/* PRODUCT PRICE */}
             <label>Product Price</label>
             <input
+              defaultValue={product?.productprice}
               type="Number"
               placeholder="Enter Product Price"
               {...register("productprice", { required: true })}
@@ -318,6 +320,7 @@ function StoreID() {
             {/* PRODUCT OLD PRICE */}
             <label>Product Old Price</label>
             <input
+              defaultValue={product?.productoldprice}
               type="Number"
               placeholder="Enter Product Old Price"
               {...register("productoldprice")}
@@ -325,6 +328,7 @@ function StoreID() {
             {/* PRODUCT NUMBER */}
             <label>Product Specs</label>
             <input
+              defaultValue={product?.productnumber}
               type="text"
               placeholder="Enter Product Specs"
               {...register("productnumber", { required: true })}
@@ -344,7 +348,9 @@ function StoreID() {
             {/* PRODUCT CATEGORY */}
             <label>Product Category</label>
             <select {...register("productcategory", { required: true })}>
-              <option value="">Select</option>
+              <option defaultValue={product?.productcategory}>
+                {product?.productcategory}
+              </option>
               <option value="Shoe">Shoe</option>
               <option value="Cloth">Cloth</option>
               <option value="Bag">Bag</option>
@@ -364,13 +370,16 @@ function StoreID() {
             {/* PRODUCT CLASS */}
             <label>Product Class</label>
             <select {...register("productclass")}>
-              <option value="">Select</option>
+              <option defaultValue={product?.productclass}>
+                {product?.productclass}
+              </option>
               <option value="promo">Promo</option>
               <option value="trending">Trending</option>
             </select>
             {/* PRODUCT DISCRIPTION */}
             <label>Product Description</label>
             <textarea
+              defaultValue={product?.productdescription}
               placeholder="Enter Product Description"
               {...register("productdescription", { required: true })}
             />
@@ -482,8 +491,6 @@ function StoreID() {
                       src={img}
                       alt="img"
                       fill
-                      //   width={50}
-                      //   height={50}
                       sizes="100vw"
                       //   ref={pic}
                       onClick={() => changeIMG(index)}

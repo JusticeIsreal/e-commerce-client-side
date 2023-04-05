@@ -45,7 +45,7 @@ function BannerItems({ bannerDetails }: { bannerDetails: any[] }) {
                   <th>Name</th>
                   <th>Cat</th>
                   <th>Desc</th>
-                  <th>Edit / Delete</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               {bannerDetails.map((product) => {
@@ -116,11 +116,6 @@ function StoreItemsIndividual({
             width: "100px",
           }}
         >
-          <Link href={`/Adminpage/${id}`}>
-            <FaEdit
-              style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
-            />
-          </Link>{" "}
           <FaTrashAlt
             style={{ cursor: "pointer", color: "red" }}
             onClick={() => deleteProduct(id)}

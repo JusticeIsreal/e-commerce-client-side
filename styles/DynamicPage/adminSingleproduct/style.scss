@@ -244,11 +244,6 @@ $txt-light-blue: #cfe8ff;
         height: 350px !important;
       }
 
-      &:hover {
-        transform: scale(1.1);
-        border: 2px solid $txt-blue;
-      }
-
       img {
         // object-fit: cover;
 
@@ -265,6 +260,7 @@ $txt-light-blue: #cfe8ff;
   }
 
   .lower-details {
+    // border: 2px solid red;
     width: 100%;
     padding: 5px;
     @include responsive(tablet) {
@@ -320,117 +316,6 @@ $txt-light-blue: #cfe8ff;
       font-style: normal;
       margin-top: 10px;
       // border: 1px solid red;
-    }
-    .product-qty-price-con {
-      @include flexDisplay(space-between, center, row);
-      width: 100%;
-      margin-top: 20px;
-      flex-wrap: wrap;
-
-      // border: 2px solid red;
-
-      .qty-con {
-        border: 1px solid #8080802b;
-        border-radius: 20px;
-        @include flexDisplay(space-around, center, row);
-        padding: 5px;
-        height: 47px;
-        width: 50%;
-
-        margin-right: 20px;
-        font-size: 25px;
-        background: #8080802b;
-        overflow-y: scroll;
-
-        @include responsive(bigphone) {
-          height: 67px;
-          width: 300px;
-        }
-
-        @include responsive(tablet) {
-          width: 200px;
-          height: 65px;
-        }
-        span {
-          font-weight: bolder;
-          // border: 2px solid red;
-          border-radius: 20px;
-          width: 80px;
-          height: 100%;
-          color: $font-light;
-          @include flexDisplay(center, center, row);
-
-          @include responsive(bigphone) {
-            font-size: 50px;
-          }
-          @include responsive(tablet) {
-            font-size: 40px;
-          }
-          &:hover {
-            background: gray;
-            color: white;
-          }
-        }
-        h3 {
-          font-size: 30px;
-          color: $bg-dark;
-        }
-      }
-      h1 {
-        margin-right: auto;
-        color: $bg-dark;
-
-        @include responsive(bigphone) {
-          font-size: 55px;
-        }
-        @include responsive(tablet) {
-          font-size: 40px;
-        }
-      }
-    }
-    .add-to-cart-con {
-      // border: 2px solid red;
-      @include flexDisplay(space-between, center, row);
-      width: 100%;
-      //   max-width: 370px;
-      margin: 0 auto;
-      margin-top: 30px;
-
-      .add,
-      .buy,
-      .view {
-        // border: 2px solid rgb(13, 0, 255);
-        width: 100%;
-        text-align: center;
-        margin: 2px;
-        padding: 15px 5px;
-        font-size: 18px;
-        font-weight: bolder;
-        background: $txt-blue;
-        color: white;
-
-        &:hover {
-          background: #215586;
-        }
-
-        @include responsive(bigphone) {
-          font-size: 28px;
-          padding: 23px 5px;
-        }
-        @include responsive(tablet) {
-          font-size: 20px;
-          padding: 20px 5px;
-        }
-      }
-
-      .add {
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-      }
-      .view {
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-      }
     }
   }
 
