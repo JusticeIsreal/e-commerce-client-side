@@ -5,6 +5,8 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../Loader";
 
 import { BannerObject } from "../../customtypes";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../Firebase";
 
 function BannerItems({ bannerDetails }: { bannerDetails: any[] }) {
   // console.log(productDetails.map((product) => {));
@@ -81,7 +83,12 @@ function StoreItemsIndividual({
   bannerimage: string;
   bannername: string;
 }) {
-  const deleteProduct = async () => {};
+  const deleteProduct = async (id: string) => {
+    const itemRef = doc(db, "banneritems", id);
+    await deleteDoc(itemRef);
+    console.log("Item successfully deleted!");
+  };
+
   return (
     //
     <tbody style={{ color: "black" }}>
@@ -116,7 +123,7 @@ function StoreItemsIndividual({
           </Link>{" "}
           <FaTrashAlt
             style={{ cursor: "pointer", color: "red" }}
-            // onClick={() => deleteProduct(id)}
+            onClick={() => deleteProduct(id)}
           />
         </td>
       </tr>

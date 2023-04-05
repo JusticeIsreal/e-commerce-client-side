@@ -276,9 +276,9 @@ function ProductForm() {
         <label>Product Category</label>
         <select {...register("productcategory", { required: true })}>
           <option value="">Select</option>
-          <option value="shoe">Shoe</option>
-          <option value="cloth">Cloth</option>
-          <option value="phone">Phone</option>
+          <option value="Shoe">Shoe</option>
+          <option value="Cloth">Cloth</option>
+          <option value="Phone">Phone</option>
         </select>
         {errors.productcategory && (
           <span
@@ -294,23 +294,11 @@ function ProductForm() {
         )}
         {/* PRODUCT CLASS */}
         <label>Product Class</label>
-        <select {...register("productclass", { required: true })}>
+        <select {...register("productclass")}>
           <option value="">Select</option>
           <option value="promo">Promo</option>
           <option value="trending">Trending</option>
         </select>
-        {errors.productclass && (
-          <span
-            className="errror-msg"
-            style={{
-              fontSize: "12px",
-              fontStyle: "italic",
-              color: "red",
-            }}
-          >
-            Kindly Enter Product Class
-          </span>
-        )}
         {/* PRODUCT DISCRIPTION */}
         <label>Product Description</label>
         <input

@@ -127,6 +127,7 @@ $txt-light-blue: #cfe8ff;
         .go-back {
           position: absolute;
           z-index: 20;
+          cursor: pointer;
           position: fixed;
           top: 60px;
           left: 15px;

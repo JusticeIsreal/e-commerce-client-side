@@ -31,9 +31,9 @@ function Promo() {
         <div className="content">
           <h3>Deal of the day</h3>
           <h1>Up to 40% discount</h1>
-          <a href="" className="btn">
+          <Link href="/ProductsPage" className="btn">
             Shop now
-          </a>
+          </Link>
         </div>
         <div className="fade-con">
           <Fade arrows={false}>

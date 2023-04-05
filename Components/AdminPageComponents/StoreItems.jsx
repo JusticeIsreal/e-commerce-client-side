@@ -6,6 +6,8 @@ import { HiRefresh } from "react-icons/hi";
 // ICONS
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../Loader";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../Firebase";
 function StoreItems({ productDetails }) {
   // console.log(productDetails.map((product) => {));
   return (
@@ -83,7 +85,11 @@ function StoreItemsIndividual({
   productprice,
   productoldprice,
 }) {
-  const deleteProduct = async () => {};
+  const deleteProduct = async (id) => {
+    const itemRef = doc(db, "products", id);
+    await deleteDoc(itemRef);
+    console.log("Item successfully deleted!");
+  };
   return (
     //
     <tbody style={{ color: "black" }}>
@@ -118,14 +124,14 @@ function StoreItemsIndividual({
             width: "100px",
           }}
         >
-          <Link href="/">
+          <Link href={`/Adminpage/store/${id}`}>
             <FaEdit
               style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
             />
           </Link>{" "}
           <FaTrashAlt
             style={{ cursor: "pointer", color: "red" }}
-            // onClick={() => deleteProduct(id)}
+            onClick={() => deleteProduct(id)}
           />
         </td>
       </tr>

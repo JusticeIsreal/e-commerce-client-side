@@ -108,6 +108,7 @@
 .client-single-product .single-product .top-container .big-display-con .go-back {
   position: absolute;
   z-index: 20;
+  cursor: pointer;
   position: fixed;
   top: 60px;
   left: 15px;
