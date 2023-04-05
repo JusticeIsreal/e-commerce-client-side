@@ -16,6 +16,7 @@ import axios from "axios";
 // firebase imports
 
 import { addDoc, serverTimestamp } from "firebase/firestore";
+
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
   const snapshot = await getDocs(colRef);
@@ -25,6 +26,7 @@ export async function getStaticPaths() {
 
   return { paths, fallback: "blocking" };
 }
+
 export const getStaticProps = async ({ params }) => {
   const { storeID } = params;
   const productDoc = doc(db, "products", storeID);
@@ -38,7 +40,6 @@ export const getStaticProps = async ({ params }) => {
     props: {
       product: productData,
     },
-    revalidate: 5, // revalidate page every 1 hour
   };
 };
 function StoreID({ product }) {
