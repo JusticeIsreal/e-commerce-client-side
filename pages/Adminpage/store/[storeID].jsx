@@ -67,7 +67,7 @@ function StoreID() {
 
   useEffect(() => {
     fetchItemFromFirestore();
-  }, []);
+  }, [product]);
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef("");
   const filePickerRef2 = useRef("");
