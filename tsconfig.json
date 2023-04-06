@@ -23,7 +23,9 @@
     "Components/Homepage/Banner.tsx",
     "Components/Topbar.tsx",
     "Components/AdminPageComponents/Sidebar.tsx",
-    "pages/ClientDynamic/[productID].jsx"
-, "pages/HomePage.tsx", "pages/index.jsx"  ],
+    "pages/ClientDynamic/[productID].jsx",
+    "pages/homepage.tsx",
+    "pages/index.jsx"
+  ],
   "exclude": ["node_modules"]
 }

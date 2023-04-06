@@ -1,0 +1,531 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
+// global variables
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+  // font-family: poppins;
+}
+
+body {
+  //   height: 100vh;
+  // border: 5px solid red;
+  //   max-width: 2000px;
+  margin: 0 auto;
+  //   max-height: 1500px;
+  //   background-color: black;
+  //   color: #4c5eff;
+}
+
+*::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 1px;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(65, 105, 225, 0);
+}
+
+// GLOBAL STYLES
+$darkBg: rgb(2, 107, 115);
+$bg: #f1feff;
+$darkBorderColor: rgb(2, 107, 115);
+$text-Color: #3c91e6;
+$cardbg: #3c91e6;
+$secondCardBg: #adf4fc;
+$darkestBg: #3c91e6;
+
+@mixin flexDisplay($justifyProp, $alignProp, $flexDirection) {
+  display: flex;
+  justify-content: $justifyProp;
+  align-items: $alignProp;
+  flex-direction: $flexDirection;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint==smallPhone {
+    @media only screen and (max-width: 380px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==tablet {
+    @media only screen and (min-width: 850px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==bigphone {
+    @media only screen and (min-width: 750px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+.login-page-con {
+  @include flexDisplay(center, center, column);
+  //   border: 2px solid red;
+  width: 100vw;
+  height: 100vh;
+
+  .container {
+    // border: 2px solid red;
+    width: 90%;
+    height: 550px;
+    perspective: 600px;
+    margin: 0 auto;
+
+    @include responsive(bigphone) {
+      width: 400px;
+      // height: 600px;
+    }
+
+    .card {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      transition: transform 1500ms;
+      transform-style: preserve-3d;
+      //   transform: rotateY(180deg);
+
+      .front,
+      .back {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+        border: 1px solid $cardbg;
+
+        .go-back {
+          @include flexDisplay(space-between, center, row);
+          position: absolute;
+          width: 20px;
+          height: 20px;
+
+          font-size: 16px;
+          font-weight: 500;
+          left: 10px;
+          top: 20px;
+          margin: 10px;
+          border: none;
+          border-radius: 50%;
+          padding: 2px 3px;
+          color: white;
+          background: $darkestBg;
+          font-weight: 600;
+          line-height: 18px;
+          //   margin-top: 20px;
+          cursor: pointer;
+          //   background-color: transparent;
+        }
+
+        .session-note {
+          //   border: 2px solid red;
+          width: 80%;
+          text-align: center;
+          font-size: 13px;
+          margin-top: -35px;
+          margin-bottom: 60px;
+          color: rgb(152, 152, 152);
+        }
+      }
+      .email-modal {
+        position: absolute;
+        background-color: white;
+        padding: 5px;
+        height: 100%;
+        transform: scale(0);
+        border: 1px solid $cardbg;
+        @include flexDisplay(flex-start, center, column);
+        // display: none;
+        border-radius: 10px;
+
+        .sign-in-header {
+          margin-top: 20px;
+          margin-bottom: 50px;
+          font-weight: 600;
+          color: $darkestBg;
+        }
+
+        .go-back {
+          @include flexDisplay(space-between, center, row);
+          position: absolute;
+          width: 20px;
+          height: 20px;
+
+          font-size: 16px;
+          font-weight: 500;
+          left: 10px;
+          top: 20px;
+          margin: 10px;
+          border: none;
+          border-radius: 50%;
+          padding: 2px 3px;
+          color: white;
+          background: $darkestBg;
+          font-weight: 600;
+          line-height: 18px;
+          //   margin-top: 20px;
+          cursor: pointer;
+          //   background-color: transparent;
+        }
+        .session-note {
+          //   border: 2px solid red;
+          width: 80%;
+          text-align: center;
+          font-size: 13px;
+          margin-top: -35px;
+          color: rgb(152, 152, 152);
+        }
+        .login-btn-link {
+          width: 80%;
+          height: 50px;
+          cursor: pointer;
+          margin-top: 70px;
+          //   border: 2px solid red;
+        }
+        .login-submit-btn {
+          border: none;
+          background-color: transparent;
+          color: $cardbg;
+          font-weight: 600;
+          font-size: 15px;
+          text-align: center;
+          border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+          @include flexDisplay(center, center, row);
+
+          //   margin-top: 20px;
+          cursor: pointer;
+        }
+      }
+      .front {
+        background-color: white;
+        padding: 5px;
+        @include flexDisplay(flex-start, center, column);
+
+        border-radius: 10px;
+
+        .sign-in-header {
+          margin-top: 20px;
+          margin-bottom: 50px;
+          font-weight: 600;
+          color: $darkestBg;
+        }
+        .input-main-con {
+          //   border: 1px solid red;
+          margin-right: auto;
+          width: 80%;
+          height: 40px;
+          margin: 0 auto;
+          margin: 30px 0;
+
+          label {
+            font-size: 15px;
+            color: $cardbg;
+          }
+          .input-con {
+            border: 1px solid $cardbg;
+            position: relative;
+            border-radius: 5px;
+            @include flexDisplay(center, flex-end, column);
+            width: 100%;
+            height: 100%;
+            padding: 1px;
+
+            input {
+              width: 90%;
+              height: 90%;
+              border: none;
+              padding: 0 5px;
+              // margin-right: auto;
+              // margin-right: -10px;
+              //
+            }
+            .input-icon {
+              position: absolute;
+              left: 5px;
+              font-size: 20px;
+              color: $darkestBg;
+
+              @include responsive(smallPhone) {
+                font-size: 15px;
+                // height: 600px;
+              }
+            }
+            .eye {
+              //   position: absolute;
+              left: 93%;
+              //   border: 2px solid red;
+            }
+          }
+
+          .validation-text {
+            color: red;
+            font-size: 12px;
+            font-style: italic;
+          }
+        }
+        .checkbox-main-con {
+          //   border: 1px solid red;
+          //   margin-right: auto;
+          width: 80%;
+          //   height: 40px;
+          margin: 0 auto;
+          //   margin: 20px 0;
+          // margin-right: auto;
+          @include flexDisplay(center, flex-end, column);
+
+          span {
+            font-size: 15px;
+            color: $cardbg;
+            // border: 2px solid red;
+            cursor: pointer;
+          }
+
+          .validation-text {
+            color: red;
+            font-size: 12px;
+            font-style: italic;
+          }
+        }
+        .login-btn-link {
+          width: 80%;
+          //   border: 2px solid red;
+        }
+        .login-btn-link {
+          width: 80%;
+          height: 50px;
+          cursor: pointer;
+          margin-top: 70px;
+          //   border: 2px solid red;
+        }
+        .login-submit-btn {
+          border: none;
+          background-color: $text-Color;
+          color: white;
+          font-weight: 600;
+          font-size: 15px;
+          text-align: center;
+          border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+          @include flexDisplay(center, center, row);
+
+          //   margin-top: 20px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $darkestBg;
+          }
+        }
+        .login-registration-link {
+          //   border: 1px solid red;
+          color: $cardbg;
+
+          font-size: 12px;
+          margin-top: 20px;
+          //
+
+          span {
+            color: $darkestBg;
+            font-weight: 600;
+            color: blue;
+            cursor: pointer;
+          }
+        }
+      }
+      .back {
+        transform: rotateY(180deg);
+        // background-color: red;
+        background-color: white;
+        padding: 5px;
+        @include flexDisplay(flex-start, center, column);
+        border-radius: 10px;
+
+        .sign-in-header {
+          margin: 10px 0 40px 0;
+          font-weight: 600;
+          color: $darkestBg;
+        }
+        .input-main-con {
+          //   border: 1px solid red;
+          margin-right: auto;
+          width: 80%;
+          height: 40px;
+          margin: 0 auto;
+          margin: 0 0 30px 0;
+
+          label {
+            font-size: 15px;
+            color: $cardbg;
+            // border: 2px solid red;
+            margin-top: 50px;
+          }
+          .input-con {
+            border: 1px solid $cardbg;
+            position: relative;
+            border-radius: 5px;
+            @include flexDisplay(center, flex-end, column);
+            width: 100%;
+            height: 100%;
+            padding: 1px;
+            margin-bottom: 20px;
+
+            input {
+              width: 90%;
+              height: 90%;
+              border: none;
+              padding: 0 5px;
+              // margin-right: auto;
+              // margin-right: -10px;
+              //
+            }
+            .input-icon {
+              position: absolute;
+              left: 5px;
+              font-size: 20px;
+              color: $darkestBg;
+
+              @include responsive(smallPhone) {
+                font-size: 15px;
+                // height: 600px;
+              }
+            }
+            .eye {
+              //   position: absolute;
+              left: 94%;
+              //   border: 2px solid red;
+            }
+          }
+
+          .input-name-con {
+            // border: 1px solid $cardbg;
+            border-radius: 5px;
+            @include flexDisplay(space-between, center, row);
+            width: 100%;
+            height: 100%;
+
+            input {
+              width: 48%;
+              height: 100%;
+              border-radius: 5px;
+              border: 1px solid $cardbg;
+              padding: 0 5px;
+            }
+          }
+
+          .validation-text {
+            color: red;
+            font-size: 12px;
+            font-style: italic;
+          }
+        }
+
+        .input-cont {
+          // border: 1px solid $cardbg;
+          position: relative;
+          border-radius: 5px;
+          @include flexDisplay(center, center, column);
+          width: 80%;
+          height: 40px;
+          margin: 0 0 20px 0;
+
+          input {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            border: 1px solid $cardbg;
+            padding: 0 5px;
+          }
+          .validation-text {
+            margin-right: auto;
+            color: red;
+            font-size: 12px;
+            font-style: italic;
+          }
+        }
+
+        .policy-checkbox-con {
+          width: 80%;
+          margin: 0 auto;
+          position: relative;
+          @include flexDisplay(flex-start, center, row);
+
+          span {
+            font-size: 12px;
+            color: $cardbg;
+            padding: 0 5px;
+          }
+
+          .validation-text {
+            color: red;
+            font-size: 12px;
+            font-style: italic;
+          }
+        }
+
+        .login-btn-link {
+          width: 80%;
+          height: 50px;
+          cursor: pointer;
+          margin-top: 70px;
+          //   border: 2px solid red;
+        }
+        .login-submit-btn {
+          border: none;
+          background-color: $text-Color;
+          color: white;
+          font-weight: 600;
+          font-size: 15px;
+          text-align: center;
+          border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+          @include flexDisplay(center, center, row);
+
+          //   margin-top: 20px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $darkestBg;
+          }
+        }
+        .login-registration-link {
+          //   border: 1px solid red;
+          color: $cardbg;
+
+          font-size: 12px;
+          margin-top: 20px;
+          //
+
+          span {
+            color: $darkestBg;
+            font-weight: 600;
+            color: blue;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

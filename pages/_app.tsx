@@ -4,6 +4,7 @@ import "../styles/ProductPage/style.css";
 import "../styles/AdminPage/App.css";
 import "../styles/DynamicPage/clientSingleproduct/style.css";
 import "../styles/DynamicPage/adminSingleproduct/style.css";
+import "../styles/RegistrationLogin/LoginStyle.css";
 import { AppProps } from "next/app";
 import Topbar from "../Components/Topbar";
 
@@ -37,6 +38,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
+
+
+
       <Component {...pageProps} />
     </>
   );
