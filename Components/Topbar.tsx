@@ -30,7 +30,7 @@ function Topbar() {
       <div className="topbar-top-con">
         {/* logo side */}
         <div className="topbar-top-con-left">
-          <Link href="/">
+          <Link href="/homepage">
             <SiCoinmarketcap className="icon" />
           </Link>
         </div>
@@ -47,7 +47,7 @@ function Topbar() {
       <div className="navbar-main-con">
         <nav>
           <ul>
-            <Link href="/">
+            <Link href="/homepage">
               <li
                 className={`${active === 1 ? "listactive" : ""}`}
                 onClick={() => setActive(1)}

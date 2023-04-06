@@ -23,7 +23,7 @@ function DashboardMain({ productDetails, bannerDetails }) {
               </li>
             </ul>
           </div>
-          <Link href="/" className="btn-download">
+          <Link href="/homepage" className="btn-download">
             <span className="text" style={{ color: "white" }}>
               Client Page
             </span>
