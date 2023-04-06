@@ -490,7 +490,7 @@ function StoreID() {
                   img && (
                     <div className="small-display-img" key={index}>
                       <Image
-                        src={img}
+                        src={img && img}
                         alt="img"
                         fill
                         sizes="100vw"

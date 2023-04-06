@@ -216,7 +216,7 @@ function Details() {
               )}
               <div className="big-display-img">
                 <Image
-                  src={product?.image[disimg]}
+                  src={product && product.image[disimg]}
                   alt="img"
                   fill
                   sizes="100vw"
@@ -230,7 +230,7 @@ function Details() {
                   img && (
                     <div className="small-display-img" key={index}>
                       <Image
-                        src={img}
+                        src={img && img}
                         alt="img"
                         fill
                         sizes="100vw"
@@ -475,7 +475,7 @@ function SimilarProducts({
         >
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
             <Image
-              src={productimages[0]}
+              src={productimages && productimages[0]}
               alt="img"
               className="home-product-img"
               fill

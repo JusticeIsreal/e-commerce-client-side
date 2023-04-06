@@ -8,6 +8,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../Loader";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase";
+
 function StoreItems({ productDetails }) {
   // console.log(productDetails.map((product) => {));
   return (
@@ -23,7 +24,7 @@ function StoreItems({ productDetails }) {
           }}
         >
           <div className="head">
-            <h3>Product List</h3>
+            <h3>Product List : {productDetails.length}</h3>
           </div>
         </div>
 

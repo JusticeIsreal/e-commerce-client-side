@@ -16,6 +16,7 @@ import BannerForm from "../../Components/AdminPageComponents/BannerForm";
 import ProductForm from "../../Components/AdminPageComponents/ProductForm";
 import BannerItems from "../../Components/AdminPageComponents/BannerItems";
 import Loader from "../../Components/Loader";
+import Link from "next/link";
 
 function Store() {
   // display form on and of
@@ -62,7 +63,7 @@ function Store() {
                   <i className="bx bx-chevron-right"></i>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="active"
                     href="#"
                     style={{
@@ -71,8 +72,8 @@ function Store() {
                       alignItems: "center",
                     }}
                   >
-                    <MdArrowBackIos /> Back
-                  </a>
+                    | Store
+                  </Link>
                 </li>
               </ul>
             </div>

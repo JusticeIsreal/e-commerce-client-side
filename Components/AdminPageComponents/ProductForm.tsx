@@ -4,8 +4,9 @@ import axios from "axios";
 // firebase imports
 import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-
+import tester from "../AdminPageComponents/StoreItems";
 function ProductForm() {
+  
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef<HTMLInputElement>("" || null);
   const filePickerRef2 = useRef<HTMLInputElement>("" || null);

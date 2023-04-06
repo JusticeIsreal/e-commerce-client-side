@@ -2,12 +2,10 @@ import React from "react";
 // import Loader from "../Loader";
 import Link from "next/link";
 import { FaStoreAlt } from "react-icons/fa";
-const img =
-  "https://res.cloudinary.com/isreal/image/upload/v1675285922/My%20portfolio%20Project/1671744344371-removebg-preview_dxwbbb.png";
 
 // ICONS
 import { FaShoppingCart, FaPeopleCarry, FaChartLine } from "react-icons/fa";
-function DashboardMain() {
+function DashboardMain({ productDetails, bannerDetails }) {
   // console.log(transaction);
   // console.log(users);
   return (
@@ -36,7 +34,7 @@ function DashboardMain() {
           <li>
             <FaStoreAlt className="bx bxs-calendar-check" />
             <span className="text">
-              {/* <h3>{products.length}</h3> */}
+              <h3>{productDetails.length}</h3>
               <p>Products</p>
             </span>
           </li>

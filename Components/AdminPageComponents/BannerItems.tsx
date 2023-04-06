@@ -24,7 +24,7 @@ function BannerItems({ bannerDetails }: { bannerDetails: any[] }) {
           }}
         >
           <div className="head">
-            <h3>Banner Post</h3>
+            <h3>Banner Post : {bannerDetails.length}</h3>
           </div>
         </div>
 
