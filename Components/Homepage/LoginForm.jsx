@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -10,11 +10,16 @@ import { IoIosArrowBack } from "react-icons/io";
 import testing from "../../services";
 
 function LoginForm({ flipLogin }) {
-    console.log(testing);
-    console.log("object")
   // function to flip te login page to registration page
   const flipLoginPage = () => {
     flipLogin.current.style.transform = "rotateY(180deg)";
+  };
+
+  // show and hide password value
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   // useform hooks
@@ -28,7 +33,7 @@ function LoginForm({ flipLogin }) {
 
   // submit form
   const onLogin = async (data, e) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return (
@@ -39,6 +44,7 @@ function LoginForm({ flipLogin }) {
         <div className="input-con">
           <AiOutlineMail className="input-icon" />
           <input
+            style={{ fontSize: "20px" }}
             type="email"
             placeholder="Your Email"
             {...register("useremail", { required: true })}
@@ -64,11 +70,23 @@ function LoginForm({ flipLogin }) {
         <div className="input-con">
           <RiLockPasswordLine className="input-icon" />
           <input
-            type="password"
+            style={{ fontSize: "20px" }}
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             {...register("userpassword", { required: true })}
           />
-          <AiFillEye className="input-icon eye" />
+
+          {showPassword ? (
+            <AiFillEyeInvisible
+              onClick={toggleShowPassword}
+              className="input-icon eye"
+            />
+          ) : (
+            <AiFillEye
+              onClick={toggleShowPassword}
+              className="input-icon eye"
+            />
+          )}
         </div>
         {errors.userpassword && (
           <p
@@ -86,7 +104,7 @@ function LoginForm({ flipLogin }) {
 
       <div className="checkbox-main-con">
         <div className="checkbox-con">
-          <Link href="/RegistrationLogin/ForgetPassword">
+          <Link href="/ForgetPassword">
             <span>Forgot Password ?</span>
           </Link>
         </div>

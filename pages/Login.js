@@ -293,6 +293,7 @@ function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
             ref={emailRef}
             style={{
               width: "250px",
+              padding:"5px",
               height: "50px",
               position: "relative",
               display: "flex",

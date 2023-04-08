@@ -14,10 +14,23 @@ function RegisterForm({
   setShowResendOTPForm,
   showResendOTPLink,
 }) {
+  // show password as text
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  // flip page back to login in view
   const flipRegPage = () => {
     flipLogin.current.style.transform = "rotateY(0deg)";
   };
 
+  // useform config
   const {
     register,
     handleSubmit,
@@ -33,7 +46,7 @@ function RegisterForm({
       policy: false,
     },
   });
-
+  // password and confirm password validaton
   const passwordConfirmValidator = (value) =>
     value === watch("password") || "Passwords do not match";
 
@@ -78,7 +91,7 @@ function RegisterForm({
       <div className="input-main-con">
         <div className="input-name-con">
           <input
-            style={{ width: "100%" }}
+            style={{ width: "100%", fontSize: "20px" }}
             type="text"
             placeholder="First name"
             {...register("username", { required: true })}
@@ -92,7 +105,7 @@ function RegisterForm({
       <div className="input-main-con">
         <div className="input-name-con">
           <input
-            style={{ width: "100%" }}
+            style={{ width: "100%", fontSize: "20px" }}
             type="email"
             placeholder="Enter Email"
             {...register("useremail", { required: true })}
@@ -106,7 +119,7 @@ function RegisterForm({
       <div className="input-main-con">
         <div className="input-name-con">
           <input
-            style={{ width: "100%" }}
+            style={{ width: "100%", fontSize: "20px" }}
             type="number"
             placeholder="Active / Whatsapp Number"
             {...register("userphonenumber", { required: true })}
@@ -120,23 +133,47 @@ function RegisterForm({
       <div className="input-main-con">
         <div className="input-name-con" style={{ position: "relative" }}>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
+            style={{ fontSize: "15px" }}
             {...register("password", {
               required: true,
               validate: passwordConfirmValidator,
             })}
           />
-          <AiFillEye style={{ position: "absolute", right: "54%" }} />
+          {showPassword ? (
+            <AiFillEyeInvisible
+              onClick={toggleShowPassword}
+              style={{ position: "absolute", right: "54%", color: "#3c91e6" }}
+            />
+          ) : (
+            <AiFillEye
+              onClick={toggleShowPassword}
+              style={{ position: "absolute", right: "54%", color: "#3c91e6" }}
+            />
+          )}
+
           <input
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm password"
+            style={{ fontSize: "15px" }}
             {...register("confirmPassword", {
               required: true,
               validate: passwordConfirmValidator,
             })}
           />
-          <AiFillEye style={{ position: "absolute", right: "5px" }} />
+
+          {showPassword ? (
+            <AiFillEyeInvisible
+              onClick={toggleShowConfirmPassword}
+              style={{ position: "absolute", right: "5px", color: "#3c91e6" }}
+            />
+          ) : (
+            <AiFillEye
+              onClick={toggleShowConfirmPassword}
+              style={{ position: "absolute", right: "5px", color: "#3c91e6" }}
+            />
+          )}
         </div>
         {errors.password && (
           <p className="validation-text">{errors.password.message}</p>
