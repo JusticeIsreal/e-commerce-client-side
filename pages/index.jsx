@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // PAGES
 
 import Login from "./Login";
-import Homepage from "./homepage";
+import Homepage from "/homepage";
 
 const inter = Inter({ subsets: ["latin"] });
 
