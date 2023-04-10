@@ -6,9 +6,17 @@ import "../styles/DynamicPage/clientSingleproduct/style.css";
 import "../styles/DynamicPage/adminSingleproduct/style.css";
 import "../styles/RegistrationLogin/LoginStyle.css";
 import { AppProps } from "next/app";
-import Topbar from "../Components/Topbar";
+import { AuthGuard } from "./api/auth/AuthGuard.";
+import { useEffect, useState } from "react";
+import Loader from "../Components/Loader";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }) {
+  const [preRender, setPreRender] = useState(false);
+
+  useEffect(() => {
+    setPreRender(true);
+  }, []);
+
   return (
     <>
       <Head>
@@ -38,10 +46,26 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-
-
-
-      <Component {...pageProps} />
+      {preRender ? (
+        <>
+          {" "}
+          {Component.requireAuth ? (
+            <AuthGuard>
+              <Component {...pageProps} />{" "}
+            </AuthGuard>
+          ) : (
+            <>
+              {" "}
+              <Component {...pageProps} />
+            </>
+          )}
+        </>
+      ) : (
+        <div style={{ marginTop: "200px" }}>
+          {" "}
+          <Loader />
+        </div>
+      )}{" "}
     </>
   );
 }

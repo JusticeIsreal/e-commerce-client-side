@@ -21,11 +21,11 @@
     "**/*.ts",
     "**/*.tsx",
     "Components/Homepage/Banner.tsx",
-    "Components/Topbar.tsx",
+    "Components/Topbar.jsx",
     "Components/AdminPageComponents/Sidebar.tsx",
     "pages/ClientDynamic/[productID].jsx",
     "pages/homepage.tsx",
     "pages/index.jsx"
-  ],
+, "pages/_app.jsx"  ],
   "exclude": ["node_modules"]
 }

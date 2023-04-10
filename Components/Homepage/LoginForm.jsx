@@ -2,12 +2,14 @@ import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 
-import testing from "../../services";
+import { sty } from "../../Services/functions";
+import { useRouter } from "next/router";
 
 function LoginForm({ flipLogin }) {
   // function to flip te login page to registration page
@@ -32,13 +34,26 @@ function LoginForm({ flipLogin }) {
   } = useForm();
 
   // submit form
+  const router = useRouter();
+  const [errMsg, setErrMsg] = useState("");
   const onLogin = async (data, e) => {
-    // console.log(data);
+    axios
+      .post("http://localhost:1234/api/v1/userverification/loginuser", data)
+      .then((resp) => {
+        const token = resp.data.data;
+        Cookies.set("JWTtoken", token);
+        router.push("/homepage");
+        setErrMsg("");
+      })
+      .catch((error) => {
+        setErrMsg(error.response.data.message);
+      });
   };
 
   return (
     <form className="front" onSubmit={handleSubmit(onLogin)}>
       <p className="sign-in-header">Sign in to your account</p>
+      <p style={{ color: "red" }}>{errMsg}</p>
       <div className="input-main-con">
         <label>Enter Email</label>
         <div className="input-con">
@@ -73,7 +88,7 @@ function LoginForm({ flipLogin }) {
             style={{ fontSize: "20px" }}
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            {...register("userpassword", { required: true })}
+            {...register("password", { required: true })}
           />
 
           {showPassword ? (
@@ -88,7 +103,7 @@ function LoginForm({ flipLogin }) {
             />
           )}
         </div>
-        {errors.userpassword && (
+        {errors.password && (
           <p
             className="validation-text"
             style={{

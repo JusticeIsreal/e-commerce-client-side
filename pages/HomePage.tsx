@@ -13,8 +13,9 @@ import NewsLetter from "../Components/Homepage/NewsLetter";
 import Promo from "../Components/Homepage/Promo";
 import Footer from "../Components/Footer";
 import Review from "../Components/Homepage/Review";
+import { AuthGuard } from "./api/auth/AuthGuard.";
 
-function HomePage() {
+const Homepage = () => {
   // Products from firebase
   const [products, setProducts] = useState<any[]>([]);
   useEffect(() => {
@@ -35,7 +36,9 @@ function HomePage() {
         <Loader />
       ) : (
         <>
+          {/* <AuthGuard> */}
           <Banner />
+          {/* </AuthGuard> */}
           {/* <MyPage /> */}
           {/* NEW ARRIVALS */}
           <NewArrivals />
@@ -53,6 +56,7 @@ function HomePage() {
       )}
     </div>
   );
-}
+};
+// Homepage.requireAuth = true;
 
-export default HomePage;
+export default Homepage;

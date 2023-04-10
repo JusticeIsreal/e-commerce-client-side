@@ -32,17 +32,21 @@ function ChangePassword() {
         console.log(resp.data);
 
         localStorage.removeItem("userId");
+        alert("passord Reset Successful, Proceed to Login");
+        router.push("/");
       })
       .catch((error) => {
         console.log(error.response);
       });
   };
+  const [errMsg, setErrMsg] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password === confirmPassword) {
       changePassword(); // or submit form data
     } else {
-      console.log("Passwords do not match");
+      setErrMsg("Passwords do not match");
     }
   };
 
@@ -62,6 +66,9 @@ function ChangePassword() {
       <p className="sign-in-header">Enter New Password</p>
       <p className="session-note">
         Please enter a new password to reset your password.
+      </p>
+      <p className="session-note" style={{ color: "red" }}>
+        {errMsg}
       </p>
       <div onClick={() => router.back()}>
         <div className="go-back">
