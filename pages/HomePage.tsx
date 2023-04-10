@@ -16,7 +16,7 @@ import Review from "../Components/Homepage/Review";
 import { AuthGuard } from "./api/auth/AuthGuard.";
 
 const Homepage = () => {
-  // Products from firebase
+  // Products from firebase db
   const [products, setProducts] = useState<any[]>([]);
   useEffect(() => {
     return onSnapshot(
