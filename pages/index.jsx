@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 
 // PAGES
-import HomePage from "./Homepage";
+import Homepage from "./Homepage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +19,7 @@ export default function Home() {
       <main className="app-main-con">
         {/* HOOME PAE */}
 
-        <HomePage />
+        <Homepage />
       </main>
     </section>
   );
