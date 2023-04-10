@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/public/icons/icon-192x192.png" />
       </Head>
       <main className="app-main-con">
-        {/* HOOME PAGE */}
+        {/* HOOME PAE */}
 
         <HomePage />
       </main>
