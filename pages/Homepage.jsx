@@ -17,7 +17,7 @@ import { AuthGuard } from "./api/auth/AuthGuard.";
 
 const Homepage = () => {
   // Products from firebase db
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     return onSnapshot(
       query(collection(db, "products"), orderBy("timestamp", "desc")),

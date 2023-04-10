@@ -24,7 +24,7 @@
     "Components/Topbar.jsx",
     "Components/AdminPageComponents/Sidebar.tsx",
     "pages/ClientDynamic/[productID].jsx",
-    "pages/Homepage.tsx",
+    "pages/Homepage.jsx",
     "pages/index.jsx",
     "pages/_app.jsx",
     "pages/api/auth/AuthGuard..jsx"
