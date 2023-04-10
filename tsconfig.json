@@ -24,8 +24,10 @@
     "Components/Topbar.jsx",
     "Components/AdminPageComponents/Sidebar.tsx",
     "pages/ClientDynamic/[productID].jsx",
-    "pages/homepage.tsx",
-    "pages/index.jsx"
-, "pages/_app.jsx", "pages/api/auth/AuthGuard..jsx"  ],
+    "pages/Homepage.tsx",
+    "pages/index.jsx",
+    "pages/_app.jsx",
+    "pages/api/auth/AuthGuard..jsx"
+  ],
   "exclude": ["node_modules"]
 }
