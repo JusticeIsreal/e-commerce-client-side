@@ -26,6 +26,6 @@
     "pages/ClientDynamic/[productID].jsx",
     "pages/homepage.tsx",
     "pages/index.jsx"
-, "pages/_app.jsx"  ],
+, "pages/_app.jsx", "pages/api/auth/AuthGuard..jsx"  ],
   "exclude": ["node_modules"]
 }

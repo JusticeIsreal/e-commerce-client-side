@@ -48,14 +48,12 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       {preRender ? (
         <>
-          {" "}
           {Component.requireAuth ? (
             <AuthGuard>
               <Component {...pageProps} />{" "}
             </AuthGuard>
           ) : (
             <>
-              {" "}
               <Component {...pageProps} />
             </>
           )}

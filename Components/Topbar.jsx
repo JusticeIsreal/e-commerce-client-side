@@ -8,36 +8,43 @@ import { BsShop } from "react-icons/bs";
 import { FiGrid, FiTruck } from "react-icons/fi";
 import { MdContactSupport } from "react-icons/md";
 import { getSessionUser } from "../Services/functions";
+
 function Topbar() {
-  // SET NAV LIST  COLOR WITH PAGE PATH NAME
+  // SET NAV LIST COLOR WITH PAGE PATH NAME
   const [active, setActive] = useState(0);
   const router = useRouter();
+
   useEffect(() => {
-    if (router.asPath === "/homepage") {
-      setActive(1);
-      return;
+    switch (router.asPath) {
+      case "/homepage":
+        setActive(1);
+        break;
+      case "/productspage":
+        setActive(2);
+        break;
+      case "/orders":
+        setActive(3);
+        break;
+      default:
+        setActive(0);
+        break;
     }
-    if (router.asPath === "/productspage") {
-      setActive(2);
-      return;
-    }
-    if (router.asPath === "/orders") {
-      setActive(3);
-      return;
-    }
-  }, [router.pathname]);
+  }, [router.asPath]);
 
   // FETCHING SESSION USER NAME AND CART LENGTH
-  const [name, setName] = useState();
+  const [name, setName] = useState(null);
   const [cartLength, setCartLength] = useState([]);
+
   useEffect(() => {
-    const userName = async () => {
-      const userData = await getSessionUser();
-      setName(userData.user.username);
-      setCartLength(userData.user.cart);
-    };
-    userName();
-  }, [name]);
+    async function fetchSessionUser() {
+      const userData = await getSessionUser(router);
+      if (userData && userData.user) {
+        setName(userData.user.username);
+        setCartLength(userData.user.cart);
+      }
+    }
+    fetchSessionUser();
+  }, [router]);
 
   return (
     <div className="topbar-main-con">

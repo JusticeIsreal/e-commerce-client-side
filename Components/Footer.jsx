@@ -1,11 +1,23 @@
 // import React from "react";
 import Link from "next/link";
-
+import { getSessionUser } from "../Services/functions";
 // icopns
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 import { AiFillTwitterCircle, AiTwotoneMail } from "react-icons/ai";
 import { FaInstagramSquare } from "react-icons/fa";
+import { useEffect, useState } from "react";
 function Footer() {
+  // FETCHING SESSION USER NAME AND CART LENGTH
+  const [userPosition, setUserPosition] = useState();
+  useEffect(() => {
+    const userName = async () => {
+      const userData = await getSessionUser();
+      setUserPosition(userData?.user?.position);
+    };
+    userName();
+  }, [userPosition]);
+
+  console.log(userPosition);
   return (
     <section className="footer">
       <div className="box-container">
@@ -43,9 +55,13 @@ function Footer() {
           <a href="">
             <i></i> our serivces
           </a>
-          <Link href="/Adminpage/AdminDashboard">
-            <i></i>Admin Login
-          </Link>
+          {userPosition === "admin" || userPosition === "staff" ? (
+            <Link href="/Adminpage/AdminDashboard">
+              <i></i>Admin Login
+            </Link>
+          ) : (
+            ""
+          )}{" "}
         </div>
 
         <div

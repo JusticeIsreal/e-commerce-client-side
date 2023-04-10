@@ -195,19 +195,15 @@ function UserTable() {
   // } = useForm();
 
   // update user position via API END POINT
-  
 
-    return (
-      <tbody style={{ color: "black" }}>
-        <tr>
-          <td>{/* <p>{name}</p> */}</td>
-          {/* <td>{email}</td> */}
-          {/* <td>{verified ? "True" : "False"}</td> */}
-          <td>
-            {/*  */}
-          </td>
-        </tr>
-      </tbody>
-    );
-  };
-
+  return (
+    <tbody style={{ color: "black" }}>
+      <tr>
+        <td>{/* <p>{name}</p> */}</td>
+        {/* <td>{email}</td> */}
+        {/* <td>{verified ? "True" : "False"}</td> */}
+        <td>{/*  */}</td>
+      </tr>
+    </tbody>
+  );
+}

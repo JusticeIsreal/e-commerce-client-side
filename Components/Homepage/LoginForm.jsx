@@ -8,7 +8,6 @@ import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 
-import { sty } from "../../Services/functions";
 import { useRouter } from "next/router";
 
 function LoginForm({ flipLogin }) {
@@ -36,17 +35,21 @@ function LoginForm({ flipLogin }) {
   // submit form
   const router = useRouter();
   const [errMsg, setErrMsg] = useState("");
-  const onLogin = async (data, e) => {
+  const [loading, setLoading] = useState(true);
+  const onLogin = async (data) => {
     axios
       .post("http://localhost:1234/api/v1/userverification/loginuser", data)
       .then((resp) => {
+        setLoading(false);
         const token = resp.data.data;
         Cookies.set("JWTtoken", token);
         router.push("/homepage");
         setErrMsg("");
+        setLoading(true);
       })
       .catch((error) => {
         setErrMsg(error.response.data.message);
+        setLoading(true);
       });
   };
 
@@ -128,8 +131,9 @@ function LoginForm({ flipLogin }) {
       <div className="login-btn-link">
         <input
           type="submit"
+          disabled={!loading}
           className="login-submit-btn"
-          // value={loading ? "Uploading..." : "Upload Product"}
+          value={loading ? "Sign in" : "Loading..."}
         />
       </div>
       <p className="login-registration-link">

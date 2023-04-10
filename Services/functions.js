@@ -1,9 +1,12 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-// GET USER AND USER DETAILS FOR A SESSION
-export const getSessionUser = async () => {
+export const getSessionUser = async (router) => {
   const token = Cookies.get("JWTtoken");
+  // if (!token) {
+  //   router.push("/");
+  //   return null;
+  // }
   try {
     const response = await axios.get(
       "http://localhost:1234/api/v1/userverification/getSessionUser",
@@ -24,6 +27,6 @@ export const getSessionUser = async () => {
     };
   } catch (error) {
     console.log(error);
-    return null; // or you can throw the error here
+    // return null; // or you can throw the error here
   }
 };

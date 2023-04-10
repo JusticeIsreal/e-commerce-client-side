@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 // PAGES
 
 import Login from "./Login";
+import Homepage from "./homepage";
 
 const inter = Inter({ subsets: ["latin"] });
-
-
 
 export default function Home() {
   return (
@@ -21,8 +20,7 @@ export default function Home() {
       </Head>
       <main className="app-main-con">
         {/* HOOME PAGE */}
-
-        <Login />
+        <Homepage />
       </main>
     </section>
   );

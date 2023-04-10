@@ -13,6 +13,8 @@ import { GiConfirmed } from "react-icons/gi";
 import { GoIssueOpened } from "react-icons/go";
 
 import { FaShoppingCart, FaPeopleCarry, FaChartLine } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { getSessionUser } from "../../Services/functions";
 function Transaction() {
   // Navgat back
   // const history = useNavigate();
@@ -48,173 +50,192 @@ function Transaction() {
   useEffect(() => {
     fetchTransactionStatus();
   }, []);
+
+  // ALLOW ONLY ADMI AND STAFF ACCESS
+  const [userPosition, setUserPosituon] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    const userInfo = async () => {
+      const userData = await getSessionUser();
+      setUserPosituon(userData.user.position);
+
+      if (userPosition === "client") {
+        router.push("/homepage");
+      }
+    };
+    userInfo();
+  }, [userPosition, router]);
   return (
     <div id="content">
-      {" "}
-      <Topbar />
-      <Sidebar />
-      <main>
-        <div
-          className="head-title"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              width: "100%",
-              flexWrap: "wrap",
-            }}
-          >
+      {userPosition === "admin" || userPosition === "staff" ? (
+        <>
+          {" "}
+          <Topbar />
+          <Sidebar />
+          <main>
             <div
-              className="left"
-              style={{
-                marginBottom: "10px",
-              }}
-            >
-              <h1>Transactions</h1>
-
-              <ul className="breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i>
-                </li>
-                <li onClick={() => history(-1)}>
-                  <a
-                    className="active"
-                    href=""
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <MdArrowBackIos /> Back
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="btn-download">
-              <b className="bx bxs-cloud-download">
-                <HiCloudDownload />{" "}
-              </b>
-              <span className="text">Download PDF</span>
-            </div>
-          </div>
-
-          <div className="transaction-ul">
-            <ul
-              className="box-info"
+              className="head-title"
               style={{
                 display: "flex",
-                flexDirection: "row",
-                justifyContent: "start",
-                alignItems: "center",
-                flexWrap: "wrap",
+                flexDirection: "column",
+                justifyContent: "space-around",
               }}
             >
-              <li>
-                <FaPeopleCarry className="bx bxs-group" />
-                <span className="text">
-                  {/* <h3>{deliveredTransaction.length}</h3> */}
-                  <p>Delivered</p>
-                </span>
-              </li>
-              <li>
-                <MdPendingActions className="bx bxs-calendar-check" />
-                <span className="text">
-                  {/* <h3>{processingTransaction.length}</h3> */}
-                  <p>Pending</p>
-                </span>
-              </li>
-              <li>
-                <GoIssueOpened className="bx bxs-calendar-check" />
-                <span className="text">
-                  {/* <h3>{openTransaction.length}</h3> */}
-                  <p>Open</p>
-                </span>
-              </li>
-              <li>
-                <GiConfirmed className="bx bxs-dollar-circle" />
-                <span className="text">
-                  {/* <h3>{allTransaction.length}</h3> */}
-                  <p>Total</p>
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="table-data">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              height: "60px",
-              paddingTop: "50px",
-              overflow: "hidden",
-            }}
-          >
-            <div className="head">
-              <h3>Order List</h3>
-            </div>
-            <div
-              className="head"
-              onClick={() => fetchTransactionStatus()}
-              style={{
-                border: "2px solid #3c91e6",
-                padding: "0 5px",
-                cursor: "pointer",
-              }}
-            >
-              <HiRefresh />
-              Re-Fresh
-            </div>
-          </div>
-          <div className="order" style={{ position: "relative" }}>
-            
-              <table
-                className="table"
+              <div
                 style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                   width: "100%",
-                  minWidth: "500px",
+                  flexWrap: "wrap",
                 }}
               >
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Address</th>
-                    <th>Product</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>payment</th>
-                  </tr>
-                </thead>
+                <div
+                  className="left"
+                  style={{
+                    marginBottom: "10px",
+                  }}
+                >
+                  <h1>Transactions</h1>
 
-               
+                  <ul className="breadcrumb">
+                    <li>
+                      <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                      <i className="bx bx-chevron-right"></i>
+                    </li>
+                    <li onClick={() => history(-1)}>
+                      <a
+                        className="active"
+                        href=""
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <MdArrowBackIos /> Back
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="btn-download">
+                  <b className="bx bxs-cloud-download">
+                    <HiCloudDownload />{" "}
+                  </b>
+                  <span className="text">Download PDF</span>
+                </div>
+              </div>
+
+              <div className="transaction-ul">
+                <ul
+                  className="box-info"
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "start",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <li>
+                    <FaPeopleCarry className="bx bxs-group" />
+                    <span className="text">
+                      {/* <h3>{deliveredTransaction.length}</h3> */}
+                      <p>Delivered</p>
+                    </span>
+                  </li>
+                  <li>
+                    <MdPendingActions className="bx bxs-calendar-check" />
+                    <span className="text">
+                      {/* <h3>{processingTransaction.length}</h3> */}
+                      <p>Pending</p>
+                    </span>
+                  </li>
+                  <li>
+                    <GoIssueOpened className="bx bxs-calendar-check" />
+                    <span className="text">
+                      {/* <h3>{openTransaction.length}</h3> */}
+                      <p>Open</p>
+                    </span>
+                  </li>
+                  <li>
+                    <GiConfirmed className="bx bxs-dollar-circle" />
+                    <span className="text">
+                      {/* <h3>{allTransaction.length}</h3> */}
+                      <p>Total</p>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="table-data">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "60px",
+                  paddingTop: "50px",
+                  overflow: "hidden",
+                }}
+              >
+                <div className="head">
+                  <h3>Order List</h3>
+                </div>
+                <div
+                  className="head"
+                  onClick={() => fetchTransactionStatus()}
+                  style={{
+                    border: "2px solid #3c91e6",
+                    padding: "0 5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <HiRefresh />
+                  Re-Fresh
+                </div>
+              </div>
+              <div className="order" style={{ position: "relative" }}>
+                <table
+                  className="table"
+                  style={{
+                    width: "100%",
+                    minWidth: "500px",
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Address</th>
+                      <th>Product</th>
+                      <th>Amount</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>payment</th>
+                    </tr>
+                  </thead>
+
                   <StoreTransaction
-                    // key={transaction._id}
-                    // {...transaction}
-                    // fetchProducts={fetchProducts}
+                  // key={transaction._id}
+                  // {...transaction}
+                  // fetchProducts={fetchProducts}
                   />
-               
-              </table>
-            
-          </div>
-        </div>
-      </main>
+                </table>
+              </div>
+            </div>
+          </main>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
 
+
+Transaction.requireAuth = true;
 export default Transaction;
 
 function StoreTransaction() {
@@ -231,7 +252,6 @@ function StoreTransaction() {
     //     //   // },
     //     // }
     //   )
-
     //   .then((resp) => {
     //     // window.location.reload();
     //     fetchProducts();
@@ -284,48 +304,48 @@ function StoreTransaction() {
         {/* <td style={{ fontSize: "12px" }}>{timestamp}</td> */}
         <td>
           <b
-            // style={{
-            //   backgroundColor: (() => {
-            //     switch (status) {
-            //       case "Open":
-            //         return "#db504a";
-            //       case "Processing":
-            //         return "#ffce26";
-            //       case "Delivered":
-            //         return "#3d91e6";
-            //       default:
-            //         return "#3d91e6";
-            //     }
-            //   })(),
-            //   color: "white",
-            //   padding: "0 5px",
-            //   borderRadius: "5px",
-            //   fontSize: "12px",
-            // }}
+          // style={{
+          //   backgroundColor: (() => {
+          //     switch (status) {
+          //       case "Open":
+          //         return "#db504a";
+          //       case "Processing":
+          //         return "#ffce26";
+          //       case "Delivered":
+          //         return "#3d91e6";
+          //       default:
+          //         return "#3d91e6";
+          //     }
+          //   })(),
+          //   color: "white",
+          //   padding: "0 5px",
+          //   borderRadius: "5px",
+          //   fontSize: "12px",
+          // }}
           >
             {/* {status} */}
           </b>
         </td>
         <td>
           <b
-            // style={{
-            //   backgroundColor: (() => {
-            //     switch (status) {
-            //       case "Failed":
-            //         return "#db504a";
-            //       case "Pending":
-            //         return "#ffce26";
-            //       case "Success":
-            //         return "#3d91e6";
-            //       default:
-            //         return "#3d91e6";
-            //     }
-            //   })(),
-            //   color: "white",
-            //   padding: "0 5px",
-            //   borderRadius: "5px",
-            //   fontSize: "12px",
-            // }}
+          // style={{
+          //   backgroundColor: (() => {
+          //     switch (status) {
+          //       case "Failed":
+          //         return "#db504a";
+          //       case "Pending":
+          //         return "#ffce26";
+          //       case "Success":
+          //         return "#3d91e6";
+          //       default:
+          //         return "#3d91e6";
+          //     }
+          //   })(),
+          //   color: "white",
+          //   padding: "0 5px",
+          //   borderRadius: "5px",
+          //   fontSize: "12px",
+          // }}
           >
             Success
           </b>
@@ -335,11 +355,9 @@ function StoreTransaction() {
             fontSize: "20px",
           }}
         >
-        
-            <FaEdit
-              style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
-            />
-          
+          <FaEdit
+            style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
+          />
         </td>
       </tr>
     </tbody>

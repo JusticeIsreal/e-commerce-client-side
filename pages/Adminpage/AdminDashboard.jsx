@@ -4,6 +4,9 @@ import Topbar from "../../Components/AdminPageComponents/Topbar";
 import DashboardMain from "../../Components/AdminPageComponents/DashboardMain";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../Firebase";
+import { getSessionUser } from "../../Services/functions";
+import { useRouter } from "next/router";
+
 function AdminDashboard() {
   // SFETCHIN BANNER SORTED FROM FIREBABSE
   const [bannerDetails, setBannerDetails] = useState([]);
@@ -28,17 +31,40 @@ function AdminDashboard() {
       }
     );
   }, [db]);
+
+  // ALLOW ONLY ADMI AND STAFF ACCESS
+  const [userPosition, setUserPosituon] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    const userInfo = async () => {
+      const userData = await getSessionUser();
+      setUserPosituon(userData.user.position);
+
+      if (userPosition === "client") {
+        router.push("/homepage");
+      }
+    };
+    userInfo();
+  }, [userPosition, router]);
+
   return (
     <div>
-      <Topbar />
-      <Sidebar />
-      <DashboardMain
-        bannerDetails={bannerDetails}
-        productDetails={productDetails}
-        // users={users}
-      />
+      {userPosition === "admin" || userPosition === "staff" ? (
+        <>
+          {" "}
+          <Topbar />
+          <Sidebar />
+          <DashboardMain
+            bannerDetails={bannerDetails}
+            productDetails={productDetails}
+            // users={users}
+          />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
-
+AdminDashboard.requireAuth = true;
 export default AdminDashboard;

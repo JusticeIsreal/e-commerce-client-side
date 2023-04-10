@@ -17,6 +17,8 @@ import ProductForm from "../../Components/AdminPageComponents/ProductForm";
 import BannerItems from "../../Components/AdminPageComponents/BannerItems";
 import Loader from "../../Components/Loader";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { getSessionUser } from "../../Services/functions";
 
 function Store() {
   // display form on and of
@@ -45,62 +47,83 @@ function Store() {
     );
   }, [db]);
 
+  // ALLOW ONLY ADMI AND STAFF ACCESS
+  const [userPosition, setUserPosituon] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    const userInfo = async () => {
+      const userData = await getSessionUser();
+      setUserPosituon(userData.user.position);
+
+      if (userPosition === "client") {
+        router.push("/homepage");
+      }
+    };
+    userInfo();
+  }, [userPosition, router]);
   return (
     <div className="store-main-con">
-      <Topbar />
-      <Sidebar />
-      <div id="content">
-        <main>
-          <div className="head-title">
-            <div className="left">
-              <h1>Store</h1>
+      {userPosition === "admin" || userPosition === "staff" ? (
+        <>
+          {" "}
+          <Topbar />
+          <Sidebar />
+          <div id="content">
+            <main>
+              <div className="head-title">
+                <div className="left">
+                  <h1>Store</h1>
 
-              <ul className="breadcrumb">
-                <li>
-                  <a href="#">Dashboard</a>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i>
-                </li>
-                <li>
-                  <Link
-                    className="active"
-                    href="#"
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    | Store
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div
-              className="btn-download"
-              onClick={() => setFormShow(!formShow)}
-            >
-              <b className="bx bxs-cloud-download"> + </b>
-              <span className="text">
-                {formShow ? "Close Table" : "Add Product"}
-              </span>
-            </div>
+                  <ul className="breadcrumb">
+                    <li>
+                      <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                      <i className="bx bx-chevron-right"></i>
+                    </li>
+                    <li>
+                      <Link
+                        className="active"
+                        href="#"
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        | Store
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  className="btn-download"
+                  onClick={() => setFormShow(!formShow)}
+                >
+                  <b className="bx bxs-cloud-download"> + </b>
+                  <span className="text">
+                    {formShow ? "Close Table" : "Add Product"}
+                  </span>
+                </div>
+              </div>
+              {formShow && (
+                <div className="store-form-container">
+                  <BannerForm />
+                  {/* PRODUCTS TABLE */}
+                  <ProductForm />
+                </div>
+              )}
+
+              <BannerItems bannerDetails={bannerDetails} />
+              <StoreItems productDetails={productDetails} />
+            </main>
           </div>
-          {formShow && (
-            <div className="store-form-container">
-              <BannerForm />
-              {/* PRODUCTS TABLE */}
-              <ProductForm />
-            </div>
-          )}
-
-          <BannerItems bannerDetails={bannerDetails} />
-          <StoreItems productDetails={productDetails} />
-        </main>
-      </div>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
-
+Store.requireAuth = true;
 export default Store;
