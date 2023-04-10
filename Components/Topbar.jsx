@@ -16,7 +16,7 @@ function Topbar() {
 
   useEffect(() => {
     switch (router.asPath) {
-      case "/homepage":
+      case "/":
         setActive(1);
         break;
       case "/productspage":
@@ -53,7 +53,7 @@ function Topbar() {
       <div className="topbar-top-con">
         {/* logo side */}
         <div className="topbar-top-con-left">
-          <Link href="/homepage">
+          <Link href="/">
             <SiCoinmarketcap className="icon" />
           </Link>
           <p style={{ marginLeft: "5px", color: "#3c91e6" }}>
@@ -74,7 +74,7 @@ function Topbar() {
       <div className="navbar-main-con">
         <nav>
           <ul>
-            <Link href="/homepage">
+            <Link href="/">
               <li
                 className={`${active === 1 ? "listactive" : ""}`}
                 onClick={() => setActive(1)}

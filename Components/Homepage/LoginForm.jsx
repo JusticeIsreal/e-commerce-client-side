@@ -43,7 +43,7 @@ function LoginForm({ flipLogin }) {
         setLoading(false);
         const token = resp.data.data;
         Cookies.set("JWTtoken", token);
-        router.push("/homepage");
+        router.push("/");
         setErrMsg("");
         setLoading(true);
       })

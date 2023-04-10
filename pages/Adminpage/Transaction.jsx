@@ -60,7 +60,7 @@ function Transaction() {
       setUserPosituon(userData.user.position);
 
       if (userPosition === "client") {
-        router.push("/homepage");
+        router.push("/");
       }
     };
     userInfo();
