@@ -46,7 +46,7 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      {preRender ? (
+      {/* {preRender ? (
         <>
           {Component.requireAuth ? (
             <AuthGuard>
@@ -63,7 +63,8 @@ export default function MyApp({ Component, pageProps }) {
           {" "}
           <Loader />
         </div>
-      )}{" "}
+      )} */}
+      <Component {...pageProps} />
     </>
   );
 }
