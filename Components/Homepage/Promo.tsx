@@ -24,7 +24,7 @@ function Promo() {
         <div className="content">
           <h3>Deal of the day</h3>
           <h1>Up to 40% discount</h1>
-          <Link href="/ProductsPage" className="btn">
+          <Link href="/productspage" className="btn">
             Shop now
           </Link>
         </div>

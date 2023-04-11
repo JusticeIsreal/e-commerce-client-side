@@ -64,8 +64,8 @@ function Product({
           </p>
         )}
         <Link
-          href="/ClientDynamic/[productID]"
-          as={`/ClientDynamic/${id}`}
+          // href="/ClientDynamic/[productID]"
+          href={`/ClientDynamic/${id}`}
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <div style={{ width: "100%", height: "100%", position: "relative" }}>

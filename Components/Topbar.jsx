@@ -82,10 +82,10 @@ function Topbar() {
           {name ? (
             <button
               style={{
-                height: "100%",
+                height: "70%",
                 color: "#3c91e6",
                 cursor: "pointer",
-                border: "2px solid #3c91e6",
+                border: "1px solid #3c91e6",
                 width: "100px",
               }}
               onClick={() => logOUT()}
@@ -96,7 +96,7 @@ function Topbar() {
             <Link
               href="/Login"
               style={{
-                height: "100%",
+                height: "70%",
                 cursor: "pointer",
                 width: "100px",
               }}
@@ -105,7 +105,7 @@ function Topbar() {
                 style={{
                   height: "100%",
                   color: "#3c91e6",
-                  border: "2px solid #3c91e6",
+                  border: "1px solid #3c91e6",
                   width: "100px",
                   cursor: "pointer",
                 }}
