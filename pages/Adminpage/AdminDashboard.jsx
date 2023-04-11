@@ -38,7 +38,7 @@ function AdminDashboard() {
   useEffect(() => {
     const userInfo = async () => {
       const userData = await getSessionUser();
-      setUserPosituon(userData.user.position);
+      setUserPosituon(userData?.user?.position);
 
       if (userPosition === "client") {
         router.push("/");

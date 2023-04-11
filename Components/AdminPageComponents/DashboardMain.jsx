@@ -1,7 +1,8 @@
 import React from "react";
-// import Loader from "../Loader";
 import Link from "next/link";
 import { FaStoreAlt } from "react-icons/fa";
+
+
 
 // ICONS
 import { FaShoppingCart, FaPeopleCarry, FaChartLine } from "react-icons/fa";

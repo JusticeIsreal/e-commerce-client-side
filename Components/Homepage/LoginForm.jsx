@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+// LOGIN API FUNCTION
+import { logIN } from "../../Services/functions";
+
 import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
@@ -37,20 +40,7 @@ function LoginForm({ flipLogin }) {
   const [errMsg, setErrMsg] = useState("");
   const [loading, setLoading] = useState(true);
   const onLogin = async (data) => {
-    axios
-      .post("http://localhost:1234/api/v1/userverification/loginuser", data)
-      .then((resp) => {
-        setLoading(false);
-        const token = resp.data.data;
-        Cookies.set("JWTtoken", token);
-        router.push("/");
-        setErrMsg("");
-        setLoading(true);
-      })
-      .catch((error) => {
-        setErrMsg(error.response.data.message);
-        setLoading(true);
-      });
+    logIN(setLoading, router, setErrMsg, data);
   };
 
   return (

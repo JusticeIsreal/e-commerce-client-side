@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/router";
-import axios from "axios";
+
+// CHANGE PASSWORD API CALL FROM SERVICE FOLDER
+import { changePassword } from "../../Services/functions";
 
 function ChangePassword() {
   const [password, setPassword] = useState("");
@@ -19,32 +20,12 @@ function ChangePassword() {
     setConfirmPassword(event.target.value);
   };
 
-  // change password
-
-  const changePassword = async () => {
-    const userId = localStorage.getItem("userId") || [];
-    axios
-      .post("http://localhost:1234/api/v1/userverification/resetpassword", {
-        password,
-        userId,
-      })
-      .then((resp) => {
-        console.log(resp.data);
-
-        localStorage.removeItem("userId");
-        alert("passord Reset Successful, Proceed to Login");
-        router.push("/");
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
   const [errMsg, setErrMsg] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password === confirmPassword) {
-      changePassword(); // or submit form data
+      changePassword(password, router); // or submit form data
     } else {
       setErrMsg("Passwords do not match");
     }

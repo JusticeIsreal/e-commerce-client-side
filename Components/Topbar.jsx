@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { logOUT } from "../Services/functions";
+import Cookies from "js-cookie";
 // ICONS
 import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -46,6 +48,12 @@ function Topbar() {
     fetchSessionUser();
   }, [router]);
 
+  // LOGOUT
+  const logOUT = () => {
+    Cookies.remove("JWTtoken");
+    location.reload();
+    router.push("/");
+  };
   return (
     <div className="topbar-main-con">
       {/* TOPBAR  */}
@@ -60,7 +68,53 @@ function Topbar() {
             {name && "Hello! " + name}
           </p>
         </div>
-
+        <div
+          style={{
+            marginLeft: "auto",
+            height: "100%",
+            color: "#3c91e6",
+            justifyContents: "center",
+            alignItems: "center",
+            display: "flex",
+            padding: "0 10px",
+          }}
+        >
+          {name ? (
+            <button
+              style={{
+                height: "100%",
+                color: "#3c91e6",
+                cursor: "pointer",
+                border: "2px solid #3c91e6",
+                width: "100px",
+              }}
+              onClick={() => logOUT()}
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              href="/Login"
+              style={{
+                height: "100%",
+                cursor: "pointer",
+                width: "100px",
+              }}
+            >
+              <button
+                style={{
+                  height: "100%",
+                  color: "#3c91e6",
+                  border: "2px solid #3c91e6",
+                  width: "100px",
+                  cursor: "pointer",
+                }}
+              >
+                Sign in
+              </button>
+            </Link>
+          )}
+        </div>
         {/* cart and user icon */}
         <div className="topbar-top-con-right">
           <div className="cart-icon-con">
@@ -100,7 +154,7 @@ function Topbar() {
             </Link>
             <Link href="/orders">
               <li
-                className={`${active === 2 ? "listactive" : ""}`}
+                className={`${active === 3 ? "listactive" : ""}`}
                 onClick={() => setActive(2)}
               >
                 {active == 3 ? <div className="nav-active"></div> : ""}

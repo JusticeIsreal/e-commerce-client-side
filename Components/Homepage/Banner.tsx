@@ -10,9 +10,8 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import Loader from "../Loader";
 
 function Banner() {
-  // SFETCHIN BANNER SORTED FROM FIREBABSE
+  // FETCHING BANNER SORTED FROM FIREBABSE
   const [bannerDetails, setBannerDetails] = useState<any[]>([]);
-
   useEffect(() => {
     return onSnapshot(
       query(collection(db, "banneritems"), orderBy("timestamp", "desc")),
@@ -21,6 +20,7 @@ function Banner() {
       }
     );
   }, [db]);
+
   return (
     <div className="banner-main-con">
       <div className="content">
@@ -32,7 +32,9 @@ function Banner() {
             <Fade arrows={false}>
               {bannerDetails.map((item, index) => (
                 <div key={item.id} className="cat-desc">
-                  <h3>{item.data().bannercategory}</h3>
+                  <h3 style={{ textTransform: "uppercase", marginTop: "20px" }}>
+                    {item.data().bannercategory}
+                  </h3>
                   <p>
                     <span style={{ fontWeight: "bolder", color: "#3c91e6" }}>
                       {item.data().bannername} :{" "}
@@ -62,14 +64,6 @@ function Banner() {
                         right: "0",
                       }}
                     />
-
-                    {/* <img
-                      src={item.data().bannerimage}
-                      alt=""
-                      style={{
-                        right: "0",
-                      }}
-                    /> */}
                   </div>
                 </div>
               ))}
@@ -83,7 +77,7 @@ function Banner() {
           />
 
           {/* PRODUCT BUTTON */}
-          <Link href="/ProductsPage">Shop now</Link>
+          <Link href="/productspage">Shop now</Link>
         </div>
       </div>
     </div>

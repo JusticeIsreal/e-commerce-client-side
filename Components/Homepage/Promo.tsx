@@ -1,16 +1,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Loader from "../Loader";
+
 // firebase
 import { db, storage } from "../../Firebase";
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 // ICONS
 import { Fade, Slide } from "react-slideshow-image";

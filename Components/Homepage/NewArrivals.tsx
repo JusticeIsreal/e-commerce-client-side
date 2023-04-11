@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Loader from "../Loader";
+
 // firebase
 import { db, storage } from "../../Firebase";
 import {
