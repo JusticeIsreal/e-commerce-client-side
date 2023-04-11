@@ -77,7 +77,7 @@ function Banner() {
           />
 
           {/* PRODUCT BUTTON */}
-          <Link href="/Productspage">Shop now</Link>
+          <Link href="/products">Shop now</Link>
         </div>
       </div>
     </div>

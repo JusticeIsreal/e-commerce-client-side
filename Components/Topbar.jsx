@@ -21,7 +21,7 @@ function Topbar() {
       case "/":
         setActive(1);
         break;
-      case "/Productspage":
+      case "/products":
         setActive(2);
         break;
       case "/orders":
@@ -140,7 +140,7 @@ function Topbar() {
                 <p> Home</p>
               </li>
             </Link>
-            <Link href="/Productspage">
+            <Link href="/products">
               <li
                 className={`${active === 2 ? "listactive" : ""}`}
                 onClick={() => setActive(2)}
