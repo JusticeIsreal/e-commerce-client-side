@@ -2,7 +2,7 @@ import React from "react";
 
 function Orders() {
   return (
-    <div class="oders-con">
+    <div className="oders-con">
       <div className="order-page-top">
         <h1>TRANSACTIONS</h1>
         <div className="order-status">
