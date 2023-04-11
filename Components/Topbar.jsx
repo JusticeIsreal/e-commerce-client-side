@@ -21,7 +21,7 @@ function Topbar() {
       case "/":
         setActive(1);
         break;
-      case "/productspage":
+      case "/Productspage":
         setActive(2);
         break;
       case "/orders":
@@ -41,8 +41,8 @@ function Topbar() {
     async function fetchSessionUser() {
       const userData = await getSessionUser(router);
       if (userData && userData.user) {
-        setName(userData.user.username);
-        setCartLength(userData.user.cart);
+        setName(userData?.user?.username);
+        setCartLength(userData?.user?.cart);
       }
     }
     fetchSessionUser();
@@ -140,7 +140,7 @@ function Topbar() {
                 <p> Home</p>
               </li>
             </Link>
-            <Link href="/productspage">
+            <Link href="/Productspage">
               <li
                 className={`${active === 2 ? "listactive" : ""}`}
                 onClick={() => setActive(2)}

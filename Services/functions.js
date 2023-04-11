@@ -30,7 +30,7 @@ export const getSessionUser = async (router) => {
       // return null; // or you can throw the error here
     }
   } else {
-    return null; // or you can throw the
+    return; // or you can throw the
   }
 };
 

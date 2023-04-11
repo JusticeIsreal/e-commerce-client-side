@@ -10,7 +10,7 @@ import Topbar from "../Components/Topbar";
 import Products from "../Components/ProductPage/Products";
 import Footer from "../Components/Footer";
 
-function productspage() {
+function Productspage() {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   useEffect(() => {
     return onSnapshot(
@@ -39,4 +39,4 @@ function productspage() {
   );
 }
 
-export default productspage;
+export default Productspage;

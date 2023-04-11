@@ -23,7 +23,7 @@ function Products({ products }: { products: any[] }) {
         </div>
 
         {/* SEE MORE */}
-        <Link href="/productspage">
+        <Link href="/Productspage">
           <p>See more . . .</p>
         </Link>
       </div>
