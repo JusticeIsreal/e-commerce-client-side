@@ -5,6 +5,7 @@ import "../styles/AdminPage/App.css";
 import "../styles/DynamicPage/clientSingleproduct/style.css";
 import "../styles/DynamicPage/adminSingleproduct/style.css";
 import "../styles/RegistrationLogin/LoginStyle.css";
+import "../styles/OrderPage/style.css";
 import { AppProps } from "next/app";
 import { AuthGuard } from "./api/auth/AuthGuard.";
 import { useEffect, useState } from "react";

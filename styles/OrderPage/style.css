@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+.order-page-main-con {
+  border: 2px solid red;
+  background: white;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+@media only screen and (min-width: 768px) {
+  .order-page-main-con {
+    margin-top: 105px;
+  }
+}
+.order-page-main-con .oders-con {
+  border: 2px solid rgb(13, 0, 255);
+  margin-top: 10px;
+}
+.order-page-main-con .oders-con .order-page-top {
+  border: 1px solid rgba(128, 128, 128, 0.132);
+  box-shadow: 5px 10px 15px rgba(128, 128, 128, 0.162);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.order-page-main-con .oders-con .order-page-top h1 {
+  color: #3c91e6;
+  margin-left: 5px;
+  font-size: 30px;
+}
+@media only screen and (min-width: 1023px) {
+  .order-page-main-con .oders-con .order-page-top h1 {
+    font-size: 50px;
+  }
+}
+.order-page-main-con .oders-con .order-page-top .order-status {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+.order-page-main-con .oders-con .order-page-top .order-status p {
+  border: 1px solid rgba(128, 128, 128, 0.132);
+  height: 40px;
+  border-radius: 5px;
+  color: #666;
+  padding: 0 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}/*# sourceMappingURL=style.css.map */

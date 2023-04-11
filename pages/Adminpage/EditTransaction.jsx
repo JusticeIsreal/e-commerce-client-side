@@ -166,4 +166,5 @@ function EditTransaction() {
   );
 }
 
+EditTransaction.requireAuth = true;
 export default EditTransaction;

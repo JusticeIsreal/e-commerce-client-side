@@ -183,6 +183,8 @@ function CustomersData() {
     );
   };
 }
+
+CustomersData.requireAuth = true;
 export default CustomersData;
 
 function UserTable() {

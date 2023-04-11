@@ -192,4 +192,5 @@ function EditProduct() {
   );
 }
 
+EditProduct.requireAuth = true;
 export default EditProduct;
