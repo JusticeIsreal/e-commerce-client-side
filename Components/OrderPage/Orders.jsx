@@ -4,19 +4,19 @@ import React, { useEffect, useState } from "react";
 import { FaMoneyCheck } from "react-icons/fa";
 import { getSessionUser } from "../../Services/functions";
 import { useRouter } from "next/router";
-function Orders() {
+function Orders({ userTransaction }) {
   // FETCHING SESSION USER NAME AND CART LENGTH
 
-  const router = useRouter();
-  const [userTransaction, setUserTransaction] = useState([]);
-  useEffect(() => {
-    const userName = async () => {
-      const userData = await getSessionUser();
-      setUserTransaction(userData?.user?.transaction);
-    };
-    userName();
-  }, [router]);
-  console.log(userTransaction);
+  //   const router = useRouter();
+  //   const [userTransaction, setUserTransaction] = useState([]);
+  //   useEffect(() => {
+  //     const userName = async () => {
+  //       const userData = await getSessionUser();
+  //       setUserTransaction(userData?.user?.transaction);
+  //     };
+  //     userName();
+  //   }, [router]);
+  //   console.log(userTransaction);
 
   return (
     <div className="oders-con">
