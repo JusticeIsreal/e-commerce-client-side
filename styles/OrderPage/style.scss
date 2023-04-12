@@ -64,18 +64,21 @@ $txt-light-blue: #cfe8ff;
 
 // orderpage main container
 .order-page-main-con {
+  // border: 2px solid red;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  background: white;
   margin-top: 50px;
 
   @include responsive(bigphone) {
-    margin-top: 105px;
+    margin-top: 100px;
   }
 
   .oders-con {
-    border: 2px solid rgb(13, 0, 255);
+    border: 2px solid rgba(128, 128, 128, 0.132);
+    margin: 0 auto;
     margin-top: 10px;
+    max-width: 1200px;
+    background: whitesmoke;
 
     .order-page-top {
       border: 1px solid rgba(128, 128, 128, 0.132);
@@ -84,7 +87,7 @@ $txt-light-blue: #cfe8ff;
       @include flexDisplay(space-between, center, column);
       h1 {
         color: $txt-blue;
-        margin-left: 5px;
+        margin-top: 20px;
         font-size: 30px;
 
         @include responsive(tablet) {
@@ -93,7 +96,7 @@ $txt-light-blue: #cfe8ff;
       }
       .order-status {
         width: 100%;
-        margin-top: 30px;
+        margin-top: 20px;
         // height: 50px;
         @include flexDisplay(space-evenly, center, row);
 
@@ -102,10 +105,34 @@ $txt-light-blue: #cfe8ff;
           height: 40px;
           border-radius: 5px;
           color: $font-light;
-          padding: 0 5px;
+          padding: 0 10px;
           margin: 5px;
           @include flexDisplay(space-evenly, center, row);
         }
+      }
+    }
+  }
+
+  .each-order-con {
+    // border: 2px solid rgb(0, 255, 26);
+    height: 68vh;
+    overflow-y: scroll;
+    padding: 5px 3px;
+    margin-top: 15px;
+
+    @include responsive(tablet) {
+      height: 68vh;
+    }
+    .each-order {
+      // border: 2px solid red;
+      background: white;
+      margin: 5px;
+      padding: 5px 10px;
+      @include flexDisplay(space-between, center, row);
+
+      .order-icon {
+        color: $txt-blue;
+        font-size: 30px;
       }
     }
   }
