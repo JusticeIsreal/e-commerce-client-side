@@ -29,20 +29,26 @@
   }
 }
 .order-page-main-con .oders-con {
-  border: 2px solid rgba(128, 128, 128, 0.132);
+  border: 1px solid rgba(128, 128, 128, 0.132);
   margin: 0 auto;
   margin-top: 10px;
   max-width: 1200px;
   background: whitesmoke;
 }
 .order-page-main-con .oders-con .order-page-top {
-  border: 1px solid rgba(128, 128, 128, 0.132);
-  box-shadow: 5px 10px 15px rgba(128, 128, 128, 0.162);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.132);
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  position: sticky;
+  top: 50px;
+}
+@media only screen and (min-width: 768px) {
+  .order-page-main-con .oders-con .order-page-top {
+    top: 100px;
+  }
 }
 .order-page-main-con .oders-con .order-page-top h1 {
   color: #3c91e6;
@@ -62,7 +68,13 @@
   align-items: center;
   flex-direction: row;
 }
+@media only screen and (min-width: 768px) {
+  .order-page-main-con .oders-con .order-page-top .order-status {
+    max-width: 500px;
+  }
+}
 .order-page-main-con .oders-con .order-page-top .order-status p {
+  cursor: pointer;
   border: 1px solid rgba(128, 128, 128, 0.132);
   height: 40px;
   border-radius: 5px;
@@ -80,21 +92,56 @@
   padding: 5px 3px;
   margin-top: 15px;
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 768px) {
   .order-page-main-con .each-order-con {
-    height: 68vh;
+    height: 70vh;
   }
 }
 .order-page-main-con .each-order-con .each-order {
+  cursor: pointer;
+  border-radius: 10px;
   background: white;
-  margin: 5px;
+  margin: 10px 5px;
   padding: 5px 10px;
+  color: #444;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
+.order-page-main-con .each-order-con .each-order:hover {
+  background: rgba(128, 128, 128, 0.1725490196);
+  border: 1px solid rgba(128, 128, 128, 0.1725490196);
+  color: blak;
+}
 .order-page-main-con .each-order-con .each-order .order-icon {
   color: #3c91e6;
   font-size: 30px;
+}
+.order-page-main-con .each-order-con .each-order .order-details {
+  margin: 0 20px;
+  width: 100%;
+}
+@media only screen and (min-width: 1023px) {
+  .order-page-main-con .each-order-con .each-order .order-details {
+    margin: 0 50px;
+  }
+}
+.order-page-main-con .each-order-con .each-order .order-details p {
+  margin: 5px;
+  color: #666;
+}
+.order-page-main-con .each-order-con .each-order .order-details .timestamp {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+}
+.order-page-main-con .each-order-con .each-order .order-details .productnames {
+  font-size: 20px;
+  color: gray;
+}
+.order-page-main-con .each-order-con .each-order .order-payment-status p {
+  color: white;
+  padding: 3px 5px;
+  border-radius: 5px;
 }/*# sourceMappingURL=style.css.map */

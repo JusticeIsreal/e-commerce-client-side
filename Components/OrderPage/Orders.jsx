@@ -5,32 +5,44 @@ import { FaMoneyCheck } from "react-icons/fa";
 import { getSessionUser } from "../../Services/functions";
 import { useRouter } from "next/router";
 function Orders({ userTransaction }) {
-  // FETCHING SESSION USER NAME AND CART LENGTH
+  const orderStatus = ["All", "Processing", "Transit", "Delvered"];
 
-  //   const router = useRouter();
-  //   const [userTransaction, setUserTransaction] = useState([]);
-  //   useEffect(() => {
-  //     const userName = async () => {
-  //       const userData = await getSessionUser();
-  //       setUserTransaction(userData?.user?.transaction);
-  //     };
-  //     userName();
-  //   }, [router]);
-  //   console.log(userTransaction);
+  // state for category
+  const [category, setCategory] = useState("All");
 
+  // state for products
+  const [products, setProducts] = useState(userTransaction);
+
+  // filter products based on category
+  useEffect(() => {
+    if (category === "All") {
+      setProducts(userTransaction);
+    } else {
+      setProducts(userTransaction.filter((item) => item.status === category));
+    }
+  }, [category, userTransaction]);
+  console.log(userTransaction.filter((item) => item.status === "Open"));
   return (
     <div className="oders-con">
       <div className="order-page-top">
         <h1>TRANSACTIONS</h1>
         <div className="order-status">
-          <p>All</p>
-          <p>Processing</p>
-          <p>Transit</p>
-          <p>Delievered</p>
+          {orderStatus.map((btn, index) => (
+            <p
+              key={index}
+              // className="category"
+              className={`${
+                btn === category ? "category active-category" : "category"
+              }`}
+              onClick={() => setCategory(btn)}
+            >
+              {btn}
+            </p>
+          ))}
         </div>
       </div>
       <div className="each-order-con">
-        {userTransaction.map((order) => (
+        {products.map((order) => (
           <TransactionReceipt key={order._id} {...order} />
         ))}
       </div>
@@ -40,7 +52,14 @@ function Orders({ userTransaction }) {
 
 export default Orders;
 
-function TransactionReceipt({ timestamp, totalAmount, status }) {
+function TransactionReceipt({
+  timestamp,
+  totalAmount,
+  status,
+  product,
+
+  transactionstatus,
+}) {
   // conver time stamp
   function formatDate(dateString) {
     const date = new Date(dateString);
@@ -56,13 +75,50 @@ function TransactionReceipt({ timestamp, totalAmount, status }) {
         <FaMoneyCheck />
       </div>
       <div className="order-details">
-        <p>{formattedTimestamp}</p>
-        <p>{"Producct"}</p>
-        <p>₦ {totalAmount.toLocaleString()}</p>
-        <p>{status}</p>
+        <p className="timestamp">{formattedTimestamp}</p>
+        <p className="productnames">
+          {product.map((name) => name.productname + ",  ")}
+        </p>
+        <p className="productnames"> ₦ {totalAmount.toLocaleString()}</p>
+        <p>
+          Payment:{" "}
+          <span
+            style={{
+              color: (() => {
+                switch (transactionstatus) {
+                  case "Pending":
+                    return "#db504a";
+                  case "Confirmed":
+                    return "#3d91e6";
+                  default:
+                    return "#3d91e6";
+                }
+              })(),
+            }}
+          >
+            {transactionstatus}
+          </span>
+        </p>
       </div>
       <div className="order-payment-status">
-        <p>{status}</p>
+        <p
+          style={{
+            color: (() => {
+              switch (status) {
+                case "Processing":
+                  return "#db504a";
+                case "Transit":
+                  return "#ffce26";
+                case "Delivered":
+                  return "#3d91e6";
+                default:
+                  return "#3d91e6";
+              }
+            })(),
+          }}
+        >
+          {status}
+        </p>
       </div>
     </div>
   );

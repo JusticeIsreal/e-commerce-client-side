@@ -15,7 +15,7 @@ function orders() {
     };
     userName();
   }, [router]);
-  console.log(userTransaction);
+
   return (
     <div className="order-page-main-con">
       <Topbar />
@@ -25,7 +25,7 @@ function orders() {
         "sign in"
       )}
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

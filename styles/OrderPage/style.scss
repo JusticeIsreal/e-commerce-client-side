@@ -74,17 +74,24 @@ $txt-light-blue: #cfe8ff;
   }
 
   .oders-con {
-    border: 2px solid rgba(128, 128, 128, 0.132);
+    border: 1px solid rgba(128, 128, 128, 0.132);
     margin: 0 auto;
     margin-top: 10px;
     max-width: 1200px;
     background: whitesmoke;
 
     .order-page-top {
-      border: 1px solid rgba(128, 128, 128, 0.132);
-      box-shadow: 5px 10px 15px rgba(128, 128, 128, 0.162);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.132);
+      // box-shadow: 5px 1px 5px rgba(128, 128, 128, 0.162);
       padding: 10px 0;
       @include flexDisplay(space-between, center, column);
+      position: sticky;
+      top: 50px;
+      // border: 2px solid red;
+
+      @include responsive(bigphone) {
+        top: 100px;
+      }
       h1 {
         color: $txt-blue;
         margin-top: 20px;
@@ -99,8 +106,11 @@ $txt-light-blue: #cfe8ff;
         margin-top: 20px;
         // height: 50px;
         @include flexDisplay(space-evenly, center, row);
-
+        @include responsive(bigphone) {
+          max-width: 500px;
+        }
         p {
+          cursor: pointer;
           border: 1px solid rgba(128, 128, 128, 0.132);
           height: 40px;
           border-radius: 5px;
@@ -120,19 +130,57 @@ $txt-light-blue: #cfe8ff;
     padding: 5px 3px;
     margin-top: 15px;
 
-    @include responsive(tablet) {
-      height: 68vh;
+    @include responsive(bigphone) {
+      height: 70vh;
     }
     .each-order {
       // border: 2px solid red;
+      cursor: pointer;
+      border-radius: 10px;
       background: white;
-      margin: 5px;
+      margin: 10px 5px;
       padding: 5px 10px;
+      color: $bg-dark-gray;
       @include flexDisplay(space-between, center, row);
 
+      &:hover {
+        background: #8080802c;
+        border: 1px solid #8080802c;
+        color: blak;
+      }
       .order-icon {
         color: $txt-blue;
         font-size: 30px;
+      }
+      .order-details {
+        // border: 2px solid red;
+        margin: 0 20px;
+        width: 100%;
+        @include responsive(tablet) {
+          margin: 0 50px;
+        }
+
+        p {
+          margin: 5px;
+          color: $font-light;
+        }
+        .timestamp {
+          font-size: 18px;
+          font-weight: 600;
+          color: $bg-dark-gray;
+        }
+        .productnames {
+          font-size: 20px;
+          color: gray;
+        }
+      }
+      .order-payment-status {
+        //  border: 1px solid red;
+        p {
+          color: white;
+          padding: 3px 5px;
+          border-radius: 5px;
+        }
       }
     }
   }
