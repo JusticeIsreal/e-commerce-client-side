@@ -144,6 +144,7 @@ $txt-light-blue: #cfe8ff;
           width: 20%;
           padding: 10px;
           font-size: 20px;
+          transform: scale(0.8);
         }
 
         &:hover {
@@ -164,11 +165,12 @@ $txt-light-blue: #cfe8ff;
     .product {
       // border: 2px solid red;
       // background: white;
+      gap: 5px;
       width: 100vw;
       padding: 5px;
       overflow: hidden;
       flex-wrap: wrap;
-      @include flexDisplay(space-around, center, row);
+      @include flexDisplay(space-evenly, center, row);
       animation: entrance 0.3s ease-in;
 
       @keyframes entrance {
@@ -189,11 +191,11 @@ $txt-light-blue: #cfe8ff;
 
       .single-product {
         border: 1px solid rgba(128, 128, 128, 0.162);
-        margin: 15px 5px;
+        // margin: 15px 5px;
         width: 45%;
         max-width: 200px;
         padding: 5px;
-        margin: 10px 5px;
+        margin: 10px 0;
         border-radius: 5px;
         background: white;
         overflow: hidden;
@@ -212,6 +214,7 @@ $txt-light-blue: #cfe8ff;
         @include responsive(tablet) {
           width: 20%;
           max-width: 300px;
+          // transform: scale(0.9);
         }
         @include responsive(desktop) {
           width: 30%;
@@ -271,9 +274,10 @@ $txt-light-blue: #cfe8ff;
             height: 270px;
           }
           @include responsive(desktop) {
-            height: 400px;
+            height: 340px;
           }
           .product-page-product-img {
+            // border: 2px solid red;
             // width: 100%;
             height: 100%;
             // transform: scale(1.1);
