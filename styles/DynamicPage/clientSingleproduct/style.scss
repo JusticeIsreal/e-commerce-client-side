@@ -87,7 +87,7 @@ $txt-light-blue: #cfe8ff;
       @include responsive(bigphone) {
         // border: 2px solid rgb(0, 26, 255);
         padding: 5px 0 0 10px;
-        margin-top: 50px;
+
         @include flexDisplay(center, center, row);
       }
 
@@ -95,13 +95,18 @@ $txt-light-blue: #cfe8ff;
         // border: 2px solid rgb(0, 255, 64);
         @include flexDisplay(flex-start, center, row);
         width: 50%;
-        max-width: 600px;
+        max-width: 480px;
+        margin-top: 20px;
       }
       @include responsive(desktop) {
-        @include flexDisplay(flex-start, center, column);
+        margin-top: 10px;
+        max-width: 400px;
+        @include flexDisplay(flex-start, flex-start, column);
       }
       .big-display-con {
         width: 100vw;
+        max-width: 400px;
+        margin: 0 auto;
         height: 500px;
         padding: 10px;
         @include responsive(phone) {
@@ -109,20 +114,21 @@ $txt-light-blue: #cfe8ff;
         }
         @include responsive(bigphone) {
           // border: 2px solid red;
-          width: 650px;
-          height: 750px;
+          width: 600px;
+          max-width: 600px;
+          height: 700px;
           order: 2;
         }
 
         @include responsive(tablet) {
-          margin-top: 10px;
-          width: 400px;
-          height: 450px;
+          // margin-top: 10px;
+          width: 350px;
+          height: 400px;
         }
         @include responsive(desktop) {
           margin-top: 0;
-          width: 100%;
-          height: 700px;
+          width: 400px;
+          height: 500px;
         }
         .go-back {
           position: absolute;
@@ -151,7 +157,7 @@ $txt-light-blue: #cfe8ff;
           height: 45px;
           border-bottom-left-radius: 15px;
           top: 10px;
-          right: 10px;
+          right: 18px;
           background: $txt-blue;
           color: white;
           text-align: center;
@@ -166,13 +172,14 @@ $txt-light-blue: #cfe8ff;
 
           @include responsive(bigphone) {
             // border: 2px solid red;
-            width: 100%;
+            width: 95%;
             margin: 0 auto;
           }
 
           .img {
             // border: 2px solid red;
-            width: 100%;
+            // width: 100%;
+            height: 100%;
           }
         }
       }
@@ -198,6 +205,7 @@ $txt-light-blue: #cfe8ff;
         @include responsive(desktop) {
           order: 2;
           width: 100%;
+          max-width: 400px;
           height: 100px;
           @include flexDisplay(flex-start, center, row);
         }
@@ -217,7 +225,7 @@ $txt-light-blue: #cfe8ff;
           @include responsive(bigphone) {
             @include flexDisplay(center, center, column);
             width: 100%;
-            height: 22%;
+            height: 100%;
           }
           @include responsive(desktop) {
             // @include flexDisplay(center, center, column);
@@ -243,17 +251,16 @@ $txt-light-blue: #cfe8ff;
       padding: 5px;
       @include responsive(tablet) {
         width: 50%;
-        // border: 2px solid red;
-        margin-top: 65px;
-        max-width: 600px;
-      }
+        // @include flexDisplay(flex-start, flex-start, column);
 
-      @include responsive(tablet) {
+        // border: 2px solid red;
+        margin-top: 20px;
+        max-width: 600px;
       }
 
       h1 {
         @include responsive(bigphone) {
-          font-size: 50px;
+          font-size: 40px;
         }
       }
       .p-name {
@@ -366,9 +373,12 @@ $txt-light-blue: #cfe8ff;
         // border: 2px solid red;
         @include flexDisplay(space-between, center, row);
         width: 100%;
-        //   max-width: 370px;
         margin: 0 auto;
         margin-top: 30px;
+        @include responsive(bigphone) {
+          max-width: 550px;
+          margin-left: 0;
+        }
 
         .add,
         .buy,
@@ -377,7 +387,7 @@ $txt-light-blue: #cfe8ff;
           width: 100%;
           text-align: center;
           margin: 2px;
-          padding: 15px 5px;
+          padding: 10px 5px;
           font-size: 18px;
           font-weight: bolder;
           background: $txt-blue;
@@ -388,10 +398,6 @@ $txt-light-blue: #cfe8ff;
           }
 
           @include responsive(bigphone) {
-            font-size: 28px;
-            padding: 23px 5px;
-          }
-          @include responsive(tablet) {
             font-size: 20px;
             padding: 20px 5px;
           }
@@ -479,7 +485,7 @@ $txt-light-blue: #cfe8ff;
           }
           .quote {
             .chatit {
-              background:#80808013;
+              background: #80808013;
               margin: 5px;
               width: auto;
               border-radius: 10px;

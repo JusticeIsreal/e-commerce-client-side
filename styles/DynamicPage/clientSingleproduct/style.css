@@ -49,7 +49,6 @@
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .top-container {
     padding: 5px 0 0 10px;
-    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,19 +62,24 @@
     align-items: center;
     flex-direction: row;
     width: 50%;
-    max-width: 600px;
+    max-width: 480px;
+    margin-top: 20px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .client-single-product .single-product .top-container {
+    margin-top: 10px;
+    max-width: 400px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
   }
 }
 .client-single-product .single-product .top-container .big-display-con {
   width: 100vw;
+  max-width: 400px;
+  margin: 0 auto;
   height: 500px;
   padding: 10px;
 }
@@ -86,23 +90,23 @@
 }
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .top-container .big-display-con {
-    width: 650px;
-    height: 750px;
+    width: 600px;
+    max-width: 600px;
+    height: 700px;
     order: 2;
   }
 }
 @media only screen and (min-width: 1023px) {
   .client-single-product .single-product .top-container .big-display-con {
-    margin-top: 10px;
-    width: 400px;
-    height: 450px;
+    width: 350px;
+    height: 400px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .client-single-product .single-product .top-container .big-display-con {
     margin-top: 0;
-    width: 100%;
-    height: 700px;
+    width: 400px;
+    height: 500px;
   }
 }
 .client-single-product .single-product .top-container .big-display-con .go-back {
@@ -132,7 +136,7 @@
   height: 45px;
   border-bottom-left-radius: 15px;
   top: 10px;
-  right: 10px;
+  right: 18px;
   background: #3c91e6;
   color: white;
   text-align: center;
@@ -145,12 +149,12 @@
 }
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .top-container .big-display-con .big-display-img {
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
   }
 }
 .client-single-product .single-product .top-container .big-display-con .big-display-img .img {
-  width: 100%;
+  height: 100%;
 }
 .client-single-product .single-product .top-container .small-display-img-con {
   display: flex;
@@ -182,6 +186,7 @@
   .client-single-product .single-product .top-container .small-display-img-con {
     order: 2;
     width: 100%;
+    max-width: 400px;
     height: 100px;
     display: flex;
     justify-content: flex-start;
@@ -210,7 +215,7 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 22%;
+    height: 100%;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -234,13 +239,13 @@
 @media only screen and (min-width: 1023px) {
   .client-single-product .single-product .lower-details {
     width: 50%;
-    margin-top: 65px;
+    margin-top: 20px;
     max-width: 600px;
   }
 }
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .lower-details h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
 }
 .client-single-product .single-product .lower-details .p-name {
@@ -375,13 +380,19 @@
   margin: 0 auto;
   margin-top: 30px;
 }
+@media only screen and (min-width: 768px) {
+  .client-single-product .single-product .lower-details .add-to-cart-con {
+    max-width: 550px;
+    margin-left: 0;
+  }
+}
 .client-single-product .single-product .lower-details .add-to-cart-con .add,
 .client-single-product .single-product .lower-details .add-to-cart-con .buy,
 .client-single-product .single-product .lower-details .add-to-cart-con .view {
   width: 100%;
   text-align: center;
   margin: 2px;
-  padding: 15px 5px;
+  padding: 10px 5px;
   font-size: 18px;
   font-weight: bolder;
   background: #3c91e6;
@@ -393,14 +404,6 @@
   background: #215586;
 }
 @media only screen and (min-width: 768px) {
-  .client-single-product .single-product .lower-details .add-to-cart-con .add,
-  .client-single-product .single-product .lower-details .add-to-cart-con .buy,
-  .client-single-product .single-product .lower-details .add-to-cart-con .view {
-    font-size: 28px;
-    padding: 23px 5px;
-  }
-}
-@media only screen and (min-width: 1023px) {
   .client-single-product .single-product .lower-details .add-to-cart-con .add,
   .client-single-product .single-product .lower-details .add-to-cart-con .buy,
   .client-single-product .single-product .lower-details .add-to-cart-con .view {

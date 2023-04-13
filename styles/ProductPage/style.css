@@ -34,7 +34,6 @@
 }
 .product-page-main-con .product-page-con form {
   color: #3c91e6;
-  border: 2px solid red;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -42,8 +41,9 @@
   width: 95%;
   padding: 5px 10px;
   border-radius: 5px;
-  margin-top: 50px;
-  border: 1px solid rgba(128, 128, 128, 0.355);
+  margin-top: 20px;
+  border: 1px solid #a7a7a7;
+  border-radius: 5px;
 }
 .product-page-main-con .product-page-con form input {
   width: 100%;
@@ -87,11 +87,11 @@
   }
 }
 .product-page-main-con .product-page-con .category-con .category {
-  border: 1px solid rgba(128, 128, 128, 0.238);
+  border: 1px solid #a7a7a7;
   border-radius: 5px;
-  box-shadow: -1px -2px 5px rgba(128, 128, 128, 0.107);
+  outline: none;
   padding: 5px;
-  color: #3c91e6;
+  color: gray;
   text-align: center;
   font-size: 13px;
 }
@@ -110,9 +110,9 @@
 }
 .product-page-main-con .product-page-con .category-con .category:hover {
   border: none;
-  box-shadow: -1px -1px 0px rgba(128, 128, 128, 0.478);
   color: #eee;
   background: #3c91e6;
+  border: 1px solid #3c91e6;
 }
 .product-page-main-con .product-page-con .category-con .active-category {
   background: #3c91e6;
@@ -124,7 +124,7 @@
   overflow: hidden;
   flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
   animation: entrance 0.3s ease-in;
@@ -149,10 +149,10 @@
   }
 }
 .product-page-main-con .product-page-con .product .single-product {
-  border: 1px solid rgba(128, 128, 128, 0.194);
-  box-shadow: -1px -1px 5px rgba(128, 128, 128, 0.193);
+  border: 1px solid rgba(128, 128, 128, 0.162);
   margin: 15px 5px;
   width: 45%;
+  max-width: 200px;
   padding: 5px;
   margin: 10px 5px;
   border-radius: 5px;
@@ -160,7 +160,7 @@
   overflow: hidden;
 }
 .product-page-main-con .product-page-con .product .single-product:hover {
-  border: 1px solid #3c91e6;
+  box-shadow: -1px -1px 5px #3c91e6;
 }
 @media only screen and (min-width: 768px) {
   .product-page-main-con .product-page-con .product .single-product {
@@ -272,6 +272,7 @@
   }
 }
 .product-page-main-con .product-page-con .product .single-product .product-details {
+  gap: 5px;
   display: flex;
   justify-content: center;
   align-items: flex-start;

@@ -292,9 +292,7 @@ $txt-light-blue: #cfe8ff;
       .banner-text-con {
         // border: 1px solid rgb(0, 255, 13);
         width: 100vw;
-        // position: absolute;
-        // position: relative;
-        // left: 0;
+        
         width: 100%;
         // margin-top: -20px;
 
@@ -496,7 +494,7 @@ $txt-light-blue: #cfe8ff;
         background: white !important;
         border-radius: 5px;
         border: 1px solid rgba(128, 128, 128, 0.132);
-        box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
+        // box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
         @include flexDisplay(space-between, center, column);
         // border: 2px solid red;
 
@@ -606,7 +604,7 @@ $txt-light-blue: #cfe8ff;
         background: white;
         overflow: hidden;
         // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
-        border: 1px solid rgba(128, 128, 128, 0.261);
+        border: 1px solid rgba(128, 128, 128, 0.133);
         // border: 2px solid red;
         // flex-wrap: wrap;
         // height: 300px;
@@ -647,7 +645,7 @@ $txt-light-blue: #cfe8ff;
 
         .product-img {
           // margin-top: 5px;
-          border: 1px solid rgba(128, 128, 128, 0.157);
+          border: 1px solid rgba(128, 128, 128, 0.107);
           width: 100%;
           height: 150px;
           border-radius: 5px;
