@@ -13,7 +13,7 @@ const Products: FC<ProductsProps> = ({ displayedProducts }) => {
   const dynamicBtn = [
     "All",
     ...new Set(
-      displayedProducts.map((category) => category.data().productcategory)
+      displayedProducts.map((category) => category?.data()?.productcategory)
     ),
   ];
   // console.log(displayedProducts);
@@ -123,8 +123,8 @@ function SingleProduct({
 }) {
   // percentage of peomo
   const priceDifference =
-    parseFloat(productoldprice.toString()) -
-    parseFloat(productprice.toString());
+    parseFloat(productoldprice?.toString()) -
+    parseFloat(productprice?.toString());
 
   const percentageDifference = Math.floor(
     (priceDifference / parseFloat(productoldprice.toString())) * 100

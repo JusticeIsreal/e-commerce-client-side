@@ -16,7 +16,7 @@ function products() {
     return onSnapshot(
       query(collection(db, "products"), orderBy("timestamp", "desc")),
       (snapshot) => {
-        setDisplayedProducts(snapshot.docs);
+        setDisplayedProducts(snapshot?.docs);
       }
     );
   }, [db]);
@@ -25,7 +25,7 @@ function products() {
     <div className="product-page-main-con">
       {/* TOPBAR */}
       <Topbar />
-      {displayedProducts.length < 1 ? (
+      {!displayedProducts.length ? (
         <Loader />
       ) : (
         <>

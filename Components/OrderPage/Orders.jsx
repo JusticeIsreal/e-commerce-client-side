@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link";
 // icon
 import { FaMoneyCheck } from "react-icons/fa";
 import { getSessionUser } from "../../Services/functions";
@@ -53,6 +53,7 @@ function Orders({ userTransaction }) {
 export default Orders;
 
 function TransactionReceipt({
+  _id,
   timestamp,
   totalAmount,
   status,
@@ -70,25 +71,48 @@ function TransactionReceipt({
   const formattedTimestamp = formatDate(timestamp);
 
   return (
-    <div className="each-order">
-      <div className="order-icon">
-        <FaMoneyCheck />
-      </div>
-      <div className="order-details">
-        <p className="timestamp">{formattedTimestamp}</p>
-        <p className="productnames">
-          {product.map((name) => name.productname + ",  ")}
-        </p>
-        <p className="productnames"> ₦ {totalAmount.toLocaleString()}</p>
-        <p>
-          Payment:{" "}
-          <span
+    <Link href={`/ClientDynamic/Reciept/${_id}`}>
+      {" "}
+      <div className="each-order">
+        <div className="order-icon">
+          <FaMoneyCheck />
+        </div>
+        <div className="order-details">
+          <p className="timestamp">{formattedTimestamp}</p>
+          <p className="productnames">
+            {product.map((name) => name.productname + ",  ")}
+          </p>
+          <p className="productnames"> ₦ {totalAmount.toLocaleString()}</p>
+          <p>
+            Payment:{" "}
+            <span
+              style={{
+                color: (() => {
+                  switch (transactionstatus) {
+                    case "Pending":
+                      return "#db504a";
+                    case "Confirmed":
+                      return "#3d91e6";
+                    default:
+                      return "#3d91e6";
+                  }
+                })(),
+              }}
+            >
+              {transactionstatus}
+            </span>
+          </p>
+        </div>
+        <div className="order-payment-status">
+          <p
             style={{
               color: (() => {
-                switch (transactionstatus) {
-                  case "Pending":
+                switch (status) {
+                  case "Processing":
                     return "#db504a";
-                  case "Confirmed":
+                  case "Transit":
+                    return "#ffce26";
+                  case "Delivered":
                     return "#3d91e6";
                   default:
                     return "#3d91e6";
@@ -96,30 +120,10 @@ function TransactionReceipt({
               })(),
             }}
           >
-            {transactionstatus}
-          </span>
-        </p>
+            {status}
+          </p>
+        </div>
       </div>
-      <div className="order-payment-status">
-        <p
-          style={{
-            color: (() => {
-              switch (status) {
-                case "Processing":
-                  return "#db504a";
-                case "Transit":
-                  return "#ffce26";
-                case "Delivered":
-                  return "#3d91e6";
-                default:
-                  return "#3d91e6";
-              }
-            })(),
-          }}
-        >
-          {status}
-        </p>
-      </div>
-    </div>
+    </Link>
   );
 }
