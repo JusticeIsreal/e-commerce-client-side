@@ -12,6 +12,7 @@ function orders() {
     const userName = async () => {
       const userData = await getSessionUser();
       setUserTransaction(userData?.user?.transaction);
+      console.log(userData);
     };
     userName();
   }, [router]);

@@ -292,7 +292,7 @@ $txt-light-blue: #cfe8ff;
       .banner-text-con {
         // border: 1px solid rgb(0, 255, 13);
         width: 100vw;
-        
+
         width: 100%;
         // margin-top: -20px;
 
@@ -499,7 +499,7 @@ $txt-light-blue: #cfe8ff;
         // border: 2px solid red;
 
         .new-products {
-          height: 200px;
+          height: 250px;
           width: 200px;
           overflow: hidden;
           transition: transform 0.5s ease;
@@ -508,9 +508,6 @@ $txt-light-blue: #cfe8ff;
           background: whitesmoke;
           @include flexDisplay(space-between, center, column);
 
-          @include responsive(bigphone) {
-            height: 250px;
-          }
           .percentage-off {
             position: absolute;
             z-index: 20;
@@ -533,7 +530,7 @@ $txt-light-blue: #cfe8ff;
 
           &:hover {
             img {
-              transform: scale(1.3);
+              transform: scale(1.1);
             }
           }
         }

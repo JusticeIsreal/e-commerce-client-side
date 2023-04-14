@@ -119,6 +119,10 @@ $txt-light-blue: #cfe8ff;
           margin: 5px;
           @include flexDisplay(space-evenly, center, row);
         }
+        .active-category {
+          background: $txt-blue;
+          color: white;
+        }
       }
     }
   }

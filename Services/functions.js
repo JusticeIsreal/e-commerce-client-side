@@ -67,7 +67,23 @@ export const logIN = async (setLoading, router, setErrMsg, data) => {
       setLoading(true);
     })
     .catch((error) => {
-      setErrMsg(error.response.data.message);
+      setErrMsg(error?.response?.data?.message);
       setLoading(true);
     });
 };
+// LOG IN API CALL
+const singleTransaction = async (transactID) => {
+  const token = Cookies.get("JWTtoken");
+  const { data } = await axios.get(
+    `http://localhost:1234/api/v1/transaction/getsingletransaction/${transactID}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  // console.log(data);
+  return data.data;
+};
+export const singleTransactionFetcher = (transactID) =>
+  singleTransaction(transactID);

@@ -18,7 +18,7 @@ function Orders({ userTransaction }) {
     if (category === "All") {
       setProducts(userTransaction);
     } else {
-      setProducts(userTransaction.filter((item) => item.status === category));
+      setProducts(userTransaction.filter((item) => item.status === item));
     }
   }, [category, userTransaction]);
   console.log(userTransaction.filter((item) => item.status === "Open"));
@@ -30,7 +30,6 @@ function Orders({ userTransaction }) {
           {orderStatus.map((btn, index) => (
             <p
               key={index}
-              // className="category"
               className={`${
                 btn === category ? "category active-category" : "category"
               }`}

@@ -86,6 +86,10 @@
   align-items: center;
   flex-direction: row;
 }
+.order-page-main-con .oders-con .order-page-top .order-status .active-category {
+  background: #3c91e6;
+  color: white;
+}
 .order-page-main-con .each-order-con {
   height: 68vh;
   overflow-y: scroll;
