@@ -4,6 +4,7 @@ import "../styles/ProductPage/style.css";
 import "../styles/AdminPage/App.css";
 import "../styles/DynamicPage/clientSingleproduct/style.css";
 import "../styles/DynamicPage/adminSingleproduct/style.css";
+import "../styles/DynamicPage/transactionreceipt/style.css";
 import "../styles/RegistrationLogin/LoginStyle.css";
 import "../styles/OrderPage/style.css";
 import { AppProps } from "next/app";

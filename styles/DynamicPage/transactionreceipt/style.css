@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+.receipt-main-con .receipt-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 5px;
+  max-width: 500px;
+}
+.receipt-main-con .receipt-con h3 {
+  font-size: 25px;
+  color: #3c91e6;
+}
+.receipt-main-con .receipt-con p {
+  font-size: 15px;
+  margin: 5px;
+  margin-bottom: 5px;
+  color: #666;
+  text-align: center;
+}
+.receipt-main-con .receipt-con h4 {
+  font-size: 17px;
+  color: #3c91e6;
+  margin: 0 auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 95%;
+}
+.receipt-main-con .receipt-con .transaction-order-details {
+  border: 1px solid #3c91e6;
+  border-radius: 5px;
+  width: 95%;
+  margin-top: 3px;
+  padding: 5px;
+}
+.receipt-main-con .receipt-con .transaction-order-details .item-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.receipt-main-con .receipt-con .transaction-order-details .item-heading span {
+  width: 100%;
+  text-align: center;
+  color: #444;
+  font-weight: bold;
+}
+.receipt-main-con .receipt-con .transaction-order-details .product-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #666;
+}
+.receipt-main-con .receipt-con .transaction-order-details .product-details span {
+  text-align: center;
+  width: 100%;
+  line-height: 2;
+  text-transform: capitalize;
+}
+.receipt-main-con .receipt-con .transaction-order-details .first {
+  margin-top: 20px;
+  border-top: 1px dashed #666;
+  padding-top: 10px;
+}
+.receipt-main-con .receipt-con .transaction-order-details .transaction-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  color: #666;
+}
+.receipt-main-con .receipt-con .transaction-order-details .transaction-status span {
+  line-height: 2;
+}
+.receipt-main-con .receipt-con .transaction-order-details .total-amount {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 15px;
+}
+.receipt-main-con .receipt-con .transaction-order-details .qr-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+}/*# sourceMappingURL=style.css.map */

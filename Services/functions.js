@@ -87,3 +87,46 @@ const singleTransaction = async (transactID) => {
 };
 export const singleTransactionFetcher = (transactID) =>
   singleTransaction(transactID);
+
+const updateTransaction = async (transactID, transactionStatus) => {
+  const token = Cookies.get("JWTtoken");
+  await axios
+    .patch(
+      "http://localhost:1234/api/v1/transaction/updatetransaction/" +
+        `${transactID}`,
+      {
+        transactionstatus: transactionStatus,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
+
+    .then((resp) => {
+      console.log(resp);
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+export const transactionStatus = async (userData, transactID) => {
+  axios
+    .get(
+      `https://api.paystack.co/transaction/verify/${userData?.paystackRef}`,
+      {
+        headers: {
+          Authorization: `Bearer sk_test_3f383f1af75a39537da652b48d2325b2a0c4ba26`,
+        },
+      }
+    )
+    .then((response) => {
+      const transactionStatus = response.data.data.status;
+      updateTransaction(transactID, transactionStatus);
+    })
+    .catch((error) => {
+      console.log(error);
+      console.log(userData);
+    });
+};

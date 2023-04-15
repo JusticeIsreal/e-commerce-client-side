@@ -5,6 +5,7 @@ import { FaMoneyCheck } from "react-icons/fa";
 import { getSessionUser } from "../../Services/functions";
 import { useRouter } from "next/router";
 function Orders({ userTransaction }) {
+  const router = useRouter();
   const orderStatus = ["All", "Processing", "Transit", "Delvered"];
 
   // state for category
@@ -20,7 +21,7 @@ function Orders({ userTransaction }) {
     } else {
       setProducts(userTransaction.filter((item) => item.status === item));
     }
-  }, [category, userTransaction]);
+  }, [category, userTransaction, products, category, router]);
   console.log(userTransaction.filter((item) => item.status === "Open"));
   return (
     <div className="oders-con">
@@ -71,7 +72,7 @@ function TransactionReceipt({
 
   return (
     <Link href={`/ClientDynamic/Reciept/${_id}`}>
-      {" "}
+      {}
       <div className="each-order">
         <div className="order-icon">
           <FaMoneyCheck />
@@ -88,12 +89,14 @@ function TransactionReceipt({
               style={{
                 color: (() => {
                   switch (transactionstatus) {
-                    case "Pending":
+                    case "pending":
                       return "#db504a";
-                    case "Confirmed":
+                    case "success":
                       return "#3d91e6";
+                    case "failed":
+                      return "red";
                     default:
-                      return "#3d91e6";
+                      return "red";
                   }
                 })(),
               }}
