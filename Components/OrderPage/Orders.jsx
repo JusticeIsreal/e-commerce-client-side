@@ -94,9 +94,9 @@ function TransactionReceipt({
                     case "success":
                       return "#3d91e6";
                     case "failed":
-                      return "red";
+                      return "#db504a";
                     default:
-                      return "red";
+                      return "#db504a";
                   }
                 })(),
               }}

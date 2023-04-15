@@ -1,7 +1,7 @@
 import axios from "axios";
-import JsBarcode from "jsbarcode";
-import Barcode from "react-barcode";
 import QRCode from "qrcode.react";
+
+import html2canvas from "html2canvas";
 
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
@@ -9,7 +9,9 @@ import { useEffect, useRef, useState } from "react";
 import {
   transactionStatus,
   singleTransactionFetcher,
+  getSessionUser,
 } from "../../../Services/functions";
+import { TiArrowBack } from "react-icons/ti";
 import useSWR from "swr";
 import Loader from "../../../Components/Loader";
 const API = "http://localhost:1234/api/v1/transaction/getsingletransaction";
@@ -22,17 +24,7 @@ function transactionrecipt() {
     error,
   } = useSWR(transactID ? transactID : null, singleTransactionFetcher);
 
-  // GENERATE BAR CODE WITH PRODUCT ID
-  const barcodeRef = useRef(null);
-  useEffect(() => {
-    if (barcodeRef.current) {
-      // Set the barcode format to CODE128
-      JsBarcode(barcodeRef.current, "1234567890", { format: "QRCode" });
-    }
-  }, [barcodeRef.current]);
-
   // FETCH TRANSACTION STATUS
-
   useEffect(() => {
     async function fetchSessionUser() {
       if (userData) {
@@ -42,32 +34,63 @@ function transactionrecipt() {
     fetchSessionUser();
   }, [userData, router, transactID]);
 
+  function goBack() {
+    router.back();
+  }
+  // save pae as image
+  const saveAsImage = (element) => {
+    html2canvas(element).then((canvas) => {
+      const link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  };
+
+  // get usersession
+  const [session, setSession] = useState(false);
+
+  useEffect(() => {
+    async function fetchSessionUser() {
+      const userData = await getSessionUser(router);
+      if (userData) {
+        setSession(true);
+      }
+    }
+    fetchSessionUser();
+  }, [router]);
   return (
     <div className="receipt-main-con">
       {isLoading ? (
         <Loader />
       ) : (
         <div className="receipt-con">
+          <button onClick={goBack} className="go-back">
+            <TiArrowBack />
+            Back
+          </button>
           <h3>Transaction Receipt</h3>
-          <p>Order Ref: {userData?.paystackRef}</p>
+          <p className="paystackRef">
+            Order Ref: <span>{userData?.paystackRef}</span>
+          </p>
           <p>
             {userData?.transactionstatus === "Pending"
               ? "Your transation is been proccesed ,once confirmed your order will be approved"
               : `Your transation has been confirmed and your order is currently ${userData?.status}`}
           </p>
-          <h4>YOUR ORDER</h4>
+          <h4>TRANSACTION</h4>
           <div className="transaction-order-details">
             <p className="item-heading">
-              <span>Product</span>
+              <span className="p-name">Product</span>
               <span>Price</span>
-              <span>Qty</span>
+              <span className="qty">Qty</span>
               <span>Total</span>
             </p>
             {userData?.product.map((item) => (
               <div key={item._id} className="product-details">
-                <span>{item?.productname}</span>
+                <span className="p-name">{item?.productname}</span>
                 <span>₦ {item?.productprice.toLocaleString()}</span>
-                <span> {item?.quantity}</span>
+                <span className="qty"> {item?.quantity}</span>
                 <span>₦ {item?.total.toLocaleString()}</span>
               </div>
             ))}
@@ -83,18 +106,35 @@ function transactionrecipt() {
                       case "success":
                         return "#3d91e6";
                       default:
-                        return "red";
+                        return "#db504a";
                     }
                   })(),
                 }}
               >
-                {" "}
                 {userData?.transactionstatus}
               </span>
             </div>
             <div className="transaction-status">
               <span>Order status:</span>
-              <span> {userData?.status}</span>
+              <span
+                style={{
+                  color: (() => {
+                    switch (userData?.status) {
+                      case "Processing":
+                        return "#db504a";
+                      case "Transit":
+                        return "#ffce26";
+                      case "Delivered":
+                        return "#3d91e6";
+                      default:
+                        return "#3d91e6";
+                    }
+                  })(),
+                }}
+              >
+                {" "}
+                {userData?.status}
+              </span>
             </div>
             <div className="transaction-status">
               <span>Delivery address:</span>
@@ -112,8 +152,8 @@ function transactionrecipt() {
             </div>
           </div>
 
-          <div>
-            <p>Print page</p>
+          <div className="download-page">
+            <p onClick={() => saveAsImage(document.body)}>Print page</p>
             <p>Make a report</p>
           </div>
         </div>

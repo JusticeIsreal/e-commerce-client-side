@@ -71,7 +71,28 @@ $txt-light-blue: #cfe8ff;
     margin-top: 50px;
     padding: 5px;
     max-width: 500px;
+    position: relative;
 
+    .go-back {
+      position: absolute;
+      z-index: 20;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      left: 15px;
+      background: #3c91e6c6;
+      border: 1px solid #8080802b;
+      color: white;
+      width: 70px;
+      height: 30px;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 18px;
+
+      @include responsive(bigphone) {
+        top: 20px;
+      }
+    }
     h3 {
       font-size: 25px;
       color: $txt-blue;
@@ -84,10 +105,18 @@ $txt-light-blue: #cfe8ff;
       color: $font-light;
       text-align: center;
     }
+    .paystackRef {
+      color: $bg-dark;
+      font-weight: bold;
 
+      span {
+        color: $bg-dark;
+        font-weight: normal;
+      }
+    }
     h4 {
       font-size: 17px;
-      color: $txt-blue;
+      color: $bg-dark;
       margin: 0 auto;
       margin-right: auto;
       margin-top: 30px;
@@ -95,38 +124,59 @@ $txt-light-blue: #cfe8ff;
     }
 
     .transaction-order-details {
-      border: 1px solid $txt-blue;
+      border: 1px solid gray;
+      background: white;
       border-radius: 5px;
       width: 95%;
       margin-top: 3px;
-      padding: 5px;
+      padding: 5px 10px;
 
+      @include responsive(bigphone) {
+        border-radius: 10px;
+      }
       .item-heading {
         width: 100%;
-        @include flexDisplay(space-between, flex-start, row);
+        margin: 0 auto;
+        @include flexDisplay(space-evenly, center, row);
 
         span {
-          width: 100%;
-          text-align: center;
+          width: 30%;
+          text-align: left;
           color: $bg-dark-gray;
           font-weight: bold;
+          line-height: 2;
+          margin: 3px;
+        }
+        .p-name {
+          width: 50%;
+        }
+        .qty {
+          width: 10%;
         }
       }
       .product-details {
-        @include flexDisplay(center, center, row);
+        @include flexDisplay(space-evenly, center, row);
         color: $font-light;
 
         span {
-          text-align: center;
-          width: 100%;
+          // text-align: center;
+          margin: 3px;
+
+          width: 30%;
           line-height: 2;
           text-transform: capitalize;
+        }
+        .qty {
+          width: 10%;
+        }
+        .p-name {
+          width: 50%;
         }
       }
 
       .first {
         margin-top: 20px;
-        border-top: 1px dashed $font-light;
+        // border-top: 1px dashed $font-light;
         padding-top: 10px;
       }
       .transaction-status {
@@ -146,6 +196,32 @@ $txt-light-blue: #cfe8ff;
       .qr-code {
         @include flexDisplay(center, center, row);
         margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .download-page {
+      // border: 2px solid red;
+      width: 95%;
+      max-width: 500px;
+
+      p {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 10px;
+        height: 50px;
+        border: 2px solid $txt-blue;
+        text-align: center;
+        background: $txt-blue;
+        color: white;
+        cursor: pointer;
+        @include flexDisplay(center, center, row);
+
+        &:hover {
+          background: whitesmoke;
+          color: $txt-blue;
+        }
       }
     }
   }

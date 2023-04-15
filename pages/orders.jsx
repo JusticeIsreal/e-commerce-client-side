@@ -16,7 +16,18 @@ function orders() {
     };
     userName();
   }, [router]);
+  // get usersession
+  const [session, setSession] = useState(false);
 
+  useEffect(() => {
+    async function fetchSessionUser() {
+      const userSession = await getSessionUser(router);
+      if (userSession) {
+        setSession(true);
+      }
+    }
+    fetchSessionUser();
+  }, [router]);
   return (
     <div className="order-page-main-con">
       <Topbar />
