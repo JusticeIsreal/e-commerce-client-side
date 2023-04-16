@@ -34,7 +34,7 @@
     margin-top: 100px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product {
     margin-top: 100px;
     display: flex;
@@ -55,7 +55,7 @@
     flex-direction: row;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .top-container {
     display: flex;
     justify-content: flex-start;
@@ -96,7 +96,7 @@
     order: 2;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .top-container .big-display-con {
     width: 350px;
     height: 400px;
@@ -148,7 +148,7 @@
     right: 25px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .top-container .big-display-con .percentage-off {
     right: 20px;
   }
@@ -187,7 +187,7 @@
     height: 600px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .top-container .small-display-img-con {
     width: 100px;
     height: 400px;
@@ -247,7 +247,7 @@
   width: 100%;
   padding: 5px;
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .lower-details {
     width: 50%;
     margin-top: 20px;
@@ -276,7 +276,7 @@
     font-size: 21px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .lower-details .p-number,
   .client-single-product .single-product .lower-details .p-desc {
     font-size: 18px;
@@ -293,7 +293,7 @@
     font-size: 25px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .lower-details .p-number span,
   .client-single-product .single-product .lower-details .p-desc span {
     font-size: 20px;
@@ -333,10 +333,10 @@
     width: 300px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .lower-details .product-qty-price-con .qty-con {
     width: 200px;
-    height: 65px;
+    height: 60px;
   }
 }
 .client-single-product .single-product .lower-details .product-qty-price-con .qty-con span {
@@ -355,7 +355,7 @@
     font-size: 50px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .lower-details .product-qty-price-con .qty-con span {
     font-size: 40px;
   }
@@ -377,7 +377,7 @@
     font-size: 55px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product .lower-details .product-qty-price-con h1 {
     font-size: 40px;
   }
@@ -419,7 +419,7 @@
   .client-single-product .single-product .lower-details .add-to-cart-con .buy,
   .client-single-product .single-product .lower-details .add-to-cart-con .view {
     font-size: 20px;
-    padding: 20px 5px;
+    padding: 15px 5px;
   }
 }
 .client-single-product .single-product .lower-details .add-to-cart-con .add {
@@ -450,7 +450,7 @@
     margin-top: 150px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product-details .product-review {
     margin-top: 50px;
   }
@@ -582,7 +582,7 @@
   text-align: center;
   color: #3c91e6;
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product-details .product-review .review-con .review-form-con form label {
     font-size: 20px;
   }
@@ -662,7 +662,7 @@
     font-size: 15px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product-details .similar-products .products .product-name {
     font-size: 18px;
   }
@@ -698,7 +698,7 @@
     height: 230px;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 900px) {
   .client-single-product .single-product-details .similar-products .products .product-img {
     height: 270px;
   }

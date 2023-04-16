@@ -50,7 +50,7 @@ $txt-light-blue: #cfe8ff;
     }
   }
   @if $breakpoint==tablet {
-    @media only screen and (min-width: 1023px) {
+    @media only screen and (min-width: 900px) {
       @content;
     }
   }
@@ -336,7 +336,7 @@ $txt-light-blue: #cfe8ff;
 
           @include responsive(tablet) {
             width: 200px;
-            height: 65px;
+            height: 60px;
           }
           span {
             font-weight: bolder;
@@ -405,7 +405,7 @@ $txt-light-blue: #cfe8ff;
 
           @include responsive(bigphone) {
             font-size: 20px;
-            padding: 20px 5px;
+            padding: 15px 5px;
           }
         }
 
