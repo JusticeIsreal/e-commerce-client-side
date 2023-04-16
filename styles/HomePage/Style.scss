@@ -603,22 +603,11 @@ $txt-light-blue: #cfe8ff;
         max-width: 180px;
         // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border: 1px solid rgba(128, 128, 128, 0.133);
-        // border: 2px solid red;
-        // flex-wrap: wrap;
-        // height: 300px;
-        // border: 2px solid red;
+
         @include responsive(bigphone) {
           width: 20%;
           max-width: 200px;
         }
-        // @include responsive(tablet) {
-        //   width: 20%;
-        //   // max-width: 300px;
-        // }
-        // @include responsive(desktop) {
-        //   width: 30%;
-        //   max-width: 300px;
-        // }
 
         .product-name {
           // border: 2px solid red;
@@ -674,9 +663,6 @@ $txt-light-blue: #cfe8ff;
           @include responsive(tablet) {
             height: 220px;
           }
-          // @include responsive(desktop) {
-          //   height: 400px;
-          // }
 
           .home-product-img {
             height: 100%;
