@@ -298,7 +298,9 @@ function Details() {
             <div className="add-to-cart-con">
               <div className="add">Add to cart</div>
               <div className="buy">Buy Now</div>
-              <div className="view">View Cart</div>
+              <Link href="/cart" className="view">
+                <div>View Cart</div>
+              </Link>
             </div>
           </div>
         </div>
@@ -469,7 +471,6 @@ function SimilarProducts({
           </p>
         )}
         <Link
-          // href="/ClientDynamic/[productID]"
           href={`/ClientDynamic/${id}`}
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >

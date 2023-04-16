@@ -1,5 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../../Firebase";
+import { useEffect, useState } from "react";
+import { addToCart, getSessionUser } from "../../Services/functions";
+import { jgi } from "../Topbar";
 
 function Products({ products }: { products: any[] }) {
   return (
@@ -54,6 +67,31 @@ function Product({
   const percentageDifference = Math.floor(
     (priceDifference / parseFloat(productoldprice.toString())) * 100
   );
+
+  // add to cart
+  const [cartItem, setCartItem] = useState<any[]>([]);
+
+  const addToCar = async (id: string) => {
+    const productDoc = doc(db, "products", id);
+    const productSnapshot = await getDoc(productDoc);
+    const productData = productSnapshot.data();
+
+    // Retrieve the cart data from local storage
+    let product: any[] = [];
+    let cart: any[] = [];
+
+    product.push(productData);
+    cart.push(productData);
+
+    console.log(product);
+
+    const userData = await addToCart(productData);
+    // Save the updated cart data to local storage
+    // localStorage.setItem("localCart", JSON.stringify(cart));
+    jgi();
+    await getSessionUser();
+  };
+
   return (
     <div className="products">
       <div className="product-img">
@@ -90,9 +128,9 @@ function Product({
         </p>
       </div>
 
-      <Link href="/" className="addto-cart">
+      <button className="addto-cart" onClick={() => addToCar(id)}>
         Add to cart
-      </Link>
+      </button>
     </div>
   );
 }

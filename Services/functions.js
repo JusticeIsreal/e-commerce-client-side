@@ -4,8 +4,9 @@ import Cookies from "js-cookie";
 import { db } from "../Firebase";
 
 // FETCH SESSION /USER DETAILS API CALL
-export const getSessionUser = async (router) => {
+export const getSessionUser = async () => {
   const token = Cookies.get("JWTtoken");
+  const storedCart = JSON.parse(localStorage.getItem("localCart")) || [];
   if (token) {
     try {
       const response = await axios.get(
@@ -16,6 +17,7 @@ export const getSessionUser = async (router) => {
           },
         }
       );
+
       const user = response.data.data;
       const userTransaction = response.data.data.transaction;
       const userCart = response.data.data.cart;
@@ -24,6 +26,7 @@ export const getSessionUser = async (router) => {
         user,
         userTransaction,
         userCart,
+        storedCart,
       };
     } catch (error) {
       console.log(error);
@@ -33,7 +36,23 @@ export const getSessionUser = async (router) => {
     return; // or you can throw the
   }
 };
-
+// ADD TO CART
+export const addToCart = async (productData) => {
+  const token = Cookies.get("JWTtoken");
+  axios
+    .post("http://localhost:1234/api/v1/cart/addtocart", productData, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((resp) => {
+     
+      console.log(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 // CHANGE PASSWORD API CALL
 export const changePassword = async (password, router) => {
   const userId = localStorage.getItem("userId") || [];

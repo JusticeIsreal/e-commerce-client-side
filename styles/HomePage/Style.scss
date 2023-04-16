@@ -115,18 +115,17 @@ $txt-light-blue: #cfe8ff;
       @include flexDisplay(space-between, center, row);
     }
     .topbar-top-con-right {
+      // border: 2px solid red;
       @include flexDisplay(space-between, center, row);
       .cart-icon-con {
         @include flexDisplay(space-between, center, row);
         position: relative;
-        padding-right: 15px;
 
-        p {
-          position: absolute;
-          right: 2px;
-          top: -5px;
+        sup {
+          padding-left: 3px;
+          margin-bottom: auto;
           font-weight: bolder;
-          font-size: 19px;
+          font-size: 15px;
           color: $txt-blue;
         }
       }
@@ -590,37 +589,40 @@ $txt-light-blue: #cfe8ff;
       width: 100%;
       // border: 2px solid red;
       @include responsive(bigphone) {
+        @include flexDisplay(space-evenly, flex-start, row);
         margin-top: 30px;
       }
       .products {
         @include flexDisplay(space-evenly, center, column);
         width: 45%;
-        padding: 5px;
+        padding: 5px 5px 0 5px;
         margin: 10px 5px;
         border-radius: 5px;
         background: white;
         overflow: hidden;
+        max-width: 180px;
         // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border: 1px solid rgba(128, 128, 128, 0.133);
         // border: 2px solid red;
         // flex-wrap: wrap;
         // height: 300px;
-
+        // border: 2px solid red;
         @include responsive(bigphone) {
-          width: 30%;
+          width: 20%;
           max-width: 200px;
         }
-        @include responsive(tablet) {
-          width: 20%;
-          max-width: 300px;
-        }
-        @include responsive(desktop) {
-          width: 30%;
-          max-width: 300px;
-        }
+        // @include responsive(tablet) {
+        //   width: 20%;
+        //   // max-width: 300px;
+        // }
+        // @include responsive(desktop) {
+        //   width: 30%;
+        //   max-width: 300px;
+        // }
 
         .product-name {
           // border: 2px solid red;
+          margin-top: 3px;
           // text-align: center;
           font-size: 15px;
           // line-height: 2;
@@ -651,8 +653,9 @@ $txt-light-blue: #cfe8ff;
           background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
           // @include flexDisplay(center, center, row);
           overflow: hidden;
-          position: relative;
+          object-fit: contain;
           // border: 2px solid red;
+
           .percentage-off {
             position: absolute;
             z-index: 20;
@@ -668,19 +671,16 @@ $txt-light-blue: #cfe8ff;
           @include responsive(phone) {
             height: 200px;
           }
-          @include responsive(bigphone) {
-            height: 230px;
-          }
           @include responsive(tablet) {
-            height: 270px;
+            height: 220px;
           }
-          @include responsive(desktop) {
-            height: 400px;
-          }
+          // @include responsive(desktop) {
+          //   height: 400px;
+          // }
 
           .home-product-img {
             height: 100%;
-            // border: 2px solid red;
+            // border: 2px solid rgb(25, 0, 255);
             transition: transform 0.3s linear;
 
             &:hover {

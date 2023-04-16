@@ -36,10 +36,10 @@ function Topbar() {
   // FETCHING SESSION USER NAME AND CART LENGTH
   const [name, setName] = useState(null);
   const [cartLength, setCartLength] = useState([]);
-
+  // const [cart, setCart] = useState([]);
   useEffect(() => {
     async function fetchSessionUser() {
-      const userData = await getSessionUser(router);
+      const userData = await getSessionUser();
       if (userData && userData.user) {
         setName(userData?.user?.username);
         setCartLength(userData?.user?.cart);
@@ -47,6 +47,12 @@ function Topbar() {
     }
     fetchSessionUser();
   }, [router]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("localCart", JSON.stringify(cartLength));
+  //   const storedCart = JSON.parse(localStorage.getItem("localCart")) || [];
+  //   setCart(storedCart);
+  // }, [router]);
 
   // LOGOUT
   const logOUT = () => {
@@ -118,8 +124,11 @@ function Topbar() {
         {/* cart and user icon */}
         <div className="topbar-top-con-right">
           <div className="cart-icon-con">
-            <p>{cartLength.length}</p>
-            <FaCartArrowDown className="icon" />
+            <Link href="/cart">
+              {" "}
+              <FaCartArrowDown className="icon" />
+            </Link>
+            <sup>{cartLength.length}</sup>
           </div>
         </div>
       </div>
@@ -177,5 +186,5 @@ function Topbar() {
     </div>
   );
 }
-
+export const jgi = () => {};
 export default Topbar;

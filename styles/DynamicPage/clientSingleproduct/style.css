@@ -136,11 +136,22 @@
   height: 45px;
   border-bottom-left-radius: 15px;
   top: 10px;
-  right: 18px;
+  right: 10px;
   background: #3c91e6;
   color: white;
   text-align: center;
   padding: 3px;
+}
+@media only screen and (min-width: 768px) {
+  .client-single-product .single-product .top-container .big-display-con .percentage-off {
+    top: 10px;
+    right: 25px;
+  }
+}
+@media only screen and (min-width: 1023px) {
+  .client-single-product .single-product .top-container .big-display-con .percentage-off {
+    right: 20px;
+  }
 }
 .client-single-product .single-product .top-container .big-display-con .big-display-img {
   position: relative;

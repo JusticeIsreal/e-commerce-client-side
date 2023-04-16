@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+.cart-page-con {
+  border: 2px solid red;
+  margin-top: 50px;
+}
+@media only screen and (min-width: 768px) {
+  .cart-page-con {
+    margin-top: 100px;
+  }
+}
+.cart-page-con .cart-heading {
+  margin-top: 20px;
+  background: white;
+  padding: 10px 5px;
+  font-weight: bold;
+  color: #444;
+}
+.cart-page-con .subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px;
+}
+.cart-page-con .subtotal p {
+  color: #666;
+}
+.cart-page-con .subtotal h4 {
+  color: #444;
+}
+.cart-page-con .cart-heading2 {
+  padding: 10px 5px;
+  font-weight: bold;
+  color: #444;
+  background: white;
+}/*# sourceMappingURL=style.css.map */
