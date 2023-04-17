@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { getSessionUser } from "../../Services/functions";
+import { deleteCartItem, getSessionUser } from "../../Services/functions";
 import { ImBin } from "react-icons/im";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 function CartItems() {
@@ -19,7 +19,6 @@ function CartItems() {
   }, [router]);
 
   //   console.log(localCart);
-  //   console.log(userCart);
 
   const [totalAmount, setTotalAmount] = useState("");
 
@@ -36,8 +35,6 @@ function CartItems() {
     setTotalAmount(grandTotal);
   }, [router, totalAmount, userCart]);
 
-  // output: [{ price: 10, quantity: 2, total: 12 }, { price: 5, quantity: 4, total: 9 }, { price: 8, quantity: 1, total: 9 }, { price: 12, quantity: 3, total: 15 }, { price: 6, quantity: 2, total: 8 }]
-  console.log("totalamount:" + totalAmount); // output: 53
   return (
     <>
       <p className="cart-heading">CART SUMMARY</p>
@@ -48,7 +45,11 @@ function CartItems() {
 
       <div className="single-product">
         {userCart.map((item) => (
-          <CartProducts key={item._id} {...item} />
+          <CartProducts
+            key={item._id}
+            {...item}
+            // deleteCartItemm={deleteCartItemm}
+          />
         ))}
 
         <div className="checkout">
@@ -64,15 +65,37 @@ export default CartItems;
 function CartProducts({
   _id,
   image,
-  productcategory,
-  productclass,
-  productdescription,
   productname,
   productnumber,
-  productoldprice,
   productprice,
   quantity,
 }) {
+  // qty
+  const [priceNumber, setPriceNumber] = useState(parseFloat(productprice));
+  const [count, setCount] = useState(1);
+
+  const addProductQTY = () => {
+    const total = parseFloat(productprice) * count;
+    setPriceNumber(total);
+  };
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+  const handleDecrement = async () => {
+    setCount(count - 1);
+    if (count <= 1) {
+      setCount(1);
+    }
+  };
+  useEffect(() => {
+    addProductQTY();
+  }, [count]);
+
+
+  const deleteCart = async (_id) => {
+    await deleteCartItem(_id);
+  };
+
   return (
     <div className="product-con">
       <div className="cart-product-top">
@@ -82,18 +105,27 @@ function CartProducts({
         <div className="cart-product-lower">
           <div className="cart-product-lower-top">
             <h3>{productname}</h3>
-            <p>
-              ₦ {productprice * 2} <sup> ₦ {productoldprice}</sup>
-            </p>
+            <p>₦ {priceNumber} </p>
             <span>{productnumber}</span>
           </div>
           <div className="cart-product-lower-lower">
-            <p>
+            <p onClick={() => deleteCart(_id)}>
               <ImBin /> REMOVE
             </p>
             <div>
-              <FiMinusCircle className="icon" /> <h3>1</h3>{" "}
-              <FiPlusCircle className="icon" />
+              {count < 1 ? (
+                ""
+              ) : (
+                <FiMinusCircle
+                  className="icon"
+                  onClick={() => handleDecrement()}
+                />
+              )}
+              <h3>{count}</h3>
+              <FiPlusCircle
+                className="icon"
+                onClick={() => handleIncrement()}
+              />
             </div>
           </div>
         </div>

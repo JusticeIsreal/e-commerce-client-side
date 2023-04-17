@@ -80,15 +80,15 @@ function Product({
     let product: any[] = [];
     let cart: any[] = [];
 
-    product.push(productData);
-    cart.push(productData);
+    // product.push(productData);
+    // cart.push(productData);
 
-    console.log(product);
+    // console.log(product);
 
     const userData = await addToCart(productData);
     // Save the updated cart data to local storage
     // localStorage.setItem("localCart", JSON.stringify(cart));
-    jgi();
+   
     await getSessionUser();
   };
 

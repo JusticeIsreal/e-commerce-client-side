@@ -193,15 +193,10 @@ $txt-light-blue: #cfe8ff;
           width: 100%;
           color: $bg-dark-gray;
           p {
+            max-width: 200px;
             font-weight: bold;
             line-height: 2;
             @include flexDisplay(space-between, center, row);
-
-            sup {
-              font-weight: normal;
-              color: $font-light;
-              text-decoration: line-through;
-            }
           }
         }
 
@@ -232,6 +227,7 @@ $txt-light-blue: #cfe8ff;
               color: whitesmoke;
               background: $txt-blue;
               border-radius: 50%;
+              font-size: 30px;
               &:hover {
                 transform: scale(1.1);
               }

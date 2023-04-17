@@ -33,7 +33,7 @@ function Topbar() {
     }
   }, [router.asPath]);
 
-  // FETCHING SESSION USER NAME AND CART LENGTH
+  // // FETCHING SESSION USER NAME AND CART LENGTH
   const [name, setName] = useState(null);
   const [cartLength, setCartLength] = useState([]);
   // const [cart, setCart] = useState([]);

@@ -36,23 +36,7 @@ export const getSessionUser = async () => {
     return; // or you can throw the
   }
 };
-// ADD TO CART
-export const addToCart = async (productData) => {
-  const token = Cookies.get("JWTtoken");
-  axios
-    .post("http://localhost:1234/api/v1/cart/addtocart", productData, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((resp) => {
-     
-      console.log(resp);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+
 // CHANGE PASSWORD API CALL
 export const changePassword = async (password, router) => {
   const userId = localStorage.getItem("userId") || [];
@@ -147,5 +131,39 @@ export const transactionStatus = async (userData, transactID) => {
     .catch((error) => {
       console.log(error);
       console.log(userData);
+    });
+};
+// ADD TO CART
+export const addToCart = async (productData) => {
+  const token = Cookies.get("JWTtoken");
+  axios
+    .post("http://localhost:1234/api/v1/cart/addtocart", productData, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((resp) => {
+      console.log(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
+// DELETE TO CART
+export const deleteCartItem = async (_id) => {
+  const token = Cookies.get("JWTtoken");
+  axios
+    .delete(`http://localhost:1234/api/v1/cart/deletecart/${_id}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((resp) => {
+      console.log(resp);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
