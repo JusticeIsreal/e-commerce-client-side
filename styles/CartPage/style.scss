@@ -64,11 +64,15 @@ $txt-light-blue: #cfe8ff;
 
 // CART PAGE
 .cart-page-con {
-  border: 2px solid red;
+  border: 1px solid #ff000000;
   margin-top: 50px;
+  position: relative;
+  // border: 2px solid red;
 
   @include responsive(bigphone) {
-    margin-top: 100px;
+    margin: 0 auto;
+    margin-top: 90px;
+    max-width: 1350px;
   }
 
   .cart-heading {
@@ -77,24 +81,169 @@ $txt-light-blue: #cfe8ff;
     padding: 10px 5px;
     font-weight: bold;
     color: $bg-dark-gray;
+
+    @include responsive(bigphone) {
+      margin-top: 0px;
+      padding: 10px 5px;
+    }
   }
   .subtotal {
     @include flexDisplay(space-between, center, row);
     padding: 5px;
 
+    @include responsive(bigphone) {
+      position: absolute;
+      border: 1px solid gray;
+      display: block;
+      right: 0;
+      width: 29%;
+    }
     p {
       color: $font-light;
+      padding: 10px 0px;
+      @include responsive(bigphone) {
+        font-size: 20px;
+      }
     }
-    h4 {
+    h3 {
       color: $bg-dark-gray;
+      @include responsive(bigphone) {
+        font-size: 30px;
+      }
     }
   }
 
-  .cart-heading2 {
-    padding: 10px 5px;
+  .single-product {
+    // border: 2px solid red;
+    padding: 0 5px;
+    height: calc(100vh - 220px);
+    overflow: scroll;
+    @include responsive(bigphone) {
+      height: 90vh;
+    }
+    .checkout {
+      // border: 2px solid red;
+      height: 60px;
+      position: sticky;
+      z-index: 2;
+      background: white;
+      bottom: 0px;
+      @include responsive(bigphone) {
+        position: absolute;
+        // border: 2px solid gray;
+        right: 0;
+        top: 130px;
+        width: 29%;
+      }
+      button {
+        width: 100%;
+        height: 100%;
+        color: white;
+        background: $txt-blue;
+        border: 1px solid $txt-blue;
+        &:hover {
+          transform: scale(0.99);
+        }
+      }
+    }
+  }
 
-    font-weight: bold;
-    color: $bg-dark-gray;
+  .product-con {
+    // border: 2px solid rgb(0, 17, 255);
     background: white;
+    border-radius: 10px;
+    padding: 3px 5px;
+    margin: 10px 0;
+
+    @include responsive(bigphone) {
+      width: 70%;
+      max-width: 900px;
+    }
+    .cart-product-top {
+      // border: 2px solid rgb(0, 17, 255);
+      @include flexDisplay(space-between, flex-start, row);
+
+      .img-con {
+        // border: 2px solid rgb(0, 17, 255);
+        width: 45%;
+        max-width: 110px;
+        @include responsive(bigphone) {
+          max-width: 150px;
+        }
+        img {
+          width: 100%;
+          height: 150px;
+
+          @include responsive(bigphone) {
+            height: 190px;
+          }
+        }
+      }
+
+      .cart-product-lower {
+        // border: 2px solid red;
+        @include flexDisplay(space-between, flex-start, column);
+        height: 150px;
+        width: 100%;
+        margin-left: 10px;
+        @include responsive(bigphone) {
+          height: 190px;
+        }
+        .cart-product-lower-top {
+          width: 100%;
+          color: $bg-dark-gray;
+          p {
+            font-weight: bold;
+            line-height: 2;
+            @include flexDisplay(space-between, center, row);
+
+            sup {
+              font-weight: normal;
+              color: $font-light;
+              text-decoration: line-through;
+            }
+          }
+        }
+
+        .cart-product-lower-lower {
+          // border: 1px solid red;
+          @include flexDisplay(space-between, center, row);
+          width: 100%;
+          color: $bg-dark-gray;
+          @include responsive(bigphone) {
+            line-height: 2;
+          }
+          p {
+            color: $txt-blue;
+            font-weight: bold;
+            @include flexDisplay(center, center, row);
+            @include responsive(bigphone) {
+              line-height: 2;
+            }
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+          div {
+            // border: 1px solid red;
+            @include flexDisplay(space-between, center, row);
+
+            .icon {
+              color: whitesmoke;
+              background: $txt-blue;
+              border-radius: 50%;
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+            h3 {
+              padding: 0 25px;
+              color: $bg-dark;
+              background: white;
+            }
+          }
+        }
+      }
+    }
   }
 }
