@@ -463,6 +463,7 @@ $txt-light-blue: #cfe8ff;
   width: 100vw;
   margin-top: 40px;
   overflow-x: hidden;
+  // border: 2px solid red;
   @include responsive(tablet) {
     margin-top: 30px;
   }
@@ -484,7 +485,6 @@ $txt-light-blue: #cfe8ff;
       margin-top: 10px;
       width: 100%;
       padding: 10px 0;
-      // border: 2px solid red;
 
       .new-products-case {
         padding: 5px;
@@ -553,13 +553,13 @@ $txt-light-blue: #cfe8ff;
 .product-session-con {
   // border: 2px solid red;
   background: whitesmoke;
-  margin-top: 70px;
+  // margin-top: 70px;
   padding: 10px 0;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 
   @include responsive(bigphone) {
-    margin-top: 100px;
+    // margin-top: 100px;
     padding: 20px 0;
   }
   .product-main-con {
@@ -1130,5 +1130,19 @@ $txt-light-blue: #cfe8ff;
   100% {
     top: 24px;
     height: 32px;
+  }
+}
+
+// PAGE ADVERYS
+.ad-con {
+  // border: 2px solid red !important;
+  position: relative;
+  width: 100%;
+
+  .ad-img {
+    img {
+      width: 100%;
+      cursor: pointer;
+    }
   }
 }

@@ -20,6 +20,7 @@ import NewsLetter from "../Components/Homepage/NewsLetter";
 import Promo from "../Components/Homepage/Promo";
 import Footer from "../Components/Footer";
 import Review from "../Components/Homepage/Review";
+import Advert from "../Components/Homepage/Advert";
 import { AuthGuard } from "./api/auth/AuthGuard.";
 import { useRouter } from "next/router";
 import { addToCart, getSessionUser } from "../Services/functions";
@@ -66,14 +67,18 @@ const Homepage = () => {
           {/* <MyPage /> */}
           {/* NEW ARRIVALS */}
           <NewArrivals />
+
+          <Advert />
           {/* MAIN PRODUCT */}
           <Products products={products} addToCar={addToCar} />
+          <Advert />
           {/* SUBSCRIBE */}
           <NewsLetter />
           {/* PROMO */}
           <Promo />
           {/* REVIEWS */}
           <Review />
+          <Advert />
           {/* FOOTER */}
           <Footer />
         </>

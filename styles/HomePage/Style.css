@@ -529,14 +529,12 @@
 
 .product-session-con {
   background: whitesmoke;
-  margin-top: 70px;
   padding: 10px 0;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 @media only screen and (min-width: 768px) {
   .product-session-con {
-    margin-top: 100px;
     padding: 20px 0;
   }
 }
@@ -1078,4 +1076,12 @@
     top: 24px;
     height: 32px;
   }
+}
+.ad-con {
+  position: relative;
+  width: 100%;
+}
+.ad-con .ad-img img {
+  width: 100%;
+  cursor: pointer;
 }/*# sourceMappingURL=Style.css.map */

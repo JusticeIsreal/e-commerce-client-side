@@ -28,6 +28,6 @@
     "pages/index.jsx",
     "pages/_app.jsx",
     "pages/api/auth/AuthGuard..jsx"
-, "Components/Homepage/Products.jsx"  ],
+, "Components/Homepage/Products.jsx", "pages/api/getUserDetails.js"  ],
   "exclude": ["node_modules"]
 }
