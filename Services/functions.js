@@ -150,7 +150,6 @@ export const addToCart = async (productData) => {
     });
 };
 
-
 // DELETE TO CART
 export const deleteCartItem = async (_id) => {
   const token = Cookies.get("JWTtoken");
@@ -161,6 +160,7 @@ export const deleteCartItem = async (_id) => {
       },
     })
     .then((resp) => {
+     
       console.log(resp);
     })
     .catch((error) => {

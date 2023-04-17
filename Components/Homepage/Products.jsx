@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { addToCart, getSessionUser } from "../../Services/functions";
 import { jgi } from "../Topbar";
 
-function Products({ products }: { products: any[] }) {
+function Products({ products, addToCar }) {
   return (
     <div className="product-session-con">
       <div className="product-main-con">
@@ -31,6 +31,7 @@ function Products({ products }: { products: any[] }) {
               productname={product.data().productname}
               productprice={product.data().productprice}
               productoldprice={product.data().productoldprice}
+              addToCar={addToCar}
             />
           ))}
         </div>
@@ -47,17 +48,12 @@ function Products({ products }: { products: any[] }) {
 export default Products;
 
 function Product({
+  addToCar,
   id,
   productimages,
   productname,
   productprice,
   productoldprice,
-}: {
-  id: string;
-  productimages: string;
-  productname: string;
-  productprice: number;
-  productoldprice: number;
 }) {
   // percentage of peomo
   const priceDifference =
@@ -67,30 +63,7 @@ function Product({
   const percentageDifference = Math.floor(
     (priceDifference / parseFloat(productoldprice.toString())) * 100
   );
-
-  // add to cart
-  const [cartItem, setCartItem] = useState<any[]>([]);
-
-  const addToCar = async (id: string) => {
-    const productDoc = doc(db, "products", id);
-    const productSnapshot = await getDoc(productDoc);
-    const productData = productSnapshot.data();
-
-    // Retrieve the cart data from local storage
-    let product: any[] = [];
-    let cart: any[] = [];
-
-    // product.push(productData);
-    // cart.push(productData);
-
-    // console.log(product);
-
-    const userData = await addToCart(productData);
-    // Save the updated cart data to local storage
-    // localStorage.setItem("localCart", JSON.stringify(cart));
-   
-    await getSessionUser();
-  };
+ 
 
   return (
     <div className="products">

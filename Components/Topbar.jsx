@@ -11,7 +11,7 @@ import { FiGrid, FiTruck } from "react-icons/fi";
 import { MdContactSupport } from "react-icons/md";
 import { getSessionUser } from "../Services/functions";
 
-function Topbar() {
+function Topbar({ triger, triga, ddd }) {
   // SET NAV LIST COLOR WITH PAGE PATH NAME
   const [active, setActive] = useState(0);
   const router = useRouter();
@@ -46,7 +46,7 @@ function Topbar() {
       }
     }
     fetchSessionUser();
-  }, [router]);
+  }, [router, triger, triga, ddd]);
 
   // useEffect(() => {
   //   localStorage.setItem("localCart", JSON.stringify(cartLength));
