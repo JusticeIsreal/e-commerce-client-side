@@ -19,6 +19,7 @@ import Products from "../Components/Homepage/Products";
 import NewsLetter from "../Components/Homepage/NewsLetter";
 import Promo from "../Components/Homepage/Promo";
 import Footer from "../Components/Footer";
+import Modal from "../Components/Modal";
 import Review from "../Components/Homepage/Review";
 import Advert from "../Components/Homepage/Advert";
 import { AuthGuard } from "./api/auth/AuthGuard.";
@@ -39,19 +40,22 @@ const Homepage = () => {
 
   // ADD TO CART
   const [triger, setTriger] = useState("");
+  const [loginTriger, setLoginTriger] = useState(false);
 
   const addToCar = async (id) => {
     const productDoc = doc(db, "products", id);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     const triger = await getSessionUser();
+    console.log(triger);
+    if (!triger) {
+      return setLoginTriger(true);
+    }
     await addToCart(productData);
-    setTriger(triger);
   };
-  console.log(triger);
 
   return (
-    <div className="homepage-main-con">
+    <div className="homepage-main-con" style={{ position: "relative" }}>
       {/* TOPBAR */}
       <Topbar triger={triger} />
       {/* BANNER */}
@@ -80,6 +84,7 @@ const Homepage = () => {
           <Advert />
           {/* FOOTER */}
           <Footer />
+          {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
         </>
       )}
     </div>
