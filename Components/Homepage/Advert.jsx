@@ -1,11 +1,35 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "@mantine/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Blockquote } from "@mantine/core";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "../../Firebase";
 const defaultAdImg =
   "https://res.cloudinary.com/isreal/image/upload/v1681738017/advert_prqqfr.png";
+
 function Advert() {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
+
+  // FETCHING ADVERT SORTED FROM FIREBABSE
+  const [advertDetails, setAdvertDetails] = useState([]);
+  const [advertImg, setAdvertImg] = useState([]);
+  const [advertLink, setAdvertLink] = useState("");
+  useEffect(() => {
+    return onSnapshot(
+      query(collection(db, "advert"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        setAdvertDetails(snapshot.docs);
+      }
+    );
+  }, [db]);
+  useEffect(() => {
+    setAdvertImg(advertDetails.map((item) => item.data().image));
+  }, [db, advertDetails]);
+
+  useEffect(() => {
+    setAdvertLink(advertDetails.map((item) => item.data().adlink));
+  }, [db, advertDetails]);
+  console.log(advertLink[0]);
   return (
     <div className="ad-con">
       <Carousel
@@ -24,51 +48,66 @@ function Advert() {
       >
         <Carousel.Slide>
           <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
+            {advertImg.length > 0 ? (
+              <a href={"https://" + `${advertLink[0]}`} target="_blank">
+                <img src={advertImg[0][0]} alt="add" />
+              </a>
+            ) : (
+              <a
+                href="https://wa.me/+2349029356196?text=Hello, I came across your platform and i would like to place an advert."
+                target="_blank"
+              >
+                <img src={defaultAdImg} alt="add" />
+              </a>
+            )}
           </div>
         </Carousel.Slide>
         <Carousel.Slide>
           <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
+            {advertImg.length > 0 ? (
+              <a href={"https://" + `${advertLink[0]}`} target="_blank">
+                <img src={advertImg[0][1]} alt="add" />
+              </a>
+            ) : (
+              <a
+                href="https://wa.me/+2349029356196?text=Hello, I came across your platform and i would like to place an advert."
+                target="_blank"
+              >
+                <img src={defaultAdImg} alt="add" />
+              </a>
+            )}
           </div>
         </Carousel.Slide>
         <Carousel.Slide>
           <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
+            {advertImg.length > 0 ? (
+              <a href={"https://" + `${advertLink[0]}`} target="_blank">
+                <img src={advertImg[0][2]} alt="add" />
+              </a>
+            ) : (
+              <a
+                href="https://wa.me/+2349029356196?text=Hello, I came across your platform and i would like to place an advert."
+                target="_blank"
+              >
+                <img src={defaultAdImg} alt="add" />
+              </a>
+            )}
           </div>
         </Carousel.Slide>
         <Carousel.Slide>
           <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
-          </div>
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
-          </div>
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
-          </div>
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <div className="ad-img">
-            <a href="/">
-              <img src={defaultAdImg} alt="add" />
-            </a>
+            {advertImg.length > 0 ? (
+              <a href={"https://" + `${advertLink[0]}`} target="_blank">
+                <img src={advertImg[0][3]} alt="add" />
+              </a>
+            ) : (
+              <a
+                href="https://wa.me/+2349029356196?text=Hello, I came across your platform and i would like to place an advert."
+                target="_blank"
+              >
+                <img src={defaultAdImg} alt="add" />
+              </a>
+            )}
           </div>
         </Carousel.Slide>
       </Carousel>

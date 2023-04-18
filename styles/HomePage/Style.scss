@@ -1135,13 +1135,16 @@ $txt-light-blue: #cfe8ff;
 
 // PAGE ADVERYS
 .ad-con {
-  // border: 2px solid red !important;
   position: relative;
   width: 100%;
 
   .ad-img {
+    @include flexDisplay(center, center, row);
     img {
       width: 100%;
+
+      margin: 0 auto;
+
       cursor: pointer;
     }
   }

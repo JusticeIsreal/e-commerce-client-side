@@ -19,11 +19,24 @@ import Loader from "../../Components/Loader";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { getSessionUser } from "../../Services/functions";
+import AdvertItems from "../../Components/AdminPageComponents/AdvertItems";
+import AdvertForm from "../../Components/AdminPageComponents/AdvertForm";
 
 function Store() {
   // display form on and of
   const [formShow, setFormShow] = useState(false);
 
+  // SFETCHIN PRODUCCTS SORTED FROM FIREBABSE
+  const [advertDetails, setAdvertDetails] = useState([]);
+
+  useEffect(() => {
+    return onSnapshot(
+      query(collection(db, "advert"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        setAdvertDetails(snapshot.docs);
+      }
+    );
+  }, [db]);
   // SFETCHIN PRODUCCTS SORTED FROM FIREBABSE
   const [productDetails, setProductDetails] = useState([]);
 
@@ -108,12 +121,13 @@ function Store() {
               </div>
               {formShow && (
                 <div className="store-form-container">
+                  <AdvertForm advertDetails={advertDetails} />
                   <BannerForm />
                   {/* PRODUCTS TABLE */}
                   <ProductForm />
                 </div>
               )}
-
+              <AdvertItems advertDetails={advertDetails} />
               <BannerItems bannerDetails={bannerDetails} />
               <StoreItems productDetails={productDetails} />
             </main>
