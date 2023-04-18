@@ -22,7 +22,7 @@ function Orders({ userTransaction }) {
       setProducts(userTransaction.filter((item) => item.status === item));
     }
   }, [category, userTransaction, products, category, router]);
-  console.log(userTransaction.filter((item) => item.status === "Open"));
+  console.log(userTransaction);
   return (
     <div className="oders-con">
       <div className="order-page-top">

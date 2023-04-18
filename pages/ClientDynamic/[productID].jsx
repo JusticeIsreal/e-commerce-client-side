@@ -25,7 +25,8 @@ import { Blockquote } from "@mantine/core";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { TiArrowBack } from "react-icons/ti";
 import { useForm } from "react-hook-form";
-import { addToCart } from "../../Services/functions";
+import { addToCart, getSessionUser } from "../../Services/functions";
+import Modal from "../../Components/Modal";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -200,19 +201,24 @@ function Details() {
 
   // ADD TO CART
   const [dynamictriger, setDynamicTriger] = useState(true);
-
+  const [loginTriger, setLoginTriger] = useState(false);
   const addToCar = async () => {
     setDynamicTriger(!dynamictriger);
     const productDoc = doc(db, "products", productID);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     setDynamicTriger(!dynamictriger);
-    const userData = await addToCart(productData);
+    const triger = await getSessionUser();
+    if (!triger) {
+      return setLoginTriger(true);
+    }
+    await addToCart(productData);
 
     setDynamicTriger(!dynamictriger);
   };
   return (
     <>
+      {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
       <Topbar dynamictriger={dynamictriger} />
       <div className="client-single-product">
         <div className="single-product">
@@ -230,13 +236,17 @@ function Details() {
                 </p>
               )}
               <div className="big-display-img">
-                <Image
-                  src={product && product.image[disimg]}
-                  alt="img"
-                  fill
-                  sizes="100vw"
-                  className="img"
-                />
+                {product ? (
+                  <Image
+                    src={product && product.image[disimg]}
+                    alt="img"
+                    fill
+                    sizes="100vw"
+                    className="img"
+                  />
+                ) : (
+                  <Loader />
+                )}
               </div>
             </div>
             <div className="small-display-img-con">

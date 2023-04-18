@@ -47,7 +47,7 @@ const Homepage = () => {
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     const triger = await getSessionUser();
-    console.log(triger);
+   
     if (!triger) {
       return setLoginTriger(true);
     }
