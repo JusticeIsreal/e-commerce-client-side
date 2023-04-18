@@ -732,4 +732,118 @@
 }
 .client-single-product .single-product-details .similar-products .products:hover {
   border: 2px solid #3c91e6;
+}
+
+.modal-main-con {
+  position: absolute;
+  position: fixed;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.modal-main-con .modal-relative {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.modal-main-con .modal-relative .modal-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
+  background: whitesmoke;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+.modal-main-con .modal-relative .modal-card .go-back {
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+  top: 5px;
+  left: 5px;
+  background: rgba(60, 145, 230, 0.7764705882);
+  border: 1px solid rgba(128, 128, 128, 0.168627451);
+  color: white;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.modal-main-con .modal-relative .modal-card .modal-img-con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.modal-main-con .modal-relative .modal-card .modal-img-con img {
+  width: 80%;
+}
+.modal-main-con .modal-relative .modal-card form {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.modal-main-con .modal-relative .modal-card form label {
+  margin: 20px 0;
+  color: #3c91e6;
+}
+.modal-main-con .modal-relative .modal-card form div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.modal-main-con .modal-relative .modal-card form div input {
+  font-size: 15px;
+  padding: 8px 5px;
+  width: 90%;
+  margin: 5px;
+  border: 1px solid #3c91e6;
+}
+.modal-main-con .modal-relative .modal-card form div span {
+  font-size: 15px;
+  width: 90%;
+  margin: 0 5px;
+}
+.modal-main-con .modal-relative .modal-card form div select {
+  font-size: 15px;
+  padding: 8px 5px;
+  width: 90%;
+  margin: 5px;
+  border: 1px solid #3c91e6;
+}
+.modal-main-con .modal-relative .modal-card form div textarea {
+  font-size: 15px;
+  padding: 8px 5px;
+  width: 90%;
+  margin: 5px;
+  border: 1px solid #3c91e6;
+}
+.modal-main-con .modal-relative .modal-card form .submit-btn {
+  font-size: 15px;
+  padding: 8px 5px;
+  width: 90%;
+  margin: 5px;
+  background: #3c91e6;
+  color: white;
+  border: none;
+}
+.modal-main-con .modal-relative .modal-card form .submit-btn:hover {
+  background: #19426b;
 }/*# sourceMappingURL=style.css.map */

@@ -755,3 +755,115 @@ $txt-light-blue: #cfe8ff;
     }
   }
 }
+
+.modal-main-con {
+  position: absolute;
+  position: fixed;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  backdrop-filter: blur(10px);
+
+  .modal-relative {
+    @include flexDisplay(center, center, row);
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .modal-card {
+      @include flexDisplay(center, center, column);
+      box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
+      background: whitesmoke;
+      border-radius: 5px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+
+      .go-back {
+        position: absolute;
+        z-index: 20;
+        cursor: pointer;
+        top: 5px;
+        left: 5px;
+        background: #3c91e6c6;
+        border: 1px solid #8080802b;
+        color: white;
+        width: 70px;
+        height: 30px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 18px;
+      }
+
+      .modal-img-con {
+        @include flexDisplay(center, center, row);
+        width: 100%;
+
+        img {
+          width: 80%;
+        }
+      }
+
+      form {
+        // border: 2px solid red;
+        width: 100%;
+        padding: 10px;
+        @include flexDisplay(center, center, column);
+        label {
+          margin: 20px 0;
+          color: $txt-blue;
+        }
+
+        div {
+          @include flexDisplay(center, center, column);
+          width: 100%;
+
+          input {
+            font-size: 15px;
+            padding: 8px 5px;
+            width: 90%;
+            margin: 5px;
+            border: 1px solid $txt-blue;
+          }
+          span {
+            font-size: 15px;
+            width: 90%;
+            margin: 0 5px;
+          }
+          select {
+            font-size: 15px;
+            padding: 8px 5px;
+            width: 90%;
+            margin: 5px;
+            border: 1px solid $txt-blue;
+          }
+
+          textarea {
+            font-size: 15px;
+            padding: 8px 5px;
+            width: 90%;
+            margin: 5px;
+            border: 1px solid $txt-blue;
+          }
+        }
+
+        .submit-btn {
+          font-size: 15px;
+          padding: 8px 5px;
+          width: 90%;
+          margin: 5px;
+
+          // margin-right: auto;
+          background: $txt-blue;
+          color: white;
+          border: none;
+
+          &:hover {
+            background: #19426b;
+          }
+        }
+      }
+    }
+  }
+}

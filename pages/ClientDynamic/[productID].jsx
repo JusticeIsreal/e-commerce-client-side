@@ -1,6 +1,7 @@
 import Loader from "../../Components/Loader";
 import Topbar from "../../Components/Topbar";
 import Footer from "../../Components/Footer";
+import PayForm from "../../Components/PayForm";
 import Moment from "react-moment";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
@@ -88,7 +89,7 @@ function Details() {
       return null;
     }
   }
-
+  console.log(product);
   useEffect(() => {
     fetchItemFromFirestore();
   }, [productID]);
@@ -201,6 +202,7 @@ function Details() {
 
   // ADD TO CART
   const [dynamictriger, setDynamicTriger] = useState(true);
+
   const [loginTriger, setLoginTriger] = useState(false);
   const addToCar = async () => {
     setDynamicTriger(!dynamictriger);
@@ -216,9 +218,28 @@ function Details() {
 
     setDynamicTriger(!dynamictriger);
   };
+
+  // PAY FUNCTION
+  const [payModal, setPayModal] = useState(false);
+  const PayNow = async () => {
+    const triger = await getSessionUser();
+    if (!triger) {
+      return setLoginTriger(true);
+    }
+    setPayModal(true);
+  };
   return (
     <>
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
+      {payModal && (
+        <PayForm
+          setLoginTriger={setLoginTriger}
+          product={product}
+          count={count}
+          priceNumber={priceNumber}
+        />
+      )}
+
       <Topbar dynamictriger={dynamictriger} />
       <div className="client-single-product">
         <div className="single-product">
@@ -276,7 +297,7 @@ function Details() {
             </p>
             <div>
               <p className="p-desc">
-                <span>Product category :</span> {product?.productcategory}
+                <span>Product category :</span>₦ {product?.productcategory}
               </p>
               <p className="p-desc">
                 <span>Product promo :</span>
@@ -324,7 +345,9 @@ function Details() {
               <div className="add" onClick={() => addToCar()}>
                 Add to cart
               </div>
-              <div className="buy">Buy Now</div>
+              <div className="buy" onClick={() => PayNow()}>
+                Buy Now
+              </div>
               <Link href="/cart" className="view">
                 <div>View Cart</div>
               </Link>

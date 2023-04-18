@@ -6,17 +6,22 @@ import { TiArrowBack } from "react-icons/ti";
 const emoji =
   "https://res.cloudinary.com/isreal/image/upload/v1681808231/downloai-removebg-preview_qgmagz.png";
 
-function Modal({ setLoginTriger }) {
+function Modal({ setLoginTriger, setPayTriger }) {
   // GO BACK
   const router = useRouter();
   function goBack() {
     router.back();
   }
+
+  const closeModal = () => {
+    setLoginTriger(false);
+    // setPayTriger(false);
+  };
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
         <div className="modal-card">
-          <button onClick={() => setLoginTriger(false)} className="go-back">
+          <button onClick={() => closeModal()} className="go-back">
             <TiArrowBack />
             Back
           </button>
