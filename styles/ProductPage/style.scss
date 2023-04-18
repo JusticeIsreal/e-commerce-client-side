@@ -136,6 +136,7 @@ $txt-light-blue: #cfe8ff;
         color: gray;
         text-align: center;
         font-size: 13px;
+         cursor: pointer;
       
 
         @include responsive(phone) {

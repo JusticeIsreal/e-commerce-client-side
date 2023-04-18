@@ -708,6 +708,7 @@
   color: #3c91e6;
   border-radius: 5px;
   margin: 5px 0;
+  cursor: pointer;
 }
 .product-session-con .product-main-con .products-con .products .addto-cart:hover {
   background: #3c91e6;

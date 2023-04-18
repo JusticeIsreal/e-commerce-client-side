@@ -11,7 +11,7 @@ import { FiGrid, FiTruck } from "react-icons/fi";
 import { MdContactSupport } from "react-icons/md";
 import { getSessionUser } from "../Services/functions";
 
-function Topbar({ triger, triga, ddd }) {
+function Topbar({ dynamictriger, triger, triga }) {
   // SET NAV LIST COLOR WITH PAGE PATH NAME
   const [active, setActive] = useState(0);
   const router = useRouter();
@@ -42,18 +42,19 @@ function Topbar({ triger, triga, ddd }) {
       const userData = await getSessionUser();
       if (userData && userData.user) {
         setName(userData?.user?.username);
-        setCartLength(userData?.user?.cart);
+        setCartLength(userData?.user.cart);
       }
     }
     fetchSessionUser();
-  }, [router, triger, triga, ddd]);
+  }, [router, triger, triga, dynamictriger]);
 
   // useEffect(() => {
-  //   localStorage.setItem("localCart", JSON.stringify(cartLength));
   //   const storedCart = JSON.parse(localStorage.getItem("localCart")) || [];
-  //   setCart(storedCart);
-  // }, [router]);
+  //   // console.log(storedCart);
+  //   localStorage.setItem("localCart", JSON.stringify(cartLength));
+  // }, [cartLength, router, triger, triga, ddd, dynamictriger]);
 
+  // // console.log(cartLength);
   // LOGOUT
   const logOUT = () => {
     Cookies.remove("JWTtoken");

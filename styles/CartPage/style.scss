@@ -128,6 +128,7 @@ $txt-light-blue: #cfe8ff;
       z-index: 2;
       background: white;
       bottom: 0px;
+      cursor: pointer;
       @include responsive(bigphone) {
         position: absolute;
         // border: 2px solid gray;
@@ -211,6 +212,7 @@ $txt-light-blue: #cfe8ff;
           p {
             color: $txt-blue;
             font-weight: bold;
+            cursor: pointer;
             @include flexDisplay(center, center, row);
             @include responsive(bigphone) {
               line-height: 2;
@@ -228,6 +230,7 @@ $txt-light-blue: #cfe8ff;
               background: $txt-blue;
               border-radius: 50%;
               font-size: 30px;
+              cursor: pointer;
               &:hover {
                 transform: scale(1.1);
               }

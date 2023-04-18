@@ -30,18 +30,18 @@ function Footer() {
 
         <div className="box">
           <h3>Quick Links</h3>
-          <a href="">
-            <i></i> home
-          </a>
-          <a href="">
+          <Link href="/">
+            <i></i> Home
+          </Link>
+          <Link href="/products">
             <i></i> Products
-          </a>
-          <a href="">
-            <i></i> Transaction
-          </a>
-          <a href="">
-            <i></i> Review
-          </a>
+          </Link>
+          <Link href="/orders">
+            <i></i> Order
+          </Link>
+          <Link href="">
+            <i></i> surport
+          </Link>
         </div>
 
         <div className="box">

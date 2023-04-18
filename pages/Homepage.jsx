@@ -38,23 +38,22 @@ const Homepage = () => {
   }, []);
 
   // ADD TO CART
-  const [triger, setTriger] = useState(1);
-  const [ddd, setddd] = useState(1);
+  const [triger, setTriger] = useState("");
+
   const addToCar = async (id) => {
-    setTriger(!triger);
     const productDoc = doc(db, "products", id);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
-    setTriger(!triger);
-    const userData = await addToCart(productData);
-    setddd(userData);
-    setTriger(triger + 1);
+    const triger = await getSessionUser();
+    await addToCart(productData);
+    setTriger(triger);
   };
+  console.log(triger);
 
   return (
     <div className="homepage-main-con">
       {/* TOPBAR */}
-      <Topbar triger={triger} ddd={ddd} />
+      <Topbar triger={triger} />
       {/* BANNER */}
 
       {products.length < 1 ? (

@@ -92,6 +92,7 @@
   z-index: 2;
   background: white;
   bottom: 0px;
+  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .single-product .checkout {
@@ -190,6 +191,7 @@
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-lower p {
   color: #3c91e6;
   font-weight: bold;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,6 +216,7 @@
   background: #3c91e6;
   border-radius: 50%;
   font-size: 30px;
+  cursor: pointer;
 }
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-lower div .icon:hover {
   transform: scale(1.1);

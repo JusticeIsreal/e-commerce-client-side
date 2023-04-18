@@ -25,6 +25,7 @@ import { Blockquote } from "@mantine/core";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { TiArrowBack } from "react-icons/ti";
 import { useForm } from "react-hook-form";
+import { addToCart } from "../../Services/functions";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -196,9 +197,23 @@ function Details() {
   const percentageDifference = Math.floor(
     (priceDifference / parseFloat(product?.productoldprice.toString())) * 100
   );
+
+  // ADD TO CART
+  const [dynamictriger, setDynamicTriger] = useState(true);
+
+  const addToCar = async () => {
+    setDynamicTriger(!dynamictriger);
+    const productDoc = doc(db, "products", productID);
+    const productSnapshot = await getDoc(productDoc);
+    const productData = productSnapshot.data();
+    setDynamicTriger(!dynamictriger);
+    const userData = await addToCart(productData);
+
+    setDynamicTriger(!dynamictriger);
+  };
   return (
     <>
-      <Topbar />
+      <Topbar dynamictriger={dynamictriger} />
       <div className="client-single-product">
         <div className="single-product">
           <div className="top-container">
@@ -296,7 +311,9 @@ function Details() {
               <h1>₦ {priceNumber.toLocaleString()}</h1>
             </div>
             <div className="add-to-cart-con">
-              <div className="add">Add to cart</div>
+              <div className="add" onClick={() => addToCar()}>
+                Add to cart
+              </div>
               <div className="buy">Buy Now</div>
               <Link href="/cart" className="view">
                 <div>View Cart</div>
@@ -461,6 +478,7 @@ function SimilarProducts({
   const percentageDifference = Math.floor(
     (priceDifference / parseFloat(productoldprice.toString())) * 100
   );
+
   return (
     <div className="products">
       <div className="product-img">
