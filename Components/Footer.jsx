@@ -17,7 +17,7 @@ function Footer() {
     userName();
   }, [userPosition]);
 
-  console.log(userPosition);
+  // console.log(userPosition);
   return (
     <section className="footer">
       <div className="box-container">

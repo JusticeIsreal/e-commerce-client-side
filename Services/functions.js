@@ -6,7 +6,7 @@ import { db } from "../Firebase";
 // FETCH SESSION /USER DETAILS API CALL
 export const getSessionUser = async () => {
   const token = Cookies.get("JWTtoken");
-  const storedCart = JSON.parse(localStorage.getItem("localCart")) || [];
+  // const storedCart = JSON.parse(localStorage.getItem("localCart")) || [];
   if (token) {
     try {
       const response = await axios.get(
@@ -26,7 +26,6 @@ export const getSessionUser = async () => {
         user,
         userTransaction,
         userCart,
-        storedCart,
       };
     } catch (error) {
       console.log(error);
@@ -136,38 +135,89 @@ export const transactionStatus = async (userData, transactID) => {
       console.log(userData);
     });
 };
+
 // ADD TO CART
-export const addToCart = async (productData) => {
+export const addToCart = async (productData, productID) => {
   const token = Cookies.get("JWTtoken");
-  axios
-    .post("http://localhost:1234/api/v1/cart/addtocart", productData, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((resp) => {
-      console.log(resp);
-    })
-    .catch((error) => {
+  // console.log(productData);
+  const product = {
+    image: productData.image,
+    productcategory: productData.productcategory,
+    productclass: productData.productclass,
+    productdescription: productData.productdescription,
+    productname: productData.productname,
+    productnumber: productData.productnumber,
+    productoldprice: productData.productoldprice,
+    productprice: productData.productprice,
+    quantity: productData.quantity,
+    // user: user._id,
+    productID: productID,
+  };
+  try {
+    const { data } = await axios.post(
+      "http://localhost:1234/api/v1/cart/addtocart",
+      product,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  
+    return data.status;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// ALL  CART
+export const allCartItem = async () => {
+  const token = Cookies.get("JWTtoken");
+
+  if (token) {
+    try {
+      const response = await axios.get(
+        "http://localhost:1234/api/v1/cart/allcart",
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const Cart = response.data.data;
+
+      // const name = Cart.map((item) => item.productname);
+
+      return {
+        Cart,
+      };
+    } catch (error) {
       console.log(error);
-    });
+      // return null; // or you can throw the error here
+    }
+  } else {
+    return; // or you can throw the
+  }
 };
 
 // DELETE TO CART
 export const deleteCartItem = async (_id) => {
   const token = Cookies.get("JWTtoken");
-  axios
-    .delete(`http://localhost:1234/api/v1/cart/deletecart/${_id}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((resp) => {
-      console.log(resp);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    const { data } = await axios.delete(
+      `http://localhost:1234/api/v1/cart/deletecart/${_id}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (data && data.status === "CART DELETED SUCCESSFUL") return true;
+    else return false;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // CheckOUT

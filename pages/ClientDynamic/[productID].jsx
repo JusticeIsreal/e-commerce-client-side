@@ -3,7 +3,7 @@ import Topbar from "../../Components/Topbar";
 import Footer from "../../Components/Footer";
 import PayForm from "../../Components/PayForm";
 import Moment from "react-moment";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import {
@@ -28,6 +28,7 @@ import { TiArrowBack } from "react-icons/ti";
 import { useForm } from "react-hook-form";
 import { addToCart, getSessionUser } from "../../Services/functions";
 import Modal from "../../Components/Modal";
+import { CartQuantityContext } from "../_app";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -60,6 +61,7 @@ function Details() {
   const { productID } = router.query;
   const pic = useRef();
   // console.log(product);
+  const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
@@ -89,7 +91,7 @@ function Details() {
       return null;
     }
   }
-  console.log(product);
+  // console.log(product);
   useEffect(() => {
     fetchItemFromFirestore();
   }, [productID]);
@@ -204,17 +206,33 @@ function Details() {
   const [dynamictriger, setDynamicTriger] = useState(true);
 
   const [loginTriger, setLoginTriger] = useState(false);
+
   const addToCar = async () => {
     setDynamicTriger(!dynamictriger);
     const productDoc = doc(db, "products", productID);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     setDynamicTriger(!dynamictriger);
+
     const triger = await getSessionUser();
     if (!triger) {
       return setLoginTriger(true);
     }
-    await addToCart(productData);
+
+    const productExist = triger.userCart.find(
+      (item) => item.productID === productID
+    );
+
+    if (
+      (productExist && !productExist.productID) ||
+      productExist === undefined
+    ) {
+      const cartResponse = await addToCart(productData, productID);
+      if (cartResponse === "SUCCESS") {
+        const userData = await getSessionUser();
+        setCartQty(userData?.user.cart.length);
+      }
+    } else alert("Product already exists in cart");
 
     setDynamicTriger(!dynamictriger);
   };

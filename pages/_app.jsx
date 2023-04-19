@@ -10,14 +10,27 @@ import "../styles/RegistrationLogin/LoginStyle.css";
 import "../styles/OrderPage/style.css";
 import { AppProps } from "next/app";
 import { AuthGuard } from "./api/auth/AuthGuard.";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
+import { getSessionUser } from "../Services/functions";
 
+export const CartQuantityContext = createContext();
 export default function MyApp({ Component, pageProps }) {
   const [preRender, setPreRender] = useState(false);
+  const [cartQty, setCartQty] = useState(0);
 
   useEffect(() => {
     setPreRender(true);
+
+    async function fetchSessionUser() {
+      const userData = await getSessionUser();
+      if (userData && userData.user) {
+        // setName(userData?.user?.username);
+        // localStorage.setItem("cartQuantity", userData?.user.cart.length);
+        setCartQty(userData?.user.cart.length);
+      }
+    }
+    fetchSessionUser();
   }, []);
 
   return (
@@ -49,24 +62,25 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      {preRender ? (
-        <>
-          {Component.requireAuth ? (
-            <AuthGuard>
-              <Component {...pageProps} />{" "}
-            </AuthGuard>
-          ) : (
-            <>
-              <Component {...pageProps} />
-            </>
-          )}
-        </>
-      ) : (
-        <div style={{ marginTop: "200px" }}>
-          {" "}
-          <Loader />
-        </div>
-      )}
+      <CartQuantityContext.Provider value={{ cartQty, setCartQty }}>
+        {preRender ? (
+          <>
+            {Component.requireAuth ? (
+              <AuthGuard>
+                <Component {...pageProps} />{" "}
+              </AuthGuard>
+            ) : (
+              <>
+                <Component {...pageProps} />
+              </>
+            )}
+          </>
+        ) : (
+          <div style={{ marginTop: "200px" }}>
+            <Loader />
+          </div>
+        )}
+      </CartQuantityContext.Provider>
     </>
   );
 }

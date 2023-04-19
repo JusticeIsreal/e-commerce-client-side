@@ -63,7 +63,6 @@ function Product({
   const percentageDifference = Math.floor(
     (priceDifference / parseFloat(productoldprice.toString())) * 100
   );
- 
 
   return (
     <div className="products">
@@ -75,7 +74,6 @@ function Product({
           </p>
         )}
         <Link
-          // href="/ClientDynamic/[productID]"
           href={`/ClientDynamic/${id}`}
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
@@ -96,11 +94,9 @@ function Product({
           ₦ {Number(productprice).toLocaleString()}
         </p>
         <p className="product-oldprice">
-          {" "}
           {productoldprice && "₦ " + Number(productoldprice).toLocaleString()}
         </p>
       </div>
-
       <button className="addto-cart" onClick={() => addToCar(id)}>
         Add to cart
       </button>

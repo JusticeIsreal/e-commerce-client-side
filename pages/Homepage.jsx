@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
 // firebase
 import { db, storage } from "../Firebase";
@@ -24,9 +24,11 @@ import Review from "../Components/Homepage/Review";
 import Advert from "../Components/Homepage/Advert";
 import { AuthGuard } from "./api/auth/AuthGuard.";
 import { useRouter } from "next/router";
-import { addToCart, getSessionUser } from "../Services/functions";
+import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
+import { CartQuantityContext } from "./_app";
 
 const Homepage = () => {
+  const router = useRouter();
   // Products from firebase db
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -39,25 +41,44 @@ const Homepage = () => {
   }, []);
 
   // ADD TO CART
-  const [triger, setTriger] = useState("");
   const [loginTriger, setLoginTriger] = useState(false);
+  const setCartQty = useContext(CartQuantityContext).setCartQty;
 
+  // add to art
   const addToCar = async (id) => {
     const productDoc = doc(db, "products", id);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     const triger = await getSessionUser();
-   
+
     if (!triger) {
       return setLoginTriger(true);
     }
-    await addToCart(productData);
+    const productExist = triger.userCart.find(
+      (item) => item.productID === id
+    );
+
+    if (
+      (productExist && !productExist.productID) ||
+      productExist === undefined
+    ) {
+      const cartResponse = await addToCart(productData, id);
+      if (cartResponse === "SUCCESS") {
+        const userData = await getSessionUser();
+        setCartQty(userData?.user.cart.length);
+      }
+    } else alert("Product already exists in cart");
+    // const cartResponse = await addToCart(productData);
+    // if (cartResponse === "SUCCESS") {
+    //   const userData = await getSessionUser();
+    //   setCartQty(userData?.user.cart.length);
+    // }
   };
 
   return (
     <div className="homepage-main-con" style={{ position: "relative" }}>
       {/* TOPBAR */}
-      <Topbar triger={triger} />
+      <Topbar />
       {/* BANNER */}
 
       {products.length < 1 ? (

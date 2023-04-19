@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { logOUT } from "../Services/functions";
@@ -10,9 +10,11 @@ import { BsShop } from "react-icons/bs";
 import { FiGrid, FiTruck } from "react-icons/fi";
 import { MdContactSupport } from "react-icons/md";
 import { getSessionUser } from "../Services/functions";
+import { CartQuantityContext } from "../pages/_app";
 
-function Topbar({ dynamictriger, triger, triga }) {
+function Topbar({ dynamictriger, triga }) {
   // SET NAV LIST COLOR WITH PAGE PATH NAME
+  const cartQty = useContext(CartQuantityContext).cartQty;
   const [active, setActive] = useState(0);
   const router = useRouter();
 
@@ -37,24 +39,18 @@ function Topbar({ dynamictriger, triger, triga }) {
   const [name, setName] = useState(null);
   const [cartLength, setCartLength] = useState([]);
   // const [cart, setCart] = useState([]);
-  useEffect(() => {
-    async function fetchSessionUser() {
-      const userData = await getSessionUser();
-      if (userData && userData.user) {
-        setName(userData?.user?.username);
-        setCartLength(userData?.user.cart);
-      }
-    }
-    fetchSessionUser();
-  }, [router, triger, triga, dynamictriger]);
-
   // useEffect(() => {
-  //   const storedCart = JSON.parse(localStorage.getItem("localCart")) || [];
-  //   // console.log(storedCart);
-  //   localStorage.setItem("localCart", JSON.stringify(cartLength));
-  // }, [cartLength, router, triger, triga, ddd, dynamictriger]);
+  //   async function fetchSessionUser() {
+  //     const userData = await getSessionUser();
+  //     if (userData && userData.user) {
+  //       setName(userData?.user?.username);
+  //       setCartLength(userData?.user.cart);
+  //     }
+  //   }
+  //   fetchSessionUser();
+  // }, [router, triga, dynamictriger]);
 
-  // // console.log(cartLength);
+ 
   // LOGOUT
   const logOUT = () => {
     Cookies.remove("JWTtoken");
@@ -129,7 +125,7 @@ function Topbar({ dynamictriger, triger, triga }) {
               {" "}
               <FaCartArrowDown className="icon" />
             </Link>
-            <sup>{cartLength.length}</sup>
+            <sup>{cartQty}</sup>
           </div>
         </div>
       </div>

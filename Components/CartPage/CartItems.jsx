@@ -1,15 +1,16 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { deleteCartItem, getSessionUser } from "../../Services/functions";
 import { ImBin } from "react-icons/im";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import { CartQuantityContext } from "../../pages/_app";
 
 function CartItems({ triger, setTriger }) {
   const router = useRouter();
-  const [localCart, setLocalCart] = useState([]);
   const [userCart, setUserCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState("");
-
+  const [productsArray, setProductsArray] = useState([]);
+  // console.log(productsArray);
   useEffect(() => {
     const fetchSessionUser = async () => {
       const userData = await getSessionUser(router);
@@ -33,6 +34,17 @@ function CartItems({ triger, setTriger }) {
     setTotalAmount(grandTotal);
   }, [router, userCart]);
 
+  useEffect(() => {
+    const newProductsArray = userCart?.map((item) => {
+      return {
+        productname: item.productname,
+        productprice: item.productprice,
+        quantity: item.quantity,
+      };
+    });
+
+    setProductsArray(newProductsArray);
+  }, [userCart]);
   return (
     <>
       <p className="cart-heading">CART SUMMARY</p>
@@ -50,6 +62,8 @@ function CartItems({ triger, setTriger }) {
             triger={triger}
             setTotalAmount={setTotalAmount}
             totalAmount={totalAmount}
+            setProductsArray={setProductsArray}
+            productsArray={productsArray}
           />
         ))}
         <div className="checkout">
@@ -63,6 +77,8 @@ function CartItems({ triger, setTriger }) {
 export default CartItems;
 
 function CartProducts({
+  setProductsArray,
+  productsArray,
   setTriger,
   triger,
   setTotalAmount,
@@ -77,41 +93,60 @@ function CartProducts({
   // qty
   const [priceNumber, setPriceNumber] = useState(parseFloat(productprice));
   const [count, setCount] = useState(quantity);
+  const setCartQty = useContext(CartQuantityContext).setCartQty;
+
+  const updateProductsArray = (currentState) => {
+    const index = currentState.findIndex(
+      (item) => item.productname === productname
+    );
+    if (index >= 0) {
+      const newCount = count;
+      const newPriceNumber = parseFloat(productprice) * newCount;
+      const priceDiff = newPriceNumber - currentState[index].productprice;
+      const newProduct = {
+        ...currentState[index],
+        quantity: newCount,
+        productprice: newPriceNumber,
+      };
+      currentState.splice(index, 1, newProduct);
+      setProductsArray([...currentState]);
+      setTotalAmount(totalAmount + priceDiff);
+    } else {
+      const newProduct = {
+        productname,
+        productprice: priceNumber,
+        quantity: count,
+      };
+      setProductsArray([...currentState, newProduct]);
+      setTotalAmount(totalAmount + priceNumber);
+    }
+  };
+
+  useEffect(() => {
+    updateProductsArray(productsArray);
+  }, [count]);
 
   const handleIncrement = () => {
     const newCount = count + 1;
     setCount(newCount);
-    const newPrice = parseFloat(productprice) * newCount;
-    const priceDiff = newPrice - priceNumber;
-    setPriceNumber(newPrice);
-    setTotalAmount(totalAmount + priceDiff);
   };
 
   const handleDecrement = () => {
     if (count > 1) {
       const newCount = count - 1;
       setCount(newCount);
-      const newPrice = parseFloat(productprice) * newCount;
-      const priceDiff = newPrice - priceNumber;
-      setPriceNumber(newPrice);
-      setTotalAmount(totalAmount + priceDiff);
     }
   };
 
   const deleteCart = async (_id) => {
     await setTriger(!triger);
-    await deleteCartItem(_id);
+    const delRes = await deleteCartItem(_id);
+    if (delRes) {
+      const userData = await getSessionUser();
+      setCartQty(userData?.user.cart.length);
+    }
   };
 
-  const kk = [];
-  const uu = [
-    {
-      productname,
-      productprice: priceNumber,
-      quantity: count,
-    },
-  ];
-  console.log(uu);
   return (
     <div className="product-con">
       <div className="cart-product-top">
