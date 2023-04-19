@@ -772,6 +772,7 @@ $txt-light-blue: #cfe8ff;
     height: 100%;
 
     .modal-card {
+      overflow: hidden;
       @include flexDisplay(center, center, column);
       box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
       background: whitesmoke;
@@ -861,6 +862,83 @@ $txt-light-blue: #cfe8ff;
 
           &:hover {
             background: #19426b;
+          }
+        }
+      }
+
+      .confirm-form-info {
+        // border: 2px solid red;
+        position: absolute;
+        background: whitesmoke;
+        // z-index: 2;
+        // top: -100%;
+        min-height: 100%;
+        width: 100%;
+        line-height: 1.5;
+        padding: 5px;
+        // transform: translateY(100%);
+        animation: showConfirmDetails 0.2s ease-in-out;
+
+        @keyframes showConfirmDetails {
+          0% {
+            transform: translateY(100%);
+          }
+
+          100% {
+            transform: translateY(0%);
+          }
+        }
+        h3 {
+          padding: 5px;
+          color: $bg-dark;
+          text-align: center;
+          background: whitesmoke;
+        }
+
+        p {
+          color: $bg-dark;
+          padding: 5px;
+          background: whitesmoke;
+          // font-weight: bold;
+
+          span {
+            color: $txt-blue;
+            font-size: 15px;
+            font-weight: normal;
+            font-style: italic;
+
+            i {
+              font-size: 12px;
+            }
+          }
+        }
+        .checkout-btn {
+          width: 97%;
+          margin: 0 auto;
+          margin-top: 30px;
+
+          button {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: $txt-blue;
+            color: white;
+            animation: signin 2s ease-in-out infinite;
+
+            &:hover {
+              background: #1b4670;
+            }
+            @keyframes signin {
+              0% {
+                transform: scale(1);
+              }
+              50% {
+                transform: scale(0.98);
+              }
+              100% {
+                transform: scale(1);
+              }
+            }
           }
         }
       }

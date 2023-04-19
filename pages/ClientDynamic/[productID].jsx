@@ -46,11 +46,11 @@ export const getStaticProps = async ({ params }) => {
   const productData = productSnapshot.data();
 
   // Convert timestamp to string
-  productData.timestamp = productData.timestamp.toString();
+  // productData.timestamp = productData.timestamp.toString();
 
   return {
     props: {
-      product: productData,
+      product: null,
     },
   };
 };
@@ -234,6 +234,7 @@ function Details() {
       {payModal && (
         <PayForm
           setLoginTriger={setLoginTriger}
+          setPayModal={setPayModal}
           product={product}
           count={count}
           priceNumber={priceNumber}

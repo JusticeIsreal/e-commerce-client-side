@@ -754,6 +754,7 @@
   height: 100%;
 }
 .modal-main-con .modal-relative .modal-card {
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -846,4 +847,68 @@
 }
 .modal-main-con .modal-relative .modal-card form .submit-btn:hover {
   background: #19426b;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info {
+  position: absolute;
+  background: whitesmoke;
+  min-height: 100%;
+  width: 100%;
+  line-height: 1.5;
+  padding: 5px;
+  animation: showConfirmDetails 0.2s ease-in-out;
+}
+@keyframes showConfirmDetails {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info h3 {
+  padding: 5px;
+  color: #342e37;
+  text-align: center;
+  background: whitesmoke;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info p {
+  color: #342e37;
+  padding: 5px;
+  background: whitesmoke;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info p span {
+  color: #3c91e6;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: italic;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info p span i {
+  font-size: 12px;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info .checkout-btn {
+  width: 97%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info .checkout-btn button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: #3c91e6;
+  color: white;
+  animation: signin 2s ease-in-out infinite;
+}
+.modal-main-con .modal-relative .modal-card .confirm-form-info .checkout-btn button:hover {
+  background: #1b4670;
+}
+@keyframes signin {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=style.css.map */

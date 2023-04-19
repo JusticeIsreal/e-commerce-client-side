@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { TiArrowBack } from "react-icons/ti";
+import { checkOut } from "../Services/functions";
+import { useRouter } from "next/router";
 
-function PayForm({ product, count, priceNumber }) {
+function PayForm({ product, count, priceNumber, setPayModal }) {
   // useform config
   const {
     register,
@@ -13,67 +16,122 @@ function PayForm({ product, count, priceNumber }) {
   } = useForm();
 
   const addressRef = useRef("");
+  const [productData, setProductData] = useState({});
+  const [confirmDetails, setConfirmDetails] = useState({});
+  const [showConfirmDetails, setShowConfirmDetails] = useState(false);
   const onSubmitBanner = async (data, e) => {
     e.preventDefault();
-    // if (loadingBanner) return;
-    // setLoadingBannr(true);
-    // console.log(data);
+    setConfirmDetails(data);
 
     const locationDetails = {
-      deliveryAddress: `${data.street}, ${data.lga}, ${
-        data.state.split(",")[0] + " " + "State"
-      }`,
       deliveryfee: parseInt(data.state.split(",")[1]),
       homedelivery: parseInt(data.homedelivery),
       anyinfo: data.anyinfo,
-      quantity: count,
-      total: priceNumber,
-      product: [],
+      deliveryaddress: `${data.street}, ${data.lga}, ${
+        data.state.split(",")[0] + " " + "State"
+      }`,
+      product: [
+        {
+          productname: product.productname,
+          productprice: parseInt(product.productprice),
+          quantity: count,
+          clientnote: data.anyinfo,
+        },
+      ],
     };
-
-    // console.log(locationDetails);
-    console.log(addressRef.current);
+    setProductData(locationDetails);
+    setShowConfirmDetails(true);
+    
     // reset();
   };
+  console.log(showConfirmDetails);
+  const total =
+    parseInt(confirmDetails?.state?.split(",")[1]) +
+    parseInt(confirmDetails.homedelivery) +
+    priceNumber;
 
-  // get values for details confirmation
-  //   const addressRef = useRef();
+  // CHECKOUT
+  const router = useRouter();
+  const checkOutpayment = async () => {
+    const userData = await checkOut(productData, router);
+    if (userData) {
+      console.log(userData.data);
+    }
+  };
 
-  //   console.log(addressRef.current);
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
         <div className="modal-card">
-          {/* <div>
-            <p>
-              Product Name: <span>{product.productname}</span>
-            </p>
-            <p>
-              Product Price:{" "}
-              <span>₦ {Number(product?.productoldprice).toLocaleString()}</span>{" "}
-            </p>
-            <p>
-              Quantity: <span>{count}</span>
-            </p>
-            <p>
-              Delivery fee: <span></span>
-            </p>
-            <p>
-              Total: <span></span>
-            </p>
-            <p>
-              Delivery address: <span></span>
-            </p>
-          </div> */}
+          <button className="go-back" onClick={() => setPayModal(false)}>
+            <TiArrowBack />
+            Back
+          </button>
+          {showConfirmDetails && (
+            <div className="confirm-form-info">
+              <button
+                className="go-back"
+                onClick={() => setShowConfirmDetails(!showConfirmDetails)}
+              >
+                <TiArrowBack />
+                Back
+              </button>
+              <h3>Confirm details</h3>
+              <p>
+                Product Name: <span>{product.productname}</span>
+              </p>
+              <p>
+                Product Price:{" "}
+                <span>₦ {Number(product?.productprice).toLocaleString()}</span>{" "}
+              </p>
+              <p>
+                Quantity: <span>{count}</span>
+              </p>
+              <p>
+                Delivery fee:
+                <span>
+                  {" "}
+                  ₦
+                  {(
+                    parseInt(confirmDetails?.state?.split(",")[1]) +
+                    parseInt(confirmDetails.homedelivery)
+                  ).toLocaleString()}{" "}
+                  <i>
+                    {confirmDetails.homedelivery > 0
+                      ? "( Including home delivery service )"
+                      : "( No home delivery service )"}
+                  </i>
+                </span>
+              </p>
+              <p>
+                Total: <span> ₦ {total.toLocaleString()}</span>
+              </p>
+              <p>
+                Delivery address:{" "}
+                <span>
+                  {confirmDetails?.street}, {confirmDetails?.lga},
+                  {confirmDetails?.state?.split(",")[0] + " " + "State"}
+                </span>
+              </p>
+              <p>
+                Adiitional info:{" "}
+                <span>
+                  {confirmDetails.anyinfo ? `${confirmDetails.anyinfo}` : "No"}
+                </span>
+              </p>
+              <div className="checkout-btn" onClick={() => checkOutpayment()}>
+                <button>CHECK OUT ( ₦ {total.toLocaleString()} )</button>
+              </div>
+            </div>
+          )}{" "}
           {/* PAYMENT FORM*/}
           <form onSubmit={handleSubmit(onSubmitBanner)}>
             {/* ADDRESS */}
 
-            <label>Enter your delivery address details</label>
+            <label ref={addressRef}>Enter your delivery address details</label>
             {/* STREET */}
             <div>
               <input
-                ref={addressRef}
                 type="text"
                 placeholder="House number / street"
                 {...register("street", { required: true })}
@@ -190,7 +248,7 @@ function PayForm({ product, count, priceNumber }) {
             <div>
               <textarea
                 // type="text"
-                placeholder="Enter any other OPTIONAL information"
+                placeholder="Enter any other OPTIONAL information."
                 {...register("anyinfo")}
               />
             </div>

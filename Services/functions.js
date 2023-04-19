@@ -160,8 +160,29 @@ export const deleteCartItem = async (_id) => {
       },
     })
     .then((resp) => {
-     
       console.log(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+// CheckOUT
+export const checkOut = async (productData, router) => {
+  const token = Cookies.get("JWTtoken");
+  axios
+    .post(
+      "http://localhost:1234/api/v1/transaction/posttransaction",
+      productData,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .then((resp) => {
+      console.log(resp.data.data.authorization_url);
+      window.location.href = resp.data.data.authorization_url;
     })
     .catch((error) => {
       console.log(error);
