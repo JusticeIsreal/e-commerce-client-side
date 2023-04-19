@@ -13,9 +13,11 @@ import { AuthGuard } from "./api/auth/AuthGuard.";
 import { createContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
 import { getSessionUser } from "../Services/functions";
+import { useRouter } from "next/router";
 
 export const CartQuantityContext = createContext();
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   const [preRender, setPreRender] = useState(false);
   const [cartQty, setCartQty] = useState(0);
 
@@ -31,7 +33,7 @@ export default function MyApp({ Component, pageProps }) {
       }
     }
     fetchSessionUser();
-  }, []);
+  }, [router]);
 
   return (
     <>

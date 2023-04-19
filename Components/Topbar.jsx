@@ -38,17 +38,17 @@ function Topbar({ dynamictriger, triga }) {
   // // FETCHING SESSION USER NAME AND CART LENGTH
   const [name, setName] = useState(null);
   const [cartLength, setCartLength] = useState([]);
-  // const [cart, setCart] = useState([]);
-  // useEffect(() => {
-  //   async function fetchSessionUser() {
-  //     const userData = await getSessionUser();
-  //     if (userData && userData.user) {
-  //       setName(userData?.user?.username);
-  //       setCartLength(userData?.user.cart);
-  //     }
-  //   }
-  //   fetchSessionUser();
-  // }, [router, triga, dynamictriger]);
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    async function fetchSessionUser() {
+      const userData = await getSessionUser();
+      if (userData && userData.user) {
+        setName(userData?.user?.username);
+        setCartLength(userData?.user.cart);
+      }
+    }
+    fetchSessionUser();
+  }, [router, triga, dynamictriger]);
 
  
   // LOGOUT

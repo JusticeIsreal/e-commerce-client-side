@@ -50,13 +50,11 @@ const Homepage = () => {
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     const triger = await getSessionUser();
-
+    
     if (!triger) {
       return setLoginTriger(true);
     }
-    const productExist = triger.userCart.find(
-      (item) => item.productID === id
-    );
+    const productExist = triger.userCart.find((item) => item.productID === id);
 
     if (
       (productExist && !productExist.productID) ||
@@ -73,6 +71,9 @@ const Homepage = () => {
     //   const userData = await getSessionUser();
     //   setCartQty(userData?.user.cart.length);
     // }
+    if (!triger) {
+      return setLoginTriger(true);
+    }
   };
 
   return (
