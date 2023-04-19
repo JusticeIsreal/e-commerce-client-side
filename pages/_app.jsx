@@ -27,8 +27,6 @@ export default function MyApp({ Component, pageProps }) {
     async function fetchSessionUser() {
       const userData = await getSessionUser();
       if (userData && userData.user) {
-        // setName(userData?.user?.username);
-        // localStorage.setItem("cartQuantity", userData?.user.cart.length);
         setCartQty(userData?.user.cart.length);
       }
     }

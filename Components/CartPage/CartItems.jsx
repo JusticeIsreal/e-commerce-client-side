@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import PayForm from "../PayForm";
 import React, { useContext, useEffect, useState } from "react";
 import { deleteCartItem, getSessionUser } from "../../Services/functions";
 import { ImBin } from "react-icons/im";
@@ -10,7 +11,7 @@ function CartItems({ triger, setTriger }) {
   const [userCart, setUserCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState("");
   const [productsArray, setProductsArray] = useState([]);
-  // console.log(productsArray);
+
   useEffect(() => {
     const fetchSessionUser = async () => {
       const userData = await getSessionUser(router);
@@ -45,8 +46,28 @@ function CartItems({ triger, setTriger }) {
 
     setProductsArray(newProductsArray);
   }, [userCart]);
+
+  // PAY FUNCTION
+  const [loginTriger, setLoginTriger] = useState(false);
+  const [payModal, setPayModal] = useState(false);
+  const PayNow = async () => {
+    const triger = await getSessionUser();
+    if (!triger) {
+      return setLoginTriger(true);
+    }
+    setPayModal(true);
+  };
   return (
     <>
+      {payModal && (
+        <PayForm
+          setLoginTriger={setLoginTriger}
+          setPayModal={setPayModal}
+          productsArray={productsArray}
+          totalAmount={totalAmount}
+          // priceNumber={priceNumber}
+        />
+      )}
       <p className="cart-heading">CART SUMMARY</p>
       <div className="subtotal">
         <p>Subtotal</p>
@@ -66,7 +87,7 @@ function CartItems({ triger, setTriger }) {
             productsArray={productsArray}
           />
         ))}
-        <div className="checkout">
+        <div className="checkout" onClick={() => PayNow()}>
           <button>CHECKOUT (₦ {totalAmount.toLocaleString()})</button>
         </div>
       </div>

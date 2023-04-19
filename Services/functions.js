@@ -186,9 +186,6 @@ export const allCartItem = async () => {
       );
 
       const Cart = response.data.data;
-
-      // const name = Cart.map((item) => item.productname);
-
       return {
         Cart,
       };

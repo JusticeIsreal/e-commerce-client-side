@@ -5,7 +5,14 @@ import { TiArrowBack } from "react-icons/ti";
 import { checkOut } from "../Services/functions";
 import { useRouter } from "next/router";
 
-function PayForm({ product, count, priceNumber, setPayModal }) {
+function PayForm({
+  product,
+  count,
+  priceNumber,
+  setPayModal,
+  productsArray,
+  totalAmount,
+}) {
   // useform config
   const {
     register,
@@ -14,35 +21,70 @@ function PayForm({ product, count, priceNumber, setPayModal }) {
     reset,
     formState: { errors },
   } = useForm();
-
+  //   console.log(productsArray);
   const addressRef = useRef("");
   const [productData, setProductData] = useState({});
   const [confirmDetails, setConfirmDetails] = useState({});
   const [showConfirmDetails, setShowConfirmDetails] = useState(false);
+
+  const cartFinalProducts = [];
+  useEffect(() => {
+    if (!product) {
+      for (const p of productsArray) {
+        // calculate the total cost
+        const newProduct = {
+          productname: p.productname,
+          productprice: p.productprice / p.quantity,
+          quantity: p.quantity,
+        };
+        cartFinalProducts.push(newProduct);
+        // add the total cost to the totalAmount variable
+      }
+    }
+  }, []);
+
   const onSubmitBanner = async (data, e) => {
     e.preventDefault();
     setConfirmDetails(data);
 
-    const locationDetails = {
-      deliveryfee: parseInt(data.state.split(",")[1]),
-      homedelivery: parseInt(data.homedelivery),
-      anyinfo: data.anyinfo,
-      deliveryaddress: `${data.street}, ${data.lga}, ${
-        data.state.split(",")[0] + " " + "State"
-      }`,
-      product: [
-        {
-          productname: product.productname,
-          productprice: parseInt(product.productprice),
-          quantity: count,
-          clientnote: data.anyinfo,
-        },
-      ],
-    };
-    setProductData(locationDetails);
+    if (product) {
+      const dynamicItemDetails = {
+        deliveryfee: parseInt(data.state.split(",")[1]),
+        homedelivery: parseInt(data.homedelivery),
+        anyinfo: data.anyinfo,
+        deliveryaddress: `${data.street}, ${data.lga}, ${
+          data.state.split(",")[0] + " " + "State"
+        }`,
+        product: [
+          {
+            productname: product.productname,
+            productprice: parseInt(product.productprice),
+            quantity: count,
+            clientnote: data.anyinfo,
+          },
+        ],
+      };
+      setProductData(dynamicItemDetails);
+    } else {
+      const cartItemDetails = {
+        deliveryfee: parseInt(data.state.split(",")[1]),
+        homedelivery: parseInt(data.homedelivery),
+        anyinfo: data.anyinfo,
+        deliveryaddress: `${data.street}, ${data.lga}, ${
+          data.state.split(",")[0] + " " + "State"
+        }`,
+        product: cartFinalProducts,
+      };
+      setProductData(cartItemDetails);
+    }
+
+    // console.log(cartItemDetails);
+    //
+
     setShowConfirmDetails(true);
   };
-  console.log(showConfirmDetails);
+  //   console.log(showConfirmDetails);
+  // DYNAMIC PAGE ITEM TOTAL
   const total =
     parseInt(confirmDetails?.state?.split(",")[1]) +
     parseInt(confirmDetails.homedelivery) +
@@ -75,50 +117,100 @@ function PayForm({ product, count, priceNumber, setPayModal }) {
                 Back
               </button>
               <h3>Confirm details</h3>
-              <p>
-                Product Name: <span>{product.productname}</span>
-              </p>
-              <p>
-                Product Price:{" "}
-                <span>₦ {Number(product?.productprice).toLocaleString()}</span>{" "}
-              </p>
-              <p>
-                Quantity: <span>{count}</span>
-              </p>
-              <p>
-                Delivery fee:
-                <span>
+              {product ? (
+                <>
                   {" "}
-                  ₦
+                  <p>
+                    Product Name: <span>{product.productname}</span>
+                  </p>
+                  <p>
+                    Product Price:{" "}
+                    <span>
+                      ₦ {Number(product?.productprice).toLocaleString()}
+                    </span>{" "}
+                  </p>
+                  <p>
+                    Quantity: <span>{count}</span>
+                  </p>
+                  <p>
+                    Total: <span> ₦ {total.toLocaleString()}</span>
+                  </p>
+                </>
+              ) : (
+                <>
+                  {productsArray.map((item) => (
+                    <div key={item.productname + item.productprice}>
+                      <p>
+                        Product Name: <span>{item.productname}</span>
+                      </p>
+                      <p>
+                        Product Price:{" "}
+                        <span>
+                          ₦{" "}
+                          {Number(
+                            item?.productprice / item.quantity
+                          ).toLocaleString()}
+                        </span>{" "}
+                      </p>
+                      <p>
+                        Quantity: <span>{item.quantity}</span>
+                      </p>
+
+                      <p>
+                        Total:{" "}
+                        <span>
+                          {" "}
+                          ₦{" "}
+                          {Number(item?.productprice / item.quantity) *
+                            item.quantity}
+                        </span>
+                      </p>
+                    </div>
+                  ))}
+                  <p>
+                    Delivery fee:
+                    <span>
+                      {" "}
+                      ₦
+                      {(
+                        parseInt(confirmDetails?.state?.split(",")[1]) +
+                        parseInt(confirmDetails.homedelivery)
+                      ).toLocaleString()}{" "}
+                      <i>
+                        {confirmDetails.homedelivery > 0
+                          ? "( Including home delivery service )"
+                          : "( No home delivery service )"}
+                      </i>
+                    </span>
+                  </p>
+                  <p>
+                    Delivery address:{" "}
+                    <span>
+                      {confirmDetails?.street}, {confirmDetails?.lga},
+                      {confirmDetails?.state?.split(",")[0] + " " + "State"}
+                    </span>
+                  </p>
+                  <p>
+                    Adiitional info:{" "}
+                    <span>
+                      {confirmDetails.anyinfo
+                        ? `${confirmDetails.anyinfo}`
+                        : "No"}
+                    </span>
+                  </p>
+                </>
+              )}
+
+              <div className="checkout-btn" onClick={() => checkOutpayment()}>
+                <button>
+                  CHECK OUT ( ₦
                   {(
+                    parseInt(totalAmount) +
                     parseInt(confirmDetails?.state?.split(",")[1]) +
                     parseInt(confirmDetails.homedelivery)
-                  ).toLocaleString()}{" "}
-                  <i>
-                    {confirmDetails.homedelivery > 0
-                      ? "( Including home delivery service )"
-                      : "( No home delivery service )"}
-                  </i>
-                </span>
-              </p>
-              <p>
-                Total: <span> ₦ {total.toLocaleString()}</span>
-              </p>
-              <p>
-                Delivery address:{" "}
-                <span>
-                  {confirmDetails?.street}, {confirmDetails?.lga},
-                  {confirmDetails?.state?.split(",")[0] + " " + "State"}
-                </span>
-              </p>
-              <p>
-                Adiitional info:{" "}
-                <span>
-                  {confirmDetails.anyinfo ? `${confirmDetails.anyinfo}` : "No"}
-                </span>
-              </p>
-              <div className="checkout-btn" onClick={() => checkOutpayment()}>
-                <button>CHECK OUT ( ₦ {total.toLocaleString()} )</button>
+                  ).toLocaleString()}
+                  )
+                </button>
               </div>
             </div>
           )}{" "}

@@ -754,7 +754,6 @@
   height: 100%;
 }
 .modal-main-con .modal-relative .modal-card {
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -851,7 +850,9 @@
 .modal-main-con .modal-relative .modal-card .confirm-form-info {
   position: absolute;
   background: whitesmoke;
-  min-height: 100%;
+  overflow: scroll;
+  height: 500px;
+  z-index: 21;
   width: 100%;
   line-height: 1.5;
   padding: 5px;
