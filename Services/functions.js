@@ -91,6 +91,7 @@ const singleTransaction = async (transactID) => {
 export const singleTransactionFetcher = (transactID) =>
   singleTransaction(transactID);
 
+// UPDATE TRANACTION STATUS
 const updateTransaction = async (transactID, transactionStatus) => {
   const token = Cookies.get("JWTtoken");
   await axios
@@ -114,6 +115,8 @@ const updateTransaction = async (transactID, transactionStatus) => {
       throw err;
     });
 };
+
+// CHECK TRANSACTION STATUS
 export const transactionStatus = async (userData, transactID) => {
   axios
     .get(

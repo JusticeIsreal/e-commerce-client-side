@@ -41,8 +41,6 @@ function PayForm({ product, count, priceNumber, setPayModal }) {
     };
     setProductData(locationDetails);
     setShowConfirmDetails(true);
-    
-    // reset();
   };
   console.log(showConfirmDetails);
   const total =

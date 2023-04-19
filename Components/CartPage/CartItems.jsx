@@ -103,6 +103,15 @@ function CartProducts({
     await deleteCartItem(_id);
   };
 
+  const kk = [];
+  const uu = [
+    {
+      productname,
+      productprice: priceNumber,
+      quantity: count,
+    },
+  ];
+  console.log(uu);
   return (
     <div className="product-con">
       <div className="cart-product-top">
