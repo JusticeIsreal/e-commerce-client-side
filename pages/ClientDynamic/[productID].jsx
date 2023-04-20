@@ -312,15 +312,15 @@ function Details() {
           <div className="lower-details">
             <h1 className="p-name">{product?.productname}</h1>
             <p className="p-number">
-              <span>Product price :</span> ₦
-              {" "}{Number(product?.productprice).toLocaleString()}
+              <span>Product price :</span> ₦{" "}
+              {Number(product?.productprice).toLocaleString()}
             </p>
             <p className="p-number">
               <span>Product spec :</span> {product?.productnumber}
             </p>
             <div>
               <p className="p-desc">
-                <span>Product category :</span>₦ {product?.productcategory}
+                <span>Product category :</span> {product?.productcategory}
               </p>
               <p className="p-desc">
                 <span>Product promo :</span>
