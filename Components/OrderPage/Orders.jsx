@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // icon
 import { FaMoneyCheck } from "react-icons/fa";
-import { getSessionUser } from "../../Services/functions";
 import { useRouter } from "next/router";
 function Orders({ userTransaction }) {
   const router = useRouter();
@@ -22,7 +21,7 @@ function Orders({ userTransaction }) {
       setProducts(userTransaction.filter((item) => item.status === item));
     }
   }, [category, userTransaction, products, category, router]);
-  console.log(userTransaction);
+
   return (
     <div className="oders-con">
       <div className="order-page-top">

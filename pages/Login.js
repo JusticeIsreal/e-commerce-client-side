@@ -33,9 +33,9 @@ function Login() {
   } = useForm();
 
   // submit form
-  const onLogin = async (data, e) => {
-    console.log(data);
-  };
+  // const onLogin = async (data, e) => {
+  //   console.log(data);
+  // };
 
   // RIGISTER USER
   const [regErrMessage, setRegErrMessage] = useState();
@@ -114,7 +114,7 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
         otp,
       })
       .then((resp) => {
-        console.log(resp);
+        // console.log(resp);
         localStorage.removeItem("userId");
         setShowOTPForm(false);
         setShowResendOTPForm(false);
@@ -230,7 +230,7 @@ function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
         userId,
       })
       .then((resp) => {
-        console.log(resp);
+        // console.log(resp);
         setShowResendOTPForm(false);
         setShowOTPForm(true);
         // location.reload();

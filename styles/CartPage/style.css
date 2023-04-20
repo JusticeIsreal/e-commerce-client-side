@@ -103,6 +103,7 @@
   }
 }
 .cart-page-con .single-product .checkout button {
+  cursor: pointer;
   width: 100%;
   height: 100%;
   color: white;
@@ -111,6 +112,7 @@
 }
 .cart-page-con .single-product .checkout button:hover {
   transform: scale(0.99);
+  background: #1a426a;
 }
 .cart-page-con .product-con {
   background: white;

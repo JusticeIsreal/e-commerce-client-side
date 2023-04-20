@@ -223,6 +223,7 @@ $txt-light-blue: #cfe8ff;
           margin: 5px;
           width: 22%;
           height: 70px;
+           cursor: pointer;
 
           @include responsive(phone) {
             width: 22%;
@@ -328,6 +329,7 @@ $txt-light-blue: #cfe8ff;
             font-weight: bolder;
             // border: 2px solid red;
             border-radius: 20px;
+            cursor: pointer;
             width: 80px;
             height: 100%;
             color: $font-light;
@@ -381,6 +383,7 @@ $txt-light-blue: #cfe8ff;
           font-weight: bolder;
           background: $txt-blue;
           color: white;
+          cursor: pointer;
 
           &:hover {
             background: #215586;
@@ -719,7 +722,7 @@ $txt-light-blue: #cfe8ff;
 
           .product-oldprice {
             text-align: center;
-            // line-height: 1.5;
+            line-height: 1.5;
             margin-top: 5px;
             font-size: 12px;
             color: $font-light;
@@ -740,6 +743,7 @@ $txt-light-blue: #cfe8ff;
           border-radius: 5px;
           margin: 5px 0;
           margin-top: 10px;
+          cursor: pointer;
 
           &:hover {
             background: $txt-blue;
@@ -854,6 +858,7 @@ $txt-light-blue: #cfe8ff;
           padding: 8px 5px;
           width: 90%;
           margin: 5px;
+          cursor: pointer;
 
           // margin-right: auto;
           background: $txt-blue;
@@ -896,7 +901,9 @@ $txt-light-blue: #cfe8ff;
           text-align: center;
           background: whitesmoke;
         }
-
+        .total {
+          border-bottom: 1px dashed gray;
+        }
         p {
           color: $bg-dark;
           padding: 5px;
@@ -918,6 +925,7 @@ $txt-light-blue: #cfe8ff;
           width: 97%;
           margin: 0 auto;
           margin-top: 30px;
+          cursor: pointer;
 
           button {
             width: 100%;
@@ -925,6 +933,7 @@ $txt-light-blue: #cfe8ff;
             border: none;
             background: $txt-blue;
             color: white;
+            cursor: pointer;
             animation: signin 2s ease-in-out infinite;
 
             &:hover {

@@ -132,7 +132,7 @@ export const transactionStatus = async (userData, transactID) => {
     })
     .catch((error) => {
       console.log(error);
-      console.log(userData);
+      // console.log(userData);
     });
 };
 

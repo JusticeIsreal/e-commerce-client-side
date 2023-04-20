@@ -29,7 +29,7 @@ function Advert() {
   useEffect(() => {
     setAdvertLink(advertDetails.map((item) => item.data().adlink));
   }, [db, advertDetails]);
-  console.log(advertLink[0]);
+ 
   return (
     <div className="ad-con">
       <Carousel

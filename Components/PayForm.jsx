@@ -133,7 +133,38 @@ function PayForm({
                     Quantity: <span>{count}</span>
                   </p>
                   <p>
+                    Delivery fee:
+                    <span>
+                      {" "}
+                      ₦
+                      {(
+                        parseInt(confirmDetails?.state?.split(",")[1]) +
+                        parseInt(confirmDetails.homedelivery)
+                      ).toLocaleString()}{" "}
+                      <i>
+                        {confirmDetails.homedelivery > 0
+                          ? "( Including home delivery service )"
+                          : "( No home delivery service )"}
+                      </i>
+                    </span>
+                  </p>
+                  <p className="total">
                     Total: <span> ₦ {total.toLocaleString()}</span>
+                  </p>
+                  <p>
+                    Delivery address:{" "}
+                    <span>
+                      {confirmDetails?.street}, {confirmDetails?.lga},
+                      {confirmDetails?.state?.split(",")[0] + " " + "State"}
+                    </span>
+                  </p>
+                  <p>
+                    Adiitional info:{" "}
+                    <span>
+                      {confirmDetails.anyinfo
+                        ? `${confirmDetails.anyinfo}`
+                        : "No"}
+                    </span>
                   </p>
                 </>
               ) : (
@@ -156,10 +187,9 @@ function PayForm({
                         Quantity: <span>{item.quantity}</span>
                       </p>
 
-                      <p>
+                      <p className="total">
                         Total:{" "}
                         <span>
-                          {" "}
                           ₦{" "}
                           {Number(item?.productprice / item.quantity) *
                             item.quantity}
@@ -203,12 +233,19 @@ function PayForm({
 
               <div className="checkout-btn" onClick={() => checkOutpayment()}>
                 <button>
-                  CHECK OUT ( ₦
-                  {(
-                    parseInt(totalAmount) +
-                    parseInt(confirmDetails?.state?.split(",")[1]) +
-                    parseInt(confirmDetails.homedelivery)
-                  ).toLocaleString()}
+                  CHECK OUT ( ₦{" "}
+                  {product ? (
+                    `${total.toLocaleString()}`
+                  ) : (
+                    <>
+                      {" "}
+                      {(
+                        parseInt(totalAmount) +
+                        parseInt(confirmDetails?.state?.split(",")[1]) +
+                        parseInt(confirmDetails.homedelivery)
+                      ).toLocaleString()}
+                    </>
+                  )}
                   )
                 </button>
               </div>

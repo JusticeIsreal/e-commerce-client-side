@@ -212,6 +212,7 @@
   margin: 5px;
   width: 22%;
   height: 70px;
+  cursor: pointer;
 }
 @media only screen and (min-width: 320px) {
   .client-single-product .single-product .top-container .small-display-img-con .small-display-img {
@@ -327,6 +328,7 @@
 .client-single-product .single-product .lower-details .product-qty-price-con .qty-con span {
   font-weight: bolder;
   border-radius: 20px;
+  cursor: pointer;
   width: 80px;
   height: 100%;
   color: #666;
@@ -388,6 +390,7 @@
   font-weight: bolder;
   background: #3c91e6;
   color: white;
+  cursor: pointer;
 }
 .client-single-product .single-product .lower-details .add-to-cart-con .add:hover,
 .client-single-product .single-product .lower-details .add-to-cart-con .buy:hover,
@@ -708,6 +711,7 @@
 }
 .client-single-product .single-product-details .similar-products .products .price .product-oldprice {
   text-align: center;
+  line-height: 1.5;
   margin-top: 5px;
   font-size: 12px;
   color: #666;
@@ -725,6 +729,7 @@
   border-radius: 5px;
   margin: 5px 0;
   margin-top: 10px;
+  cursor: pointer;
 }
 .client-single-product .single-product-details .similar-products .products .addto-cart:hover {
   background: #3c91e6;
@@ -840,6 +845,7 @@
   padding: 8px 5px;
   width: 90%;
   margin: 5px;
+  cursor: pointer;
   background: #3c91e6;
   color: white;
   border: none;
@@ -872,6 +878,9 @@
   text-align: center;
   background: whitesmoke;
 }
+.modal-main-con .modal-relative .modal-card .confirm-form-info .total {
+  border-bottom: 1px dashed gray;
+}
 .modal-main-con .modal-relative .modal-card .confirm-form-info p {
   color: #342e37;
   padding: 5px;
@@ -890,6 +899,7 @@
   width: 97%;
   margin: 0 auto;
   margin-top: 30px;
+  cursor: pointer;
 }
 .modal-main-con .modal-relative .modal-card .confirm-form-info .checkout-btn button {
   width: 100%;
@@ -897,6 +907,7 @@
   border: none;
   background: #3c91e6;
   color: white;
+  cursor: pointer;
   animation: signin 2s ease-in-out infinite;
 }
 .modal-main-con .modal-relative .modal-card .confirm-form-info .checkout-btn button:hover {
