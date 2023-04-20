@@ -10,7 +10,7 @@ export const getSessionUser = async () => {
   if (token) {
     try {
       const response = await axios.get(
-        "http://localhost:1234/api/v1/userverification/getSessionUser",
+        "https://api-j.onrender.com/api/v1/userverification/getSessionUser",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ export const changePassword = async (password, router) => {
 // LOG IN API CALL
 export const logIN = async (setLoading, router, setErrMsg, data) => {
   axios
-    .post("http://localhost:1234/api/v1/userverification/loginuser", data)
+    .post("https://api-j.onrender.com/api/v1/userverification/loginuser", data)
     .then((resp) => {
       setLoading(false);
       const token = resp.data.data;

@@ -116,7 +116,7 @@ $txt-light-blue: #cfe8ff;
       height: 70px;
       border-radius: 5px;
       margin: 0 auto;
-        transform: scale(0.9);
+      transform: scale(0.9);
       // margin-top: 20px;
       position: relative;
       // border: 2px solid red;
@@ -136,8 +136,7 @@ $txt-light-blue: #cfe8ff;
         color: gray;
         text-align: center;
         font-size: 13px;
-         cursor: pointer;
-      
+        cursor: pointer;
 
         @include responsive(phone) {
           padding: 5px 10px;
