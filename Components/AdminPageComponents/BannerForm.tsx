@@ -117,9 +117,9 @@ function BannerForm() {
         <label>Banner Category</label>
         <select {...register("bannercategory", { required: true })}>
           <option value="">Select</option>
-          <option value="shoe">Shoe</option>
-          <option value="cloth">Cloth</option>
-          <option value="phone">Phone</option>
+          <option value="Shoe">Shoe</option>
+          <option value="Cloth">Cloth</option>
+          <option value="Watch">Watch</option>
         </select>
         {errors.bannercategory && (
           <span

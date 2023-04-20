@@ -247,7 +247,7 @@
 .banner-main-con .content .text-content {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 130px;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con .content .text-content {
@@ -274,6 +274,7 @@
 .banner-main-con .content .text-content .banner-text-con {
   width: 100vw;
   width: 100%;
+  margin-top: -20px;
 }
 .banner-main-con .content .text-content .banner-text-con .cat-desc {
   position: absolute;
