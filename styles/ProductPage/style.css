@@ -33,7 +33,7 @@
   flex-direction: column;
 }
 .product-page-main-con .product-page-con form {
-  color: #3c91e6;
+  color: gray;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -77,7 +77,7 @@
   height: 70px;
   border-radius: 5px;
   margin: 0 auto;
-  transform: scale(0.9);
+  transform: scale(0.95);
   position: relative;
 }
 @media only screen and (min-width: 768px) {
@@ -88,7 +88,7 @@
   }
 }
 .product-page-main-con .product-page-con .category-con .category {
-  border: 1px solid #a7a7a7;
+  border: 1px solid rgba(128, 128, 128, 0.352);
   border-radius: 5px;
   outline: none;
   padding: 5px;

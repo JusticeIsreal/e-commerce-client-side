@@ -86,9 +86,9 @@ function Topbar({ dynamictriger, triga }) {
             <button
               style={{
                 height: "70%",
-                color: "#3c91e6",
+                color: "gray",
                 cursor: "pointer",
-                border: "1px solid #3c91e6",
+                border: "1px solid gray",
                 width: "100px",
               }}
               onClick={() => logOUT()}

@@ -5,6 +5,7 @@ import { deleteCartItem, getSessionUser } from "../../Services/functions";
 import { ImBin } from "react-icons/im";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { CartQuantityContext } from "../../pages/_app";
+import { TiArrowBack } from "react-icons/ti";
 
 function CartItems({ triger, setTriger }) {
   const router = useRouter();
@@ -57,6 +58,11 @@ function CartItems({ triger, setTriger }) {
     }
     setPayModal(true);
   };
+
+  // go back
+  function goBack() {
+    router.back();
+  }
   return (
     <>
       {payModal && (
@@ -68,6 +74,10 @@ function CartItems({ triger, setTriger }) {
           // priceNumber={priceNumber}
         />
       )}
+      <button onClick={goBack} className="go-back">
+        <TiArrowBack />
+        Back
+      </button>
       <p className="cart-heading">CART SUMMARY</p>
       <div className="subtotal">
         <p>Subtotal</p>
@@ -177,7 +187,7 @@ function CartProducts({
         <div className="cart-product-lower">
           <div className="cart-product-lower-top">
             <h3>{productname}</h3>
-            <p>₦ {priceNumber} </p>
+            <p>₦ {priceNumber.toLocaleString()} </p>
             <span>{productnumber}</span>
           </div>
           <div className="cart-product-lower-lower">

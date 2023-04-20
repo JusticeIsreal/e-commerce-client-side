@@ -18,6 +18,24 @@
   background-color: rgba(65, 105, 225, 0);
 }
 
+.go-back {
+  z-index: 20;
+  cursor: pointer;
+  margin: 10px;
+  margin-left: 5px;
+  background: rgba(60, 145, 230, 0.7764705882);
+  border: 1px solid rgba(128, 128, 128, 0.168627451);
+  color: white;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.go-back:hover {
+  background: gray;
+}
+
 .cart-page-con {
   border: 1px solid rgba(255, 0, 0, 0);
   margin-top: 50px;
@@ -27,11 +45,9 @@
   .cart-page-con {
     margin: 0 auto;
     margin-top: 90px;
-    max-width: 1350px;
   }
 }
 .cart-page-con .cart-heading {
-  margin-top: 20px;
   background: white;
   padding: 10px 5px;
   font-weight: bold;
@@ -48,12 +64,13 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  padding: 5px;
+  padding: 0px 10px;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .subtotal {
     position: absolute;
-    border: 1px solid gray;
+    border: 1px solid rgb(184, 183, 183);
+    border-top: none;
     display: block;
     right: 0;
     width: 29%;
@@ -78,27 +95,37 @@
 }
 .cart-page-con .single-product {
   padding: 0 5px;
+  padding-bottom: 80px;
   height: calc(100vh - 220px);
-  overflow: scroll;
+  overflow-y: scroll;
+  position: relative !important;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .single-product {
     height: 90vh;
+    width: 100%;
+    padding-bottom: 10px;
   }
 }
 .cart-page-con .single-product .checkout {
   height: 60px;
-  position: sticky;
+  position: absolute;
+  position: fixed;
   z-index: 2;
   background: white;
-  bottom: 0px;
   cursor: pointer;
+  bottom: 65px;
+  width: 95%;
+  margin: 0 auto;
+  font-weight: bold;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .single-product .checkout {
     position: absolute;
+    position: fixed;
+    display: block;
     right: 0;
-    top: 130px;
+    top: 258px;
     width: 29%;
   }
 }
@@ -123,7 +150,6 @@
 @media only screen and (min-width: 768px) {
   .cart-page-con .product-con {
     width: 70%;
-    max-width: 900px;
   }
 }
 .cart-page-con .product-con .cart-product-top {
@@ -193,6 +219,7 @@
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-lower p {
   color: #3c91e6;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   justify-content: center;

@@ -39,7 +39,7 @@ function Banner() {
                     <span style={{ fontWeight: "bolder", color: "#3c91e6" }}>
                       {item.data().bannername} :{" "}
                     </span>
-                    {item.data().bannerscription}
+                    {item.data().bannerscription.substring(0, 100).toString()}. . .
                   </p>
                 </div>
               ))}

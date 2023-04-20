@@ -62,6 +62,26 @@ $txt-light-blue: #cfe8ff;
   }
 }
 
+// GO BACK BTN
+.go-back {
+  // position: absolute;
+  z-index: 20;
+  cursor: pointer;
+  margin: 10px;
+  margin-left: 5px;
+  background: #3c91e6c6;
+  border: 1px solid #8080802b;
+  color: white;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 18px;
+  &:hover {
+    background: gray;
+  }
+}
+
 // CART PAGE
 .cart-page-con {
   border: 1px solid #ff000000;
@@ -72,15 +92,16 @@ $txt-light-blue: #cfe8ff;
   @include responsive(bigphone) {
     margin: 0 auto;
     margin-top: 90px;
-    max-width: 1350px;
+    // max-width: 1350px;
   }
 
   .cart-heading {
-    margin-top: 20px;
+    // margin-top: 20px;
     background: white;
     padding: 10px 5px;
     font-weight: bold;
     color: $bg-dark-gray;
+    // border: 2px solid red;
 
     @include responsive(bigphone) {
       margin-top: 0px;
@@ -89,11 +110,12 @@ $txt-light-blue: #cfe8ff;
   }
   .subtotal {
     @include flexDisplay(space-between, center, row);
-    padding: 5px;
-
+    padding: 0px 10px;
+    // border: 2px solid red;
     @include responsive(bigphone) {
       position: absolute;
-      border: 1px solid gray;
+      border: 1px solid rgb(184, 183, 183);
+      border-top: none;
       display: block;
       right: 0;
       width: 29%;
@@ -116,25 +138,38 @@ $txt-light-blue: #cfe8ff;
   .single-product {
     // border: 2px solid red;
     padding: 0 5px;
+    padding-bottom: 80px;
     height: calc(100vh - 220px);
-    overflow: scroll;
+    overflow-y: scroll;
+    position: relative !important;
     @include responsive(bigphone) {
       height: 90vh;
+      width: 100%;
+      padding-bottom: 10px;
     }
     .checkout {
       // border: 2px solid red;
       height: 60px;
-      position: sticky;
+      position: absolute;
+      position: fixed;
       z-index: 2;
       background: white;
-      bottom: 0px;
       cursor: pointer;
+      bottom: 65px;
+      width: 95%;
+      margin: 0 auto;
+      font-weight: bold;
+
       @include responsive(bigphone) {
         position: absolute;
+        position: fixed;
         // border: 2px solid gray;
+        display: block;
         right: 0;
-        top: 130px;
+        // margin-left: ;
+        top: 258px;
         width: 29%;
+        // max-width: 390px;
       }
       button {
         cursor: pointer;
@@ -160,7 +195,7 @@ $txt-light-blue: #cfe8ff;
 
     @include responsive(bigphone) {
       width: 70%;
-      max-width: 900px;
+      // max-width: 900px;
     }
     .cart-product-top {
       // border: 2px solid rgb(0, 17, 255);
@@ -214,6 +249,8 @@ $txt-light-blue: #cfe8ff;
           p {
             color: $txt-blue;
             font-weight: bold;
+            font-size: 15px;
+
             cursor: pointer;
             @include flexDisplay(center, center, row);
             @include responsive(bigphone) {

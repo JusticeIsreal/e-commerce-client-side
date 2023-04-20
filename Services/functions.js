@@ -2,7 +2,7 @@ import axios from "axios";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Cookies from "js-cookie";
 import { db } from "../Firebase";
-const API = "https://api-j.onrender.com";
+
 // FETCH SESSION /USER DETAILS API CALL
 export const getSessionUser = async () => {
   const token = Cookies.get("JWTtoken");

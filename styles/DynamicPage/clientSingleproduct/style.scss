@@ -146,6 +146,10 @@ $txt-light-blue: #cfe8ff;
           border-radius: 10px;
           font-size: 18px;
 
+          &:hover {
+            background: gray;
+          }
+
           @include responsive(bigphone) {
             top: 110px;
           }
@@ -223,7 +227,7 @@ $txt-light-blue: #cfe8ff;
           margin: 5px;
           width: 22%;
           height: 70px;
-           cursor: pointer;
+          cursor: pointer;
 
           @include responsive(phone) {
             width: 22%;
@@ -441,13 +445,14 @@ $txt-light-blue: #cfe8ff;
           position: absolute;
           padding: 3px 5px;
           right: 0;
-          top: -45px;
+          top: -30px;
           font-size: 15px;
           text-align: center;
           color: $txt-blue;
           z-index: 4;
           align-content: center;
           cursor: pointer;
+          // border: 2px solid red;
 
           span {
             font-size: 15px;
@@ -456,7 +461,7 @@ $txt-light-blue: #cfe8ff;
             padding: 0px 5px 0px 5px;
 
             @include responsive(bigphone) {
-              font-size: 25px;
+              font-size: 20px;
             }
           }
         }
@@ -575,9 +580,13 @@ $txt-light-blue: #cfe8ff;
               width: 100%;
               height: 40px;
               outline: none;
-              color: $txt-blue;
-              border: 1px solid $txt-blue;
-              font-size: 20px;
+              color: gray;
+              border: 1px solid gray;
+              font-size: 15px;
+
+              @include responsive(tablet) {
+                font-size: 20px;
+              }
             }
             textarea {
               margin-bottom: 20px;
@@ -586,17 +595,22 @@ $txt-light-blue: #cfe8ff;
               height: 70px;
               outline: none;
               color: $txt-blue;
-              border: 1px solid $txt-blue;
-              font-size: 20px;
+              border: 1px solid gray;
+              font-size: 15px;
+
+              @include responsive(tablet) {
+                font-size: 20px;
+              }
             }
 
             .submit-btn {
               background: $txt-blue;
               color: white;
               cursor: pointer;
+              border: none;
 
               &:hover {
-                background: #19426b;
+                background: gray;
               }
             }
           }
@@ -773,6 +787,7 @@ $txt-light-blue: #cfe8ff;
     @include flexDisplay(center, center, row);
     position: relative;
     width: 100%;
+
     height: 100%;
 
     .modal-card {
@@ -782,7 +797,7 @@ $txt-light-blue: #cfe8ff;
       background: whitesmoke;
       border-radius: 5px;
       width: 90%;
-      max-width: 400px;
+      max-width: 500px;
       position: relative;
 
       .go-back {
@@ -799,6 +814,10 @@ $txt-light-blue: #cfe8ff;
         text-align: center;
         border-radius: 10px;
         font-size: 18px;
+
+        &:hover {
+          background: gray;
+        }
       }
 
       .modal-img-con {
@@ -827,9 +846,10 @@ $txt-light-blue: #cfe8ff;
           input {
             font-size: 15px;
             padding: 8px 5px;
+            height: 40px;
             width: 90%;
             margin: 5px;
-            border: 1px solid $txt-blue;
+            border: 1px solid gray;
           }
           span {
             font-size: 15px;
@@ -841,7 +861,10 @@ $txt-light-blue: #cfe8ff;
             padding: 8px 5px;
             width: 90%;
             margin: 5px;
-            border: 1px solid $txt-blue;
+            height: 40px;
+            border-radius: 1px;
+            color: gray;
+            border: 1px solid gray;
           }
 
           textarea {
@@ -849,6 +872,7 @@ $txt-light-blue: #cfe8ff;
             padding: 8px 5px;
             width: 90%;
             margin: 5px;
+            height: 80px;
             border: 1px solid $txt-blue;
           }
         }
@@ -857,6 +881,7 @@ $txt-light-blue: #cfe8ff;
           font-size: 15px;
           padding: 8px 5px;
           width: 90%;
+          height: 40px;
           margin: 5px;
           cursor: pointer;
 
@@ -866,7 +891,7 @@ $txt-light-blue: #cfe8ff;
           border: none;
 
           &:hover {
-            background: #19426b;
+            background: gray;
           }
         }
       }
@@ -876,10 +901,11 @@ $txt-light-blue: #cfe8ff;
         position: absolute;
         background: whitesmoke;
         overflow: scroll;
-        height: 500px;
+        height: auto;
+        max-height: 500px;
         z-index: 21;
         // top: -100%;
-        // min-height: 100%;
+        min-height: 100%;
         width: 100%;
         line-height: 1.5;
         padding: 5px;
@@ -898,6 +924,7 @@ $txt-light-blue: #cfe8ff;
         h3 {
           padding: 5px;
           color: $bg-dark;
+
           text-align: center;
           background: whitesmoke;
         }
@@ -905,10 +932,11 @@ $txt-light-blue: #cfe8ff;
           border-bottom: 1px dashed gray;
         }
         p {
-          color: $bg-dark;
+          color: gray;
           padding: 5px;
           background: whitesmoke;
-          // font-weight: bold;
+          font-weight: 500;
+          font-weight: bold;
 
           span {
             color: $txt-blue;
@@ -924,20 +952,23 @@ $txt-light-blue: #cfe8ff;
         .checkout-btn {
           width: 97%;
           margin: 0 auto;
+          height: 40px;
           margin-top: 30px;
           cursor: pointer;
 
           button {
             width: 100%;
-            height: 50px;
+            height: 100%;
             border: none;
             background: $txt-blue;
             color: white;
             cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
             animation: signin 2s ease-in-out infinite;
 
             &:hover {
-              background: #1b4670;
+              background: gray;
             }
             @keyframes signin {
               0% {

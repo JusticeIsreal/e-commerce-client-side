@@ -79,10 +79,16 @@ function TransactionReceipt({
         <div className="order-details">
           <p className="timestamp">{formattedTimestamp}</p>
           <p className="productnames">
-            {product.map((name) => name.productname + ",  ")}
+            {product.map((name) => name.productname.split(" ")[0] + ",  ")}
           </p>
-          <p className="productnames"> ₦ {totalAmount.toLocaleString()}</p>
-          <p>
+          <p
+            className="productnames"
+            style={{ color: "black" }}
+          >
+            {" "}
+            ₦ {totalAmount.toLocaleString()}
+          </p>
+          <p style={{ color: "gray", fontWeight: "bold" }}>
             Payment:{" "}
             <span
               style={{
@@ -98,6 +104,7 @@ function TransactionReceipt({
                       return "#db504a";
                   }
                 })(),
+                fontWeight: "normal",
               }}
             >
               {transactionstatus}

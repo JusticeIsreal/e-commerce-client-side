@@ -45,6 +45,9 @@
   border-radius: 10px;
   font-size: 18px;
 }
+.receipt-main-con .receipt-con .go-back:hover {
+  background: gray;
+}
 @media only screen and (min-width: 768px) {
   .receipt-main-con .receipt-con .go-back {
     top: 20px;
@@ -161,6 +164,7 @@
 .receipt-main-con .receipt-con .download-page {
   width: 95%;
   max-width: 500px;
+  margin-bottom: 20px;
 }
 .receipt-main-con .receipt-con .download-page p {
   width: 100%;

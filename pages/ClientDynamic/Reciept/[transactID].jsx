@@ -94,8 +94,27 @@ function transactionrecipt() {
                 <span>₦ {item?.total.toLocaleString()}</span>
               </div>
             ))}
-
-            <div className="transaction-status first">
+            <div
+              className="transaction-status"
+              style={{
+                width: "95%",
+                marginTop: "10px",
+                borderTop: "1px dashed gray",
+              }}
+            >
+              <span>Delivery fee:</span>
+              <span>₦ {userData?.deliveryfee}</span>
+            </div>
+            <div className="transaction-status" style={{ width: "95%" }}>
+              <span>Home delivery:</span>
+              <span>
+                ₦ {userData?.homedelivery ? userData.homedelivery : "No"}
+              </span>
+            </div>
+            <div
+              className="transaction-status first"
+              style={{ width: "95%", borderTop: "1px dashed gray" }}
+            >
               <span>Transaction status:</span>
               <span
                 style={{
@@ -114,7 +133,7 @@ function transactionrecipt() {
                 {userData?.transactionstatus}
               </span>
             </div>
-            <div className="transaction-status">
+            <div className="transaction-status" style={{ width: "95%" }}>
               <span>Order status:</span>
               <span
                 style={{
@@ -136,7 +155,11 @@ function transactionrecipt() {
                 {userData?.status}
               </span>
             </div>
-            <div className="transaction-status">
+            <div className="transaction-status" style={{ width: "95%" }}>
+              <span>Date / Time:</span>
+              <span> {userData?.timestamp.substring(0, 20).toString()}</span>
+            </div>
+            <div className="transaction-status" style={{ width: "95%" }}>
               <span>Delivery address:</span>
               <span> {userData?.deliveryaddress}</span>
             </div>

@@ -221,11 +221,11 @@
   background: url(https://res.cloudinary.com/isreal/image/upload/v1679349263/E-Commerce%20Project/banner-bg_v0db6l.jpg) no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 5px;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con {
     margin-top: 100px;
+    padding: 5px;
   }
 }
 .banner-main-con .content {
@@ -247,7 +247,7 @@
 .banner-main-con .content .text-content {
   position: relative;
   width: 100%;
-  height: 130px;
+  height: 0px;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con .content .text-content {
@@ -279,6 +279,12 @@
 .banner-main-con .content .text-content .banner-text-con .cat-desc {
   position: absolute;
   width: 100%;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .banner-main-con .content .text-content .banner-text-con .cat-desc {
+    display: block;
+  }
 }
 .banner-main-con .content .text-content .banner-text-con .cat-desc h3 {
   width: 100%;
@@ -306,11 +312,13 @@
   color: #666;
   text-align: center;
   font-style: italic;
+  display: none;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con .content .text-content .banner-text-con .cat-desc p {
     font-size: 20px;
     margin-top: 10px;
+    display: block;
   }
 }
 @media only screen and (min-width: 1023px) {
@@ -340,8 +348,7 @@
 .banner-main-con .content .banner-product-img-main-con .swiper-wrapper {
   margin-bottom: 190px;
   position: relative;
-  width: 95vw;
-  max-width: 350px;
+  width: 100%;
   display: flex;
 }
 @media only screen and (min-width: 1023px) {
@@ -360,19 +367,18 @@
   position: absolute;
   width: 250px;
   height: 190px;
+  margin: 0 auto;
 }
 @media only screen and (min-width: 320px) {
   .banner-main-con .content .banner-product-img-main-con .swiper-wrapper .banner-img-con {
-    width: 350px;
-    width: 95vw;
-    max-width: 350px;
+    width: 98vw;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 768px) {
   .banner-main-con .content .banner-product-img-main-con .swiper-wrapper .banner-img-con {
     max-width: 400px;
     height: 200px;
@@ -401,9 +407,19 @@
   border: 1px solid rgba(128, 128, 128, 0.132);
   box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.271);
 }
+@media only screen and (min-width: 768px) {
+  .banner-main-con .content .banner-product-img-main-con .swiper-wrapper .img {
+    margin-bottom: 10px;
+  }
+}
 .banner-main-con .content .banner-product-img-main-con img {
   width: 95%;
   z-index: 10;
+}
+@media only screen and (min-width: 768px) {
+  .banner-main-con .content .banner-product-img-main-con img {
+    margin-bottom: -10px;
+  }
 }
 @media only screen and (min-width: 1023px) {
   .banner-main-con .content .banner-product-img-main-con img {
@@ -487,6 +503,7 @@
   height: 250px;
   width: 200px;
   overflow: hidden;
+  position: relative;
   transition: transform 0.5s ease;
   background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
   background: whitesmoke;
@@ -632,6 +649,7 @@
   overflow: hidden;
   -o-object-fit: contain;
      object-fit: contain;
+  position: relative;
 }
 .product-session-con .product-main-con .products-con .products .product-img .percentage-off {
   position: absolute;
@@ -710,6 +728,7 @@
   border-radius: 5px;
   margin: 5px 0;
   cursor: pointer;
+  background: white;
 }
 .product-session-con .product-main-con .products-con .products .addto-cart:hover {
   background: #3c91e6;
@@ -1140,6 +1159,9 @@
   text-align: center;
   border-radius: 10px;
   font-size: 18px;
+}
+.modal-main-con .modal-relative .modal-card .go-back:hover {
+  background: gray;
 }
 .modal-main-con .modal-relative .modal-card .modal-img-con {
   display: flex;

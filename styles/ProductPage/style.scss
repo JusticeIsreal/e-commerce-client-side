@@ -75,7 +75,7 @@ $txt-light-blue: #cfe8ff;
 
     // SEARCH FORM
     form {
-      color: $txt-blue;
+      color: gray;
 
       @include flexDisplay(space-around, center, row);
       width: 95%;
@@ -116,7 +116,7 @@ $txt-light-blue: #cfe8ff;
       height: 70px;
       border-radius: 5px;
       margin: 0 auto;
-      transform: scale(0.9);
+      transform: scale(0.95);
       // margin-top: 20px;
       position: relative;
       // border: 2px solid red;
@@ -128,7 +128,7 @@ $txt-light-blue: #cfe8ff;
         border-radius: 10px;
       }
       .category {
-        border: 1px solid #a7a7a7;
+        border: 1px solid rgba(128, 128, 128, 0.352);
         border-radius: 5px;
         outline: none;
         // box-shadow: -1px -2px 5px rgba(128, 128, 128, 0.107);

@@ -89,6 +89,10 @@ $txt-light-blue: #cfe8ff;
       border-radius: 10px;
       font-size: 18px;
 
+      &:hover {
+        background: gray;
+      }
+
       @include responsive(bigphone) {
         top: 20px;
       }
@@ -204,6 +208,7 @@ $txt-light-blue: #cfe8ff;
       // border: 2px solid red;
       width: 95%;
       max-width: 500px;
+      margin-bottom: 20px;
 
       p {
         width: 100%;

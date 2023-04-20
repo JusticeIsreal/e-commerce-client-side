@@ -92,8 +92,17 @@ function Details() {
     }
   }
   // console.log(product);
+
+  // get user details
+  const [userDetails, setUserDetails] = useState();
   useEffect(() => {
     fetchItemFromFirestore();
+
+    const fetchUser = async () => {
+      const triger = await getSessionUser();
+      setUserDetails(triger?.user);
+    };
+    fetchUser();
   }, [productID]);
 
   // simillar product
@@ -215,6 +224,7 @@ function Details() {
     setDynamicTriger(!dynamictriger);
 
     const triger = await getSessionUser();
+
     if (!triger) {
       return setLoginTriger(true);
     }
@@ -399,6 +409,7 @@ function Details() {
                     <label>User Name</label>
                     <input
                       type="text"
+                      defaultValue={userDetails?.username || ""}
                       placeholder="eg. John Doe"
                       {...register("username", { required: true })}
                     />
@@ -418,6 +429,7 @@ function Details() {
                     <label>User Email</label>
                     <input
                       type="email"
+                      defaultValue={userDetails?.useremail || ""}
                       placeholder="Enter Your Email"
                       {...register("useremail", { required: true })}
                     />

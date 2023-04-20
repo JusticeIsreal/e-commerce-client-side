@@ -95,7 +95,7 @@ function PayForm({
   const checkOutpayment = async () => {
     const userData = await checkOut(productData, router);
     if (userData) {
-      console.log(userData.data);
+    //   console.log(userData.data);
     }
   };
 
@@ -246,7 +246,7 @@ function PayForm({
                       ).toLocaleString()}
                     </>
                   )}
-                  )
+                  {" "})
                 </button>
               </div>
             </div>
