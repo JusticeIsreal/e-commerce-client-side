@@ -2,7 +2,7 @@ import axios from "axios";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Cookies from "js-cookie";
 import { db } from "../Firebase";
-
+const API = "https://api-j.onrender.com";
 // FETCH SESSION /USER DETAILS API CALL
 export const getSessionUser = async () => {
   const token = Cookies.get("JWTtoken");
@@ -10,7 +10,7 @@ export const getSessionUser = async () => {
   if (token) {
     try {
       const response = await axios.get(
-        "https://api-j.onrender.com/api/v1/userverification/getSessionUser",
+        "API/api/v1/userverification/getSessionUser",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ export const getSessionUser = async () => {
 export const changePassword = async (password, router) => {
   const userId = localStorage.getItem("userId") || [];
   axios
-    .post("http://localhost:1234/api/v1/userverification/resetpassword", {
+    .post("API/api/v1/userverification/resetpassword", {
       password,
       userId,
     })
@@ -59,7 +59,7 @@ export const changePassword = async (password, router) => {
 // LOG IN API CALL
 export const logIN = async (setLoading, router, setErrMsg, data) => {
   axios
-    .post("https://api-j.onrender.com/api/v1/userverification/loginuser", data)
+    .post("API/api/v1/userverification/loginuser", data)
     .then((resp) => {
       setLoading(false);
       const token = resp.data.data;
@@ -77,7 +77,7 @@ export const logIN = async (setLoading, router, setErrMsg, data) => {
 const singleTransaction = async (transactID) => {
   const token = Cookies.get("JWTtoken");
   const { data } = await axios.get(
-    `http://localhost:1234/api/v1/transaction/getsingletransaction/${transactID}`,
+    `API/api/v1/transaction/getsingletransaction/${transactID}`,
     {
       headers: {
         authorization: `Bearer ${token}`,
@@ -95,8 +95,7 @@ const updateTransaction = async (transactID, transactionStatus) => {
   const token = Cookies.get("JWTtoken");
   await axios
     .patch(
-      "http://localhost:1234/api/v1/transaction/updatetransaction/" +
-        `${transactID}`,
+      "API/api/v1/transaction/updatetransaction/" + `${transactID}`,
       {
         transactionstatus: transactionStatus,
       },
@@ -154,16 +153,12 @@ export const addToCart = async (productData, productID) => {
     productID: productID,
   };
   try {
-    const { data } = await axios.post(
-      "http://localhost:1234/api/v1/cart/addtocart",
-      product,
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  
+    const { data } = await axios.post("API/api/v1/cart/addtocart", product, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
     return data.status;
   } catch (error) {
     console.log(error);
@@ -176,14 +171,11 @@ export const allCartItem = async () => {
 
   if (token) {
     try {
-      const response = await axios.get(
-        "http://localhost:1234/api/v1/cart/allcart",
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get("API/api/v1/cart/allcart", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
 
       const Cart = response.data.data;
       return {
@@ -202,14 +194,11 @@ export const allCartItem = async () => {
 export const deleteCartItem = async (_id) => {
   const token = Cookies.get("JWTtoken");
   try {
-    const { data } = await axios.delete(
-      `http://localhost:1234/api/v1/cart/deletecart/${_id}`,
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const { data } = await axios.delete(`API/api/v1/cart/deletecart/${_id}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
     if (data && data.status === "CART DELETED SUCCESSFUL") return true;
     else return false;
   } catch (error) {
@@ -221,15 +210,11 @@ export const deleteCartItem = async (_id) => {
 export const checkOut = async (productData, router) => {
   const token = Cookies.get("JWTtoken");
   axios
-    .post(
-      "http://localhost:1234/api/v1/transaction/posttransaction",
-      productData,
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    .post("API/api/v1/transaction/posttransaction", productData, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
     .then((resp) => {
       console.log(resp.data.data.authorization_url);
       window.location.href = resp.data.data.authorization_url;
