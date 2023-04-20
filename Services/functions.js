@@ -77,7 +77,7 @@ export const logIN = async (setLoading, router, setErrMsg, data) => {
 const singleTransaction = async (transactID) => {
   const token = Cookies.get("JWTtoken");
   const { data } = await axios.get(
-    `Ahttps://api-j.onrender.com/api/v1/transaction/getsingletransaction/${transactID}`,
+    `https://api-j.onrender.com/api/v1/transaction/getsingletransaction/${transactID}`,
     {
       headers: {
         authorization: `Bearer ${token}`,
@@ -154,11 +154,15 @@ export const addToCart = async (productData, productID) => {
     productID: productID,
   };
   try {
-    const { data } = await axios.post("API/api/v1/cart/addtocart", product, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
+    const { data } = await axios.post(
+      "https://api-j.onrender.com/api/v1/cart/addtocart",
+      product,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     return data.status;
   } catch (error) {
