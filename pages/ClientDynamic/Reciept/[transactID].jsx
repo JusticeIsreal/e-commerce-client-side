@@ -145,7 +145,7 @@ function transactionrecipt() {
             </div>
             <div className="qr-code">
               <QRCode
-                value={`http://localhost:3000/ClientDynamic/Reciept/${
+                value={`https://e-commerce-client-justiceisreal.vercel.app/ClientDynamic/Reciept/${
                   transactID && transactID
                 }`}
               />
