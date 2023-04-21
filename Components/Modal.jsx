@@ -26,7 +26,11 @@ function Modal({ setLoginTriger }) {
             Back
           </button>
           <div className="modal-img-con">
-            <img src="/downloai.jpeg" alt="emoji" />
+            {emoji ? (
+              <img src={emoji} alt="emoji" />
+            ) : (
+              <img src="/downloai.jpeg" alt="emoji" />
+            )}
           </div>
           <div className="modal-text">
             <p> To access this Function you need to sign in</p>{" "}
