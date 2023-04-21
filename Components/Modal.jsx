@@ -27,9 +27,9 @@ function Modal({ setLoginTriger }) {
           </button>
           <div className="modal-img-con">
             {emoji ? (
-              <img src={emoji} alt="emoji" />
+              <img src={emoji} alt="" />
             ) : (
-              <img src="/downloai.jpeg" alt="emoji" />
+              <img src="/downloai.jpeg" alt="" />
             )}
           </div>
           <div className="modal-text">
