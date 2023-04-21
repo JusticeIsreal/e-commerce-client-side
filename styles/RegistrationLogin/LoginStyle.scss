@@ -218,6 +218,7 @@ $darkestBg: #3c91e6;
       .front {
         // border: 1px solid red;
         background-color: white;
+        height: 500px;
         padding: 5px;
         @include flexDisplay(center, center, column);
 
@@ -235,7 +236,7 @@ $darkestBg: #3c91e6;
           width: 80%;
           // height: 40px;
           margin: 0 auto;
-          // margin: 20px 0;
+          margin: 20px 0;
 
           label {
             font-size: 15px;
@@ -361,9 +362,11 @@ $darkestBg: #3c91e6;
       }
       .back {
         transform: rotateY(180deg);
+        // border: 1px solid red;
+        height: auto;
         // background-color: red;
         background-color: white;
-        padding: 5px;
+        padding: 10px 5px;
         @include flexDisplay(flex-start, center, column);
         border-radius: 10px;
         box-shadow: -5px -5px 18px rgba(128, 128, 128, 0.625);
