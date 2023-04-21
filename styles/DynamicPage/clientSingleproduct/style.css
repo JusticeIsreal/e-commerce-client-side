@@ -770,6 +770,7 @@
   flex-direction: row;
   position: relative;
   width: 100%;
+  color: #ffce26;
   height: 100%;
 }
 .modal-main-con .modal-relative .modal-card {

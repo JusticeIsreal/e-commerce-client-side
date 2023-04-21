@@ -516,12 +516,17 @@ body {
   padding-bottom: 12px;
   font-size: 13px;
   text-align: left;
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 1px solid rgb(219, 219, 219);
 }
 
 #content main .table td {
   padding: 8px 0;
   font-size: 10px;
+}
+
+#content main .table tr {
+  border-bottom: 1px solid var(--grey);
+  margin: 5px;
 }
 
 #content main .table tr td:first-child {
