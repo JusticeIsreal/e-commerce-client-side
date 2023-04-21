@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 // ICONS
 import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
-import { BsShop } from "react-icons/bs";
+import { BsShop, BsWhatsapp } from "react-icons/bs";
 import { FiGrid, FiTruck } from "react-icons/fi";
 import { MdContactSupport } from "react-icons/md";
 import { getSessionUser } from "../Services/functions";
@@ -50,7 +50,6 @@ function Topbar({ dynamictriger, triga }) {
     fetchSessionUser();
   }, [router, triga, dynamictriger]);
 
- 
   // LOGOUT
   const logOUT = () => {
     Cookies.remove("JWTtoken");
@@ -170,13 +169,17 @@ function Topbar({ dynamictriger, triga }) {
                 <p> Order</p>
               </li>
             </Link>
-
-            <li>
-              <span>
-                <MdContactSupport className="menu-icon" />
-              </span>
-              Support
-            </li>
+            <a
+              href="https://wa.me/+2349029356196?text=Hello, I am a customer on your platfor 'AJIS STORS' and i need your support."
+              target="_blank"
+            >
+              <li>
+                <span>
+                  <BsWhatsapp className="menu-icon" />
+                </span>
+                Support
+              </li>
+            </a>
           </ul>
         </nav>
       </div>
