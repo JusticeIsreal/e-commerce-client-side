@@ -79,14 +79,14 @@ $darkestBg: #3c91e6;
 
 .login-page-con {
   @include flexDisplay(center, center, column);
-  //   border: 2px solid red;
+  // border: 2px solid red;
   width: 100vw;
   height: 100vh;
 
   .container {
     // border: 2px solid red;
     width: 90%;
-    height: 550px;
+    height: 400px;
     perspective: 600px;
     margin: 0 auto;
 
@@ -116,7 +116,6 @@ $darkestBg: #3c91e6;
           position: absolute;
           width: 20px;
           height: 20px;
-
           font-size: 16px;
           font-weight: 500;
           left: 10px;
@@ -135,12 +134,13 @@ $darkestBg: #3c91e6;
         }
 
         .session-note {
-          //   border: 2px solid red;
+          // border: 2px solid red;
           width: 80%;
           text-align: center;
           font-size: 13px;
           margin-top: -35px;
           margin-bottom: 60px;
+          background: white;
           color: rgb(152, 152, 152);
         }
       }
@@ -167,7 +167,6 @@ $darkestBg: #3c91e6;
           position: absolute;
           width: 20px;
           height: 20px;
-
           font-size: 16px;
           font-weight: 500;
           left: 10px;
@@ -217,25 +216,26 @@ $darkestBg: #3c91e6;
         }
       }
       .front {
+        // border: 1px solid red;
         background-color: white;
         padding: 5px;
-        @include flexDisplay(flex-start, center, column);
+        @include flexDisplay(center, center, column);
 
         border-radius: 10px;
-
+        box-shadow: -5px -5px 18px rgba(128, 128, 128, 0.625);
         .sign-in-header {
           margin-top: 20px;
-          margin-bottom: 50px;
+          // margin-bottom: 50px;
           font-weight: 600;
           color: $darkestBg;
         }
         .input-main-con {
-          //   border: 1px solid red;
+          // border: 1px solid red;
           margin-right: auto;
           width: 80%;
-          height: 40px;
+          // height: 40px;
           margin: 0 auto;
-          margin: 30px 0;
+          // margin: 20px 0;
 
           label {
             font-size: 15px;
@@ -247,23 +247,26 @@ $darkestBg: #3c91e6;
             border-radius: 5px;
             @include flexDisplay(center, flex-end, column);
             width: 100%;
-            height: 100%;
+            height: 40px;
+
+            // height: 100%;
             padding: 1px;
 
             input {
               width: 90%;
-              height: 90%;
+              height: 40px;
               border: none;
               padding: 0 5px;
-              // margin-right: auto;
-              // margin-right: -10px;
-              //
+              color: $cardbg;
+              outline: none;
+              font-size: 15px !important;
             }
             .input-icon {
               position: absolute;
               left: 5px;
-              font-size: 20px;
+              font-size: 15px;
               color: $darkestBg;
+              font-size: 20px;
 
               @include responsive(smallPhone) {
                 font-size: 15px;
@@ -272,7 +275,12 @@ $darkestBg: #3c91e6;
             }
             .eye {
               //   position: absolute;
-              left: 93%;
+              left: 90%;
+              cursor: pointer;
+
+              &:hover {
+                transform: scale(1.2);
+              }
               //   border: 2px solid red;
             }
           }
@@ -284,11 +292,12 @@ $darkestBg: #3c91e6;
           }
         }
         .checkbox-main-con {
-          //   border: 1px solid red;
+          // border: 1px solid red;
           //   margin-right: auto;
           width: 80%;
           //   height: 40px;
           margin: 0 auto;
+          font-size: 15px;
           //   margin: 20px 0;
           // margin-right: auto;
           @include flexDisplay(center, flex-end, column);
@@ -308,14 +317,14 @@ $darkestBg: #3c91e6;
         }
         .login-btn-link {
           width: 80%;
-          //   border: 2px solid red;
+          // border: 2px solid red;
         }
         .login-btn-link {
           width: 80%;
           height: 50px;
           cursor: pointer;
-          margin-top: 70px;
-          //   border: 2px solid red;
+          margin-top: 40px;
+          // border: 2px solid red;
         }
         .login-submit-btn {
           border: none;
@@ -329,19 +338,16 @@ $darkestBg: #3c91e6;
           height: 100%;
           margin: 0 auto;
           @include flexDisplay(center, center, row);
-
-          //   margin-top: 20px;
           cursor: pointer;
-
           &:hover {
-            background-color: $darkestBg;
+            background: gray;
           }
         }
         .login-registration-link {
-          //   border: 1px solid red;
+          // border: 1px solid red;
           color: $cardbg;
 
-          font-size: 12px;
+          font-size: 15px;
           margin-top: 20px;
           //
 
@@ -360,26 +366,19 @@ $darkestBg: #3c91e6;
         padding: 5px;
         @include flexDisplay(flex-start, center, column);
         border-radius: 10px;
-
+        box-shadow: -5px -5px 18px rgba(128, 128, 128, 0.625);
         .sign-in-header {
-          margin: 10px 0 40px 0;
+          margin: 10px 0 20px 0;
           font-weight: 600;
           color: $darkestBg;
         }
         .input-main-con {
-          //   border: 1px solid red;
           margin-right: auto;
           width: 80%;
           height: 40px;
           margin: 0 auto;
           margin: 0 0 30px 0;
 
-          label {
-            font-size: 15px;
-            color: $cardbg;
-            // border: 2px solid red;
-            margin-top: 50px;
-          }
           .input-con {
             border: 1px solid $cardbg;
             position: relative;
@@ -392,9 +391,11 @@ $darkestBg: #3c91e6;
 
             input {
               width: 90%;
-              height: 90%;
+              height: 40px;
               border: none;
               padding: 0 5px;
+              outline: none;
+              font-size: 15px !important;
               // margin-right: auto;
               // margin-right: -10px;
               //
@@ -402,7 +403,7 @@ $darkestBg: #3c91e6;
             .input-icon {
               position: absolute;
               left: 5px;
-              font-size: 20px;
+              font-size: 15px;
               color: $darkestBg;
 
               @include responsive(smallPhone) {
@@ -430,6 +431,8 @@ $darkestBg: #3c91e6;
               border-radius: 5px;
               border: 1px solid $cardbg;
               padding: 0 5px;
+              font-size: 15px !important;
+              outline: none;
             }
           }
 
@@ -455,6 +458,8 @@ $darkestBg: #3c91e6;
             border-radius: 5px;
             border: 1px solid $cardbg;
             padding: 0 5px;
+            font-size: 15px;
+            outline: none;
           }
           .validation-text {
             margin-right: auto;
@@ -487,8 +492,8 @@ $darkestBg: #3c91e6;
           width: 80%;
           height: 50px;
           cursor: pointer;
-          margin-top: 70px;
-          //   border: 2px solid red;
+          margin-top: 30px;
+          // border: 2px solid red;
         }
         .login-submit-btn {
           border: none;
@@ -507,14 +512,14 @@ $darkestBg: #3c91e6;
           cursor: pointer;
 
           &:hover {
-            background-color: $darkestBg;
+            background-color: gray;
           }
         }
         .login-registration-link {
           //   border: 1px solid red;
           color: $cardbg;
 
-          font-size: 12px;
+          font-size: 15px;
           margin-top: 20px;
           //
 

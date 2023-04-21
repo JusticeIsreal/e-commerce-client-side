@@ -95,7 +95,7 @@
 }
 .cart-page-con .single-product {
   padding: 0 5px;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
   height: calc(100vh - 220px);
   overflow-y: scroll;
   position: relative !important;

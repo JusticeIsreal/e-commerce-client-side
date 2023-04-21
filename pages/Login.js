@@ -32,11 +32,6 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  // submit form
-  // const onLogin = async (data, e) => {
-  //   console.log(data);
-  // };
-
   // RIGISTER USER
   const [regErrMessage, setRegErrMessage] = useState();
   const [showOTPForm, setShowOTPForm] = useState(false);
@@ -45,7 +40,10 @@ function Login() {
 
   const onSubmit = async (data) => {
     axios
-      .post("http://localhost:1234/api/v1/userverification/registeruser", data)
+      .post(
+        "https://api-j.onrender.com/api/v1/userverification/registeruser",
+        data
+      )
       .then((resp) => {
         // console.log(resp.data.data.userId);
         localStorage.setItem("userId", resp.data.data.userId);
@@ -64,9 +62,14 @@ function Login() {
   };
 
   // RESEND OTP
+  const LOGO =
+    "https://res.cloudinary.com/isreal/image/upload/v1671743431/banking%20app/AJIS_FILE_1_arvnbd_dqrxio.png";
 
   return (
     <div className="login-page-con">
+      <div style={{ width: "100px" }}>
+        <img src={LOGO} alt="" style={{ width: "100%" }} />
+      </div>
       <div className="container">
         <div className="card" ref={flipLogin}>
           {/* LOGIN FORM  */}
@@ -109,7 +112,7 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
 
   const enterOTP = async () => {
     axios
-      .post("http://localhost:1234/api/v1/userverification/verifyotp", {
+      .post("https://api-j.onrender.com/api/v1/userverification/verifyotp", {
         userId,
         otp,
       })
@@ -225,7 +228,7 @@ function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
     const userId = localStorage.getItem("userId");
 
     axios
-      .post("http://localhost:1234/api/v1/userverification/resendotp", {
+      .post("https://api-j.onrender.com/api/v1/userverification/resendotp", {
         useremail,
         userId,
       })
@@ -293,7 +296,7 @@ function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
             ref={emailRef}
             style={{
               width: "250px",
-              padding:"5px",
+              padding: "5px",
               height: "50px",
               position: "relative",
               display: "flex",
