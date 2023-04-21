@@ -8,7 +8,7 @@ import { getSessionUser } from "../../Services/functions";
 import { useRouter } from "next/router";
 
 function AdminDashboard() {
-  // SFETCHIN BANNER SORTED FROM FIREBABSE
+  // FETCHIN BANNER SORTED FROM FIREBABSE
   const [bannerDetails, setBannerDetails] = useState([]);
 
   useEffect(() => {

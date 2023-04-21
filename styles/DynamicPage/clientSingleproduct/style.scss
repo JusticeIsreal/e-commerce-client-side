@@ -787,7 +787,7 @@ $txt-light-blue: #cfe8ff;
     @include flexDisplay(center, center, row);
     position: relative;
     width: 100%;
-
+    color: #ffce26;
     height: 100%;
 
     .modal-card {
