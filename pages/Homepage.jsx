@@ -55,7 +55,7 @@ const Homepage = () => {
 
     if (!triger) {
     }
-    const productExist = triger.userCart.find((item) => item.productID === id);
+    const productExist = triger?.userCart.find((item) => item.productID === id);
 
     if (
       (productExist && !productExist.productID) ||
