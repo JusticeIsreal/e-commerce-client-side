@@ -155,13 +155,16 @@ body {
 }
 
 .category {
-  border: 2px solid var(--blue);
+  border: 1px solid var(--blue);
   color: #3d91e6;
+  cursor: pointer;
 }
 
 .active-category {
+  border: 1px solid var(--blue);
   color: white;
   background: #3c91e6;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
