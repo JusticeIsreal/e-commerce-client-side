@@ -13,6 +13,7 @@ function RegisterForm({
   onSubmit,
   setShowResendOTPForm,
   showResendOTPLink,
+  regBtnLoading,
 }) {
   // show password as text
   const [showPassword, setShowPassword] = useState(false);
@@ -218,7 +219,7 @@ function RegisterForm({
         <input
           type="submit"
           className="login-submit-btn"
-          // value={loading ? "Uploading..." : "Upload Product"}
+          value={regBtnLoading ? "Sign up" : "Uploading ..."}
         />
       </div>
       <p className="login-registration-link">

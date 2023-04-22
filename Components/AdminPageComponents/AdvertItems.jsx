@@ -67,11 +67,7 @@ function AdvertItems({ advertDetails }) {
 
 export default AdvertItems;
 
-function AdevertItemsIndividual({
-  id,
-  image,
-  link,
-}) {
+function AdevertItemsIndividual({ id, image, link }) {
   const deleteProduct = async (id) => {
     const itemRef = doc(db, "advert", id);
     await deleteDoc(itemRef);
@@ -123,10 +119,10 @@ function AdevertItemsIndividual({
             width: "100px",
           }}
         >
-          <FaTrashAlt
-            style={{ cursor: "pointer", color: "red" }}
-            onClick={() => deleteProduct(id)}
-          />
+          <b className="delete-product-btn" onClick={() => deleteProduct(id)}>
+            {" "}
+            DELETE
+          </b>
         </td>
       </tr>
     </tbody>

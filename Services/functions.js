@@ -57,7 +57,14 @@ export const changePassword = async (password, router) => {
 };
 
 // LOG IN API CALL
-export const logIN = async (setLoading, router, setErrMsg, data) => {
+export const logIN = async (
+  setLoading,
+  router,
+  setErrMsg,
+  data,
+  setLoginLoading
+) => {
+  setLoginLoading(false);
   axios
     .post("https://api-j.onrender.com/api/v1/userverification/loginuser", data)
     .then((resp) => {
@@ -67,6 +74,7 @@ export const logIN = async (setLoading, router, setErrMsg, data) => {
       router.push("/");
       setErrMsg("");
       setLoading(true);
+      setLoginLoading(true);
     })
     .catch((error) => {
       setErrMsg(error?.response?.data?.message);
@@ -136,6 +144,68 @@ export const transactionStatus = async (userData, transactID) => {
     });
 };
 
+// GET ALL TRANSACTION
+export const allTransactions = async () => {
+  // http://localhost:1234/api/v1/transaction/alltransaction
+  const token = Cookies.get("JWTtoken");
+  try {
+    const response = await axios.get(
+      "https://api-j.onrender.com/api/v1/transaction/alltransaction",
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const transactions = response.data.data;
+
+    const failed = transactions.filter(
+      (orders) => orders.transactionstatus.toLowerCase() === "failed"
+    );
+    const abandoned = transactions.filter(
+      (orders) => orders.transactionstatus.toLowerCase() === "abandoned"
+    );
+    const pending = transactions.filter(
+      (orders) => orders.transactionstatus.toLowerCase() == "pending"
+    );
+    const success = transactions.filter(
+      (orders) => orders.transactionstatus.toLowerCase() === "success"
+    );
+    // console.log(transactions);
+    return {
+      transactions,
+      failed,
+      abandoned,
+      pending,
+      success,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+// GET ALL USERS
+export const allUsers = async () => {
+  const token = Cookies.get("JWTtoken");
+  try {
+    const response = await axios.get(
+      "https://api-j.onrender.com/api/v1/userverification/allusers",
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const users = response.data.data;
+
+    return {
+      users,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 // ADD TO CART
 export const addToCart = async (productData, productID) => {
   const token = Cookies.get("JWTtoken");
@@ -153,6 +223,7 @@ export const addToCart = async (productData, productID) => {
     // user: user._id,
     productID: productID,
   };
+
   try {
     const { data } = await axios.post(
       "https://api-j.onrender.com/api/v1/cart/addtocart",

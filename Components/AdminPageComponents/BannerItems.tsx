@@ -116,10 +116,10 @@ function StoreItemsIndividual({
             width: "100px",
           }}
         >
-          <FaTrashAlt
-            style={{ cursor: "pointer", color: "red" }}
-            onClick={() => deleteProduct(id)}
-          />
+          <b className="delete-product-btn" onClick={() => deleteProduct(id)}>
+            {" "}
+            DELETE
+          </b>
         </td>
       </tr>
     </tbody>

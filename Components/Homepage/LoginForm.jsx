@@ -39,8 +39,9 @@ function LoginForm({ flipLogin }) {
   const router = useRouter();
   const [errMsg, setErrMsg] = useState("");
   const [loading, setLoading] = useState(true);
+  const [loginLoading, setLoginLoading] = useState(true);
   const onLogin = async (data) => {
-    logIN(setLoading, router, setErrMsg, data);
+    logIN(setLoading, router, setErrMsg, data, setLoginLoading);
   };
 
   return (
@@ -123,7 +124,7 @@ function LoginForm({ flipLogin }) {
           type="submit"
           disabled={!loading}
           className="login-submit-btn"
-          value={loading ? "Sign in" : "Loading..."}
+          value={loginLoading ? "Sign in" : "Loading..."}
         />
       </div>
       <p className="login-registration-link">

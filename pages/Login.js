@@ -38,22 +38,25 @@ function Login() {
   const [showResendOTPForm, setShowResendOTPForm] = useState(false);
   const [showResendOTPLink, setShowResendOTPLink] = useState(false);
 
+  // REGISTER USER
+  const [regBtnLoading, setRegBtnLoading] = useState(true);
   const onSubmit = async (data) => {
+    setRegBtnLoading(false);
     axios
       .post(
         "https://api-j.onrender.com/api/v1/userverification/registeruser",
         data
       )
       .then((resp) => {
-        // console.log(resp.data.data.userId);
         localStorage.setItem("userId", resp.data.data.userId);
         setShowOTPForm(true);
         setShowResendOTPForm(false);
+        setRegBtnLoading(true);
       })
       .catch((error) => {
-        // console.log(error.response);
         setRegErrMessage(error.response.data.error);
         setShowResendOTPLink(true);
+        setRegBtnLoading(false);
         setTimeout(() => {
           setRegErrMessage("");
         }, 3000);
@@ -80,6 +83,7 @@ function Login() {
             flipLogin={flipLogin}
             regErrMessage={regErrMessage}
             onSubmit={onSubmit}
+            regBtnLoading={regBtnLoading}
             setShowResendOTPForm={setShowResendOTPForm}
             showResendOTPLink={showResendOTPLink}
           />
@@ -109,8 +113,10 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
 
   // retrive userID from local storage
   const userId = localStorage.getItem("userId");
-
+  const [regOTPLoading, setOTPBtnLoading] = useState(true);
+  const [regErrMsg, setRegErrMsg] = useState();
   const enterOTP = async () => {
+    setOTPBtnLoading(false);
     axios
       .post("https://api-j.onrender.com/api/v1/userverification/verifyotp", {
         userId,
@@ -121,10 +127,13 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
         localStorage.removeItem("userId");
         setShowOTPForm(false);
         setShowResendOTPForm(false);
+        setOTPBtnLoading(true);
         location.reload();
       })
       .catch((error) => {
         console.log(error.response);
+        setRegErrMsg(error.response.data.message);
+        setOTPBtnLoading(false);
       });
   };
 
@@ -164,6 +173,8 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
           A OTP has been sent to the email address you provided , Enter OTP
           below to verify your email address
         </p>
+
+        <p style={{ color: "red" }}>{regErrMsg}</p>
         <label
           style={{
             fontSize: "20px",
@@ -209,7 +220,7 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
           }}
           onClick={() => enterOTP()}
         >
-          Verify Email
+          {regOTPLoading ? "Verify Email" : "Loading . . ."}
         </button>
       </div>
     </div>
@@ -220,13 +231,13 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
 
 function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
   const emailRef = useRef(null);
-
+  const [regOTPLoading, setOTPBtnLoading] = useState(true);
   function handleSubmit(event) {
     event.preventDefault();
     const useremail = emailRef.current.value;
     // retrive userID from local storage
     const userId = localStorage.getItem("userId");
-
+    setOTPBtnLoading(false);
     axios
       .post("https://api-j.onrender.com/api/v1/userverification/resendotp", {
         useremail,
@@ -236,9 +247,11 @@ function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
         // console.log(resp);
         setShowResendOTPForm(false);
         setShowOTPForm(true);
+        setOTPBtnLoading(true);
         // location.reload();
       })
       .catch((error) => {
+        setOTPBtnLoading(false);
         console.log(error.response);
       });
   }
@@ -321,7 +334,7 @@ function ResendOTP({ setShowResendOTPForm, setShowOTPForm }) {
             }}
             // onClick={() => enterOTP()}
           >
-            Resend OTP
+            {regOTPLoading ? "Resend OTP" : "Loading"}
           </button>
         </form>
       </div>

@@ -718,6 +718,7 @@
   text-decoration: line-through;
 }
 .product-session-con .product-main-con .products-con .products .addto-cart {
+  border: 1px solid red;
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -729,6 +730,10 @@
   margin: 5px 0;
   cursor: pointer;
   background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .product-session-con .product-main-con .products-con .products .addto-cart:hover {
   background: #3c91e6;

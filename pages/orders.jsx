@@ -11,13 +11,13 @@ function orders() {
   const router = useRouter();
   const [userTransaction, setUserTransaction] = useState([]);
 
-  // get user session
+  // get user
   useEffect(() => {
     const userName = async () => {
       const userData = await getSessionUser();
 
       setUserTransaction(userData?.user?.transaction);
-      // console.log(userData);
+      console.log(userData);
     };
     userName();
   }, [router]);

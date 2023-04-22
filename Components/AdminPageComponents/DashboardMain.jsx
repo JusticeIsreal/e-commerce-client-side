@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaStoreAlt } from "react-icons/fa";
-import { allTransactions, allUsers } from "../../Services/functions";
+import {
+  allTransactions,
+  allUsers,
+  transactionStatus,
+} from "../../Services/functions";
 
 // ICONS
 import { FaShoppingCart, FaPeopleCarry, FaChartLine } from "react-icons/fa";
@@ -16,7 +20,7 @@ function DashboardMain({ productDetails }) {
     const ftchAllTransactions = async () => {
       const transactions = await allTransactions();
       const users = await allUsers();
-
+      await transactionStatus();
       if (transactions && users) {
         setGetTransactions(transactions);
         setGetUsers(users);
@@ -35,7 +39,6 @@ function DashboardMain({ productDetails }) {
     // setGetRecentTransactions(recetTransactions);
   }, [router]);
 
-  console.log(getRecentTransactions);
   return (
     <div id="content">
       <main>
@@ -68,13 +71,16 @@ function DashboardMain({ productDetails }) {
               </span>
             </li>
           </Link>
-          <li>
-            <FaShoppingCart className="bx bxs-calendar-check" />
-            <span className="text">
-              <h3>{getTransactions?.transactions.length}</h3>
-              <p>Transactions</p>
-            </span>
-          </li>
+          <Link href="/Adminpage/Transaction">
+            <li>
+              <FaShoppingCart className="bx bxs-calendar-check" />
+              <span className="text">
+                <h3>{getTransactions?.transactions.length}</h3>
+                <p>Transactions</p>
+              </span>
+            </li>
+          </Link>
+
           <li>
             <FaPeopleCarry className="bx bxs-group" />
             <span className="text">
@@ -101,7 +107,7 @@ function DashboardMain({ productDetails }) {
             >
               <thead>
                 <tr>
-                  <th>Date / Time</th>
+                  <th>Date/Time </th>
                   <th>Payment</th>
                   <th>Total</th>
                   <th>Product</th>
@@ -122,6 +128,7 @@ function DashboardMain({ productDetails }) {
 export default DashboardMain;
 
 function RecentTransactions({
+  _id,
   product,
   totalAmount,
   transactionstatus,
@@ -132,31 +139,44 @@ function RecentTransactions({
   return (
     <tbody style={{ color: "black" }}>
       <tr>
-        <td>{timestamp.substring(0, 19)}</td>
         <td>
-          <b
-            style={{
-              backgroundColor: (() => {
-                switch (transactionstatus) {
-                  case "abandoned":
-                    return "#db504a";
-                  case "Pending":
-                    return "#ffce26";
-                  case "success":
-                    return "#3d91e6";
-                  default:
-                    return "#db504a";
-                }
-              })(),
-              color: "white",
-              fontWeight: "normal",
-              padding: "3px 5px",
-              borderRadius: "5px",
-              fontSize: "12px",
-            }}
+          <Link
+            href={`/Adminpage/transaction/${_id}`}
+            className="table-detais-link"
           >
-            {transactionstatus}
-          </b>
+            {new Date(timestamp).toLocaleDateString()} <br />
+            {new Date(timestamp).toLocaleTimeString()}
+          </Link>
+        </td>
+        <td>
+          <Link
+            href={`/Adminpage/transaction/${_id}`}
+            className="table-detais-link"
+          >
+            <b
+              style={{
+                backgroundColor: (() => {
+                  switch (transactionstatus) {
+                    case "abandoned":
+                      return "#db504a";
+                    case "Pending":
+                      return "#ffce26";
+                    case "success":
+                      return "#3d91e6";
+                    default:
+                      return "#db504a";
+                  }
+                })(),
+                color: "white",
+                fontWeight: "normal",
+                padding: "3px 5px",
+                borderRadius: "5px",
+                fontSize: "12px",
+              }}
+            >
+              {transactionstatus}
+            </b>
+          </Link>
         </td>
         <td
           style={{
@@ -164,7 +184,13 @@ function RecentTransactions({
             paddingRight: "10px",
           }}
         >
-          ₦ {totalAmount.toLocaleString()}
+          <Link
+            href={`/Adminpage/transaction/${_id}`}
+            style={{}}
+            className="table-detais-link"
+          >
+            ₦ {totalAmount.toLocaleString()}
+          </Link>
         </td>
         <td
           style={{
@@ -173,37 +199,48 @@ function RecentTransactions({
             paddingRight: "10px",
           }}
         >
-          {product?.map((item) => (
-            <i key={item._id} style={{ display: "flex" }}>
-              <i>{item.productname} </i>
-            </i>
-          ))}{" "}
+          <Link
+            href={`/Adminpage/transaction/${_id}`}
+            className="table-detais-link"
+          >
+            {product?.map((item) => (
+              <i key={item._id} style={{ display: "flex" }}>
+                <i>{item.productname} </i>
+              </i>
+            ))}
+          </Link>
         </td>
 
         <td>
-          <b
-            style={{
-              backgroundColor: (() => {
-                switch (status) {
-                  case "Processing":
-                    return "#db504a";
-                  case "Transit":
-                    return "#ffce26";
-                  case "Delivered":
-                    return "#3d91e6";
-                  default:
-                    return "#3d91e6";
-                }
-              })(),
-              color: "white",
-              padding: "3px 5px",
-              fontWeight: "normal",
-              borderRadius: "5px",
-              fontSize: "12px",
-            }}
+          <Link
+            href={`/Adminpage/transaction/${_id}`}
+            style={{}}
+            className="table-detais-link"
           >
-            {status}
-          </b>
+            <b
+              style={{
+                backgroundColor: (() => {
+                  switch (status) {
+                    case "Processing":
+                      return "#db504a";
+                    case "Transit":
+                      return "#ffce26";
+                    case "Delivered":
+                      return "#3d91e6";
+                    default:
+                      return "#3d91e6";
+                  }
+                })(),
+                color: "white",
+                padding: "3px 5px",
+                fontWeight: "normal",
+                borderRadius: "5px",
+                fontSize: "12px",
+              }}
+            >
+              {status}
+            </b>
+          </Link>
         </td>
       </tr>
     </tbody>

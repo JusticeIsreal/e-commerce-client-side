@@ -81,10 +81,7 @@ function TransactionReceipt({
           <p className="productnames">
             {product.map((name) => name.productname.split(" ")[0] + ",  ")}
           </p>
-          <p
-            className="productnames"
-            style={{ color: "black" }}
-          >
+          <p className="productnames" style={{ color: "black" }}>
             {" "}
             ₦ {totalAmount.toLocaleString()}
           </p>
@@ -107,7 +104,9 @@ function TransactionReceipt({
                 fontWeight: "normal",
               }}
             >
-              {transactionstatus}
+              {transactionstatus.toLowerCase() === "pending"
+                ? "Click to confirm payment"
+                : transactionstatus}
             </span>
           </p>
         </div>

@@ -126,14 +126,12 @@ function StoreItemsIndividual({
           }}
         >
           <Link href={`/Adminpage/store/${id}`}>
-            <FaEdit
-              style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
-            />
-          </Link>{" "}
-          <FaTrashAlt
-            style={{ cursor: "pointer", color: "red" }}
-            onClick={() => deleteProduct(id)}
-          />
+            <p className="edit-product-btn">EDIT</p>
+          </Link>
+          <b className="delete-product-btn" onClick={() => deleteProduct(id)}>
+            {" "}
+            DELETE
+          </b>
         </td>
       </tr>
     </tbody>

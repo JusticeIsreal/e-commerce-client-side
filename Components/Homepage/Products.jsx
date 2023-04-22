@@ -97,7 +97,7 @@ function Product({
           {productoldprice && "₦ " + Number(productoldprice).toLocaleString()}
         </p>
       </div>
-      <button className="addto-cart" onClick={() => addToCar(id)}>
+      <button className="addto-cart" onClick={(e) => addToCar(e, id)}>
         Add to cart
       </button>
     </div>

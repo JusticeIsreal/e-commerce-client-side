@@ -45,14 +45,15 @@ const Homepage = () => {
   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // add to art
-  const addToCar = async (id) => {
+  const [cartBtnLoading, setCartBtnLoading] = useState(false);
+  const addToCar = async (e, id) => {
+    e.target.innerHTML = "Loading ...";
     const productDoc = doc(db, "products", id);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     const triger = await getSessionUser();
-    
+
     if (!triger) {
-      return setLoginTriger(true);
     }
     const productExist = triger.userCart.find((item) => item.productID === id);
 
@@ -60,22 +61,21 @@ const Homepage = () => {
       (productExist && !productExist.productID) ||
       productExist === undefined
     ) {
-      const cartResponse = await addToCart(productData, id);
+      const cartResponse = await addToCart(productData, id, setCartBtnLoading);
       if (cartResponse === "SUCCESS") {
         const userData = await getSessionUser();
         setCartQty(userData?.user.cart.length);
+        e.target.innerHTML = "Now In Cart";
       }
-    } else alert("Product already exists in cart");
-    // const cartResponse = await addToCart(productData);
-    // if (cartResponse === "SUCCESS") {
-    //   const userData = await getSessionUser();
-    //   setCartQty(userData?.user.cart.length);
-    // }
+    } else {
+      alert("Product already exists in cart");
+      e.target.innerHTML = "Already In Cart";
+    }
     if (!triger) {
       return setLoginTriger(true);
     }
   };
-
+  // console.log(cartBtnLoading);
   return (
     <div className="homepage-main-con" style={{ position: "relative" }}>
       {/* TOPBAR */}
@@ -95,7 +95,11 @@ const Homepage = () => {
 
           <Advert />
           {/* MAIN PRODUCT */}
-          <Products products={products} addToCar={addToCar} />
+          <Products
+            products={products}
+            addToCar={addToCar}
+          
+          />
           <Advert />
           {/* SUBSCRIBE */}
           <NewsLetter />

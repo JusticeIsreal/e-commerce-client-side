@@ -741,7 +741,7 @@ $txt-light-blue: #cfe8ff;
         }
 
         .addto-cart {
-          // border: 1px solid red;
+          border: 1px solid red;
           width: 100%;
           margin: 0 auto;
           text-align: center;
@@ -753,6 +753,8 @@ $txt-light-blue: #cfe8ff;
           margin: 5px 0;
           cursor: pointer;
           background: white;
+          @include flexDisplay(center, center, row);
+
           &:hover {
             background: $txt-blue;
             color: white;
@@ -1262,3 +1264,4 @@ $txt-light-blue: #cfe8ff;
     }
   }
 }
+
