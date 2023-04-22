@@ -27,7 +27,10 @@ function Modal({ setLoginTriger }) {
           </button>
           <div className="modal-img-con">
             {emoji ? (
-              <img src={emoji} alt="" />
+              <img
+                src="https://res.cloudinary.com/isreal/image/upload/v1671743431/banking%20app/AJIS_FILE_1_arvnbd_dqrxio.png"
+                alt=""
+              />
             ) : (
               <img src="/downloai.jpeg" alt="" />
             )}
