@@ -33,7 +33,11 @@ function DashboardMain({ productDetails }) {
   useEffect(() => {
     const fetchProccessingTransactions = async () => {
       const transaction = await allTransactions();
-      setGetRecentTransactions(transaction?.transactions);
+      setGetRecentTransactions(
+        transaction?.transactions.sort(
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+        )
+      );
     };
     fetchProccessingTransactions();
     // setGetRecentTransactions(recetTransactions);

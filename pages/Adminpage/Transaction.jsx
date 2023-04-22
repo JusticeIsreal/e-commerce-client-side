@@ -47,7 +47,7 @@ function Transaction() {
       if (transactions) {
         setGetTransactions(transactions);
         setGetTransaction(
-          transactions.transactions.sort(
+          transactions?.transactions.sort(
             (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
           )
         );
@@ -64,7 +64,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.transactions?.length; i++) {
-        totalAmountSum += getTransactions.transactions[i].totalAmount;
+        totalAmountSum += getTransactions?.transactions[i].totalAmount;
       }
     };
     sumByStatus();
@@ -77,7 +77,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.success?.length; i++) {
-        successTotalAmountSum += getTransactions.success[i].totalAmount;
+        successTotalAmountSum += getTransactions?.success[i].totalAmount;
       }
     };
     sumByStatus();
@@ -91,7 +91,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.pending?.length; i++) {
-        pendingTotalAmountSum += getTransactions.pending[i].totalAmount;
+        pendingTotalAmountSum += getTransactions?.pending[i].totalAmount;
         // console.log(getTransactions.Processing[i].totalAmount);
       }
     };
@@ -106,7 +106,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.abandoned?.length; i++) {
-        abandonedTotalAmountSum += getTransactions.abandoned[i].totalAmount;
+        abandonedTotalAmountSum += getTransactions?.abandoned[i].totalAmount;
       }
     };
     sumByStatus();
@@ -120,7 +120,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.failed?.length; i++) {
-        failedTotalAmountSum += getTransactions.failed[i].totalAmount;
+        failedTotalAmountSum += getTransactions?.failed[i].totalAmount;
       }
     };
     sumByStatus();
@@ -134,7 +134,7 @@ function Transaction() {
   useEffect(() => {
     const userInfo = async () => {
       const userData = await getSessionUser();
-      setUserPosituon(userData.user.position);
+      setUserPosituon(userData?.user.position);
 
       if (userPosition === "client") {
         router.push("/");
@@ -295,7 +295,7 @@ function Transaction() {
                       <th>Order</th>
                     </tr>
                   </thead>
-                  {getTransaction.map((order) => (
+                  {getTransaction?.map((order) => (
                     <StoreTransaction
                       key={order._id}
                       {...order}
@@ -405,7 +405,7 @@ function StoreTransaction({
           /> */}
 
           <Link href={`/Adminpage/transaction/${_id}`}>
-            <p className="edit-product-btn">VIEW DETAILS</p>
+            <p className="edit-product-btn">DETAILS</p>
           </Link>
         </td>
       </tr>

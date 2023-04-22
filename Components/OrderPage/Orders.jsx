@@ -7,27 +7,30 @@ function Orders({ userTransaction }) {
   const router = useRouter();
   const orderStatus = ["All", "Processing", "Transit", "Delvered"];
 
-  // state for category
-  const [category, setCategory] = useState("All");
-
   // state for products
   const [products, setProducts] = useState(userTransaction);
-
+  const dynamicBtn = [
+    "All",
+    ...new Set(userTransaction.map((category) => category?.status)),
+  ];
+  // state for category
+  const [category, setCategory] = useState("All");
+  
   // filter products based on category
   useEffect(() => {
     if (category === "All") {
       setProducts(userTransaction);
     } else {
-      setProducts(userTransaction.filter((item) => item.status === item));
+      setProducts(userTransaction?.filter((item) => item.status === item));
     }
-  }, [category, userTransaction, products, category, router]);
+  }, [category, userTransaction, router]);
 
   return (
     <div className="oders-con">
       <div className="order-page-top">
         <h1>TRANSACTIONS</h1>
         <div className="order-status">
-          {orderStatus.map((btn, index) => (
+          {dynamicBtn.map((btn, index) => (
             <p
               key={index}
               className={`${

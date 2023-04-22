@@ -472,6 +472,10 @@ body {
   color: var(--dark);
 }
 
+#content main .box-info li .text h3 {
+  color: #454444;
+}
+
 #content main .table-data {
   display: flex;
   flex-wrap: wrap;
@@ -528,6 +532,7 @@ body {
 #content main .table td {
   font-size: 10px;
   cursor: pointer;
+  color: rgb(69, 68, 68);
 }
 
 #content main .table tr {

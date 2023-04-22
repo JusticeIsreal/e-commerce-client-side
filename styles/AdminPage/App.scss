@@ -475,6 +475,9 @@ body {
 #content main .box-info li .text p {
   color: var(--dark);
 }
+#content main .box-info li .text h3 {
+  color: #454444;
+}
 
 #content main .table-data {
   display: flex;
@@ -530,6 +533,7 @@ body {
   // padding: 8px 0;
   font-size: 10px;
   cursor: pointer;
+  color: rgb(69, 68, 68);
   // border: 2px solid rgb(30, 255, 0);
 }
 
