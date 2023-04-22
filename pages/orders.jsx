@@ -17,7 +17,7 @@ function orders() {
       const userData = await getSessionUser();
 
       setUserTransaction(userData?.user?.transaction);
-      console.log(userData);
+      // console.log(userData);
     };
     userName();
   }, [router]);

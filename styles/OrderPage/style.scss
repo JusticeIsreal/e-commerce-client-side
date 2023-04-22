@@ -85,7 +85,7 @@ $txt-light-blue: #cfe8ff;
       // box-shadow: 5px 1px 5px rgba(128, 128, 128, 0.162);
       padding: 10px 0;
       @include flexDisplay(space-between, center, column);
-      position: sticky;
+      // position: sticky;
       top: 50px;
       // border: 2px solid red;
 
@@ -128,14 +128,16 @@ $txt-light-blue: #cfe8ff;
   }
 
   .each-order-con {
-    // border: 2px solid rgb(0, 255, 26);
-    height: 68vh;
-    overflow-y: scroll;
+    border: 2px solid rgb(0, 255, 26);
+    // height: 68vh;
+    // overflow-y: scroll;
     padding: 5px 3px;
+    padding-bottom: 50px;
     margin-top: 15px;
 
     @include responsive(bigphone) {
-      height: 70vh;
+      // height: 70vh;
+      padding: 5px 3px;
     }
     .each-order {
       // border: 2px solid red;
