@@ -68,7 +68,7 @@ function Transaction() {
         getTransaction?.filter((item) => item.transactionstatus === category)
       );
     }
-  }, [category, router, setProducts]);
+  }, [category, router, getTransactions]);
   // console.log(getTransaction);
   // GET TOTAL SUM BY STATUS
   // SUCESSFUL TRANSACTIONS

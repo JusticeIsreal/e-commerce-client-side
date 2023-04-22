@@ -27,7 +27,7 @@ function Sidebar() {
       setActive(3);
       return;
     }
-    if (router.asPath === "/Adminpage/Store") {
+    if (router.asPath === "/Adminpage/CustomersData") {
       setActive(4);
       return;
     }
@@ -39,10 +39,7 @@ function Sidebar() {
       setActive(6);
       return;
     }
-    if (router.asPath === "/Adminpage/Store") {
-      setActive(7);
-      return;
-    }
+   
   }, [router.pathname]);
   return (
     <div>
@@ -80,18 +77,9 @@ function Sidebar() {
               <span className="text">Order</span>
             </Link>
           </li>
-          <li
-            className={`${active === 4 ? "active" : ""}`}
-            onClick={() => setActive(0)}
-          >
-            <Link href="/Adminpage/Notification" className="list-items">
-              <RiMessage2Fill className="list-icons" />
-              <span className="text">Review</span>
-            </Link>
-          </li>
 
           <li
-            className={`${active === 5 ? "active" : ""}`}
+            className={`${active === 4 ? "active" : ""}`}
             onClick={() => setActive(0)}
           >
             <Link href="/Adminpage/CustomersData" className="list-items">
