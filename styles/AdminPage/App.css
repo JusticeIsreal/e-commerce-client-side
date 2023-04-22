@@ -154,6 +154,16 @@ body {
   display: none;
 }
 
+.category {
+  border: 2px solid var(--blue);
+  color: #3d91e6;
+}
+
+.active-category {
+  color: white;
+  background: #3c91e6;
+}
+
 @media only screen and (min-width: 768px) {
   #sidebar {
     position: fixed;
@@ -473,7 +483,7 @@ body {
 }
 
 #content main .box-info li .text h3 {
-  color: #454444;
+  color: #434242;
 }
 
 #content main .table-data {

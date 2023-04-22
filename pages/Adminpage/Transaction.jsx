@@ -27,11 +27,6 @@ function Transaction() {
   // Navgat back
   // const history = useNavigate();
   const router = useRouter();
-  // TRANSACTION STATUS
-  const [allTransaction, setAllTransaction] = useState([]);
-  const [deliveredTransaction, setDeliveredTransaction] = useState([]);
-  const [processingTransaction, setProccessingTransaction] = useState([]);
-  const [openTransaction, setOpenTransaction] = useState([]);
 
   // FETCH ALL TRANSACTIONS
 
@@ -56,7 +51,25 @@ function Transaction() {
 
     fetchAllTransactions();
   }, [router]);
-  console.log(getTransactions);
+
+  // filter by transaction status
+  const [products, setProducts] = useState(getTransaction);
+  const dynamicBtn = [
+    "All",
+    ...new Set(getTransaction?.map((category) => category?.transactionstatus)),
+  ];
+  // state for category
+  const [category, setCategory] = useState("All");
+  useEffect(() => {
+    if (category === "All") {
+      setProducts(getTransaction);
+    } else {
+      setProducts(
+        getTransaction?.filter((item) => item.transactionstatus === category)
+      );
+    }
+  }, [category, router, setProducts]);
+  // console.log(getTransaction);
   // GET TOTAL SUM BY STATUS
   // SUCESSFUL TRANSACTIONS
   const [getTotal, setGetTotal] = useState();
@@ -206,7 +219,15 @@ function Transaction() {
                   <b className="bx bxs-cloud-download">
                     <HiCloudDownload />{" "}
                   </b>
-                  <span className="text">Download PDF</span>
+                  <a
+                    href="https://dashboard.paystack.com/#/dashboard?period=30"
+                    target="_blank"
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    <span className="text">Withdraw Funds</span>
+                  </a>
                 </div>
               </div>
 
@@ -277,6 +298,35 @@ function Transaction() {
                   <h1>₦ {getTotal.toLocaleString()}</h1>
                 </div>
               </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  // height: "30px ",
+                  // paddingTop: "50px",
+                  overflow: "hidden",
+                }}
+              >
+                {dynamicBtn.map((btn, index) => (
+                  <p
+                    key={index}
+                    style={{
+                      // border: "1px solid red",
+                      width: "100%",
+                      textAlign: "center",
+                      margin: "5px",
+                      padding: "5px",
+                    }}
+                    className={`${
+                      btn === category ? "active-category" : "category"
+                    }`}
+                    onClick={() => setCategory(btn)}
+                  >
+                    {btn}
+                  </p>
+                ))}
+              </div>
               <div className="order" style={{ position: "relative" }}>
                 <table
                   className="table"
@@ -295,7 +345,7 @@ function Transaction() {
                       <th>Order</th>
                     </tr>
                   </thead>
-                  {getTransaction?.map((order) => (
+                  {products?.map((order) => (
                     <StoreTransaction
                       key={order._id}
                       {...order}
