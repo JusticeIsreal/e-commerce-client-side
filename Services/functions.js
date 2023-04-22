@@ -160,11 +160,11 @@ export const allTransactions = async () => {
 
     const transactions = response.data.data;
 
-   const failed = transactions.filter(
-     (orders) =>
-       orders.transactionstatus.toLowerCase() === "ongoing" ||
-       orders.transactionstatus.toLowerCase() === "failed"
-   );
+    const failed = transactions.filter(
+      (orders) =>
+        orders.transactionstatus.toLowerCase() === "ongoing" ||
+        orders.transactionstatus.toLowerCase() === "failed"
+    );
     const abandoned = transactions.filter(
       (orders) => orders.transactionstatus.toLowerCase() === "abandoned"
     );
@@ -293,6 +293,7 @@ export const deleteCartItem = async (_id) => {
 // CheckOUT
 export const checkOut = async (productData, router) => {
   const token = Cookies.get("JWTtoken");
+  const API = "https://api-j.onrender.com/";
   axios
     .post(
       "https://api-j.onrender.com/api/v1/transaction/posttransaction",
