@@ -95,7 +95,7 @@ function PayForm({
   const checkOutpayment = async () => {
     const userData = await checkOut(productData, router);
     if (userData) {
-    //   console.log(userData.data);
+      //   console.log(userData.data);
     }
   };
 
@@ -245,8 +245,8 @@ function PayForm({
                         parseInt(confirmDetails.homedelivery)
                       ).toLocaleString()}
                     </>
-                  )}
-                  {" "})
+                  )}{" "}
+                  )
                 </button>
               </div>
             </div>
@@ -329,8 +329,8 @@ function PayForm({
                 <option value="Niger,2000">Niger</option>
                 <option value="Ogun,2000">Ogun</option>
                 <option value="Ondo,2000">Ondo</option>
-                <option value="2000">Osun</option>
-                <option value="Osun,2000">Oyo</option>
+                <option value="Osun,2000">Osun</option>
+                <option value="Oyo,2000">Oyo</option>
                 <option value="Plateau,2000">Plateau</option>
                 <option value="Sokoto,2000">Sokoto</option>
                 <option value="River,2000">River</option>
