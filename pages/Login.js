@@ -123,7 +123,7 @@ function OTPInput({ setShowOTPForm, setShowResendOTPForm }) {
         otp,
       })
       .then((resp) => {
-        // console.log(resp);
+       
         localStorage.removeItem("userId");
         setShowOTPForm(false);
         setShowResendOTPForm(false);
