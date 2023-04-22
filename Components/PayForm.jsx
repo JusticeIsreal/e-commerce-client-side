@@ -255,7 +255,7 @@ function PayForm({
           <form onSubmit={handleSubmit(onSubmitBanner)}>
             {/* ADDRESS */}
 
-            <label ref={addressRef}>Enter your delivery address details</label>
+            <label ref={addressRef}>Enter delivery details</label>
             {/* STREET */}
             <div>
               <input
@@ -355,9 +355,9 @@ function PayForm({
             {/* home delivery */}
             <div>
               <select {...register("homedelivery", { required: true })}>
-                <option value="">Home delivery ?</option>
-                <option value="2000">YES, bring it to my house</option>
-                <option value="0">NO, I will come pick it up</option>
+                <option value="">Delivery</option>
+                <option value="2000">Yes, home delivery</option>
+                <option value="0">No, I will come pick it </option>
               </select>
               {errors.homedelivery && (
                 <span

@@ -303,9 +303,8 @@ function Transaction() {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  // height: "30px ",
-                  // paddingTop: "50px",
-                  overflow: "hidden",
+                  height: "30px ",
+                  overflowX: "scroll",
                 }}
               >
                 {dynamicBtn.map((btn, index) => (

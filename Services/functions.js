@@ -160,9 +160,11 @@ export const allTransactions = async () => {
 
     const transactions = response.data.data;
 
-    const failed = transactions.filter(
-      (orders) => orders.transactionstatus.toLowerCase() === "failed"
-    );
+   const failed = transactions.filter(
+     (orders) =>
+       orders.transactionstatus.toLowerCase() === "ongoing" ||
+       orders.transactionstatus.toLowerCase() === "failed"
+   );
     const abandoned = transactions.filter(
       (orders) => orders.transactionstatus.toLowerCase() === "abandoned"
     );

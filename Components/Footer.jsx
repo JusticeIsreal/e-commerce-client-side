@@ -39,9 +39,12 @@ function Footer() {
           <Link href="/orders">
             <i></i> Order
           </Link>
-          <Link href="">
+          <a
+            href="https://wa.me/+2348104015180?text=Hello, I am a customer on your platfor 'AJIS STORS' and i need your support."
+            target="_blank"
+          >
             <i></i> surport
-          </Link>
+          </a>
         </div>
 
         <div className="box">
