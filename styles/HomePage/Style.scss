@@ -1195,11 +1195,12 @@ $txt-light-blue: #cfe8ff;
     .modal-card {
       @include flexDisplay(center, center, column);
       box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
-      background: whitesmoke;
       border-radius: 5px;
       width: 90%;
       max-width: 400px;
       position: relative;
+      // border: 2px solid red;
+      background: white;
 
       .go-back {
         position: absolute;
@@ -1233,6 +1234,7 @@ $txt-light-blue: #cfe8ff;
 
         p {
           color: $font-light;
+          text-align: center;
         }
 
         .modal-link {
@@ -1264,4 +1266,3 @@ $txt-light-blue: #cfe8ff;
     }
   }
 }
-

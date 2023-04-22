@@ -1144,11 +1144,11 @@
   align-items: center;
   flex-direction: column;
   box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
-  background: whitesmoke;
   border-radius: 5px;
   width: 90%;
   max-width: 400px;
   position: relative;
+  background: white;
 }
 .modal-main-con .modal-relative .modal-card .go-back {
   position: absolute;
@@ -1186,6 +1186,7 @@
 }
 .modal-main-con .modal-relative .modal-card .modal-text p {
   color: #666;
+  text-align: center;
 }
 .modal-main-con .modal-relative .modal-card .modal-text .modal-link {
   margin: 20px;
