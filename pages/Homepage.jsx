@@ -54,6 +54,7 @@ const Homepage = () => {
     const triger = await getSessionUser();
 
     if (!triger) {
+      return setLoginTriger(true);
     }
     const productExist = triger?.userCart.find((item) => item.productID === id);
 
@@ -95,11 +96,7 @@ const Homepage = () => {
 
           <Advert />
           {/* MAIN PRODUCT */}
-          <Products
-            products={products}
-            addToCar={addToCar}
-          
-          />
+          <Products products={products} addToCar={addToCar} />
           <Advert />
           {/* SUBSCRIBE */}
           <NewsLetter />
