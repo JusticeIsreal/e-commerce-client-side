@@ -386,27 +386,19 @@ function admintransaction() {
                       <input
                         type="submit"
                         className="submit-btn"
-                        value={btnLoading ? "Upload Banner" : "Uploading..."}
+                        value={btnLoading ? "Update Status" : "Uploading..."}
                       />
                     </form>
                   </div>
                 ) : (
                   ""
                 )}
+
+                <div className="download-page">
+                  <p onClick={() => saveAsImage(document.body)}>Print page</p>
+                </div>
               </div>
             </div>
-
-            {/*             
-          <div className="download-page">
-            <p onClick={() => saveAsImage(document.body)}>Print page</p>
-            <a
-              href="https://wa.me/+2348104015180?text=Hello, I am a customer on your platfor 'AJIS STORS' and i need your support."
-              target="_blank"
-            >
-              {" "}
-              <p>Make a report</p>
-            </a>
-          </div> */}
           </div>
         </>
       )}{" "}

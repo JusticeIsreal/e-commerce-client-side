@@ -47,6 +47,7 @@ function ForgetPassword() {
     event.preventDefault();
     const useremail = emailRef.current.value.toLowerCase();
     seEmail(useremail);
+    // console.log(email);
 
     axios
       .post(
@@ -61,8 +62,8 @@ function ForgetPassword() {
         flipChangePw1();
       })
       .catch((error) => {
-        // console.log(error);
-        seErrMessage(error.response.data.error);
+        console.log(error);
+        seErrMessage(error?.response?.data.error);
         // setShowResendOTPLink(true);
         setTimeout(() => {
           // setRegErrMessage("");
@@ -133,7 +134,11 @@ function ForgetPassword() {
           </form>
 
           {/* ENTER OTP */}
-          <form className="email-modal" ref={showModal}>
+          <form
+            className="email-modal"
+            ref={showModal}
+            style={{ height: "500px" }}
+          >
             <p className="sign-in-header">Email Notification</p>
             <p className="session-note">
               {` A confirmation email has been sent to the email address you
@@ -170,7 +175,7 @@ function ForgetPassword() {
                   width: "100%",
                   height: "550px",
                   borderRadius: "5px",
-                  border: "2px solid #3c91e6",
+                  // border: "2px solid #3c91e6",
                 }}
               >
                 <p className="session-note" style={{ color: "red" }}>

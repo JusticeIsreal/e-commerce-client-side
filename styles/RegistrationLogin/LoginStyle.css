@@ -59,6 +59,7 @@ body {
   position: absolute;
   backface-visibility: hidden;
   border: 1px solid #3c91e6;
+  background: white;
 }
 .login-page-con .container .card .front .go-back,
 .login-page-con .container .card .back .go-back {
@@ -457,4 +458,13 @@ body {
   font-weight: 600;
   color: blue;
   cursor: pointer;
+}
+.login-page-con .container .card .forget-pw {
+  height: 400px;
+}
+.login-page-con .container .card .forget-pw label {
+  padding: 5px;
+}
+.login-page-con .container .card .forget-pw .login-submit-btn {
+  margin-top: 40px;
 }/*# sourceMappingURL=LoginStyle.css.map */

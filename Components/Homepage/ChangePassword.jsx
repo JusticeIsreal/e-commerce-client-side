@@ -43,7 +43,11 @@ function ChangePassword() {
   };
 
   return (
-    <form className="back" onSubmit={handleSubmit}>
+    <form
+      className="back forget-pw"
+      onSubmit={handleSubmit}
+      // style={{ heigth: "700px" }}
+    >
       <p className="sign-in-header">Enter New Password</p>
       <p className="session-note">
         Please enter a new password to reset your password.
@@ -57,7 +61,7 @@ function ChangePassword() {
         </div>
       </div>
       <div className="input-main-con">
-        <label>Enter Password</label>
+        <label>Enter New Password</label>
         <div className="input-con">
           <RiLockPasswordLine className="input-icon" />
           <input

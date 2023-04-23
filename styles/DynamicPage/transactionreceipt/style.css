@@ -396,4 +396,8 @@
 .receipt-main-con .receipt-heading h4 {
   margin-bottom: -30px;
   margin-top: 30px;
+}
+.receipt-main-con .download-page {
+  width: 100%;
+  margin: 0 auto;
 }/*# sourceMappingURL=style.css.map */

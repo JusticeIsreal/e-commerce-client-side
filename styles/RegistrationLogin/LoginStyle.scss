@@ -110,6 +110,7 @@ $darkestBg: #3c91e6;
         position: absolute;
         backface-visibility: hidden;
         border: 1px solid $cardbg;
+        background: white;
 
         .go-back {
           @include flexDisplay(space-between, center, row);
@@ -360,6 +361,7 @@ $darkestBg: #3c91e6;
           }
         }
       }
+
       .back {
         transform: rotateY(180deg);
         // border: 1px solid red;
@@ -532,6 +534,16 @@ $darkestBg: #3c91e6;
             color: blue;
             cursor: pointer;
           }
+        }
+      }
+      .forget-pw {
+        // border: 2px solid red;
+        height: 400px;
+        label {
+          padding: 5px;
+        }
+        .login-submit-btn {
+          margin-top: 40px;
         }
       }
     }

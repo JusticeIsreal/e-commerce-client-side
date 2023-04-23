@@ -49,7 +49,7 @@ export const changePassword = async (password, router) => {
 
       localStorage.removeItem("userId");
       alert("passord Reset Successful, Proceed to Login");
-      router.push("/");
+      router.push("/Login");
     })
     .catch((error) => {
       console.log(error.response);
@@ -81,8 +81,7 @@ export const logIN = async (
       setLoading(true);
     });
 };
-
-// SINGLE TRANSACTION
+// LOG IN API CALL
 const singleTransaction = async (transactID) => {
   const token = Cookies.get("JWTtoken");
   const { data } = await axios.get(

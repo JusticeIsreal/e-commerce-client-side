@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import html2canvas from "html2canvas";
 import Topbar from "../../Components/AdminPageComponents/Topbar";
 import Sidebar from "../../Components/AdminPageComponents/Sidebar";
 // import Loader from "../../Components/Loader";
@@ -163,7 +164,17 @@ function Transaction() {
     router.back();
   }
   // search by input value
-  const [search, setSearch] = useState(" ");
+  const [search, setSearch] = useState("");
+
+  // save pae as image
+  const saveAsImage = (element) => {
+    html2canvas(element).then((canvas) => {
+      const link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  };
   return (
     <div id="content">
       {userPosition === "admin" || userPosition === "staff" ? (
@@ -222,15 +233,11 @@ function Transaction() {
                   <b className="bx bxs-cloud-download">
                     <HiCloudDownload />{" "}
                   </b>
-                  <a
-                    href="https://dashboard.paystack.com/#/dashboard?period=30"
-                    target="_blank"
-                    style={{
-                      color: "white",
-                    }}
-                  >
-                    <span className="text">Withdraw Funds</span>
-                  </a>
+
+                  <div className="download-page">
+                    <p onClick={() => saveAsImage(document.body)}>Print page</p>
+                  </div>
+                  {/* <span className="text">Withdraw Funds</span> */}
                 </div>
               </div>
 
@@ -301,6 +308,7 @@ function Transaction() {
                   <h1>₦ {getTotal.toLocaleString()}</h1>
                 </div>
               </div>
+
               <div className="transaction-category">
                 {dynamicBtn.map((btn, index) => (
                   <p
@@ -321,6 +329,14 @@ function Transaction() {
                   </p>
                 ))}
               </div>
+              <form className="admin-transaction-search-form">
+                <BsSearch />
+                <input
+                  type="text"
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search by Order Ref ..."
+                />
+              </form>
               <div className="order" style={{ position: "relative" }}>
                 <table
                   className="table"
@@ -339,13 +355,25 @@ function Transaction() {
                       <th>Order</th>
                     </tr>
                   </thead>
-                  {products?.map((order) => (
-                    <StoreTransaction
-                      key={order._id}
-                      {...order}
-                      // fetchProducts={fetchProducts}
-                    />
-                  ))}
+                  {products
+                    ?.filter((item) => {
+                      if (item.paystackRef === " ") {
+                        return item;
+                      } else if (
+                        item.paystackRef
+                          .toLowerCase()
+                          .includes(search.toLowerCase())
+                      ) {
+                        return item;
+                      }
+                    })
+                    .map((order) => (
+                      <StoreTransaction
+                        key={order._id}
+                        {...order}
+                        // fetchProducts={fetchProducts}
+                      />
+                    ))}
                 </table>
               </div>
             </div>
@@ -444,10 +472,6 @@ function StoreTransaction({
             fontSize: "20px",
           }}
         >
-          {/* <FaEdit
-            style={{ cursor: "pointer", color: "#3c91e6", margin: "0 12px" }}
-          /> */}
-
           <Link href={`/Adminpage/transaction/${_id}`}>
             <p className="edit-product-btn">DETAILS</p>
           </Link>
