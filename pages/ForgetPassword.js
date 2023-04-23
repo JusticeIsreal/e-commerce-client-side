@@ -49,9 +49,12 @@ function ForgetPassword() {
     seEmail(useremail);
 
     axios
-      .post("http://localhost:1234/api/v1/userverification/forgotPassword", {
-        useremail,
-      })
+      .post(
+        "https://api-j.onrender.com/api/v1/userverification/forgotPassword",
+        {
+          useremail,
+        }
+      )
       .then((resp) => {
         // console.log(resp.data.data.userId);
         localStorage.setItem("userId", resp.data.data.userId);
@@ -73,10 +76,13 @@ function ForgetPassword() {
   const enterOTP = async () => {
     const userId = localStorage.getItem("userId") || [];
     axios
-      .post("http://localhost:1234/api/v1/userverification/resetpasswordOTP", {
-        userId,
-        otp,
-      })
+      .post(
+        "https://api-j.onrender.com/api/v1/userverification/resetpasswordOTP",
+        {
+          userId,
+          otp,
+        }
+      )
       .then((resp) => {
         flipChangePwPage();
       })

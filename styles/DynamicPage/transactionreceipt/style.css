@@ -338,6 +338,9 @@
   height: 40px;
   padding: 5px;
   font-size: 15px;
+  border-radius: 2px;
+  border: 1px solid gray;
+  color: gray;
 }
 .receipt-main-con .main-detail-con .detail-con .transaction-order-detail .update-transaction-form form div textarea {
   width: 100%;
@@ -345,8 +348,11 @@
   padding: 5px;
   margin-top: 10px;
   font-size: 15px;
+  border: 1px solid gray;
+  color: gray;
 }
 .receipt-main-con .main-detail-con .detail-con .transaction-order-detail .update-transaction-form form input {
+  border-radius: 2px;
   width: 100%;
   height: 40px;
   padding: 5px;
@@ -386,4 +392,8 @@
 }
 .receipt-main-con .receipt-heading p span {
   font-weight: normal;
+}
+.receipt-main-con .receipt-heading h4 {
+  margin-bottom: -30px;
+  margin-top: 30px;
 }/*# sourceMappingURL=style.css.map */

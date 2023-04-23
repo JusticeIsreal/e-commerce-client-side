@@ -7,6 +7,7 @@ import {
   getSessionUser,
   singleTransactionFetcher,
   transactionStatus,
+  updateTransaction,
 } from "../../../Services/functions";
 import axios from "axios";
 import QRCode from "qrcode.react";
@@ -46,7 +47,7 @@ function admintransaction() {
   function goBack() {
     router.back();
   }
-  console.log(userData);
+
   // save pae as image
   const saveAsImage = (element) => {
     html2canvas(element).then((canvas) => {
@@ -71,7 +72,6 @@ function admintransaction() {
     fetchSessionUser();
   }, [router]);
 
-  console.log(session);
   // useform config
   const {
     register,
@@ -80,9 +80,38 @@ function admintransaction() {
     reset,
     formState: { errors },
   } = useForm();
+
+  const [btnLoading, setBtnLoading] = useState(true);
   const onSubmitBanner = async (data, e) => {
     e.preventDefault();
+    const token = Cookies.get("JWTtoken");
+    setBtnLoading(false);
+    await axios
+      .patch(
+        "https://api-j.onrender.com/api/v1/transaction/updatetransaction/" +
+          `${transactID}`,
+        {
+          status: data.orderstatus,
+          adminnote: data.adminnote,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      .then((resp) => {
+        setBtnLoading(false);
+        console.log(resp);
+        location.reload();
+      })
+      .catch((err) => {
+        throw err;
+      });
+    // };
   };
+
   return (
     <div className="receipt-main-con">
       {isLoading ? (
@@ -257,7 +286,7 @@ function admintransaction() {
                 </div>
                 <div className="qr-code">
                   <QRCode
-                    value={`https://e-commerce-client-justiceisreal.vercel.app/Adminpage/transaction/${
+                    value={`https://e-commerce-client-ashen.vercel.app/Adminpage/transaction/${
                       transactID && transactID
                     }`}
                   />
@@ -267,15 +296,26 @@ function admintransaction() {
               {/* SECOND PART */}
               <div className="transaction-order-detail">
                 <div className="contact-customer">
-                  <a href={`tel:${userData?.user[0].userphonenumber}`}>
+                  <a
+                    target="_blank"
+                    href={`tel:${userData?.user[0].userphonenumber}`}
+                  >
                     <span>
                       <SlCallEnd />
                       <p>Call</p>
                     </span>
                   </a>
-
                   <a
-                    href={`https://wa.me/${userData?.user[0].userphonenumber}`}
+                    target="_blank"
+                    href={`https://wa.me/${
+                      userData?.user[0].userphonenumber
+                    }?text=Hello, I am a ${
+                      session?.user.username
+                    } from AJIS STORES , I am chatting as regards your Order with Ref No. ${
+                      userData?.paystackRef
+                    } made on ${userData?.timestamp
+                      .substring(0, 20)
+                      .toString()}`}
                   >
                     <span>
                       <BsWhatsapp />
@@ -283,7 +323,10 @@ function admintransaction() {
                     </span>
                   </a>
 
-                  <a href={`mailto:${userData?.user[0].useremail}`}>
+                  <a
+                    target="_blank"
+                    href={`mailto:${userData?.user[0].useremail}`}
+                  >
                     <span>
                       <AiOutlineMail />
                       <p>Email</p>
@@ -291,6 +334,7 @@ function admintransaction() {
                   </a>
 
                   <a
+                    target="_blank"
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                       userData?.deliveryaddress
                     )}`}
@@ -301,47 +345,54 @@ function admintransaction() {
                     </span>
                   </a>
                 </div>
-                <div className="update-transaction-form">
-                  <form onSubmit={handleSubmit(onSubmitBanner)}>
-                    {/*ORDER STATUS */}
-                    <div>
-                      <select {...register("orderstatus", { required: true })}>
-                        <option value="">Status of Order</option>
-                        <option value="Cancelled">Cancelled</option>
-                        <option value="Processing">Processing</option>
-                        <option value="Transit">In Transit</option>
-                        <option value="Delivered">Delivered</option>
-                      </select>
-                      {errors.orderstatus && (
-                        <span
-                          className="errror-msg"
-                          style={{
-                            fontSize: "12px",
-                            fontStyle: "italic",
-                            color: "red",
-                          }}
+
+                {session?.user.position === "admin" ? (
+                  <div className="update-transaction-form">
+                    <form onSubmit={handleSubmit(onSubmitBanner)}>
+                      {/*ORDER STATUS */}
+                      <div>
+                        <select
+                          {...register("orderstatus", { required: true })}
                         >
-                          Kindly Enter status of this order
-                        </span>
-                      )}
-                    </div>
+                          <option value="">Status of Order</option>
+                          <option value="Cancelled">Cancelled</option>
+                          <option value="Processing">Processing</option>
+                          <option value="Transit">In Transit</option>
+                          <option value="Delivered">Delivered</option>
+                        </select>
+                        {errors.orderstatus && (
+                          <span
+                            className="errror-msg"
+                            style={{
+                              fontSize: "12px",
+                              fontStyle: "italic",
+                              color: "red",
+                            }}
+                          >
+                            Kindly Enter status of this order
+                          </span>
+                        )}
+                      </div>
 
-                    {/* ADMIN NOTE */}
-                    <div>
-                      <textarea
-                        // type="text"
-                        placeholder="Admin note to client."
-                        {...register("anyinfo")}
+                      {/* ADMIN NOTE */}
+                      <div>
+                        <textarea
+                          // type="text"
+                          placeholder="Admin note to client."
+                          {...register("adminnote")}
+                        />
+                      </div>
+
+                      <input
+                        type="submit"
+                        className="submit-btn"
+                        value={btnLoading ? "Upload Banner" : "Uploading..."}
                       />
-                    </div>
-
-                    <input
-                      type="submit"
-                      className="submit-btn"
-                      //   value={loadingBanner ? "Uploading..." : "Upload Banner"}
-                    />
-                  </form>
-                </div>
+                    </form>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
 

@@ -81,7 +81,8 @@ export const logIN = async (
       setLoading(true);
     });
 };
-// LOG IN API CALL
+
+// SINGLE TRANSACTION
 const singleTransaction = async (transactID) => {
   const token = Cookies.get("JWTtoken");
   const { data } = await axios.get(
