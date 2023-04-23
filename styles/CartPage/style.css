@@ -110,11 +110,9 @@
 .cart-page-con .single-product .checkout {
   height: 60px;
   position: absolute;
-  position: fixed;
   z-index: 2;
   background: white;
   cursor: pointer;
-  bottom: 65px;
   width: 95%;
   margin: 0 auto;
   font-weight: bold;

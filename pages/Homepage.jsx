@@ -38,7 +38,7 @@ const Homepage = () => {
         setProducts(snapshot.docs);
       }
     );
-  }, []);
+  }, [router]);
 
   // ADD TO CART
   const [loginTriger, setLoginTriger] = useState(false);
