@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SingleTransaction from "../../../Components/AdminPageComponents/SingleTransaction";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import useSWR from "swr";
 import {
+  getSessionUser,
   singleTransactionFetcher,
   transactionStatus,
 } from "../../../Services/functions";
@@ -18,6 +20,7 @@ import Loader from "../../../Components/Loader";
 import { SlCallEnd } from "react-icons/sl";
 import { BsWhatsapp } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
+import { GrMap } from "react-icons/gr";
 
 const API = "http://localhost:1234/api/v1/transaction/getsingletransaction";
 function admintransaction() {
@@ -43,7 +46,7 @@ function admintransaction() {
   function goBack() {
     router.back();
   }
-  console.log(userData?.user[0]);
+  console.log(userData);
   // save pae as image
   const saveAsImage = (element) => {
     html2canvas(element).then((canvas) => {
@@ -54,8 +57,32 @@ function admintransaction() {
     });
   };
 
+  // get admin session user
   // get usersession
-  const [session, setSession] = useState(false);
+  const [session, setSession] = useState();
+
+  useEffect(() => {
+    async function fetchSessionUser() {
+      const userData = await getSessionUser(router);
+      if (userData) {
+        setSession(userData);
+      }
+    }
+    fetchSessionUser();
+  }, [router]);
+
+  console.log(session);
+  // useform config
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmitBanner = async (data, e) => {
+    e.preventDefault();
+  };
   return (
     <div className="receipt-main-con">
       {isLoading ? (
@@ -71,7 +98,6 @@ function admintransaction() {
             <p className="paystackRef">
               Order Ref: <span>{userData?.paystackRef}</span>
             </p>
-            <h4>TRANSACTION</h4>
           </div>
           <div className="receipt-con main-detail-con">
             <div className="detail-con">
@@ -132,6 +158,7 @@ function admintransaction() {
                   }}
                 >
                   <span className="p-name">Product</span>
+                  <span className="p-name">Spec</span>
                   <span>Price</span>
                   <span className="qty">Qty</span>
                   <span>Total</span>
@@ -139,6 +166,7 @@ function admintransaction() {
                 {userData?.product.map((item) => (
                   <div key={item._id} className="product-details">
                     <span className="p-name">{item?.productname}</span>
+                    <span className="p-name">{item?.productspec}</span>
                     <span>₦ {item?.productprice.toLocaleString()}</span>
                     <span className="qty"> {item?.quantity}</span>
                     <span>₦ {item?.total.toLocaleString()}</span>
@@ -157,9 +185,11 @@ function admintransaction() {
                 </div>
                 <div className="transaction-status" style={{ width: "95%" }}>
                   <span>Home delivery:</span>
-                  <span>
-                    ₦ {userData?.homedelivery ? userData.homedelivery : "No"}
-                  </span>
+                  <span>₦ {userData?.homedelivery}</span>
+                </div>
+                <div className="transaction-status" style={{ width: "95%" }}>
+                  <span>Client note:</span>
+                  <span>{userData?.anyinfo ? userData.anyinfo : "No"}</span>
                 </div>
                 <div
                   className="transaction-status first"
@@ -218,46 +248,104 @@ function admintransaction() {
                   <span>Delivery address:</span>
                   <span> {userData?.deliveryaddress}</span>
                 </div>
+                <div className="transaction-status" style={{ width: "95%" }}>
+                  <span>Admin note:</span>
+                  <span>{userData?.adminnote}</span>
+                </div>
                 <div className="total-amount">
                   <h1>₦ {userData?.totalAmount.toLocaleString()}</h1>
+                </div>
+                <div className="qr-code">
+                  <QRCode
+                    value={`https://e-commerce-client-justiceisreal.vercel.app/Adminpage/transaction/${
+                      transactID && transactID
+                    }`}
+                  />
                 </div>
               </div>
 
               {/* SECOND PART */}
               <div className="transaction-order-detail">
                 <div className="contact-customer">
-                  <a href="">
+                  <a href={`tel:${userData?.user[0].userphonenumber}`}>
                     <span>
                       <SlCallEnd />
                       <p>Call</p>
                     </span>
                   </a>
 
-                  <a href="">
+                  <a
+                    href={`https://wa.me/${userData?.user[0].userphonenumber}`}
+                  >
                     <span>
                       <BsWhatsapp />
                       <p>Whatsapp</p>
                     </span>
                   </a>
 
-                  <a href="">
+                  <a href={`mailto:${userData?.user[0].useremail}`}>
                     <span>
                       <AiOutlineMail />
                       <p>Email</p>
                     </span>
                   </a>
+
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      userData?.deliveryaddress
+                    )}`}
+                  >
+                    <span>
+                      <GrMap />
+                      <p>Location</p>
+                    </span>
+                  </a>
                 </div>
-                <div className="qr-code">
-                  <QRCode
-                    value={`https://e-commerce-client-justiceisreal.vercel.app/ClientDynamic/Reciept/${
-                      transactID && transactID
-                    }`}
-                  />
+                <div className="update-transaction-form">
+                  <form onSubmit={handleSubmit(onSubmitBanner)}>
+                    {/*ORDER STATUS */}
+                    <div>
+                      <select {...register("orderstatus", { required: true })}>
+                        <option value="">Status of Order</option>
+                        <option value="Cancelled">Cancelled</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Transit">In Transit</option>
+                        <option value="Delivered">Delivered</option>
+                      </select>
+                      {errors.orderstatus && (
+                        <span
+                          className="errror-msg"
+                          style={{
+                            fontSize: "12px",
+                            fontStyle: "italic",
+                            color: "red",
+                          }}
+                        >
+                          Kindly Enter status of this order
+                        </span>
+                      )}
+                    </div>
+
+                    {/* ADMIN NOTE */}
+                    <div>
+                      <textarea
+                        // type="text"
+                        placeholder="Admin note to client."
+                        {...register("anyinfo")}
+                      />
+                    </div>
+
+                    <input
+                      type="submit"
+                      className="submit-btn"
+                      //   value={loadingBanner ? "Uploading..." : "Upload Banner"}
+                    />
+                  </form>
                 </div>
               </div>
             </div>
 
-            {/* 
+            {/*             
           <div className="download-page">
             <p onClick={() => saveAsImage(document.body)}>Print page</p>
             <a

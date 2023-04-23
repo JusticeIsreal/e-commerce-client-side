@@ -35,6 +35,7 @@ function PayForm({
         // calculate the total cost
         const newProduct = {
           productname: p.productname,
+          productspec: product.productnumber,
           productprice: p.productprice / p.quantity,
           quantity: p.quantity,
         };
@@ -53,12 +54,13 @@ function PayForm({
         deliveryfee: parseInt(data.state.split(",")[1]),
         homedelivery: parseInt(data.homedelivery),
         anyinfo: data.anyinfo,
-        deliveryaddress: `${data.street}, ${data.lga}, ${
+        deliveryaddress: `${data.street},${
           data.state.split(",")[0] + " " + "State"
         }`,
         product: [
           {
             productname: product.productname,
+            productspec: product.productnumber,
             productprice: parseInt(product.productprice),
             quantity: count,
             clientnote: data.anyinfo,
@@ -71,7 +73,7 @@ function PayForm({
         deliveryfee: parseInt(data.state.split(",")[1]),
         homedelivery: parseInt(data.homedelivery),
         anyinfo: data.anyinfo,
-        deliveryaddress: `${data.street}, ${data.lga}, ${
+        deliveryaddress: `${data.street}, ${
           data.state.split(",")[0] + " " + "State"
         }`,
         product: cartFinalProducts,
@@ -153,7 +155,7 @@ function PayForm({
                   <p>
                     Delivery address:{" "}
                     <span>
-                      {confirmDetails?.street}, {confirmDetails?.lga},
+                      {confirmDetails?.street},
                       {confirmDetails?.state?.split(",")[0] + " " + "State"}
                     </span>
                   </p>
@@ -215,7 +217,7 @@ function PayForm({
                   <p>
                     Delivery address:{" "}
                     <span>
-                      {confirmDetails?.street}, {confirmDetails?.lga},
+                      {confirmDetails?.street},
                       {confirmDetails?.state?.split(",")[0] + " " + "State"}
                     </span>
                   </p>
@@ -259,7 +261,7 @@ function PayForm({
             <div>
               <input
                 type="text"
-                placeholder="House number / street"
+                placeholder="Delivery Address"
                 {...register("street", { required: true })}
               />
               {errors.street && (
@@ -275,26 +277,7 @@ function PayForm({
                 </span>
               )}
             </div>
-            {/* LGA */}
-            <div>
-              <input
-                type="text"
-                placeholder="Enter your LGA"
-                {...register("lga", { required: true })}
-              />
-              {errors.lga && (
-                <span
-                  className="errror-msg"
-                  style={{
-                    fontSize: "12px",
-                    fontStyle: "italic",
-                    color: "red",
-                  }}
-                >
-                  Kindly Enter Local Government Area
-                </span>
-              )}
-            </div>
+
             {/* STATE */}
 
             <div>

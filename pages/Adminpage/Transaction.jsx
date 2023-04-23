@@ -24,6 +24,7 @@ import {
   getSessionUser,
 } from "../../Services/functions";
 import Link from "next/link";
+import { BsSearch } from "react-icons/bs";
 function Transaction() {
   // Navgat back
   // const history = useNavigate();
@@ -161,7 +162,8 @@ function Transaction() {
   function goBack() {
     router.back();
   }
-
+  // search by input value
+  const [search, setSearch] = useState(" ");
   return (
     <div id="content">
       {userPosition === "admin" || userPosition === "staff" ? (

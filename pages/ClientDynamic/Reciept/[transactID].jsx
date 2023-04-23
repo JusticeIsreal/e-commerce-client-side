@@ -82,6 +82,7 @@ function transactionrecipt() {
           <div className="transaction-order-details">
             <p className="item-heading">
               <span className="p-name">Product</span>
+              <span className="p-name">Spec</span>
               <span>Price</span>
               <span className="qty">Qty</span>
               <span>Total</span>
@@ -89,6 +90,7 @@ function transactionrecipt() {
             {userData?.product.map((item) => (
               <div key={item._id} className="product-details">
                 <span className="p-name">{item?.productname}</span>
+                <span className="p-name">{item?.productspec}</span>
                 <span>₦ {item?.productprice.toLocaleString()}</span>
                 <span className="qty"> {item?.quantity}</span>
                 <span>₦ {item?.total.toLocaleString()}</span>
@@ -162,6 +164,10 @@ function transactionrecipt() {
             <div className="transaction-status" style={{ width: "95%" }}>
               <span>Delivery address:</span>
               <span> {userData?.deliveryaddress}</span>
+            </div>
+            <div className="transaction-status" style={{ width: "95%" }}>
+              <span>Admin note:</span>
+              <span>{userData?.adminnote}</span>
             </div>
             <div className="total-amount">
               <h1>₦ {userData?.totalAmount.toLocaleString()}</h1>
