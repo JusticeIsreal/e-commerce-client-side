@@ -18,6 +18,12 @@
   background-color: rgba(65, 105, 225, 0);
 }
 
+.receipt-main-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
 .receipt-main-con .receipt-con {
   display: flex;
   justify-content: space-between;
@@ -26,7 +32,7 @@
   margin: 0 auto;
   margin-top: 50px;
   padding: 5px;
-  max-width: 500px;
+  width: auto;
   position: relative;
 }
 .receipt-main-con .receipt-con .go-back {
@@ -85,6 +91,7 @@
   background: white;
   border-radius: 5px;
   width: 95%;
+  max-width: 500px;
   margin-top: 3px;
   padding: 5px 10px;
 }
@@ -185,4 +192,135 @@
 .receipt-main-con .receipt-con .download-page p:hover {
   background: whitesmoke;
   color: #3c91e6;
+}
+.receipt-main-con .main-detail-con {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid gray;
+  width: 100%;
+  max-width: 1200px;
+}
+.receipt-main-con .main-detail-con .detail-con {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .receipt-main-con .main-detail-con .detail-con {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail {
+  border-radius: 5px;
+  width: 95%;
+  max-width: 500px;
+  margin-top: 3px;
+  padding: 5px 10px;
+}
+@media only screen and (min-width: 768px) {
+  .receipt-main-con .main-detail-con .detail-con .transaction-order-detail {
+    border-radius: 10px;
+  }
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .item-heading {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .item-heading span {
+  width: 30%;
+  text-align: left;
+  color: #444;
+  font-weight: bold;
+  line-height: 2;
+  margin: 3px;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .item-heading .p-name {
+  width: 50%;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .item-heading .qty {
+  width: 10%;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .product-details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  color: #666;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .product-details span {
+  margin: 3px;
+  width: 30%;
+  line-height: 2;
+  text-transform: capitalize;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .product-details .qty {
+  width: 10%;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .product-details .p-name {
+  width: 50%;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .first {
+  margin-top: 20px;
+  padding-top: 10px;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .transaction-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  color: #666;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .transaction-status span {
+  line-height: 2;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .total-amount {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 15px;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .qr-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .contact-customer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .contact-customer a {
+  color: #342e37;
+  text-align: center;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .contact-customer a span {
+  font-size: 40px;
+  text-align: center;
+}
+.receipt-main-con .main-detail-con .detail-con .transaction-order-detail .contact-customer a:hover {
+  transform: scale(1.1);
+}
+.receipt-main-con .receipt-heading {
+  position: relative;
+  border: 2px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */

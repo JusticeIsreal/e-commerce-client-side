@@ -23,7 +23,7 @@ function transactionrecipt() {
     isLoading,
     error,
   } = useSWR(transactID ? transactID : null, singleTransactionFetcher);
-
+  // console.log(userData);
   // FETCH TRANSACTION STATUS
   useEffect(() => {
     async function fetchSessionUser() {

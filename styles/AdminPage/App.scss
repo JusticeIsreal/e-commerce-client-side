@@ -48,7 +48,7 @@ body {
 
 /* SIDEBAR */
 #sidebar {
-  //   border: 2px solid green;
+  // border: 2px solid green;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -155,9 +155,18 @@ body {
   display: none;
 }
 
+.transaction-category {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 70px;
+  padding: 5px !important;
+}
 .category {
   border: 1px solid var(--blue);
   color: #3d91e6;
+
   cursor: pointer;
 }
 .active-category {
@@ -167,7 +176,7 @@ body {
   cursor: pointer;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   #sidebar {
     // border: 2px solid green;
     position: fixed;
@@ -294,6 +303,7 @@ body {
   position: relative;
   width: 100vw;
   transition: 0.3s ease;
+  margin-top: 20px;
 }
 
 /* NAVBAR */
@@ -305,12 +315,12 @@ body {
   justify-content: space-between;
   align-items: center;
   font-family: var(--lato);
-  position: sticky;
+  position: fixed;
   padding: 0 10px;
   top: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1000;
   margin: 0 auto;
 }
@@ -372,7 +382,7 @@ body {
   border-radius: 50%;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   /* CONTENT */
   #content {
     position: relative;
@@ -391,12 +401,14 @@ body {
 /* MAIN */
 
 #content main {
-  //   border: 2px solid red;
+  // border: 2px solid red;
   width: 100%;
+
   padding: 36px 24px;
   font-family: var(--poppins);
   //   max-height: calc(100vh - 56px);
   overflow-y: auto;
+  margin-top: 50px;
 }
 #content main .head-title {
   display: flex;
@@ -456,16 +468,18 @@ body {
   display: flex;
   align-items: center;
   grid-gap: 20px;
+  // border: 2px solid red;
 }
 #content main .box-info li .bx {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  // border: 2px solid red;
 }
 #content main .box-info li:nth-child(1) .bx {
   background: var(--light-blue);
@@ -480,7 +494,7 @@ body {
   color: var(--orange);
 }
 #content main .box-info li .text h3 {
-  font-size: 24px;
+  // font-size: 20px;
   font-weight: 600;
   color: var(--dark);
 }
@@ -489,6 +503,7 @@ body {
 }
 #content main .box-info li .text h3 {
   color: #434242;
+  font-size: 20px;
 }
 
 #content main .table-data {
@@ -502,9 +517,10 @@ body {
 #content main .table-data > div {
   border-radius: 20px;
   background: var(--light);
-  padding: 24px;
+  padding: 15px;
   overflow-x: auto;
   width: 100%;
+  // border: 1px solid red;
 }
 #content main .table-data .head {
   display: flex;
@@ -512,6 +528,9 @@ body {
   grid-gap: 16px;
   margin-bottom: 24px;
   cursor: pointer;
+  overflow-x: scroll;
+  // border: 1px solid red;
+
   // color: var(--blue);
 }
 #content main .table-data .head h3 {
@@ -600,7 +619,7 @@ body {
 }
 
 //
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   #content main .head-title .left h1 {
     font-size: 36px;
     margin-bottom: 10px;
@@ -618,14 +637,15 @@ body {
     padding: 0 16px;
   }
   #content main .box-info li {
-    padding: 24px;
-    grid-gap: 24px;
+    padding: 10px;
+    grid-gap: 20px;
+    //  border: 2px solid green;
   }
   #content main .box-info li .bx {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     font-size: 36px;
-    padding: 20px;
+    padding: 10px;
   }
   #content main .table-data .head h3 {
     font-size: 24px;
@@ -653,6 +673,14 @@ body {
 }
 
 @media only screen and (min-width: 1020px) {
+  #content main .table-data > div {
+    border-radius: 20px;
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    width: 100%;
+    // border: 1px solid red;
+  }
   #content .transaction-ul li {
     width: 45% !important;
     max-width: 500px;

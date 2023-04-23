@@ -4,7 +4,7 @@ import Modal from "../Components/Modal";
 import Orders from "../Components/OrderPage/Orders";
 import Footer from "../Components/Footer";
 import { useRouter } from "next/router";
-import { getSessionUser } from "../Services/functions";
+import { getSessionUser, transactionStatus } from "../Services/functions";
 import Loader from "../Components/Loader";
 
 function orders() {
@@ -12,9 +12,13 @@ function orders() {
   const [userTransaction, setUserTransaction] = useState([]);
 
   // get user
+  // const storedRefID = localStorage.getItem("refID");
+  // const refID = JSON.parse(storedRefID);
   useEffect(() => {
     const userName = async () => {
       const userData = await getSessionUser();
+      // console.log(refID.userData, refID.transactID);
+      // await transactionStatus(refID.userData, refID.transactID);
 
       setUserTransaction(userData?.user?.transaction);
       // console.log(userData);

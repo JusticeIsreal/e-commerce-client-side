@@ -3,6 +3,8 @@ import Link from "next/link";
 // icon
 import { FaMoneyCheck } from "react-icons/fa";
 import { useRouter } from "next/router";
+import { transactionStatus } from "../../Services/functions";
+import Loader from "../Loader";
 function Orders({ userTransaction }) {
   const router = useRouter();
   const orderStatus = ["All", "Processing", "Transit", "Delvered"];
@@ -15,7 +17,7 @@ function Orders({ userTransaction }) {
   ];
   // state for category
   const [category, setCategory] = useState("All");
-  
+
   // filter products based on category
   useEffect(() => {
     if (category === "All") {
@@ -25,30 +27,50 @@ function Orders({ userTransaction }) {
     }
   }, [category, userTransaction, router]);
 
+  // get user
+  const storedRefID = localStorage.getItem("refID");
+  const refID = JSON.parse(storedRefID);
+  // const [getTransactionDetails, setGetTransactionDetails] = useState({});
+  useEffect(() => {
+    const userName = async () => {
+      await transactionStatus(
+        refID.userData,
+        refID.transactID,
+        // setGetTransactionDetails
+      );
+    };
+    userName();
+  }, [router, userTransaction]);
   return (
-    <div className="oders-con">
-      <div className="order-page-top">
-        <h1>TRANSACTIONS</h1>
-        <div className="order-status">
-          {dynamicBtn.map((btn, index) => (
-            <p
-              key={index}
-              className={`${
-                btn === category ? "category active-category" : "category"
-              }`}
-              onClick={() => setCategory(btn)}
-            >
-              {btn}
-            </p>
-          ))}
+    <>
+      {products ? (
+        <div className="oders-con">
+          <div className="order-page-top">
+            <h1>TRANSACTIONS</h1>
+            <div className="order-status">
+              {dynamicBtn.map((btn, index) => (
+                <p
+                  key={index}
+                  className={`${
+                    btn === category ? "category active-category" : "category"
+                  }`}
+                  onClick={() => setCategory(btn)}
+                >
+                  {btn}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="each-order-con">
+            {products.map((order) => (
+              <TransactionReceipt key={order._id} {...order} />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="each-order-con">
-        {products.map((order) => (
-          <TransactionReceipt key={order._id} {...order} />
-        ))}
-      </div>
-    </div>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 }
 
@@ -74,7 +96,6 @@ function TransactionReceipt({
 
   return (
     <Link href={`/ClientDynamic/Reciept/${_id}`}>
-      {}
       <div className="each-order">
         <div className="order-icon">
           <FaMoneyCheck />
@@ -107,9 +128,7 @@ function TransactionReceipt({
                 fontWeight: "normal",
               }}
             >
-              {transactionstatus.toLowerCase() === "pending"
-                ? "Click to confirm payment"
-                : transactionstatus}
+              {transactionstatus.toLowerCase()}
             </span>
           </p>
         </div>

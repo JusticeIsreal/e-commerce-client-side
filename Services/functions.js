@@ -116,7 +116,7 @@ const updateTransaction = async (transactID, transactionStatus) => {
     )
 
     .then((resp) => {
-      console.log(resp);
+      // console.log(resp);
     })
     .catch((err) => {
       throw err;
@@ -124,24 +124,27 @@ const updateTransaction = async (transactID, transactionStatus) => {
 };
 
 // CHECK TRANSACTION STATUS
-export const transactionStatus = async (userData, transactID) => {
-  axios
-    .get(
+export const transactionStatus = async (
+  userData,
+  transactID,
+  setGetTransactionDetails
+) => {
+  try {
+    const response = await axios.get(
       `https://api.paystack.co/transaction/verify/${userData?.paystackRef}`,
       {
         headers: {
           Authorization: `Bearer sk_test_3f383f1af75a39537da652b48d2325b2a0c4ba26`,
         },
       }
-    )
-    .then((response) => {
-      const transactionStatus = response.data.data.status;
-      updateTransaction(transactID, transactionStatus);
-    })
-    .catch((error) => {
-      console.log(error);
-      // console.log(userData);
-    });
+    );
+    const transactionStatus = response.data.data.status;
+    updateTransaction(transactID, transactionStatus);
+    // setGetTransactionDetails(response.data);
+    // return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // GET ALL TRANSACTION
@@ -291,9 +294,9 @@ export const deleteCartItem = async (_id) => {
 };
 
 // CheckOUT
-export const checkOut = async (productData, router) => {
+export const checkOut = async (productData, setTransactionDetails) => {
   const token = Cookies.get("JWTtoken");
-  const API = "https://api-j.onrender.com/";
+
   axios
     .post(
       "https://api-j.onrender.com/api/v1/transaction/posttransaction",
@@ -305,7 +308,12 @@ export const checkOut = async (productData, router) => {
       }
     )
     .then((resp) => {
-      console.log(resp.data.data.authorization_url);
+      setTransactionDetails(resp.data.data);
+      const refID = {
+        userData: resp.data.data.Transaction,
+        transactID: resp.data.data.Transaction._id,
+      };
+      localStorage.setItem("refID", JSON.stringify(refID));
       window.location.href = resp.data.data.authorization_url;
     })
     .catch((error) => {

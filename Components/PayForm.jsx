@@ -4,6 +4,7 @@ import axios from "axios";
 import { TiArrowBack } from "react-icons/ti";
 import { checkOut } from "../Services/functions";
 import { useRouter } from "next/router";
+import { Transaction } from "firebase/firestore";
 
 function PayForm({
   product,
@@ -91,12 +92,10 @@ function PayForm({
     priceNumber;
 
   // CHECKOUT
+  const [transactionDetails, setTransactionDetails] = useState();
   const router = useRouter();
   const checkOutpayment = async () => {
-    const userData = await checkOut(productData, router);
-    if (userData) {
-      //   console.log(userData.data);
-    }
+    const userData = await checkOut(productData, setTransactionDetails);
   };
 
   return (

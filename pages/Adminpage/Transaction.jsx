@@ -7,6 +7,7 @@ import { HiRefresh, HiCloudDownload } from "react-icons/hi";
 import {
   MdArrowBackIos,
   MdOutlineNearbyError,
+  MdOutlineSecurityUpdateGood,
   MdPendingActions,
 } from "react-icons/md";
 // ICONS
@@ -243,7 +244,7 @@ function Transaction() {
                   }}
                 >
                   <li>
-                    <FaPeopleCarry className="bx bxs-group" />
+                    <MdOutlineSecurityUpdateGood className="bx bxs-group" />
                     <span className="text">
                       <h3>{getTransactions?.success.length}</h3>
                       <p>Successful</p>
@@ -298,15 +299,7 @@ function Transaction() {
                   <h1>₦ {getTotal.toLocaleString()}</h1>
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  height: "30px ",
-                  overflowX: "scroll",
-                }}
-              >
+              <div className="transaction-category">
                 {dynamicBtn.map((btn, index) => (
                   <p
                     key={index}
@@ -340,7 +333,7 @@ function Transaction() {
                       <th>User</th>
                       <th>Product</th>
                       <th>Amount</th>
-                      <th>transaction</th>
+                      <th>Payment</th>
                       <th>Order</th>
                     </tr>
                   </thead>

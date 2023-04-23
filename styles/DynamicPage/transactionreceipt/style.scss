@@ -64,13 +64,17 @@ $txt-light-blue: #cfe8ff;
 
 // TRANSACTION RECEIPT PAGE
 .receipt-main-con {
+  // border: 2px solid red;
+  @include flexDisplay(space-between, center, column);
+
   .receipt-con {
     // border: 2px solid rgb(0, 68, 255);
     @include flexDisplay(space-between, center, column);
     margin: 0 auto;
     margin-top: 50px;
     padding: 5px;
-    max-width: 500px;
+    width: auto;
+
     position: relative;
 
     .go-back {
@@ -132,6 +136,7 @@ $txt-light-blue: #cfe8ff;
       background: white;
       border-radius: 5px;
       width: 95%;
+      max-width: 500px;
       margin-top: 3px;
       padding: 5px 10px;
 
@@ -229,5 +234,128 @@ $txt-light-blue: #cfe8ff;
         }
       }
     }
+  }
+
+  // ADMIN RECEIPT DESIGN
+
+  .main-detail-con {
+    @include flexDisplay(space-around, center, row);
+    border: 1px solid gray;
+    width: 100%;
+    max-width: 1200px;
+
+    // @include responsive(bigphone) {
+    //   @include flexDisplay(center, center, row);
+    // }
+
+    .detail-con {
+      width: 100%;
+      @include flexDisplay(center, center, column);
+
+      @include responsive(bigphone) {
+        @include flexDisplay(center, flex-start, row);
+      }
+
+      .transaction-order-detail {
+        border-radius: 5px;
+        width: 95%;
+        max-width: 500px;
+        margin-top: 3px;
+        padding: 5px 10px;
+
+        @include responsive(bigphone) {
+          border-radius: 10px;
+        }
+        .item-heading {
+          width: 100%;
+          margin: 0 auto;
+          @include flexDisplay(space-evenly, center, row);
+
+          span {
+            width: 30%;
+            text-align: left;
+            color: $bg-dark-gray;
+            font-weight: bold;
+            line-height: 2;
+            margin: 3px;
+          }
+          .p-name {
+            width: 50%;
+          }
+          .qty {
+            width: 10%;
+          }
+        }
+        .product-details {
+          @include flexDisplay(space-evenly, center, row);
+          color: $font-light;
+
+          span {
+            // text-align: center;
+            margin: 3px;
+
+            width: 30%;
+            line-height: 2;
+            text-transform: capitalize;
+          }
+          .qty {
+            width: 10%;
+          }
+          .p-name {
+            width: 50%;
+          }
+        }
+
+        .first {
+          margin-top: 20px;
+          // border-top: 1px dashed $font-light;
+          padding-top: 10px;
+        }
+        .transaction-status {
+          @include flexDisplay(space-between, center, row);
+          color: $font-light;
+
+          span {
+            line-height: 2;
+          }
+        }
+
+        .total-amount {
+          text-align: center;
+          font-size: 20px;
+          margin-top: 15px;
+        }
+        .qr-code {
+          @include flexDisplay(center, center, row);
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        // RECEIPT LOWER PART
+        .contact-customer {
+          margin-top: 20px;
+          // border: 1px solid red;
+          @include flexDisplay(space-around, center, row);
+          a {
+            color: #342e37;
+            text-align: center;
+            span {
+              font-size: 40px;
+              text-align: center;
+            }
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .receipt-heading {
+    position: relative;
+    border: 2px solid red;
+    width: 100%;
+    @include flexDisplay(space-around, center, column);
   }
 }
