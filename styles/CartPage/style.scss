@@ -142,6 +142,7 @@ $txt-light-blue: #cfe8ff;
     height: calc(100vh - 220px);
     overflow-y: scroll;
     position: relative !important;
+    margin-bottom: 50px;
     @include responsive(bigphone) {
       height: 90vh;
       width: 100%;

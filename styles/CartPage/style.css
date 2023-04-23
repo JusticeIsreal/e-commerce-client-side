@@ -99,6 +99,7 @@
   height: calc(100vh - 220px);
   overflow-y: scroll;
   position: relative !important;
+  margin-bottom: 50px;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .single-product {
