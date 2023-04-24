@@ -183,7 +183,6 @@ body {
   margin-top: -15px;
   margin-bottom: -15px;
   width: 100vw;
-  max-width: 350px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -199,6 +198,9 @@ body {
 }
 
 @media only screen and (min-width: 950px) {
+  .admin-transaction-search-form {
+    max-width: 350px;
+  }
   #sidebar {
     position: fixed;
     top: 0;
@@ -837,4 +839,79 @@ body {
 .delete-product-btn:hover {
   background: red;
   color: white;
+}
+
+.user-main-con {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.user-main-con .admin-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 45%;
+  padding: 5px 5px 0 5px;
+  margin: 10px 5px;
+  border-radius: 5px;
+  background: white;
+  padding: 10px;
+  overflow: hidden;
+  max-width: 180px;
+  cursor: pointer;
+  flex-wrap: wrap;
+  background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
+  border: 1px solid rgba(128, 128, 128, 0.314);
+}
+@media only screen and (min-width: 768px) {
+  .user-main-con .admin-card {
+    width: 23%;
+    max-width: 200px;
+  }
+}
+.user-main-con .admin-card .admin-red-dot,
+.user-main-con .admin-card .admin-yellow-dot,
+.user-main-con .admin-card .admin-blue-dot {
+  position: absolute;
+  background: red;
+  width: 10px;
+  height: 10px;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+}
+.user-main-con .admin-card .admin-yellow-dot {
+  background: rgb(255, 217, 0);
+}
+.user-main-con .admin-card .admin-blue-dot {
+  background: #3c91e6;
+}
+.user-main-con .admin-card .avatar {
+  font-size: 50px;
+  position: relative;
+}
+.user-main-con .admin-card .avatar .verified {
+  font-size: 17px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  bottom: 18px;
+  right: 5px;
+  border-radius: 50%;
+  color: #3c91e6;
+}
+.user-main-con .admin-card .user-details {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  color: #342e37;
+}
+.user-main-con .admin-card:hover {
+  border: 1px solid gray;
+  transform: scale(1.05);
 }/*# sourceMappingURL=App.css.map */

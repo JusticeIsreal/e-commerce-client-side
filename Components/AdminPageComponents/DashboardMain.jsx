@@ -20,7 +20,7 @@ function DashboardMain({ productDetails }) {
     const ftchAllTransactions = async () => {
       const transactions = await allTransactions();
       const users = await allUsers();
-      await transactionStatus();
+      // await transactionStatus();
       if (transactions && users) {
         setGetTransactions(transactions);
         setGetUsers(users);
@@ -34,7 +34,8 @@ function DashboardMain({ productDetails }) {
     const fetchProccessingTransactions = async () => {
       const transaction = await allTransactions();
       setGetRecentTransactions(
-        transaction?.transactions.sort(
+        transaction?.transactions.
+        filter((item) => item.status === "Processing").sort(
           (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
         )
       );
@@ -42,7 +43,7 @@ function DashboardMain({ productDetails }) {
     fetchProccessingTransactions();
     // setGetRecentTransactions(recetTransactions);
   }, [router]);
-
+  console.log(getRecentTransactions);
   return (
     <div id="content">
       <main>
@@ -97,7 +98,7 @@ function DashboardMain({ productDetails }) {
         <div className="table-data">
           <div className="order">
             <div className="head">
-              <h3>Recent Transactions</h3>
+              <h3>Opened Transactions</h3>
               <i className="bx bx-search"></i>
               <i className="bx bx-filter"></i>
             </div>

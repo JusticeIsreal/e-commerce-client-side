@@ -8,9 +8,11 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../Loader";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase";
+import { useRouter } from "next/router";
+import { allUsers } from "../../Services/functions";
 
 function StoreItems({ productDetails }) {
-  // console.log(productDetails.map((product) => {));
+  // console.log(getUsers);
   return (
     <div>
       <div className="table-data">
@@ -43,8 +45,8 @@ function StoreItems({ productDetails }) {
                 <tr>
                   <th>Img</th>
                   <th>Name</th>
+                  <th>Spec</th>
                   <th>Price</th>
-                  <th>Slash</th>
                   <th>Cat</th>
                   <th>Class</th>
                   <th>Desc</th>
@@ -62,7 +64,7 @@ function StoreItems({ productDetails }) {
                     productimages={product.data().image}
                     productname={product.data().productname}
                     productprice={product.data().productprice}
-                    productoldprice={product.data().productoldprice}
+                    productnumber={product.data().productnumber}
                   />
                 );
               })}
@@ -84,13 +86,15 @@ function StoreItemsIndividual({
   productimages,
   productname,
   productprice,
-  productoldprice,
+  productnumber,
 }) {
   const deleteProduct = async (id) => {
     const itemRef = doc(db, "products", id);
     await deleteDoc(itemRef);
     console.log("Item successfully deleted!");
   };
+
+  console.log(productnumber);
   return (
     //
     <tbody style={{ color: "black" }}>
@@ -105,11 +109,9 @@ function StoreItemsIndividual({
         <td style={{ width: "11%" }}>
           <p>{productname}</p>
         </td>
+        <td style={{ width: "10%", margin: "5px" }}>{productnumber}</td>
         <td style={{ width: "10%", margin: "5px" }}>
           {Number(productprice).toLocaleString()}
-        </td>
-        <td style={{ width: "10%", margin: "5px" }}>
-          {Number(productoldprice).toLocaleString()}
         </td>
         <td style={{ width: "10%", margin: "5px" }}>{productcategory}</td>
         <td style={{ width: "10%", margin: "5px" }}>{productclass}</td>

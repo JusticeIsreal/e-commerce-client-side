@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { useForm } from "react-hook-form";
 import axios from "axios";
+import html2canvas from "html2canvas";
 // import { useNavigate } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
 import Topbar from "../../Components/AdminPageComponents/Topbar";
@@ -10,19 +11,44 @@ import Sidebar from "../../Components/AdminPageComponents/Sidebar";
 import { HiRefresh, HiCloudDownload } from "react-icons/hi";
 import { GrUserWorker, GrUserAdmin } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
+import { RxAvatar } from "react-icons/rx";
+import { useRouter } from "next/router";
+import { allUsers } from "../../Services/functions";
+import { GoVerified } from "react-icons/go";
 
 function CustomersData() {
-  const [client, setClient] = useState([]);
-  const [staff, setStaff] = useState([]);
-  const [admin, setAdmin] = useState([]);
+  const router = useRouter();
+  // FETCH ALL TRANSACTIONS
 
-  //using API END POINT fetch list of registered users by their position from the database
-  // const filterUsers = () => {
-  // NAVIGATE PAGE BACK
-  // const history = useNavigate();
+  // const [getTransactions, setGetTransactions] = useState();
+  const [getAdmin, setGetAdmin] = useState([]);
+  const [getStaff, setGetStaff] = useState([]);
+  const [getClient, setGetClient] = useState([]);
+  useEffect(() => {
+    const ftchAllTransactions = async () => {
+      // const transactions = await allTransactions();
+      const users = await allUsers();
+      // await transactionStatus();
+      if (users) {
+        setGetAdmin(users?.users.filter((user) => user.position === "admin"));
+        setGetStaff(users?.users.filter((user) => user.position === "staff"));
+        setGetClient(users?.users.filter((user) => user.position === "client"));
+      }
+    };
+    ftchAllTransactions();
+  }, [router]);
+
+  // save pae as image
+  const saveAsImage = (element) => {
+    html2canvas(element).then((canvas) => {
+      const link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  };
   return (
     <>
-      {" "}
       <Topbar />
       <Sidebar />
       <div id="content">
@@ -69,12 +95,15 @@ function CustomersData() {
                         alignItems: "center",
                       }}
                     >
-                      <MdArrowBackIos /> Back
+                      | Users
                     </a>
                   </li>
                 </ul>
               </div>
-              <div className="btn-download">
+              <div
+                className="btn-download"
+                onClick={() => saveAsImage(document.body)}
+              >
                 <b className="bx bxs-cloud-download">
                   <HiCloudDownload />{" "}
                 </b>
@@ -96,21 +125,21 @@ function CustomersData() {
                 <li>
                   <FaUsers className="bx bxs-group" />
                   <span className="text">
-                    {/* <h3>{client.length}</h3> */}
+                    <h3>{getClient?.length}</h3>
                     <p>Users</p>
                   </span>
                 </li>
                 <li>
                   <GrUserWorker className="bx bxs-calendar-check" />
                   <span className="text">
-                    {/* <h3>{staff.length}</h3> */}
+                    <h3>{getStaff?.length}</h3>
                     <p>Staff</p>
                   </span>
                 </li>
                 <li>
                   <GrUserAdmin className="bx bxs-calendar-check" />
                   <span className="text">
-                    {/* <h3>{admin.length}</h3> */}
+                    <h3>{getAdmin?.length}</h3>
                     <p>Admin</p>
                   </span>
                 </li>
@@ -129,53 +158,74 @@ function CustomersData() {
               }}
             >
               <div className="head">
-                <h3>Customer's List</h3>
-              </div>
-              <div
-                className="head"
-                onClick={() => fetchProducts()}
-                style={{
-                  border: "2px solid #3c91e6",
-                  padding: "0 5px",
-                  cursor: "pointer",
-                }}
-              >
-                <HiRefresh />
-                Re-Fresh
+                <h3>Admin List</h3>
               </div>
             </div>
-            <div className="order" style={{ position: "relative" }}>
-              {/* {users.length >= 1 ? (
-                <table
-                  className="table"
-                  style={{
-                    width: "100%",
-                    minWidth: "500px",
-                  }}
-                >
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Position</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-
-                  {users.map((user) => (
-                    <UserTable
-                      key={user._id}
-                      {...user}
-                      users={users}
-                      fetchProducts={fetchProducts}
-                      filterUsers={filterUsers}
-                    />
-                  ))}
-                </table>
-              ) : (
-                <Loader />
-              )} */}
+          </div>
+          <div className="user-main-con">
+            {getAdmin.length > 0 ? (
+              <>
+                {getAdmin.map((admin) => (
+                  <GetAdmin key={admin._id} {...admin} />
+                ))}
+              </>
+            ) : (
+              <h1>NO STAFF</h1>
+            )}
+          </div>
+          <div className="table-data">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                height: "60px",
+                paddingTop: "50px",
+                overflow: "hidden",
+              }}
+            >
+              <div className="head">
+                <h3>Staff List</h3>
+              </div>
             </div>
+          </div>
+          <div className="user-main-con">
+            {getStaff.length > 0 ? (
+              <>
+                {getStaff.map((staff) => (
+                  <GetAdmin key={staff._id} {...staff} />
+                ))}
+              </>
+            ) : (
+              <h1>NO STAFF</h1>
+            )}
+          </div>
+          <div className="table-data">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                height: "60px",
+                paddingTop: "50px",
+                overflow: "hidden",
+              }}
+            >
+              <div className="head">
+                <h3>Client List</h3>
+              </div>
+            </div>
+          </div>
+          <div className="user-main-con">
+            {getClient.length > 0 ? (
+              <>
+                {getClient.map((client) => (
+                  <GetAdmin key={client._id} {...client} />
+                ))}
+              </>
+            ) : (
+              <h1>NO CLIENT</h1>
+            )}
           </div>
         </main>
       </div>
@@ -186,25 +236,31 @@ function CustomersData() {
 // CustomersData.requireAuth = true;
 export default CustomersData;
 
-function UserTable() {
-  // useForm config setup
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  // } = useForm();
-
-  // update user position via API END POINT
-
+function GetAdmin({
+  useremail,
+  username,
+  userphonenumber,
+  verified,
+  position,
+}) {
   return (
-    <tbody style={{ color: "black" }}>
-      <tr>
-        <td>{/* <p>{name}</p> */}</td>
-        {/* <td>{email}</td> */}
-        {/* <td>{verified ? "True" : "False"}</td> */}
-        <td>{/*  */}</td>
-      </tr>
-    </tbody>
+    <div className="admin-card">
+      {position === "admin" && <div className="admin-red-dot"></div>}
+      {position === "staff" && <div className="admin-yellow-dot"></div>}
+      {position === "client" && <div className="admin-blue-dot"></div>}
+      <div className="avatar">
+        {verified && (
+          <div className="verified">
+            <GoVerified />
+          </div>
+        )}
+        <RxAvatar />
+      </div>
+      <div className="user-details">
+        <h4>{username}</h4>
+        <p>{userphonenumber}</p>
+        <p>{useremail}</p>
+      </div>
+    </div>
   );
 }
