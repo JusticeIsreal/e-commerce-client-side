@@ -407,7 +407,7 @@ function StoreTransaction({
           {new Date(timestamp).toLocaleTimeString()}
         </td>
 
-        <td>{user[0].username}</td>
+        <td>{user[0]?.username}</td>
         <td>
           {product?.map((item) => (
             <b key={item._id} style={{ display: "flex", fontWeight: "normal" }}>

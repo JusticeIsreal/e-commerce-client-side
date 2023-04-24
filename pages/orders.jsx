@@ -22,6 +22,10 @@ function orders() {
 
       setUserTransaction(userData?.user?.transaction);
       // console.log(userData);
+
+      if (userData.user.block === true) {
+        router.push("/Login");
+      }
     };
     userName();
   }, [router]);

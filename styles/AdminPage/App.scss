@@ -997,3 +997,167 @@ $light-orange: #ffe0d3;
     }
   }
 }
+
+.singleuser-page {
+  // border: 2px solid red;
+  padding: 20px;
+  @include flexDisplay(center, center, column);
+  .singleuser-card {
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 100vw;
+    max-width: 700px;
+    padding: 5px;
+    // background: white;
+    position: relative;
+    .status-dot {
+      position: absolute;
+      right: 10px;
+    }
+
+    .go-back {
+      position: absolute;
+      left: 5px;
+      top: -5px;
+    }
+    .top-part {
+      @include flexDisplay(center, center, column);
+      margin-bottom: 10px;
+
+      .avatar {
+        // border: 2px solid red;
+        width: 90px;
+        height: 90px;
+        font-size: 90px;
+        position: relative;
+        color: $bg-dark;
+
+        .verified {
+          font-size: 20px;
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          color: $txt-blue;
+        }
+      }
+      .contact {
+        @include flexDisplay(space-around, center, row);
+        border-bottom: 1px solid gray;
+        padding: 5px;
+        padding-bottom: 10px;
+        width: 100%;
+        margin-top: 10px;
+        color: $bg-dark;
+
+        a {
+          color: $bg-dark;
+          span {
+            font-size: 30px;
+            @include flexDisplay(center, center, column);
+
+            p {
+              font-size: 12px;
+            }
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        p {
+          color: $bg-dark;
+          @include flexDisplay(center, center, column);
+          span {
+            font-size: 30px;
+            @include flexDisplay(center, center, column);
+          }
+          p {
+            font-size: 12px;
+            cursor: pointer;
+          }
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .lower-part {
+      // border: 2px solid red;
+      padding: 5px;
+      @include flexDisplay(space-between, flex-start, column);
+
+      p {
+        // border: 2px solid red;
+        @include flexDisplay(space-between, center, row);
+        width: 100%;
+        color: $bg-dark;
+        padding: 5px;
+      }
+
+      h3 {
+        // border: 2px solid red;
+        @include flexDisplay(space-between, center, row);
+        background: white;
+        height: 50px;
+        // width: 95%;
+        padding: 5px 8px;
+        border-radius: 5px;
+        color: $bg-dark;
+        font-weight: 500;
+        // margin: 0 auto;
+        margin-top: 20px;
+      }
+      .transaction-main-con {
+        @include flexDisplay(flex-start, flex-start, row);
+        flex-wrap: wrap;
+        width: 100%;
+
+        .transaction-card1 {
+          // border: 1px solid gray;
+          width: 22%;
+          background: white;
+          border-radius: 5px;
+          margin: 5px;
+          &:hover {
+            border: 1px solid gray;
+            background: whitesmoke;
+            color: white;
+          }
+
+          @include responsive(bigphone) {
+            width: 23%;
+          }
+        }
+        .transaction-card {
+          @include flexDisplay(center, center, column);
+          position: relative;
+          margin: 5px;
+          font-size: 8px;
+          @include responsive(bigphone) {
+            font-size: 12px;
+          }
+
+          p {
+            // border: 1px solid red;
+            margin-bottom: auto;
+            line-height: 1;
+            padding: 1px;
+            @include flexDisplay(center, center, column);
+          }
+          .success-dot {
+            position: absolute;
+          }
+
+          .product-number {
+            @include flexDisplay(center, center, row);
+
+            span {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

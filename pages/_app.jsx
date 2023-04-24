@@ -20,7 +20,7 @@ export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [preRender, setPreRender] = useState(false);
   const [cartQty, setCartQty] = useState(0);
-
+  const [blockedUsers, setBlockedUsers] = useState(false);
   useEffect(() => {
     setPreRender(true);
 
@@ -28,6 +28,9 @@ export default function MyApp({ Component, pageProps }) {
       const userData = await getSessionUser();
       if (userData && userData.user) {
         setCartQty(userData?.user.cart.length);
+      }
+      if (userData.user.block === true) {
+        router.push("/Login");
       }
     }
     fetchSessionUser();

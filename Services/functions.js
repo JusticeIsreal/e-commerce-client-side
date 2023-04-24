@@ -216,7 +216,7 @@ export const allUsers = async () => {
 const singleUser = async (userID) => {
   const token = Cookies.get("JWTtoken");
   const { data } = await axios.get(
-    `https://api-j.onrender.com/api/v1/transaction/getsingleuser/${userID}`,
+    `https://api-j.onrender.com/api/v1/userverification/getsingleuser/${userID}`,
     {
       headers: {
         authorization: `Bearer ${token}`,

@@ -23,7 +23,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { GrMap } from "react-icons/gr";
 
-const API = "http://localhost:1234/api/v1/transaction/getsingletransaction";
+// const API = "http://localhost:1234/api/v1/transaction/getsingletransaction";
 function admintransaction() {
   const router = useRouter();
   const { admintransaction: transactID } = router.query;
@@ -405,5 +405,5 @@ function admintransaction() {
     </div>
   );
 }
-
+admintransaction.requireAuth = true;
 export default admintransaction;

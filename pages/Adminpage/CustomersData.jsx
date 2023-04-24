@@ -13,7 +13,7 @@ import { GrUserWorker, GrUserAdmin } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
 import { useRouter } from "next/router";
-import { allUsers } from "../../Services/functions";
+import { allUsers, getSessionUser } from "../../Services/functions";
 import { GoVerified } from "react-icons/go";
 import Link from "next/link";
 
@@ -48,187 +48,209 @@ function CustomersData() {
       link.click();
     });
   };
+
+  // ALLOW ONLY ADMI AND STAFF ACCESS
+  const [userPosition, setUserPosituon] = useState("");
+
+  useEffect(() => {
+    const userInfo = async () => {
+      const userData = await getSessionUser();
+      setUserPosituon(userData?.user.position);
+
+      if (userPosition === "client") {
+        router.push("/");
+      }
+    };
+    userInfo();
+  }, [userPosition, router]);
   return (
     <>
-      <Topbar />
-      <Sidebar />
-      <div id="content">
-        <main>
-          <div
-            className="head-title"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-around",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: "100%",
-                flexWrap: "wrap",
-              }}
-            >
+      {userPosition === "admin" || userPosition === "staff" ? (
+        <>
+          {" "}
+          <Topbar />
+          <Sidebar />
+          <div id="content">
+            <main>
               <div
-                className="left"
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
-                <h1>Users</h1>
-
-                <ul className="breadcrumb">
-                  <li>
-                    <a href="">Dashboard</a>
-                  </li>
-                  <li>
-                    <i className="bx bx-chevron-right"></i>
-                  </li>
-                  <li onClick={() => history(-1)}>
-                    <a
-                      className="active"
-                      href=""
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      | Users
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div
-                className="btn-download"
-                onClick={() => saveAsImage(document.body)}
-              >
-                <b className="bx bxs-cloud-download">
-                  <HiCloudDownload />{" "}
-                </b>
-                <span className="text">Download PDF</span>
-              </div>
-            </div>
-
-            <div className="user-ul">
-              <ul
-                className="box-info"
+                className="head-title"
                 style={{
                   display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "start",
-                  alignItems: "center",
-                  flexWrap: "wrap",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
                 }}
               >
-                <li>
-                  <FaUsers className="bx bxs-group" />
-                  <span className="text">
-                    <h3>{getClient?.length}</h3>
-                    <p>Users</p>
-                  </span>
-                </li>
-                <li>
-                  <GrUserWorker className="bx bxs-calendar-check" />
-                  <span className="text">
-                    <h3>{getStaff?.length}</h3>
-                    <p>Staff</p>
-                  </span>
-                </li>
-                <li>
-                  <GrUserAdmin className="bx bxs-calendar-check" />
-                  <span className="text">
-                    <h3>{getAdmin?.length}</h3>
-                    <p>Admin</p>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="table-data">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                height: "60px",
-                paddingTop: "50px",
-                overflow: "hidden",
-              }}
-            >
-              <div className="head">
-                <h3>Admin List</h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <div
+                    className="left"
+                    style={{
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <h1>Users</h1>
+
+                    <ul className="breadcrumb">
+                      <li>
+                        <a href="">Dashboard</a>
+                      </li>
+                      <li>
+                        <i className="bx bx-chevron-right"></i>
+                      </li>
+                      <li onClick={() => history(-1)}>
+                        <a
+                          className="active"
+                          href=""
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          | Users
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    className="btn-download"
+                    onClick={() => saveAsImage(document.body)}
+                  >
+                    <b className="bx bxs-cloud-download">
+                      <HiCloudDownload />{" "}
+                    </b>
+                    <span className="text">Download PDF</span>
+                  </div>
+                </div>
+
+                <div className="user-ul">
+                  <ul
+                    className="box-info"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "start",
+                      alignItems: "center",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <li>
+                      <FaUsers className="bx bxs-group" />
+                      <span className="text">
+                        <h3>{getClient?.length}</h3>
+                        <p>Users</p>
+                      </span>
+                    </li>
+                    <li>
+                      <GrUserWorker className="bx bxs-calendar-check" />
+                      <span className="text">
+                        <h3>{getStaff?.length}</h3>
+                        <p>Staff</p>
+                      </span>
+                    </li>
+                    <li>
+                      <GrUserAdmin className="bx bxs-calendar-check" />
+                      <span className="text">
+                        <h3>{getAdmin?.length}</h3>
+                        <p>Admin</p>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="user-main-con">
-            {getAdmin.length > 0 && (
-              <>
-                {getAdmin.map((admin) => (
-                  <GetAdmin key={admin._id} {...admin} />
-                ))}
-              </>
-            )}
-          </div>
-          <div className="table-data">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                height: "60px",
-                paddingTop: "50px",
-                overflow: "hidden",
-              }}
-            >
-              <div className="head">
-                <h3>Staff List</h3>
+              <div className="table-data">
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    height: "60px",
+                    paddingTop: "50px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="head">
+                    <h3>Admin List</h3>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="user-main-con">
-            {getStaff.length > 0 && (
-              <>
-                {getStaff.map((staff) => (
-                  <GetAdmin key={staff._id} {...staff} />
-                ))}
-              </>
-            )}
-          </div>
-          <div className="table-data">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                height: "60px",
-                paddingTop: "50px",
-                overflow: "hidden",
-              }}
-            >
-              <div className="head">
-                <h3>Client List</h3>
+              <div className="user-main-con">
+                {getAdmin.length > 0 && (
+                  <>
+                    {getAdmin.map((admin) => (
+                      <GetAdmin key={admin._id} {...admin} />
+                    ))}
+                  </>
+                )}
               </div>
-            </div>
+              <div className="table-data">
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    height: "60px",
+                    paddingTop: "50px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="head">
+                    <h3>Staff List</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="user-main-con">
+                {getStaff.length > 0 && (
+                  <>
+                    {getStaff.map((staff) => (
+                      <GetAdmin key={staff._id} {...staff} />
+                    ))}
+                  </>
+                )}
+              </div>
+              <div className="table-data">
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    height: "60px",
+                    paddingTop: "50px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="head">
+                    <h3>Client List</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="user-main-con">
+                {getClient.length > 0 && (
+                  <>
+                    {getClient.map((client) => (
+                      <GetAdmin key={client._id} {...client} />
+                    ))}
+                  </>
+                )}
+              </div>
+            </main>
           </div>
-          <div className="user-main-con">
-            {getClient.length > 0 && (
-              <>
-                {getClient.map((client) => (
-                  <GetAdmin key={client._id} {...client} />
-                ))}
-              </>
-            )}
-          </div>
-        </main>
-      </div>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 }
 
-// CustomersData.requireAuth = true;
+CustomersData.requireAuth = true;
 export default CustomersData;
 
 function GetAdmin({

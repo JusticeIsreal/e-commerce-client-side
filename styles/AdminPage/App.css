@@ -922,4 +922,187 @@ body {
 .user-main-con .admin-card:hover {
   border: 1px solid gray;
   transform: scale(1.05);
+}
+
+.singleuser-page {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.singleuser-page .singleuser-card {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 100vw;
+  max-width: 700px;
+  padding: 5px;
+  position: relative;
+}
+.singleuser-page .singleuser-card .status-dot {
+  position: absolute;
+  right: 10px;
+}
+.singleuser-page .singleuser-card .go-back {
+  position: absolute;
+  left: 5px;
+  top: -5px;
+}
+.singleuser-page .singleuser-card .top-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.singleuser-page .singleuser-card .top-part .avatar {
+  width: 90px;
+  height: 90px;
+  font-size: 90px;
+  position: relative;
+  color: #342e37;
+}
+.singleuser-page .singleuser-card .top-part .avatar .verified {
+  font-size: 20px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #3c91e6;
+}
+.singleuser-page .singleuser-card .top-part .contact {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid gray;
+  padding: 5px;
+  padding-bottom: 10px;
+  width: 100%;
+  margin-top: 10px;
+  color: #342e37;
+}
+.singleuser-page .singleuser-card .top-part .contact a {
+  color: #342e37;
+}
+.singleuser-page .singleuser-card .top-part .contact a span {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.singleuser-page .singleuser-card .top-part .contact a span p {
+  font-size: 12px;
+}
+.singleuser-page .singleuser-card .top-part .contact a span:hover {
+  transform: scale(1.05);
+}
+.singleuser-page .singleuser-card .top-part .contact p {
+  color: #342e37;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.singleuser-page .singleuser-card .top-part .contact p span {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.singleuser-page .singleuser-card .top-part .contact p p {
+  font-size: 12px;
+  cursor: pointer;
+}
+.singleuser-page .singleuser-card .top-part .contact p:hover {
+  transform: scale(1.05);
+}
+.singleuser-page .singleuser-card .lower-part {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.singleuser-page .singleuser-card .lower-part p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  color: #342e37;
+  padding: 5px;
+}
+.singleuser-page .singleuser-card .lower-part h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background: white;
+  height: 50px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  color: #342e37;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card1 {
+  width: 22%;
+  background: white;
+  border-radius: 5px;
+  margin: 5px;
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card1:hover {
+  border: 1px solid gray;
+  background: whitesmoke;
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+  .singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card1 {
+    width: 23%;
+  }
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin: 5px;
+  font-size: 8px;
+}
+@media only screen and (min-width: 768px) {
+  .singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card {
+    font-size: 12px;
+  }
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card p {
+  margin-bottom: auto;
+  line-height: 1;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card .success-dot {
+  position: absolute;
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card .product-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.singleuser-page .singleuser-card .lower-part .transaction-main-con .transaction-card .product-number span {
+  font-weight: bold;
 }/*# sourceMappingURL=App.css.map */

@@ -544,5 +544,5 @@ function StoreID() {
     </div>
   );
 }
-
+StoreID.requireAuth = true;
 export default StoreID;
