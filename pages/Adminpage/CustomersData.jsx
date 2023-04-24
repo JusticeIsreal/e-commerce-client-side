@@ -15,6 +15,7 @@ import { RxAvatar } from "react-icons/rx";
 import { useRouter } from "next/router";
 import { allUsers } from "../../Services/functions";
 import { GoVerified } from "react-icons/go";
+import Link from "next/link";
 
 function CustomersData() {
   const router = useRouter();
@@ -163,14 +164,12 @@ function CustomersData() {
             </div>
           </div>
           <div className="user-main-con">
-            {getAdmin.length > 0 ? (
+            {getAdmin.length > 0 && (
               <>
                 {getAdmin.map((admin) => (
                   <GetAdmin key={admin._id} {...admin} />
                 ))}
               </>
-            ) : (
-              <h1>NO STAFF</h1>
             )}
           </div>
           <div className="table-data">
@@ -190,14 +189,12 @@ function CustomersData() {
             </div>
           </div>
           <div className="user-main-con">
-            {getStaff.length > 0 ? (
+            {getStaff.length > 0 && (
               <>
                 {getStaff.map((staff) => (
                   <GetAdmin key={staff._id} {...staff} />
                 ))}
               </>
-            ) : (
-              <h1>NO STAFF</h1>
             )}
           </div>
           <div className="table-data">
@@ -217,14 +214,12 @@ function CustomersData() {
             </div>
           </div>
           <div className="user-main-con">
-            {getClient.length > 0 ? (
+            {getClient.length > 0 && (
               <>
                 {getClient.map((client) => (
                   <GetAdmin key={client._id} {...client} />
                 ))}
               </>
-            ) : (
-              <h1>NO CLIENT</h1>
             )}
           </div>
         </main>
@@ -237,6 +232,7 @@ function CustomersData() {
 export default CustomersData;
 
 function GetAdmin({
+  _id,
   useremail,
   username,
   userphonenumber,
@@ -244,23 +240,25 @@ function GetAdmin({
   position,
 }) {
   return (
-    <div className="admin-card">
-      {position === "admin" && <div className="admin-red-dot"></div>}
-      {position === "staff" && <div className="admin-yellow-dot"></div>}
-      {position === "client" && <div className="admin-blue-dot"></div>}
-      <div className="avatar">
-        {verified && (
-          <div className="verified">
-            <GoVerified />
-          </div>
-        )}
-        <RxAvatar />
+    <Link href={`/Adminpage/customer/${_id}`} className="admin-card">
+      <div className="card">
+        {position === "admin" && <div className="admin-red-dot"></div>}
+        {position === "staff" && <div className="admin-yellow-dot"></div>}
+        {position === "client" && <div className="admin-blue-dot"></div>}
+        <div className="avatar">
+          {verified && (
+            <div className="verified">
+              <GoVerified />
+            </div>
+          )}
+          <RxAvatar />
+        </div>
+        <div className="user-details">
+          <h4>{username}</h4>
+          <p>{userphonenumber}</p>
+          <p>{useremail}</p>
+        </div>
       </div>
-      <div className="user-details">
-        <h4>{username}</h4>
-        <p>{userphonenumber}</p>
-        <p>{useremail}</p>
-      </div>
-    </div>
+    </Link>
   );
 }

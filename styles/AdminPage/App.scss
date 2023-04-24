@@ -945,6 +945,12 @@ $light-orange: #ffe0d3;
       width: 23%;
       max-width: 200px;
     }
+
+    .card {
+      width: 100%;
+      @include flexDisplay(center, center, column);
+      color: $bg-dark;
+    }
     .admin-red-dot,
     .admin-yellow-dot,
     .admin-blue-dot {

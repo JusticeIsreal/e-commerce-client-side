@@ -81,7 +81,7 @@ export const logIN = async (
       setLoading(true);
     });
 };
-// LOG IN API CALL
+//SINGLE TRANSACTION
 const singleTransaction = async (transactID) => {
   const token = Cookies.get("JWTtoken");
   const { data } = await axios.get(
@@ -211,6 +211,22 @@ export const allUsers = async () => {
     console.log(error);
   }
 };
+
+//SINGLE  USER
+const singleUser = async (userID) => {
+  const token = Cookies.get("JWTtoken");
+  const { data } = await axios.get(
+    `https://api-j.onrender.com/api/v1/transaction/getsingleuser/${userID}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  // console.log(data);
+  return data.data;
+};
+export const getSingleUser = (userID) => singleUser(userID);
 // ADD TO CART
 export const addToCart = async (productData, productID) => {
   const token = Cookies.get("JWTtoken");

@@ -874,6 +874,14 @@ body {
     max-width: 200px;
   }
 }
+.user-main-con .admin-card .card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #342e37;
+}
 .user-main-con .admin-card .admin-red-dot,
 .user-main-con .admin-card .admin-yellow-dot,
 .user-main-con .admin-card .admin-blue-dot {
