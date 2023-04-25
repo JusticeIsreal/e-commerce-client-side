@@ -189,7 +189,7 @@ function CustomersData() {
               <div className="user-main-con">
                 {getAdmin.length > 0 && (
                   <>
-                    {getAdmin.map((admin) => (
+                    {getAdmin?.map((admin) => (
                       <GetAdmin key={admin._id} {...admin} />
                     ))}
                   </>
@@ -214,7 +214,7 @@ function CustomersData() {
               <div className="user-main-con">
                 {getStaff.length > 0 && (
                   <>
-                    {getStaff.map((staff) => (
+                    {getStaff?.map((staff) => (
                       <GetAdmin key={staff._id} {...staff} />
                     ))}
                   </>
@@ -259,7 +259,7 @@ function CustomersData() {
                           return item;
                         }
                       })
-                      .map((client) => (
+                      ?.map((client) => (
                         <GetAdmin key={client._id} {...client} />
                       ))}
                   </>

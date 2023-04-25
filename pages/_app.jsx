@@ -26,10 +26,10 @@ export default function MyApp({ Component, pageProps }) {
 
     async function fetchSessionUser() {
       const userData = await getSessionUser();
-      if (userData && userData.user) {
+      if (userData && userData?.user) {
         setCartQty(userData?.user.cart.length);
       }
-      if (userData.user.block === true) {
+      if (userData?.user?.block === true) {
         router.push("/Login");
       }
     }
