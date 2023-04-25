@@ -49,16 +49,16 @@ function CustomerID() {
   useEffect(() => {
     async function fetchSessionUser() {
       if (userData) {
-        const success = userData.transaction.filter(
+        const success = userData?.transaction.filter(
           (order) => order.transactionstatus.toLowerCase() === "success"
         );
-        const pending = userData.transaction.filter(
+        const pending = userData?.transaction.filter(
           (order) => order.transactionstatus.toLowerCase() === "pending"
         );
-        const abandoned = userData.transaction.filter(
+        const abandoned = userData?.transaction.filter(
           (order) => order.transactionstatus.toLowerCase() === "abandoned"
         );
-        const failed = userData.transaction.filter(
+        const failed = userData?.transaction.filter(
           (order) => order.transactionstatus.toLowerCase() === "failed"
         );
 
@@ -67,8 +67,8 @@ function CustomerID() {
         setAbandonedStatus(abandoned);
         setFailedStatus(failed);
 
-        for (let i = 0; i < userData.transaction.length; i++) {
-          TotalSum += userData.transaction[i]?.totalAmount;
+        for (let i = 0; i < userData?.transaction.length; i++) {
+          TotalSum += userData?.transaction[i]?.totalAmount;
         }
         for (let i = 0; i < success?.length; i++) {
           successTotalSum += success[i]?.totalAmount;
@@ -213,7 +213,7 @@ function CustomerID() {
             Back
           </button>{" "}
           {userData?.block === true && <FcCancel className="cancel" />}
-          {userData?.position === "admin" && (
+          {session?.user?.position === "admin" && (
             <div className="status-dot">
               <select name="" id="" onChange={(e) => changeClientRank(e)}>
                 <option value={userData?.position} key="0">
