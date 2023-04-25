@@ -69,7 +69,7 @@ function BannerForm() {
     e.preventDefault();
     if (loadingBanner) return;
     setLoadingBannr(true);
-    console.log(data);
+    // console.log(data);
     const bannerDetails = {
       ...data,
       timestamp: serverTimestamp(),

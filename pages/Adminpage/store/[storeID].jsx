@@ -60,7 +60,7 @@ function StoreID() {
     fetchSessionUser();
   }, [router]);
 
-  console.log(session.user.position);
+  // console.log(session.user.position);
   // GO BACK
   function goBack() {
     router.back();
@@ -286,11 +286,12 @@ function StoreID() {
   };
   return (
     <div className="store-item-dynamic-con">
-      <div className="edit-product" onClick={() => setFormShow(!formShow)}>
-        {session?.user?.position === "admin" && (
+      {session?.user?.position === "admin" && (
+        <div className="edit-product" onClick={() => setFormShow(!formShow)}>
           <p>{formShow ? "Close Form" : "Edit Product"}</p>
-        )}
-      </div>
+        </div>
+      )}
+
       {formShow && (
         <div className="store-item-con">
           {" "}

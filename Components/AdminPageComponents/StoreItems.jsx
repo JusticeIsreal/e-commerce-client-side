@@ -91,10 +91,10 @@ function StoreItemsIndividual({
   const deleteProduct = async (id) => {
     const itemRef = doc(db, "products", id);
     await deleteDoc(itemRef);
-    console.log("Item successfully deleted!");
+    // console.log("Item successfully deleted!");
   };
 
-  console.log(productnumber);
+  // console.log(productnumber);
   return (
     //
     <tbody style={{ color: "black" }}>
