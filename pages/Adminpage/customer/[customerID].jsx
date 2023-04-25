@@ -19,6 +19,7 @@ import Link from "next/link";
 import { TiArrowBack } from "react-icons/ti";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Loader from "../../../Components/Loader";
 function CustomerID() {
   const router = useRouter();
   const { customerID: userID } = router.query;
@@ -91,7 +92,6 @@ function CustomerID() {
     }
     fetchSessionUser();
   }, [userID, router, userData]);
-
 
   // user session
   const [session, setSession] = useState();
@@ -204,137 +204,143 @@ function CustomerID() {
   };
 
   return (
-    <div className="singleuser-page">
-      {session?.user.position === "admin" ||
-      session?.user.position === "staff" ? (
-        <div className="singleuser-card">
-          <button onClick={goBack} className="go-back">
-            <TiArrowBack />
-            Back
-          </button>{" "}
-          {userData?.block === true && <FcCancel className="cancel" />}
-          {session?.user?.position === "admin" && (
-            <div className="status-dot">
-              <select name="" id="" onChange={(e) => changeClientRank(e)}>
-                <option value={userData?.position} key="0">
-                  {userData?.position}
-                </option>
-                <option value="client" key="1">
-                  client
-                </option>
-                <option value="staff" key="2">
-                  staff
-                </option>
-                <option value="admin" key="3">
-                  admin
-                </option>
-              </select>
-            </div>
-          )}
-          <div className="top-part">
-            <div className="avatar">
-              {userData?.verified === true && (
-                <GoVerified className="verified" />
-              )}
-              <RxAvatar />
-            </div>
-            <h4>{userData?.username}</h4>
-            <p>{userData?.userphonenumber}</p>
-            <p>{userData?.useremail}</p>
-            <div className="contact">
-              <a target="_blank" href={`tel:${userData?.userphonenumber}`}>
-                <span>
-                  <SlCallEnd />
-                  <p>Call</p>
-                </span>
-              </a>
-              <a
-                target="_blank"
-                href={`https://wa.me/${userData?.userphonenumber}?text=Hello, I am a ${session?.user?.username} from AJIS STORES `}
-              >
-                <span>
-                  <BsWhatsapp />
-                  <p>Whatsapp</p>
-                </span>
-              </a>
-              <a target="_blank" href={`mailto:${userData?.useremail}`}>
-                <span>
-                  <AiOutlineMail />
-                  <p>Email</p>
-                </span>
-              </a>
-              {session?.user?.position === "admin" && (
-                <>
-                  {userData?.block === true ? (
-                    <a>
-                      <span>
-                        <TbLock onClick={() => unBlockUser()} />
-                      </span>
-                      <p>Un-block user</p>
-                    </a>
-                  ) : (
-                    <a>
-                      <span>
-                        <TbLockOpen onClick={() => blockUser()} />
-                      </span>
-                      <p>Block user</p>
-                    </a>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-          <div className="lower-part">
-            <p>
-              Date of Reg.
-              <span>{formattedTimestamp}</span>
-            </p>
-            <p>
-              No of transactions({userData?.transaction.length}):
-              <span>₦ {Number(transactionSum).toLocaleString()}</span>
-            </p>
-            <h3>
-              Sucessful transaction <span>({succesStatus?.length}): </span>₦{" "}
-              {succesSum.toLocaleString()}
-            </h3>
-            <div className="transaction-main-con">
-              {succesStatus?.map((order) => (
-                <SuccessTransactions key={order._id} {...order} />
-              ))}
-            </div>
-            <h3>
-              Pending transaction<span>({pendingStatus?.length}):</span> ₦{" "}
-              {pendingSum.toLocaleString()}
-            </h3>
-            <div className="transaction-main-con">
-              {pendingStatus?.map((order) => (
-                <PendingTransactions key={order._id} {...order} />
-              ))}
-            </div>
-            <h3>
-              Abandoned transaction<span>({abandonedStatus?.length}):</span>₦{" "}
-              {abandonedSum.toLocaleString()}
-            </h3>
-            <div className="transaction-main-con">
-              {abandonedStatus?.map((order) => (
-                <AbandonedTransactions key={order._id} {...order} />
-              ))}
-            </div>
-            <h3>
-              Failed transaction<span>({failedStatus?.length}):</span>₦{" "}
-              {failedSum.toLocaleString()}
-            </h3>
-            <div className="transaction-main-con">
-              {failedStatus?.map((order) => (
-                <Failedransactions key={order._id} {...order} />
-              ))}
-            </div>
-          </div>
-        </div>
+    <>
+      {isLoading ? (
+        <Loader />
       ) : (
-        ""
+        <div className="singleuser-page">
+          {session?.user.position === "admin" ||
+          session?.user.position === "staff" ? (
+            <div className="singleuser-card">
+              <button onClick={goBack} className="go-back">
+                <TiArrowBack />
+                Back
+              </button>{" "}
+              {userData?.block === true && <FcCancel className="cancel" />}
+              {session?.user?.position === "admin" && (
+                <div className="status-dot">
+                  <select name="" id="" onChange={(e) => changeClientRank(e)}>
+                    <option value={userData?.position} key="0">
+                      {userData?.position}
+                    </option>
+                    <option value="client" key="1">
+                      client
+                    </option>
+                    <option value="staff" key="2">
+                      staff
+                    </option>
+                    <option value="admin" key="3">
+                      admin
+                    </option>
+                  </select>
+                </div>
+              )}
+              <div className="top-part">
+                <div className="avatar">
+                  {userData?.verified === true && (
+                    <GoVerified className="verified" />
+                  )}
+                  <RxAvatar />
+                </div>
+                <h4>{userData?.username}</h4>
+                <p>{userData?.userphonenumber}</p>
+                <p>{userData?.useremail}</p>
+                <div className="contact">
+                  <a target="_blank" href={`tel:${userData?.userphonenumber}`}>
+                    <span>
+                      <SlCallEnd />
+                      <p>Call</p>
+                    </span>
+                  </a>
+                  <a
+                    target="_blank"
+                    href={`https://wa.me/${userData?.userphonenumber}?text=Hello, I am a ${session?.user?.username} from AJIS STORES `}
+                  >
+                    <span>
+                      <BsWhatsapp />
+                      <p>Whatsapp</p>
+                    </span>
+                  </a>
+                  <a target="_blank" href={`mailto:${userData?.useremail}`}>
+                    <span>
+                      <AiOutlineMail />
+                      <p>Email</p>
+                    </span>
+                  </a>
+                  {session?.user?.position === "admin" && (
+                    <>
+                      {userData?.block === true ? (
+                        <a>
+                          <span>
+                            <TbLock onClick={() => unBlockUser()} />
+                          </span>
+                          <p>Un-block user</p>
+                        </a>
+                      ) : (
+                        <a>
+                          <span>
+                            <TbLockOpen onClick={() => blockUser()} />
+                          </span>
+                          <p>Block user</p>
+                        </a>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="lower-part">
+                <p>
+                  Date of Reg.
+                  <span>{formattedTimestamp}</span>
+                </p>
+                <p>
+                  No of transactions({userData?.transaction.length}):
+                  <span>₦ {Number(transactionSum)?.toLocaleString()}</span>
+                </p>
+                <h3>
+                  Sucessful transaction <span>({succesStatus?.length}): </span>₦{" "}
+                  {succesSum?.toLocaleString()}
+                </h3>
+                <div className="transaction-main-con">
+                  {succesStatus?.map((order) => (
+                    <SuccessTransactions key={order._id} {...order} />
+                  ))}
+                </div>
+                <h3>
+                  Pending transaction<span>({pendingStatus?.length}):</span> ₦{" "}
+                  {pendingSum?.toLocaleString()}
+                </h3>
+                <div className="transaction-main-con">
+                  {pendingStatus?.map((order) => (
+                    <PendingTransactions key={order._id} {...order} />
+                  ))}
+                </div>
+                <h3>
+                  Abandoned transaction<span>({abandonedStatus?.length}):</span>
+                  ₦ {abandonedSum?.toLocaleString()}
+                </h3>
+                <div className="transaction-main-con">
+                  {abandonedStatus?.map((order) => (
+                    <AbandonedTransactions key={order._id} {...order} />
+                  ))}
+                </div>
+                <h3>
+                  Failed transaction<span>({failedStatus?.length}):</span>₦{" "}
+                  {failedSum?.toLocaleString()}
+                </h3>
+                <div className="transaction-main-con">
+                  {failedStatus?.map((order) => (
+                    <Failedransactions key={order._id} {...order} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
 CustomerID.requireAuth = true;
