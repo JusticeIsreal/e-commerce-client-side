@@ -80,7 +80,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.transactions?.length; i++) {
-        totalAmountSum += getTransactions?.transactions[i].totalAmount;
+        totalAmountSum += getTransactions?.transactions[i]?.totalAmount;
       }
     };
     sumByStatus();
@@ -136,7 +136,7 @@ function Transaction() {
   useEffect(() => {
     const sumByStatus = () => {
       for (let i = 0; i < getTransactions?.failed?.length; i++) {
-        failedTotalAmountSum += getTransactions?.failed[i].totalAmount;
+        failedTotalAmountSum += getTransactions?.failed[i]?.totalAmount;
       }
     };
     sumByStatus();
@@ -150,7 +150,7 @@ function Transaction() {
   useEffect(() => {
     const userInfo = async () => {
       const userData = await getSessionUser();
-      setUserPosituon(userData?.user.position);
+      setUserPosituon(userData?.user?.position);
 
       if (userPosition === "client") {
         router.push("/");
@@ -255,7 +255,7 @@ function Transaction() {
                   <li>
                     <MdOutlineSecurityUpdateGood className="bx bxs-group" />
                     <span className="text">
-                      <h3>{getTransactions?.success.length}</h3>
+                      <h3>{getTransactions?.success?.length}</h3>
                       <p>Successful</p>
                       <h3>₦ {getSuccessfulTotal?.toLocaleString()}</h3>
                     </span>
@@ -263,7 +263,7 @@ function Transaction() {
                   <li>
                     <MdPendingActions className="bx bxs-calendar-check" />
                     <span className="text">
-                      <h3>{getTransactions?.pending.length}</h3>
+                      <h3>{getTransactions?.pending?.length}</h3>
                       <p>Pending</p>
                       <h3>₦ {getPendingTotal?.toLocaleString()}</h3>
                     </span>
@@ -273,7 +273,7 @@ function Transaction() {
                     <span className="text">
                       <h3>{getTransactions?.abandoned.length}</h3>
                       <p>Abandoned</p>
-                      <h3>₦ {getAbandonedTotal.toLocaleString()}</h3>
+                      <h3>₦ {getAbandonedTotal?.toLocaleString()}</h3>
                     </span>
                   </li>
                   <li>
@@ -284,7 +284,7 @@ function Transaction() {
                     <span className="text">
                       <h3>{getTransactions?.failed.length}</h3>
                       <p>Failed</p>
-                      <h3>₦ {getFailedTotal.toLocaleString()}</h3>
+                      <h3>₦ {getFailedTotal?.toLocaleString()}</h3>
                     </span>
                   </li>
                 </ul>
@@ -305,12 +305,12 @@ function Transaction() {
                   <h3>
                     {getTransactions?.transactions.length} <br /> Total
                   </h3>
-                  <h1>₦ {getTotal.toLocaleString()}</h1>
+                  <h1>₦ {getTotal?.toLocaleString()}</h1>
                 </div>
               </div>
 
               <div className="transaction-category">
-                {dynamicBtn.map((btn, index) => (
+                {dynamicBtn?.map((btn, index) => (
                   <p
                     key={index}
                     style={{
@@ -357,12 +357,12 @@ function Transaction() {
                   </thead>
                   {products
                     ?.filter((item) => {
-                      if (item.paystackRef === " ") {
+                      if (item?.paystackRef === " ") {
                         return item;
                       } else if (
-                        item.paystackRef
+                        item?.paystackRef
                           .toLowerCase()
-                          .includes(search.toLowerCase())
+                          .includes(search?.toLowerCase())
                       ) {
                         return item;
                       }
@@ -416,7 +416,7 @@ function StoreTransaction({
           ))}
         </td>
 
-        <td>₦ {totalAmount.toLocaleString()}</td>
+        <td>₦ {totalAmount?.toLocaleString()}</td>
         <td>
           <b
             style={{

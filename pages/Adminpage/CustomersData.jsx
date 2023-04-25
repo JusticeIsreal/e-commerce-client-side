@@ -16,6 +16,8 @@ import { useRouter } from "next/router";
 import { allUsers, getSessionUser } from "../../Services/functions";
 import { GoVerified } from "react-icons/go";
 import Link from "next/link";
+import { FcCancel } from "react-icons/fc";
+import { BsSearch } from "react-icons/bs";
 
 function CustomersData() {
   const router = useRouter();
@@ -63,6 +65,9 @@ function CustomersData() {
     };
     userInfo();
   }, [userPosition, router]);
+
+  // search by input value
+  const [search, setSearch] = useState("");
   return (
     <>
       {userPosition === "admin" || userPosition === "staff" ? (
@@ -226,17 +231,37 @@ function CustomersData() {
                     overflow: "hidden",
                   }}
                 >
-                  <div className="head">
+                  <div className="head head-client">
                     <h3>Client List</h3>
+                    <form className="admin-transaction-search-form">
+                      <BsSearch />
+                      <input
+                        type="text"
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search by username"
+                      />
+                    </form>
                   </div>
                 </div>
               </div>
               <div className="user-main-con">
                 {getClient.length > 0 && (
                   <>
-                    {getClient.map((client) => (
-                      <GetAdmin key={client._id} {...client} />
-                    ))}
+                    {getClient
+                      ?.filter((item) => {
+                        if (item?.username === " ") {
+                          return item;
+                        } else if (
+                          item?.username
+                            .toLowerCase()
+                            .includes(search?.toLowerCase())
+                        ) {
+                          return item;
+                        }
+                      })
+                      .map((client) => (
+                        <GetAdmin key={client._id} {...client} />
+                      ))}
                   </>
                 )}
               </div>
@@ -260,10 +285,12 @@ function GetAdmin({
   userphonenumber,
   verified,
   position,
+  block,
 }) {
   return (
     <Link href={`/Adminpage/customer/${_id}`} className="admin-card">
       <div className="card">
+        {block === true && <FcCancel className="cancel" />}
         {position === "admin" && <div className="admin-red-dot"></div>}
         {position === "staff" && <div className="admin-yellow-dot"></div>}
         {position === "client" && <div className="admin-blue-dot"></div>}

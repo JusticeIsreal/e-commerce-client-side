@@ -561,6 +561,7 @@ body {
 
   // color: var(--blue);
 }
+
 #content main .table-data .head h3 {
   margin-right: auto;
   font-size: 20px;
@@ -951,6 +952,14 @@ $light-orange: #ffe0d3;
       @include flexDisplay(center, center, column);
       color: $bg-dark;
     }
+    .cancel {
+      font-size: 20px;
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      font-weight: bolder;
+      color: $txt-blue;
+    }
     .admin-red-dot,
     .admin-yellow-dot,
     .admin-blue-dot {
@@ -1020,6 +1029,14 @@ $light-orange: #ffe0d3;
       left: 5px;
       top: -5px;
     }
+    .cancel {
+      font-size: 30px;
+      position: absolute;
+      right: 15px;
+      top: 25px;
+      font-weight: bolder;
+      color: $txt-blue;
+    }
     .top-part {
       @include flexDisplay(center, center, column);
       margin-bottom: 10px;
@@ -1057,28 +1074,10 @@ $light-orange: #ffe0d3;
 
             p {
               font-size: 12px;
-              
             }
             &:hover {
               transform: scale(1.05);
             }
-          }
-        }
-
-        p {
-          color: $bg-dark;
-          @include flexDisplay(center, center, column);
-          span {
-            font-size: 30px;
-            @include flexDisplay(center, center, column);
-          }
-          p {
-            font-size: 12px;
-            cursor: pointer;
-          
-          }
-          &:hover {
-            transform: scale(1.05);
           }
         }
       }
@@ -1160,6 +1159,50 @@ $light-orange: #ffe0d3;
           }
         }
       }
+    }
+  }
+}
+
+// transaction addition style
+.head-client {
+  @include flexDisplay(space-between, center, row);
+  // border: 2px solid red;
+
+  h3 {
+    width: 70%;
+    // border: 2px solid red;
+    text-align: start !important;
+
+    @include responsive(bigphone) {
+      width: 140px;
+    }
+  }
+  .admin-transaction-search-form {
+    // border: 1px solid rgb(195, 16, 16);
+    border-radius: 5px;
+    height: 70px;
+    padding: 5px;
+    background: white;
+    // margin: 0 auto;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    width: 100vw;
+    // max-width: 350px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    input {
+      width: 100%;
+      height: 100%;
+      margin: 3px;
+      margin-left: 5px;
+      border: none;
+      padding: 5px;
+      font-size: 15px;
+      outline: none;
+      color: $bg-dark;
+      // border: 2px solid red;
     }
   }
 }

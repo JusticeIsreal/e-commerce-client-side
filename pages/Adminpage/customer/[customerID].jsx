@@ -10,6 +10,7 @@ import {
 import { useEffect } from "react";
 import { GoVerified } from "react-icons/go";
 import { RxAvatar } from "react-icons/rx";
+import { FcCancel } from "react-icons/fc";
 import { SlCallEnd } from "react-icons/sl";
 import { BsWhatsapp } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
@@ -107,8 +108,7 @@ function CustomerID() {
       )
 
       .then((resp) => {
-        // setBtnLoading(false);
-        // console.log(resp);
+        alert("User has been blocked");
         location.reload();
       })
       .catch((err) => {
@@ -134,7 +134,7 @@ function CustomerID() {
 
       .then((resp) => {
         // setBtnLoading(false);
-        console.log(resp);
+        alert("User has been unblocked");
         location.reload();
       })
       .catch((err) => {
@@ -149,7 +149,8 @@ function CustomerID() {
           <button onClick={goBack} className="go-back">
             <TiArrowBack />
             Back
-          </button>
+          </button>{" "}
+          {userData?.block === true && <FcCancel className="cancel" />}
           {userData?.position === "admin" && (
             <p className="status-dot">admin</p>
           )}
@@ -194,19 +195,19 @@ function CustomerID() {
               {session?.user?.position === "admin" && (
                 <>
                   {userData?.block === true ? (
-                    <p>
+                    <a>
                       <span>
                         <TbLock onClick={() => unBlockUser()} />
                       </span>
-                      <span>Un-block user</span>
-                    </p>
+                      <p>Un-block user</p>
+                    </a>
                   ) : (
-                    <span>
+                    <a>
                       <span>
                         <TbLockOpen onClick={() => blockUser()} />
                       </span>
                       <p>Block user</p>
-                    </span>
+                    </a>
                   )}
                 </>
               )}
