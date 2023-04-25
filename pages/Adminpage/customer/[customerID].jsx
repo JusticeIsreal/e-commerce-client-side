@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import useSWR from "swr";
 import {
   allUsers,
@@ -33,6 +33,19 @@ function CustomerID() {
   const [pendingStatus, setPendingStatus] = useState();
   const [abandonedStatus, setAbandonedStatus] = useState();
   const [failedStatus, setFailedStatus] = useState();
+
+  // Sum of transactions by transactionstatus
+  const [succesSum, setSuccessSum] = useState();
+  const [pendingSum, setPendingSum] = useState();
+  const [abandonedSum, setAbandonedSum] = useState();
+  const [failedSum, setFailedSum] = useState();
+  const [transactionSum, setTransactionSum] = useState();
+
+  let TotalSum = 0;
+  let successTotalSum = 0;
+  let pendingTotalSum = 0;
+  let abandonedTotalSum = 0;
+  let failedTotalSum = 0;
   useEffect(() => {
     async function fetchSessionUser() {
       if (userData) {
@@ -53,12 +66,32 @@ function CustomerID() {
         setPendingStatus(pending);
         setAbandonedStatus(abandoned);
         setFailedStatus(failed);
+
+        for (let i = 0; i < userData.transaction.length; i++) {
+          TotalSum += userData.transaction[i]?.totalAmount;
+        }
+        for (let i = 0; i < success?.length; i++) {
+          successTotalSum += success[i]?.totalAmount;
+        }
+        for (let i = 0; i < pending?.length; i++) {
+          pendingTotalSum += pending[i]?.totalAmount;
+        }
+        for (let i = 0; i < abandoned?.length; i++) {
+          abandonedTotalSum += abandoned[i]?.totalAmount;
+        }
+        for (let i = 0; i < failed?.length; i++) {
+          failedTotalSum += failed[i]?.totalAmount;
+        }
+        setTransactionSum(TotalSum);
+        setSuccessSum(successTotalSum);
+        setPendingSum(pendingTotalSum);
+        setAbandonedSum(abandonedTotalSum);
+        setFailedSum(failedTotalSum);
       }
     }
     fetchSessionUser();
   }, [userID, router, userData]);
 
-  // console.log(userData);
 
   // user session
   const [session, setSession] = useState();
@@ -90,6 +123,33 @@ function CustomerID() {
     router.back();
   }
 
+  // update user rank
+
+  const changeClientRank = async (e) => {
+    // console.log(e.target.value);
+    const token = Cookies.get("JWTtoken");
+    await axios
+      .patch(
+        "http://localhost:1234/api/v1/userverification/updateuser/" +
+          `${userID}`,
+        {
+          position: e.target.value,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      .then((resp) => {
+        alert(`User position has been updated to ${e.target.value}`);
+        location.reload();
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
   const blockUser = async () => {
     const token = Cookies.get("JWTtoken");
     await axios
@@ -115,6 +175,7 @@ function CustomerID() {
         throw err;
       });
   };
+
   const unBlockUser = async () => {
     const token = Cookies.get("JWTtoken");
     await axios
@@ -141,6 +202,7 @@ function CustomerID() {
         throw err;
       });
   };
+
   return (
     <div className="singleuser-page">
       {session?.user.position === "admin" ||
@@ -152,13 +214,22 @@ function CustomerID() {
           </button>{" "}
           {userData?.block === true && <FcCancel className="cancel" />}
           {userData?.position === "admin" && (
-            <p className="status-dot">admin</p>
-          )}
-          {userData?.position === "staff" && (
-            <p className="status-dot">staff</p>
-          )}
-          {userData?.position === "client" && (
-            <p className="status-dot">client</p>
+            <div className="status-dot">
+              <select name="" id="" onChange={(e) => changeClientRank(e)}>
+                <option value={userData?.position} key="0">
+                  {userData?.position}
+                </option>
+                <option value="client" key="1">
+                  client
+                </option>
+                <option value="staff" key="2">
+                  staff
+                </option>
+                <option value="admin" key="3">
+                  admin
+                </option>
+              </select>
+            </div>
           )}
           <div className="top-part">
             <div className="avatar">
@@ -219,11 +290,12 @@ function CustomerID() {
               <span>{formattedTimestamp}</span>
             </p>
             <p>
-              No of transactions: {userData?.transaction.length}
-              <span>how much</span>
+              No of transactions({userData?.transaction.length}):
+              <span>₦ {Number(transactionSum).toLocaleString()}</span>
             </p>
             <h3>
-              Sucessful transaction: <span>{succesStatus?.length}</span>
+              Sucessful transaction <span>({succesStatus?.length}): </span>₦{" "}
+              {succesSum.toLocaleString()}
             </h3>
             <div className="transaction-main-con">
               {succesStatus?.map((order) => (
@@ -231,7 +303,8 @@ function CustomerID() {
               ))}
             </div>
             <h3>
-              Pending transaction: <span>{pendingStatus?.length}</span>
+              Pending transaction<span>({pendingStatus?.length}):</span> ₦{" "}
+              {pendingSum.toLocaleString()}
             </h3>
             <div className="transaction-main-con">
               {pendingStatus?.map((order) => (
@@ -239,7 +312,8 @@ function CustomerID() {
               ))}
             </div>
             <h3>
-              Abandoned transaction: <span>{abandonedStatus?.length}</span>
+              Abandoned transaction<span>({abandonedStatus?.length}):</span>₦{" "}
+              {abandonedSum.toLocaleString()}
             </h3>
             <div className="transaction-main-con">
               {abandonedStatus?.map((order) => (
@@ -247,7 +321,8 @@ function CustomerID() {
               ))}
             </div>
             <h3>
-              Failed transaction: <span>{failedStatus?.length}</span>
+              Failed transaction<span>({failedStatus?.length}):</span>₦{" "}
+              {failedSum.toLocaleString()}
             </h3>
             <div className="transaction-main-con">
               {failedStatus?.map((order) => (
