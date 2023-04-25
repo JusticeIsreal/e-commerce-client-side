@@ -22,7 +22,7 @@ import { BsSearch } from "react-icons/bs";
 function CustomersData() {
   const router = useRouter();
   // FETCH ALL TRANSACTIONS
-
+  const [pageLoader, setPageLoader] = useState();
   // const [getTransactions, setGetTransactions] = useState();
   const [getAdmin, setGetAdmin] = useState([]);
   const [getStaff, setGetStaff] = useState([]);
@@ -31,6 +31,7 @@ function CustomersData() {
     const ftchAllTransactions = async () => {
       // const transactions = await allTransactions();
       const users = await allUsers();
+      setPageLoader(users);
       // await transactionStatus();
       if (users) {
         setGetAdmin(users?.users.filter((user) => user.position === "admin"));
@@ -38,6 +39,7 @@ function CustomersData() {
         setGetClient(users?.users.filter((user) => user.position === "client"));
       }
     };
+
     ftchAllTransactions();
   }, [router]);
 

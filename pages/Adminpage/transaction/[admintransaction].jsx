@@ -138,7 +138,7 @@ function admintransaction() {
                   }}
                 >
                   <span>Customer name:</span>
-                  <span>{userData?.user[0].username}</span>
+                  <span>{userData?.user[0]?.username}</span>
                 </div>
                 <div
                   className="transaction-status"
@@ -147,7 +147,7 @@ function admintransaction() {
                   }}
                 >
                   <span>Customer phonenumber:</span>
-                  <span>{userData?.user[0].userphonenumber}</span>
+                  <span>{userData?.user[0]?.userphonenumber}</span>
                 </div>
                 <div
                   className="transaction-status"
@@ -156,7 +156,7 @@ function admintransaction() {
                   }}
                 >
                   <span>Customer email:</span>
-                  <span>{userData?.user[0].useremail}</span>
+                  <span>{userData?.user[0]?.useremail}</span>
                 </div>
                 <div
                   className="transaction-status"
@@ -165,7 +165,7 @@ function admintransaction() {
                   }}
                 >
                   <span>Position :</span>
-                  <span>{userData?.user[0].position}</span>
+                  <span>{userData?.user[0]?.position}</span>
                 </div>
                 <div
                   className="transaction-status"
@@ -176,7 +176,7 @@ function admintransaction() {
                   }}
                 >
                   <span>Verified :</span>
-                  <span>{userData?.user[0].verified ? "Yes" : "No"}</span>
+                  <span>{userData?.user[0]?.verified ? "Yes" : "No"}</span>
                 </div>
 
                 <p
@@ -196,7 +196,7 @@ function admintransaction() {
                   <div key={item._id} className="product-details">
                     <span className="p-name">{item?.productname}</span>
                     <span className="p-name">{item?.productspec}</span>
-                    <span>₦ {item?.productprice.toLocaleString()}</span>
+                    <span>₦ {item?.productprice?.toLocaleString()}</span>
                     <span className="qty"> {item?.quantity}</span>
                     <span>₦ {item?.total.toLocaleString()}</span>
                   </div>
@@ -270,7 +270,7 @@ function admintransaction() {
                   <span>Date / Time:</span>
                   <span>
                     {" "}
-                    {userData?.timestamp.substring(0, 20).toString()}
+                    {userData?.timestamp?.substring(0, 20).toString()}
                   </span>
                 </div>
                 <div className="transaction-status" style={{ width: "95%" }}>
@@ -298,7 +298,7 @@ function admintransaction() {
                 <div className="contact-customer">
                   <a
                     target="_blank"
-                    href={`tel:${userData?.user[0].userphonenumber}`}
+                    href={`tel:${userData?.user[0]?.userphonenumber}`}
                   >
                     <span>
                       <SlCallEnd />
@@ -308,7 +308,7 @@ function admintransaction() {
                   <a
                     target="_blank"
                     href={`https://wa.me/${
-                      userData?.user[0].userphonenumber
+                      userData?.user[0]?.userphonenumber
                     }?text=Hello, I am a ${
                       session?.user.username
                     } from AJIS STORES , I am chatting as regards your Order with Ref No. ${
@@ -325,7 +325,7 @@ function admintransaction() {
 
                   <a
                     target="_blank"
-                    href={`mailto:${userData?.user[0].useremail}`}
+                    href={`mailto:${userData?.user[0]?.useremail}`}
                   >
                     <span>
                       <AiOutlineMail />

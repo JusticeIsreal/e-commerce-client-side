@@ -29,6 +29,8 @@ import { CartQuantityContext } from "./_app";
 
 const Homepage = () => {
   const router = useRouter();
+  const [loginTriger, setLoginTriger] = useState(false);
+
   // Products from firebase db
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -38,10 +40,10 @@ const Homepage = () => {
         setProducts(snapshot.docs);
       }
     );
-  }, [router]);
+  }, [router, loginTriger]);
 
   // ADD TO CART
-  const [loginTriger, setLoginTriger] = useState(false);
+
   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // add to art

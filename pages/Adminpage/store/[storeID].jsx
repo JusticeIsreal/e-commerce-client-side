@@ -16,6 +16,7 @@ import axios from "axios";
 // firebase imports
 
 import { addDoc, serverTimestamp } from "firebase/firestore";
+import { getSessionUser } from "../../../Services/functions";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
@@ -45,6 +46,21 @@ export const getStaticProps = async ({ params }) => {
 function StoreID() {
   const router = useRouter();
   const { storeID } = router.query;
+
+  // get usersession
+  const [session, setSession] = useState();
+
+  useEffect(() => {
+    async function fetchSessionUser() {
+      const userData = await getSessionUser(router);
+      if (userData) {
+        setSession(userData);
+      }
+    }
+    fetchSessionUser();
+  }, [router]);
+
+  console.log(session.user.position);
   // GO BACK
   function goBack() {
     router.back();
@@ -271,7 +287,9 @@ function StoreID() {
   return (
     <div className="store-item-dynamic-con">
       <div className="edit-product" onClick={() => setFormShow(!formShow)}>
-        <p>{formShow ? "Close Form" : "Edit Product"}</p>
+        {session?.user?.position === "admin" && (
+          <p>{formShow ? "Close Form" : "Edit Product"}</p>
+        )}
       </div>
       {formShow && (
         <div className="store-item-con">
