@@ -130,7 +130,7 @@ function CustomerID() {
     const token = Cookies.get("JWTtoken");
     await axios
       .patch(
-        "http://localhost:1234/api/v1/userverification/updateuser/" +
+        "https://api-j.onrender.com/api/v1/userverification/updateuser/" +
           `${userID}`,
         {
           position: e.target.value,
@@ -154,7 +154,7 @@ function CustomerID() {
     const token = Cookies.get("JWTtoken");
     await axios
       .patch(
-        "http://localhost:1234/api/v1/userverification/updateuser/" +
+        "https://api-j.onrender.com/api/v1/userverification/updateuser/" +
           `${userID}`,
         {
           block: true,
