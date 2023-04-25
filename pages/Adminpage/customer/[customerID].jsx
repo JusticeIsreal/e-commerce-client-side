@@ -198,15 +198,15 @@ function CustomerID() {
                       <span>
                         <TbLock onClick={() => unBlockUser()} />
                       </span>
-                      <p>Un-block user</p>
+                      <span>Un-block user</span>
                     </p>
                   ) : (
-                    <p>
+                    <span>
                       <span>
                         <TbLockOpen onClick={() => blockUser()} />
                       </span>
                       <p>Block user</p>
-                    </p>
+                    </span>
                   )}
                 </>
               )}
