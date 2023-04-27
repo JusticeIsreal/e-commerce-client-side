@@ -244,7 +244,7 @@ function CustomersData() {
               <div className="table-data">
                 <div
                   style={{
-                    display: "flex",
+                    display:"flex",
                     justifyContent: "space-between",
                     alignItems: "center",
                     height: "60px",
