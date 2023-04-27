@@ -21,6 +21,8 @@ import {
 import { db } from "../../Firebase";
 import Image from "next/image";
 import { Blockquote } from "@mantine/core";
+import { Group, Button } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 
 // ICONS
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
@@ -241,8 +243,17 @@ function Details() {
       if (cartResponse === "SUCCESS") {
         const userData = await getSessionUser();
         setCartQty(userData?.user.cart.length);
+        notifications.show({
+          title: "Notification",
+          message: "Successful , Item added to cart",
+        });
       }
-    } else alert("Product already exists in cart");
+    } else
+      notifications.show({
+        title: "Notification",
+        message: "Failed, Item already in cart",
+        color: "red",
+      });
 
     setDynamicTriger(!dynamictriger);
   };
@@ -268,7 +279,7 @@ function Details() {
           priceNumber={priceNumber}
         />
       )}
-
+      <Group position="center"></Group>
       <Topbar dynamictriger={dynamictriger} />
       <div className="client-single-product">
         <div className="single-product">
