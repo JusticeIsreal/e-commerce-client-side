@@ -1,5 +1,5 @@
 import React from "react";
-import ResendOTP from "../Components/LoginReg/resendOTP";
+import ResendOTP from "../Components/LoginReg/ResendOTP";
 
 function resendotp() {
   return (

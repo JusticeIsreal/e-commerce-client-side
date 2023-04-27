@@ -10,13 +10,7 @@ import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiDialpad, BiUserCircle } from "react-icons/bi";
-import {
-  emailResendOTP,
-  enterOTP,
-  fogetPwEnterOTP,
-  forgetPassword,
-  registerUser,
-} from "../../Services/functions";
+import { fogetPwEnterOTP, forgetPassword } from "../../Services/functions";
 // import EnterOTP from "./enterOTP";
 // import React, { useState } from "react";
 import OtpInput from "react-otp-input";
