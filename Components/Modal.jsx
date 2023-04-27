@@ -28,7 +28,7 @@ function Modal({ setLoginTriger }) {
           <div className="modal-img-con">
             {emoji ? (
               <img
-                src="https://res.cloudinary.com/isreal/image/upload/v1682175687/E-Commerce%20Project/186-backhand-index-pointing-down-emoji-coloring-page_castyl.png"
+                src="/undraw_Access_account_re_8spm (1).png"
                 alt=""
               />
             ) : (
@@ -37,7 +37,7 @@ function Modal({ setLoginTriger }) {
           </div>
           <div className="modal-text">
             <p> To access this Function you need to sign in</p>{" "}
-            <Link href="/Login" className="modal-link">
+            <Link href="/loginpage" className="modal-link">
               Sign in
             </Link>
           </div>

@@ -80,6 +80,7 @@ $txt-light-blue: #cfe8ff;
 .homepage-main-con {
   padding: 50px 0;
   // background: #eee;
+
   @include responsive(bigphone) {
     padding: 0;
   }
@@ -96,7 +97,6 @@ $txt-light-blue: #cfe8ff;
   top: 0;
   left: 0;
   background: whitesmoke;
-  // border: 2px solid rgb(0, 255, 42);
   box-shadow: 5px 5px 10px $bg-gray;
 
   .topbar-top-con {
@@ -118,15 +118,17 @@ $txt-light-blue: #cfe8ff;
       // border: 2px solid red;
       @include flexDisplay(space-between, center, row);
       .cart-icon-con {
+        // border: 1px solid red;
         @include flexDisplay(space-between, center, row);
         position: relative;
 
         sup {
           padding-left: 3px;
-          margin-bottom: auto;
+          margin-bottom: 10px;
           font-weight: bolder;
           font-size: 15px;
           color: $txt-blue;
+          // border: 1px solid red;
         }
       }
     }
@@ -140,6 +142,7 @@ $txt-light-blue: #cfe8ff;
     position: fixed;
     bottom: 0;
     left: 0;
+    top: 94%;
     width: 100vw;
     height: 60px;
     padding-bottom: 15px;
@@ -150,9 +153,10 @@ $txt-light-blue: #cfe8ff;
       width: 100%;
     }
     @include responsive(bigphone) {
+      // border: 1px solid red;
       padding-bottom: 0;
       position: relative;
-      height: 40px;
+      height: 30px;
       margin-top: 50px;
     }
 
@@ -183,7 +187,7 @@ $txt-light-blue: #cfe8ff;
           cursor: pointer;
           // border: 1px solid red;
           @include responsive(phone) {
-            padding: 5px 10px;
+            // padding: 5px 10px;
           }
 
           @include responsive(bigphone) {
@@ -250,7 +254,7 @@ $txt-light-blue: #cfe8ff;
 
   // border: 2px solid red;
   @include responsive(bigphone) {
-    margin-top: 100px;
+    margin-top: 80px;
     padding: 5px;
   }
 
@@ -512,7 +516,7 @@ $txt-light-blue: #cfe8ff;
         margin: 0 10px;
         background: white !important;
         border-radius: 5px;
-        border: 1px solid rgba(128, 128, 128, 0.132);
+        border: 1px solid #f5f3f3;
         // box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
         @include flexDisplay(space-between, center, column);
         // border: 2px solid red;
@@ -533,13 +537,14 @@ $txt-light-blue: #cfe8ff;
             position: absolute;
             z-index: 20;
             height: 45px;
-            border-bottom-right-radius: 15px;
+            border-bottom-right-radius: 12px;
             top: 0px;
             left: 0px;
             background: $txt-blue;
             color: white;
             text-align: center;
-            padding: 3px;
+            padding: 5px;
+            font-size: 12px;
           }
           .img {
             // border: 2px solid red;
@@ -564,6 +569,7 @@ $txt-light-blue: #cfe8ff;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          text-transform: lowercase;
           // font-style: italic;
         }
       }
@@ -610,10 +616,12 @@ $txt-light-blue: #cfe8ff;
       margin-top: 30px;
       width: 100%;
       // border: 2px solid red;
+
       @include responsive(bigphone) {
-        @include flexDisplay(space-evenly, flex-start, row);
+        @include flexDisplay(center, center, row);
         margin-top: 30px;
       }
+
       .products {
         @include flexDisplay(space-evenly, center, column);
         width: 45%;
@@ -625,7 +633,7 @@ $txt-light-blue: #cfe8ff;
         max-width: 180px;
         // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
         border: 1px solid rgba(128, 128, 128, 0.133);
-
+        // border: 2px solid red;
         @include responsive(bigphone) {
           width: 20%;
           max-width: 200px;
@@ -643,7 +651,7 @@ $txt-light-blue: #cfe8ff;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          text-transform: capitalize;
+          text-transform: lowercase;
           // font-style: italic;
           @include responsive(bigphone) {
             font-size: 15px;
@@ -672,13 +680,14 @@ $txt-light-blue: #cfe8ff;
             position: absolute;
             z-index: 20;
             height: 45px;
-            border-bottom-right-radius: 15px;
+            border-bottom-right-radius: 12px;
             top: -20px;
             left: 0px;
             background: $txt-blue;
             color: white;
             text-align: center;
             padding: 3px;
+            font-size: 12px;
           }
           @include responsive(phone) {
             height: 200px;
@@ -741,13 +750,13 @@ $txt-light-blue: #cfe8ff;
         }
 
         .addto-cart {
-          border: 1px solid red;
+          // border: 1px solid red;
           width: 100%;
           margin: 0 auto;
           text-align: center;
           font-size: 15px;
           line-height: 1.9;
-          border: 1px solid $txt-blue;
+          border: 0.1px solid $txt-blue;
           color: $txt-blue;
           border-radius: 5px;
           margin: 5px 0;
@@ -1036,7 +1045,7 @@ $txt-light-blue: #cfe8ff;
 
   background: $txt-blue;
   // margin: 150px 0 0 0;
-  // border-top-left-radius: 40px;
+  border-top-left-radius: 40px;
 
   .box-container {
     // border: 2px solid red;
@@ -1098,18 +1107,19 @@ $txt-light-blue: #cfe8ff;
   }
 
   .credit {
-    border-top: 1px solid $bg-gray;
+    border-top: 0.1px solid $bg-gray;
     // margin-top: 20px;
     // padding: 30px 0;
     font-size: 15px;
     text-align: center;
-
+    display: none;
     span {
       color: #fff;
     }
 
     @include responsive(bigphone) {
       // margin-top: 20px;
+      display: block;
     }
   }
 }
@@ -1191,13 +1201,14 @@ $txt-light-blue: #cfe8ff;
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: scroll;
 
     .modal-card {
       @include flexDisplay(center, center, column);
       box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
       border-radius: 5px;
-      width: 90%;
-      max-width: 400px;
+      width: 90% !important;
+      // max-width: 400px;
       position: relative;
       // border: 2px solid red;
       background: white;
@@ -1226,7 +1237,7 @@ $txt-light-blue: #cfe8ff;
         width: 100%;
 
         img {
-          width: 80%;
+          width: 70% !important;
         }
       }
       .modal-text {

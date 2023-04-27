@@ -22,10 +22,12 @@
   width: 100%;
   background: white;
   margin-top: 50px;
+  padding-bottom: 100px;
 }
 @media only screen and (min-width: 768px) {
   .order-page-main-con {
     margin-top: 100px;
+    padding-bottom: 0px;
   }
 }
 .order-page-main-con .oders-con {
@@ -91,7 +93,6 @@
 }
 .order-page-main-con .each-order-con {
   padding: 5px 3px;
-  padding-bottom: 50px;
   margin-top: 15px;
 }
 @media only screen and (min-width: 768px) {

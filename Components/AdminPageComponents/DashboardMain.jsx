@@ -10,6 +10,8 @@ import {
 // ICONS
 import { FaShoppingCart, FaPeopleCarry, FaChartLine } from "react-icons/fa";
 import { useRouter } from "next/router";
+import Pagination from "../Pagination";
+import { paginate } from "../../paginate";
 function DashboardMain({ productDetails }) {
   const router = useRouter();
   // FETCH ALL TRANSACTIONS
@@ -34,16 +36,35 @@ function DashboardMain({ productDetails }) {
     const fetchProccessingTransactions = async () => {
       const transaction = await allTransactions();
       setGetRecentTransactions(
-        transaction?.transactions.
-        filter((item) => item.status === "Processing").sort(
-          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-        )
+        transaction?.transactions
+          .filter((item) => item.status === "Processing")
+          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
       );
     };
     fetchProccessingTransactions();
     // setGetRecentTransactions(recetTransactions);
   }, [router]);
-  console.log(getRecentTransactions);
+
+  // ...................................
+  // const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(8);
+  const pageOfCountries = paginate(
+    getRecentTransactions,
+    currentPage,
+    pageSize
+  );
+
+  const handlePageChange = (pageNumber, totalPages) => {
+    if (pageNumber !== "prev" && pageNumber !== "next")
+      setCurrentPage(pageNumber);
+    else if (pageNumber === "prev" && currentPage > 1)
+      setCurrentPage(currentPage - 1);
+    else if (pageNumber === "next" && currentPage < totalPages)
+      setCurrentPage(currentPage + 1);
+  };
+
+  // ..................................
   return (
     <div id="content">
       <main>
@@ -119,13 +140,19 @@ function DashboardMain({ productDetails }) {
                   <th>Status</th>
                 </tr>
               </thead>
-              {getRecentTransactions?.map((order) => (
+              {pageOfCountries?.map((order) => (
                 <RecentTransactions key={order._id} {...order} />
               ))}
             </table>
           </div>
         </div>
       </main>
+      <Pagination
+        itemsCount={getRecentTransactions?.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

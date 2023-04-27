@@ -322,18 +322,18 @@ function Details() {
           <div className="lower-details">
             <h1 className="p-name">{product?.productname}</h1>
             <p className="p-number">
-              <span>Product price :</span> ₦{" "}
+              <span>Price :</span> ₦{" "}
               {Number(product?.productprice).toLocaleString()}
             </p>
             <p className="p-number">
-              <span>Product spec :</span> {product?.productnumber}
+              <span>Spec :</span> {product?.productnumber}
             </p>
             <div>
               <p className="p-desc">
-                <span>Product category :</span> {product?.productcategory}
+                <span>Category :</span> {product?.productcategory}
               </p>
               <p className="p-desc">
-                <span>Product promo :</span>
+                <span>Promo :</span>
                 {product?.productoldprice
                   ? " YES :" +
                     " " +
@@ -346,11 +346,11 @@ function Details() {
               </p>
             </div>
             <p className="p-desc">
-              <span>Product description : </span>
+              <span>Description : </span>
               {product?.productdescription}
             </p>
             <p className="p-desc">
-              <span>Product delivery : </span>
+              <span>Delivery poliy: </span>
               maximum delivery period of 7 days within nigeria.
             </p>
             <p className="p-desc">
@@ -388,17 +388,20 @@ function Details() {
           </div>
         </div>
         <div className="single-product-details">
-          {" "}
           <div className="product-review">
             <h1>REVIEW</h1>
             <div className="review-con">
-              <div
-                className="add-review"
-                onClick={() => setShowForm(!showForm)}
-              >
-                <span>{!showForm ? "+" : "-"}</span>
-                <span>{!showForm ? "Add Review" : "Close form"}</span>
-              </div>
+              {userDetails ? (
+                <div
+                  className="add-review"
+                  onClick={() => setShowForm(!showForm)}
+                >
+                  <span>{!showForm ? "+" : "-"}</span>
+                  <span>{!showForm ? "Add Review" : "Close form"}</span>
+                </div>
+              ) : (
+                <span>(Only registered users can make reviews)</span>
+              )}
 
               {/* REVIEW FORM */}
               {showForm && (
@@ -468,7 +471,6 @@ function Details() {
                   </form>
                 </div>
               )}
-
               <div className="reviews">
                 {displayedReviews.map((comment) => (
                   <div className="quote" key={comment.id}>

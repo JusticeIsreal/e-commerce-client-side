@@ -47,6 +47,9 @@ function AdminDashboard() {
     userInfo();
   }, [userPosition, router]);
 
+
+
+  
   return (
     <div>
       {userPosition === "admin" || userPosition === "staff" ? (

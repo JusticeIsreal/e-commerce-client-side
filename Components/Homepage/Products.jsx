@@ -15,6 +15,9 @@ import { addToCart, getSessionUser } from "../../Services/functions";
 import { jgi } from "../Topbar";
 
 function Products({ products, addToCar }) {
+  const halfLength = Math.ceil(products.length / 2);
+  const firstHalf = products.slice(0, halfLength);
+
   return (
     <div className="product-session-con">
       <div className="product-main-con">
@@ -23,7 +26,7 @@ function Products({ products, addToCar }) {
         {/* PRODUCTS ARRAY */}
 
         <div className="products-con">
-          {products.map((product) => (
+          {firstHalf.map((product) => (
             <Product
               key={product.id}
               id={product.id}
@@ -88,7 +91,13 @@ function Product({
           </div>
         </Link>
       </div>
-      <p className="product-name">{productname}</p>
+      <Link
+        href={`/ClientDynamic/${id}`}
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+      >
+        <p className="product-name">{productname}</p>
+      </Link>
+
       <div className="price">
         <p className="product-price">
           ₦ {Number(productprice).toLocaleString()}

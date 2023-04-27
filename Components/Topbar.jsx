@@ -8,7 +8,7 @@ import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
 import { BsShop, BsWhatsapp } from "react-icons/bs";
 import { FiGrid, FiTruck } from "react-icons/fi";
-import { MdContactSupport } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
 import { getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "../pages/_app";
 
@@ -38,18 +38,19 @@ function Topbar({ dynamictriger, triga }) {
   // // FETCHING SESSION USER NAME AND CART LENGTH
   const [name, setName] = useState(null);
   const [cartLength, setCartLength] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [session, setSession] = useState([]);
   useEffect(() => {
     async function fetchSessionUser() {
       const userData = await getSessionUser();
       if (userData && userData.user) {
+        setSession(userData);
         setName(userData?.user?.username);
         setCartLength(userData?.user.cart);
       }
     }
     fetchSessionUser();
   }, [router, triga, dynamictriger]);
-
+  // console.log(session.user.position);
   // LOGOUT
   const logOUT = () => {
     Cookies.remove("JWTtoken");
@@ -67,7 +68,7 @@ function Topbar({ dynamictriger, triga }) {
             <SiCoinmarketcap className="icon" />
           </Link>
           <p style={{ marginLeft: "5px", color: "#3c91e6" }}>
-            {name && "Hello! " + name}
+            {name && "Hello! " + name.split(" ")[0]}
           </p>
         </div>
         <div
@@ -87,7 +88,7 @@ function Topbar({ dynamictriger, triga }) {
                 height: "70%",
                 color: "gray",
                 cursor: "pointer",
-                border: "1px solid gray",
+                border: ".1px solid gray",
                 width: "100px",
               }}
               onClick={() => logOUT()}
@@ -96,7 +97,7 @@ function Topbar({ dynamictriger, triga }) {
             </button>
           ) : (
             <Link
-              href="/Login"
+              href="/loginpage"
               style={{
                 height: "70%",
                 cursor: "pointer",
@@ -121,7 +122,6 @@ function Topbar({ dynamictriger, triga }) {
         <div className="topbar-top-con-right">
           <div className="cart-icon-con">
             <Link href="/cart">
-              {" "}
               <FaCartArrowDown className="icon" />
             </Link>
             <sup>{cartQty}</sup>
@@ -180,6 +180,23 @@ function Topbar({ dynamictriger, triga }) {
                 Support
               </li>
             </a>
+            {session?.user?.position === "admin" ||
+            session?.user?.position === "staff" ? (
+              <Link href="/Adminpage/AdminDashboard">
+                <li
+                  className={`${active === 5 ? "listactive" : ""}`}
+                  onClick={() => setActive(5)}
+                >
+                  {active == 5 ? <div className="nav-active"></div> : ""}
+                  <span>
+                    <GrUserAdmin className="menu-icon" />
+                  </span>
+                  <p> Admin</p>
+                </li>
+              </Link>
+            ) : (
+              ""
+            )}
           </ul>
         </nav>
       </div>

@@ -315,6 +315,8 @@ body {
   width: 100vw;
   transition: 0.3s ease;
   margin-top: 20px;
+  padding-bottom: 50px;
+  color: rgba(0, 128, 0, 0.768627451);
 }
 
 /* NAVBAR */
@@ -397,6 +399,11 @@ body {
   /* CONTENT */
   #content {
     position: relative;
+    width: 100vw;
+    transition: 0.3s ease;
+  }
+  #content {
+    position: relative;
     width: calc(100% - 280px);
     left: 280px;
   }
@@ -411,7 +418,7 @@ body {
 /* MAIN */
 #content main {
   width: 100%;
-  padding: 36px 24px;
+  padding: 6px 24px;
   font-family: var(--poppins);
   overflow-y: auto;
   margin-top: 50px;
@@ -916,8 +923,8 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  bottom: 18px;
-  right: 5px;
+  bottom: 30px;
+  right: 10px;
   border-radius: 50%;
   color: #3c91e6;
 }

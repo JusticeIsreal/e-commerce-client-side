@@ -6,6 +6,8 @@ import Footer from "../Components/Footer";
 import { useRouter } from "next/router";
 import { getSessionUser, transactionStatus } from "../Services/functions";
 import Loader from "../Components/Loader";
+import Pagination from "../Components/Pagination";
+import { paginate } from "../paginate";
 
 function orders() {
   const router = useRouter();
@@ -41,11 +43,29 @@ function orders() {
     }
     fetchSessionUser();
   }, [router]);
+
+  // ...................................
+  // const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(8);
+  const pageOfCountries = paginate(userTransaction, currentPage, pageSize);
+
+  const handlePageChange = (pageNumber, totalPages) => {
+    if (pageNumber !== "prev" && pageNumber !== "next")
+      setCurrentPage(pageNumber);
+    else if (pageNumber === "prev" && currentPage > 1)
+      setCurrentPage(currentPage - 1);
+    else if (pageNumber === "next" && currentPage < totalPages)
+      setCurrentPage(currentPage + 1);
+  };
+
+  // ..................................
+
   return (
     <div className="order-page-main-con">
       <Topbar />
       {userTransaction ? (
-        <Orders userTransaction={userTransaction} />
+        <Orders userTransaction={pageOfCountries} />
       ) : (
         <>
           <Loader />
@@ -55,7 +75,13 @@ function orders() {
           {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
         </>
       )}
-
+      <Pagination
+        itemsCount={userTransaction.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+        className="pagination-order-page"
+      />
       {/* <Footer /> */}
     </div>
   );

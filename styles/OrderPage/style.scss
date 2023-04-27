@@ -68,9 +68,11 @@ $txt-light-blue: #cfe8ff;
   width: 100%;
   background: white;
   margin-top: 50px;
+  padding-bottom: 100px;
 
   @include responsive(bigphone) {
     margin-top: 100px;
+    padding-bottom: 0px;
   }
 
   .oders-con {
@@ -128,11 +130,9 @@ $txt-light-blue: #cfe8ff;
   }
 
   .each-order-con {
-    // border: 2px solid rgb(0, 255, 26);
-    // height: 68vh;
-    // overflow-y: scroll;
+   
     padding: 5px 3px;
-    padding-bottom: 50px;
+    // padding-bottom: 50px;
     margin-top: 15px;
 
     @include responsive(bigphone) {

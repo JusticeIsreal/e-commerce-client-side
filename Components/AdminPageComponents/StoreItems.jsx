@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
+import Pagination from "../Pagination";
+import { paginate } from "../../paginate";
 import { HiRefresh } from "react-icons/hi";
 // import Loader from "../Loader";
 // ICONS
@@ -12,7 +13,22 @@ import { useRouter } from "next/router";
 import { allUsers } from "../../Services/functions";
 
 function StoreItems({ productDetails }) {
-  // console.log(getUsers);
+  // ...................................
+  // const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(8);
+  const pageOfCountries = paginate(productDetails, currentPage, pageSize);
+
+  const handlePageChange = (pageNumber, totalPages) => {
+    if (pageNumber !== "prev" && pageNumber !== "next")
+      setCurrentPage(pageNumber);
+    else if (pageNumber === "prev" && currentPage > 1)
+      setCurrentPage(currentPage - 1);
+    else if (pageNumber === "next" && currentPage < totalPages)
+      setCurrentPage(currentPage + 1);
+  };
+
+  // ..................................
   return (
     <div>
       <div className="table-data">
@@ -53,7 +69,7 @@ function StoreItems({ productDetails }) {
                   <th>Edit / Delete</th>
                 </tr>
               </thead>
-              {productDetails.map((product) => {
+              {pageOfCountries.map((product) => {
                 return (
                   <StoreItemsIndividual
                     key={product.id}
@@ -69,6 +85,12 @@ function StoreItems({ productDetails }) {
                 );
               })}
             </table>
+            <Pagination
+              itemsCount={productDetails.length}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
           </div>
         )}
       </div>

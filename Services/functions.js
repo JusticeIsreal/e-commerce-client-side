@@ -37,50 +37,214 @@ export const getSessionUser = async () => {
 };
 
 // CHANGE PASSWORD API CALL
-export const changePassword = async (password, router) => {
-  const userId = localStorage.getItem("userId") || [];
+export const changePassword = async (
+  password,
+  userId,
+  router,
+  setRegBtnLoading,
+  setNotificationModal,
+  setErrMsgServer
+) => {
+  // const userId = localStorage.getItem("userId") || [];
   axios
     .post("https://api-j.onrender.com/api/v1/userverification/resetpassword", {
       password,
       userId,
     })
     .then((resp) => {
-      console.log(resp.data);
+      console.log(resp);
 
+      setRegBtnLoading(false);
       localStorage.removeItem("userId");
       alert("passord Reset Successful, Proceed to Login");
-      router.push("/Login");
+      router.push("/loginpage");
     })
     .catch((error) => {
-      console.log(error.response);
+      console.log(error);
+      setErrMsgServer(error.response);
+      setRegBtnLoading(false);
+      setTimeout(() => {
+        setErrMsgServer("");
+      }, 3000);
     });
 };
 
 // LOG IN API CALL
-export const logIN = async (
-  setLoading,
-  router,
-  setErrMsg,
-  data,
-  setLoginLoading
-) => {
-  setLoginLoading(false);
+export const logIN = async (setLoading, router, setErrMsg, data) => {
   axios
     .post("https://api-j.onrender.com/api/v1/userverification/loginuser", data)
     .then((resp) => {
-      setLoading(false);
       const token = resp.data.data;
       Cookies.set("JWTtoken", token);
       router.push("/");
       setErrMsg("");
-      setLoading(true);
-      setLoginLoading(true);
+      setLoading(false);
     })
     .catch((error) => {
       setErrMsg(error?.response?.data?.message);
-      setLoading(true);
+      setLoading(false);
     });
 };
+
+// REGISTER USER
+export const registerUser = async (
+  user,
+  setShowOTPForm,
+  setShowResendOTPForm,
+  setShowResendOTPLink,
+  setRegErrMessage,
+  setRegBtnLoading,
+  setNotificationModal
+) => {
+  axios
+    .post(
+      "https://api-j.onrender.com/api/v1/userverification/registeruser",
+      user
+    )
+    .then((resp) => {
+      // console.log(resp.data.status);
+      localStorage.setItem("userId", resp.data.data.userId);
+      setShowOTPForm(true);
+      setShowResendOTPForm(false);
+      setRegBtnLoading(false);
+      setNotificationModal(resp.data.status);
+    })
+    .catch((error) => {
+      setRegErrMessage(error.response.data.error);
+      setShowResendOTPLink(true);
+      setRegBtnLoading(false);
+      setNotificationModal(false);
+      setTimeout(() => {
+        setRegErrMessage("");
+      }, 3000);
+    });
+};
+
+// RESEND OTP
+export const emailResendOTP = async (
+  user,
+  setShowOTPForm,
+  setRegErrMessage,
+  setRegBtnLoading,
+  setNotificationModal
+) => {
+  axios
+    .post("https://api-j.onrender.com/api/v1/userverification/resendotp", user)
+    .then((resp) => {
+      console.log(resp.data);
+      localStorage.setItem("userId", resp.data.data.userId);
+      setShowOTPForm(true);
+      setRegErrMessage("");
+      // setShowResendOTPForm(false);
+      setRegBtnLoading(false);
+      setNotificationModal(resp.data.status);
+    })
+    .catch((error) => {
+      console.log(error);
+      setRegErrMessage(error.response.data.error);
+      setRegBtnLoading(false);
+      setNotificationModal(false);
+      setTimeout(() => {
+        setRegErrMessage("");
+      }, 3000);
+    });
+};
+// RESEND OTP
+export const forgetPassword = async (
+  user,
+  setShowOTPForm,
+  setRegErrMessage,
+  setRegBtnLoading,
+  setNotificationModal
+) => {
+  axios
+    .post(
+      "https://api-j.onrender.com/api/v1/userverification/forgotPassword",
+      user
+    )
+    .then((resp) => {
+      console.log(resp.data);
+      localStorage.setItem("userId", resp.data.data.userId);
+      setShowOTPForm(true);
+      setRegErrMessage("");
+      // setShowResendOTPForm(false);
+      setRegBtnLoading(false);
+      setNotificationModal(resp.data.status);
+    })
+    .catch((error) => {
+      console.log(error);
+      setRegErrMessage(error.response.data.error);
+      setRegBtnLoading(false);
+      setNotificationModal(false);
+      setTimeout(() => {
+        setRegErrMessage("");
+      }, 3000);
+    });
+};
+
+// ENTER OTP
+export const fogetPwEnterOTP = async (
+  setRegErrMsg,
+  userId,
+  otp,
+  router,
+  setOTPBtnLoading,
+  setOtpNotificationModal
+) => {
+  axios
+    .post(
+      "https://api-j.onrender.com/api/v1/userverification/resetpasswordOTP",
+      {
+        userId,
+        otp,
+      }
+    )
+    .then((resp) => {
+      console.log(resp.data);
+      setOTPBtnLoading(false);
+      setOtpNotificationModal(resp.data.status);
+    })
+    .catch((error) => {
+      console.log(error);
+      setRegErrMsg(error.data.message);
+      setOtpNotificationModal(false);
+      setOTPBtnLoading(false);
+      setTimeout(() => {
+        setRegErrMsg("");
+      }, 3000);
+    });
+};
+
+// ENTER OTP
+export const enterOTP = async (
+  setRegErrMsg,
+  userId,
+  otp,
+  router,
+  setOTPBtnLoading,
+  setOtpNotificationModal
+) => {
+  axios
+    .post("https://api-j.onrender.com/api/v1/userverification/verifyotp", {
+      userId,
+      otp,
+    })
+    .then((resp) => {
+      console.log(resp.data);
+      setOTPBtnLoading(false);
+      setOtpNotificationModal(resp.data.status);
+    })
+    .catch((error) => {
+      console.log(error);
+      setRegErrMsg(error.data.message);
+      setOtpNotificationModal(false);
+      setOTPBtnLoading(false);
+      setTimeout(() => {
+        setRegErrMsg("");
+      }, 3000);
+    });
+};
+
 //SINGLE TRANSACTION
 const singleTransaction = async (transactID) => {
   const token = Cookies.get("JWTtoken");

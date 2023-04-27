@@ -6,8 +6,9 @@ import "../styles/DynamicPage/clientSingleproduct/style.css";
 import "../styles/DynamicPage/adminSingleproduct/style.css";
 import "../styles/DynamicPage/transactionreceipt/style.css";
 import "../styles/CartPage/style.css";
-import "../styles/RegistrationLogin/LoginStyle.css";
+import "../styles/LoginReg/LoginStyle.css";
 import "../styles/OrderPage/style.css";
+import "../styles/Paginate/pagenate.css";
 import { AppProps } from "next/app";
 import { AuthGuard } from "./api/auth/AuthGuard.";
 import { createContext, useEffect, useState } from "react";
@@ -15,6 +16,9 @@ import Loader from "../Components/Loader";
 import { getSessionUser } from "../Services/functions";
 import { useRouter } from "next/router";
 
+// mantine
+import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 export const CartQuantityContext = createContext();
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -65,25 +69,28 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <CartQuantityContext.Provider value={{ cartQty, setCartQty }}>
-        {preRender ? (
-          <>
-            {Component.requireAuth ? (
-              <AuthGuard>
-                <Component {...pageProps} />{" "}
-              </AuthGuard>
-            ) : (
-              <>
-                <Component {...pageProps} />
-              </>
-            )}
-          </>
-        ) : (
-          <div style={{ marginTop: "200px" }}>
-            <Loader />
-          </div>
-        )}
-      </CartQuantityContext.Provider>
+      <MantineProvider withNormalizeCSS withGlobalStyles>
+        <Notifications position="top-right" zIndex={2077} />
+        <CartQuantityContext.Provider value={{ cartQty, setCartQty }}>
+          {preRender ? (
+            <>
+              {Component.requireAuth ? (
+                <AuthGuard>
+                  <Component {...pageProps} />{" "}
+                </AuthGuard>
+              ) : (
+                <>
+                  <Component {...pageProps} />
+                </>
+              )}
+            </>
+          ) : (
+            <div style={{ marginTop: "200px" }}>
+              <Loader />
+            </div>
+          )}
+        </CartQuantityContext.Provider>
+      </MantineProvider>
     </>
   );
 }

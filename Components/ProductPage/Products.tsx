@@ -29,7 +29,7 @@ const Products: FC<ProductsProps> = ({ displayedProducts }) => {
       setProducts(displayedProducts);
     } else {
       setProducts(
-        displayedProducts.filter(
+        displayedProducts?.filter(
           (item) => item.data().productcategory === category
         )
       );
@@ -151,8 +151,9 @@ function SingleProduct({
             />
           </div>
         </div>
+        <h3 className="p-name">{productname}</h3>
       </Link>
-      <h3 className="p-name">{productname}</h3>
+
       <div className="product-details">
         <div className="price">
           <span className="current-price">

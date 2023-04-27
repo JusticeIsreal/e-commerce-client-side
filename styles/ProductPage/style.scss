@@ -72,7 +72,7 @@ $txt-light-blue: #cfe8ff;
   .product-page-con {
     // border: 2px solid red;
     @include flexDisplay(space-around, center, column);
-
+    padding-bottom: 30px;
     // SEARCH FORM
     form {
       color: gray;
@@ -83,7 +83,7 @@ $txt-light-blue: #cfe8ff;
       border-radius: 5px;
       margin-top: 20px;
       // border: 1px solid rgba(128, 128, 128, 0.173);
-      border: 1px solid #a7a7a7;
+      border: 0.1px solid #a7a7a7;
       border-radius: 5px;
       input {
         width: 100%;
@@ -128,7 +128,7 @@ $txt-light-blue: #cfe8ff;
         border-radius: 10px;
       }
       .category {
-        border: 1px solid rgba(128, 128, 128, 0.352);
+        border: 0.1px solid rgba(128, 128, 128, 0.352);
         border-radius: 5px;
         outline: none;
         // box-shadow: -1px -2px 5px rgba(128, 128, 128, 0.107);
@@ -192,7 +192,7 @@ $txt-light-blue: #cfe8ff;
       }
 
       .single-product {
-        border: 1px solid rgba(128, 128, 128, 0.162);
+        border: 0.1px solid rgba(128, 128, 128, 0.162);
         // margin: 15px 5px;
         width: 45%;
         max-width: 200px;
@@ -230,11 +230,11 @@ $txt-light-blue: #cfe8ff;
           }
         }
         .p-name {
-          text-transform: lowercase;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          text-transform: capitalize;
+
+          text-transform: lowercase;
         }
         .product-img {
           border: 1px solid rgba(128, 128, 128, 0.146);
@@ -250,13 +250,14 @@ $txt-light-blue: #cfe8ff;
             position: absolute;
             z-index: 20;
             height: 45px;
-            border-bottom-right-radius: 15px;
+            border-bottom-right-radius: 12px;
             top: 0;
             left: 0px;
             background: $txt-blue;
             color: white;
             text-align: center;
             padding: 3px;
+            font-size: 12px;
           }
 
           @include responsive(phone) {
@@ -341,7 +342,7 @@ $txt-light-blue: #cfe8ff;
 
             .category {
               border: 1px solid $txt-blue;
-              padding: 2px 5px;
+              padding: 0px 5px;
               border-radius: 5px;
               background: #3c91e6;
               text-align: center;

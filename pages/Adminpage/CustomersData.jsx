@@ -18,6 +18,8 @@ import { GoVerified } from "react-icons/go";
 import Link from "next/link";
 import { FcCancel } from "react-icons/fc";
 import { BsSearch } from "react-icons/bs";
+import Pagination from "../../Components/Pagination";
+import { paginate } from "../../paginate";
 
 function CustomersData() {
   const router = useRouter();
@@ -70,6 +72,23 @@ function CustomersData() {
 
   // search by input value
   const [search, setSearch] = useState("");
+
+  // ...................................
+  // const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(8);
+  const pageOfCountries = paginate(getClient, currentPage, pageSize);
+
+  const handlePageChange = (pageNumber, totalPages) => {
+    if (pageNumber !== "prev" && pageNumber !== "next")
+      setCurrentPage(pageNumber);
+    else if (pageNumber === "prev" && currentPage > 1)
+      setCurrentPage(currentPage - 1);
+    else if (pageNumber === "next" && currentPage < totalPages)
+      setCurrentPage(currentPage + 1);
+  };
+
+  // ..................................
   return (
     <>
       {userPosition === "admin" || userPosition === "staff" ? (
@@ -249,7 +268,7 @@ function CustomersData() {
               <div className="user-main-con">
                 {getClient.length > 0 && (
                   <>
-                    {getClient
+                    {pageOfCountries
                       ?.filter((item) => {
                         if (item?.username === " ") {
                           return item;
@@ -267,6 +286,12 @@ function CustomersData() {
                   </>
                 )}
               </div>
+              <Pagination
+                itemsCount={getClient.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
             </main>
           </div>
         </>

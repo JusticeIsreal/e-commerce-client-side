@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
+import { useForm } from "react-hook-form";
+import { Group, Button } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 // firebase
 import { db, storage } from "../Firebase";
 import {
@@ -47,7 +50,6 @@ const Homepage = () => {
   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // add to art
-  const [cartBtnLoading, setCartBtnLoading] = useState(false);
   const addToCar = async (e, id) => {
     e.target.innerHTML = "Loading ...";
     const productDoc = doc(db, "products", id);
@@ -64,14 +66,22 @@ const Homepage = () => {
       (productExist && !productExist.productID) ||
       productExist === undefined
     ) {
-      const cartResponse = await addToCart(productData, id, setCartBtnLoading);
+      const cartResponse = await addToCart(productData, id);
       if (cartResponse === "SUCCESS") {
         const userData = await getSessionUser();
         setCartQty(userData?.user.cart.length);
         e.target.innerHTML = "Now In Cart";
+        notifications.show({
+          title: "Notification",
+          message: "Successful , Item added to cart",
+        });
       }
     } else {
-      alert("Product already exists in cart");
+      notifications.show({
+        title: "Notification",
+        message: "Failed, Item already in cart",
+        color: "red",
+      });
       e.target.innerHTML = "Already In Cart";
     }
     if (!triger) {
@@ -90,23 +100,22 @@ const Homepage = () => {
       ) : (
         <>
           {/* <AuthGuard> */}
+
+          <Group position="center"></Group>
           <Banner />
-          {/* </AuthGuard> */}
-          {/* <MyPage /> */}
           {/* NEW ARRIVALS */}
           <NewArrivals />
-
-          <Advert />
+          {/* <Advert /> */}
           {/* MAIN PRODUCT */}
           <Products products={products} addToCar={addToCar} />
           <Advert />
           {/* SUBSCRIBE */}
-          <NewsLetter />
+          {/* <NewsLetter /> */}
           {/* PROMO */}
           <Promo />
           {/* REVIEWS */}
           <Review />
-          <Advert />
+          {/* <Advert /> */}
           {/* FOOTER */}
           <Footer />
           {loginTriger && <Modal setLoginTriger={setLoginTriger} />}

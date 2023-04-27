@@ -332,6 +332,8 @@ body {
   width: 100vw;
   transition: 0.3s ease;
   margin-top: 20px;
+  padding-bottom: 50px;
+  color: #008000c4;
 }
 
 /* NAVBAR */
@@ -413,10 +415,19 @@ body {
 @media only screen and (min-width: 950px) {
   /* CONTENT */
   #content {
+    // padding: 5px;
+    // border: 2px solid red;
+    position: relative;
+    width: 100vw;
+    transition: 0.3s ease;
+    // margin-top: 50px;
+  }
+  #content {
     position: relative;
     width: calc(100% - 280px);
     left: 280px;
   }
+
   #content nav {
     width: 100%;
   }
@@ -432,7 +443,7 @@ body {
   // border: 2px solid red;
   width: 100%;
 
-  padding: 36px 24px;
+  padding: 6px 24px;
   font-family: var(--poppins);
   //   max-height: calc(100vh - 56px);
   overflow-y: auto;
@@ -987,10 +998,11 @@ $light-orange: #ffe0d3;
         position: absolute;
         width: 10px;
         height: 10px;
-        bottom: 18px;
-        right: 5px;
+        bottom: 30px;
+        right: 10px;
         border-radius: 50%;
         color: $txt-blue;
+        // border: 2px solid red;
       }
     }
     .user-details {

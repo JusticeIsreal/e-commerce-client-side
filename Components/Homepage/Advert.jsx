@@ -5,7 +5,7 @@ import { Blockquote } from "@mantine/core";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../Firebase";
 const defaultAdImg =
-  "https://res.cloudinary.com/isreal/image/upload/v1681738017/advert_prqqfr.png";
+  "https://res.cloudinary.com/isreal/image/upload/v1682609506/E-Commerce%20Project/advert_ehvsy1.png";
 
 function Advert() {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
@@ -64,7 +64,7 @@ function Advert() {
         </Carousel.Slide>
         <Carousel.Slide>
           <div className="ad-img">
-            {advertImg.length > 0 ? (
+            {advertImg?.length > 0 ? (
               <a href={"https://" + `${advertLink[0]}`} target="_blank">
                 <img src={advertImg[0][1]} alt="add" />
               </a>

@@ -26,6 +26,8 @@ import {
 } from "../../Services/functions";
 import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
+import Pagination from "../../Components/Pagination";
+import { paginate } from "../../paginate";
 function Transaction() {
   // Navgat back
   // const history = useNavigate();
@@ -175,6 +177,23 @@ function Transaction() {
       link.click();
     });
   };
+
+  // ...................................
+  // const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(8);
+  const pageOfCountries = paginate(products, currentPage, pageSize);
+
+  const handlePageChange = (pageNumber, totalPages) => {
+    if (pageNumber !== "prev" && pageNumber !== "next")
+      setCurrentPage(pageNumber);
+    else if (pageNumber === "prev" && currentPage > 1)
+      setCurrentPage(currentPage - 1);
+    else if (pageNumber === "next" && currentPage < totalPages)
+      setCurrentPage(currentPage + 1);
+  };
+
+  // ..................................
   return (
     <div id="content">
       {userPosition === "admin" || userPosition === "staff" ? (
@@ -355,7 +374,7 @@ function Transaction() {
                       <th>Order</th>
                     </tr>
                   </thead>
-                  {products
+                  {pageOfCountries
                     ?.filter((item) => {
                       if (item?.paystackRef === " ") {
                         return item;
@@ -375,6 +394,12 @@ function Transaction() {
                       />
                     ))}
                 </table>
+                <Pagination
+                  itemsCount={products?.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                />
               </div>
             </div>
           </main>
@@ -409,11 +434,12 @@ function StoreTransaction({
 
         <td>{user[0]?.username}</td>
         <td>
-          {product?.map((item) => (
+          {/* {product?.map((item) => (
             <b key={item._id} style={{ display: "flex", fontWeight: "normal" }}>
               <b style={{ fontWeight: "normal" }}>{item.productname} </b>
             </b>
-          ))}
+          ))} */}
+          {product?.length}
         </td>
 
         <td>₦ {totalAmount?.toLocaleString()}</td>
@@ -427,7 +453,7 @@ function StoreTransaction({
                   case "Pending":
                     return "#ffce26";
                   case "success":
-                    return "#3d91e6";
+                    return "#008000c4";
                   default:
                     return "#db504a";
                 }
@@ -452,7 +478,9 @@ function StoreTransaction({
                   case "Transit":
                     return "#ffce26";
                   case "Delivered":
-                    return "#3d91e6";
+                    return "#008000c4";
+                  case "Cancelled":
+                    return "#db504a";
                   default:
                     return "#3d91e6";
                 }

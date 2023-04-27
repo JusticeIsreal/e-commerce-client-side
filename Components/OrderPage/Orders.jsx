@@ -23,7 +23,7 @@ function Orders({ userTransaction }) {
     if (category === "All") {
       setProducts(userTransaction);
     } else {
-      setProducts(userTransaction?.filter((item) => item.status === item));
+      setProducts(userTransaction?.filter((item) => item.status === category));
     }
   }, [category, userTransaction, router]);
 
@@ -34,8 +34,8 @@ function Orders({ userTransaction }) {
   useEffect(() => {
     const userName = async () => {
       await transactionStatus(
-        refID.userData,
-        refID.transactID,
+        refID?.userData,
+        refID?.transactID
         // setGetTransactionDetails
       );
     };
@@ -133,6 +133,7 @@ function TransactionReceipt({
           </p>
         </div>
         <div className="order-payment-status">
+          <p style={{ color: "gray" }}>Order</p>
           <p
             style={{
               color: (() => {

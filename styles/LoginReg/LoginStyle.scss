@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
+// global variables
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+  // font-family: poppins;
+}
+
+body {
+  //   height: 100vh;
+  // border: 5px solid red;
+  //   max-width: 2000px;
+  margin: 0 auto;
+  //   max-height: 1500px;
+  //   background-color: black;
+  //   color: #4c5eff;
+}
+
+*::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 1px;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(65, 105, 225, 0);
+}
+
+// GLOBAL STYLES
+$font-family: "Poppins", sans-serif;
+$bg-light: #f9f9f9;
+$font-light: #666;
+$bg-gray: #eee;
+$bg-dark-gray: #444;
+$bg-dark: #342e37;
+$txt-blue-dark: #183f65;
+$txt-blue: #3c91e6;
+$txt-light-blue: #cfe8ff;
+
+@mixin flexDisplay($justifyProp, $alignProp, $flexDirection) {
+  display: flex;
+  justify-content: $justifyProp;
+  align-items: $alignProp;
+  flex-direction: $flexDirection;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint==smallPhone {
+    @media only screen and (max-width: 380px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==tablet {
+    @media only screen and (min-width: 850px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==bigphone {
+    @media only screen and (min-width: 750px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+.login-reg-main-con {
+  background-image: url("/undraw_Fingerprint_re_uf3f.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+
+  @include flexDisplay(center, center, column);
+  .bg-img {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    z-index: 0;
+  }
+  // LOGIN FORM
+  .login-main-con {
+    @include flexDisplay(center, center, column);
+    margin-bottom: auto;
+    width: 100%;
+
+    .login-top-title {
+      border-bottom: 1px solid gray;
+      width: 100%;
+      padding: 20px;
+      background: #f5f5f579;
+
+      h2 {
+        font-weight: 400;
+        color: $bg-dark;
+      }
+      p {
+        line-height: 2;
+        font-size: 15px;
+        color: $font-light;
+      }
+    }
+
+    .form-con {
+      @include flexDisplay(center, center, column);
+      // border: 2px solid red;
+      background: #f5f5f593;
+      width: 100%;
+      height: calc(100vh - 130px);
+      overflow-y: scroll;
+      padding: 10px;
+    }
+    .login-form {
+      width: 100%;
+      max-width: 500px;
+      // border: 2px solid red;
+
+      .input-main-con {
+        margin-top: 20px;
+        p {
+          color: red;
+          font-size: 15;
+          font-style: italic;
+          text-align: center;
+        }
+        label {
+          line-height: 2;
+          font-size: 15px;
+          color: $font-light;
+        }
+
+        .input-con {
+          border: 1px solid $txt-blue;
+          border-radius: 3px;
+          @include flexDisplay(center, center, row);
+          height: 50px;
+          position: relative;
+          background: whitesmoke;
+
+          .input-icon {
+            font-size: 20px;
+            left: 5px;
+            position: absolute;
+            color: $bg-dark-gray;
+          }
+
+          input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline-color: $txt-blue;
+            font-size: 15px;
+            padding: 5px;
+            padding-left: 40px;
+          }
+        }
+        .validation-text {
+          text-align: start;
+        }
+        .eye {
+          position: relative !important;
+          margin-right: 10px;
+          font-size: 30px !important;
+          cursor: pointer;
+        }
+      }
+      .policy-checkbox {
+        // border: 2px solid red;
+        margin-top: 10px;
+        color: $bg-dark-gray;
+      }
+
+      .forgot-pw {
+        margin-top: 10px;
+        line-height: 2;
+        color: $txt-blue;
+      }
+      .login-btn-link {
+        // border: 2px solid red;
+        margin-top: 15px;
+        height: 50px;
+        position: relative;
+        @include flexDisplay(center, center, row);
+        .btn-loader {
+          position: absolute;
+          color: #eee;
+          z-index: 2;
+          left: 30%;
+          @include responsive(bigphone) {
+            left: 35%;
+          }
+        }
+        input {
+          width: 100%;
+          height: 100%;
+          font-size: 15px;
+          background: $txt-blue;
+          border: none;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            background: $txt-blue-dark;
+          }
+        }
+      }
+      .login-registration-link {
+        line-height: 2;
+        color: $txt-blue;
+      }
+    }
+  }
+  // FORM OTP
+  .otp-con {
+    // border: 2px solid red;
+    padding: 10px;
+    width: 100vw;
+    bottom: 0;
+    top: 130px;
+    position: absolute;
+    backdrop-filter: blur(20px);
+    z-index: 2;
+    overflow-y: scroll;
+
+    h3 {
+      color: $txt-blue;
+      margin-bottom: 20px;
+    }
+    .login-form {
+      width: 100%;
+      height: 100%;
+      @include flexDisplay(center, center, column);
+      // border: 2px solid red;
+      animation: popout 0.3s ease-in-out;
+
+      @keyframes popout {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .input-main-co {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+        // margin-top: 40px;
+        // border: 2px solid red;
+
+        .otp-text {
+          color: $bg-dark-gray !important;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .otp-error {
+          text-align: center;
+          color: red;
+          line-height: 2;
+          margin-bottom: 20px;
+        }
+        label {
+          text-align: center;
+          margin: 0 auto;
+          // border: 2px solid red;
+        }
+        .input-con {
+          // border: 2px solid red;
+          @include flexDisplay(center, center, row);
+        }
+
+        .go-back {
+          position: absolute;
+          z-index: 20;
+          cursor: pointer;
+          position: fixed;
+          top: 30px;
+          // left: 15px;
+          background: #3c91e6c6;
+          border: 1px solid #8080802b;
+          color: white;
+          width: 70px;
+          height: 30px;
+          text-align: center;
+          border-radius: 10px;
+          font-size: 18px;
+
+          &:hover {
+            background: gray;
+          }
+
+          @include responsive(bigphone) {
+            // top: 100px;
+            left: 20px;
+          }
+        }
+      }
+      .otp-btn {
+        // border: 2px solid red;
+
+        @include flexDisplay(center, center, row);
+        margin-top: 50px;
+        width: 100%;
+        max-width: 500px;
+        height: 50px;
+        background: $txt-blue;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          background: $txt-blue-dark;
+        }
+      }
+    }
+  }
+}
