@@ -771,7 +771,7 @@
   flex-direction: row;
   position: relative;
   width: 100%;
-  color: #ffce26;
+  margin-top: 50px;
   height: 100%;
 }
 .modal-main-con .modal-relative .modal-card {
@@ -825,6 +825,9 @@
 .modal-main-con .modal-relative .modal-card form label {
   margin: 20px 0;
   color: #3c91e6;
+}
+.modal-main-con .modal-relative .modal-card form img {
+  width: 50%;
 }
 .modal-main-con .modal-relative .modal-card form div {
   display: flex;

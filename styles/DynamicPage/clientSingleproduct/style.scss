@@ -777,6 +777,7 @@ $txt-light-blue: #cfe8ff;
 }
 
 .modal-main-con {
+  // border: 2px solid red;
   position: absolute;
   position: fixed;
   z-index: 200;
@@ -789,8 +790,9 @@ $txt-light-blue: #cfe8ff;
     @include flexDisplay(center, center, row);
     position: relative;
     width: 100%;
-    color: #ffce26;
+    margin-top: 50px;
     height: 100%;
+    // border: 2px solid red;
 
     .modal-card {
       // overflow: hidden;
@@ -825,7 +827,7 @@ $txt-light-blue: #cfe8ff;
       .modal-img-con {
         @include flexDisplay(center, center, row);
         width: 100%;
-
+        // border: 2px solid red;
         img {
           width: 80%;
         }
@@ -840,7 +842,9 @@ $txt-light-blue: #cfe8ff;
           margin: 20px 0;
           color: $txt-blue;
         }
-
+        img {
+          width: 50%;
+        }
         div {
           @include flexDisplay(center, center, column);
           width: 100%;
