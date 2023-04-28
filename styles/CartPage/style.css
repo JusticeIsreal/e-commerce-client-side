@@ -36,15 +36,24 @@
   background: gray;
 }
 
+.cart-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .cart-page-con {
   border: 1px solid rgba(255, 0, 0, 0);
   margin-top: 50px;
   position: relative;
+  background: whitesmoke;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con {
     margin: 0 auto;
+    height: calc(100vh - 100px);
     margin-top: 90px;
+    max-width: 900px;
   }
 }
 .cart-page-con .cart-heading {
@@ -69,11 +78,13 @@
 @media only screen and (min-width: 768px) {
   .cart-page-con .subtotal {
     position: absolute;
-    border: 1px solid rgb(184, 183, 183);
     border-top: none;
     display: block;
     right: 0;
-    width: 29%;
+    margin-left: auto;
+    width: 40%;
+    background: white;
+    z-index: 30;
   }
 }
 .cart-page-con .subtotal p {
@@ -93,6 +104,29 @@
     font-size: 30px;
   }
 }
+.cart-page-con .subtotal .checkout {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .cart-page-con .subtotal .checkout {
+    display: block;
+    width: 100%;
+    height: 50px;
+    z-index: 20;
+    margin-top: 20px;
+  }
+  .cart-page-con .subtotal .checkout button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: #3c91e6;
+  }
+  .cart-page-con .subtotal .checkout:hover button {
+    background: #1a426a;
+  }
+}
 .cart-page-con .single-product {
   padding: 0 5px;
   padding-bottom: 100px;
@@ -103,7 +137,7 @@
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .single-product {
-    height: 90vh;
+    height: calc(100vh - 190px);
     width: 100%;
     padding-bottom: 10px;
   }
@@ -120,12 +154,7 @@
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .single-product .checkout {
-    position: absolute;
-    position: fixed;
-    display: block;
-    right: 0;
-    top: 258px;
-    width: 29%;
+    display: none;
   }
 }
 .cart-page-con .single-product .checkout button {
@@ -148,7 +177,7 @@
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .product-con {
-    width: 70%;
+    width: 55%;
   }
 }
 .cart-page-con .product-con .cart-product-top {
@@ -158,35 +187,24 @@
   flex-direction: row;
 }
 .cart-page-con .product-con .cart-product-top .img-con {
-  width: 45%;
-  max-width: 110px;
-}
-@media only screen and (min-width: 768px) {
-  .cart-page-con .product-con .cart-product-top .img-con {
-    max-width: 150px;
-  }
+  width: 100px;
 }
 .cart-page-con .product-con .cart-product-top .img-con img {
   width: 100%;
-  height: 150px;
-}
-@media only screen and (min-width: 768px) {
-  .cart-page-con .product-con .cart-product-top .img-con img {
-    height: 190px;
-  }
+  height: 100px;
 }
 .cart-page-con .product-con .cart-product-top .cart-product-lower {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
-  height: 150px;
+  height: 100%;
   width: 100%;
   margin-left: 10px;
 }
 @media only screen and (min-width: 768px) {
   .cart-page-con .product-con .cart-product-top .cart-product-lower {
-    height: 190px;
+    height: 100%;
   }
 }
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-top {
@@ -196,7 +214,7 @@
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-top p {
   max-width: 200px;
   font-weight: bold;
-  line-height: 2;
+  line-height: 1.5;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -217,7 +235,6 @@
 }
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-lower p {
   color: #3c91e6;
-  font-weight: bold;
   font-size: 15px;
   cursor: pointer;
   display: flex;
@@ -240,10 +257,8 @@
   flex-direction: row;
 }
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-lower div .icon {
-  color: whitesmoke;
-  background: #3c91e6;
-  border-radius: 50%;
-  font-size: 30px;
+  color: #3c91e6;
+  font-size: 25px;
   cursor: pointer;
 }
 .cart-page-con .product-con .cart-product-top .cart-product-lower .cart-product-lower-lower div .icon:hover {

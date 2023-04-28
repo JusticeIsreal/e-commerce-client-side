@@ -83,16 +83,22 @@ $txt-light-blue: #cfe8ff;
 }
 
 // CART PAGE
+.cart-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 .cart-page-con {
   border: 1px solid #ff000000;
   margin-top: 50px;
   position: relative;
-  // border: 2px solid red;
+  background: whitesmoke;
 
   @include responsive(bigphone) {
     margin: 0 auto;
+    height: calc(100vh - 100px);
     margin-top: 90px;
-    // max-width: 1350px;
+    max-width: 900px;
   }
 
   .cart-heading {
@@ -111,15 +117,19 @@ $txt-light-blue: #cfe8ff;
   .subtotal {
     @include flexDisplay(space-between, center, row);
     padding: 0px 10px;
-    // border: 2px solid red;
+
     @include responsive(bigphone) {
       position: absolute;
-      border: 1px solid rgb(184, 183, 183);
       border-top: none;
       display: block;
       right: 0;
-      width: 29%;
+      margin-left: auto;
+      width: 40%;
+      background: white;
+      // border: 0.1px solid gray;
+      z-index: 30;
     }
+
     p {
       color: $font-light;
       padding: 10px 0px;
@@ -133,10 +143,35 @@ $txt-light-blue: #cfe8ff;
         font-size: 30px;
       }
     }
+    .checkout {
+      display: none;
+
+      @include responsive(bigphone) {
+        display: block;
+        width: 100%;
+        height: 50px;
+        z-index: 20;
+        margin-top: 20px;
+
+        button {
+          width: 100%;
+          height: 100%;
+          border: none;
+          cursor: pointer;
+          color: white;
+          background: #3c91e6;
+        }
+
+        &:hover {
+          button {
+            background: #1a426a;
+          }
+        }
+      }
+    }
   }
 
   .single-product {
-    // border: 2px solid red;
     padding: 0 5px;
     padding-bottom: 100px;
     height: calc(100vh - 220px);
@@ -144,7 +179,7 @@ $txt-light-blue: #cfe8ff;
     position: relative !important;
     margin-bottom: 50px;
     @include responsive(bigphone) {
-      height: 90vh;
+      height: calc(100vh - 190px);
       width: 100%;
       padding-bottom: 10px;
     }
@@ -162,15 +197,7 @@ $txt-light-blue: #cfe8ff;
       font-weight: bold;
 
       @include responsive(bigphone) {
-        position: absolute;
-        position: fixed;
-        // border: 2px solid gray;
-        display: block;
-        right: 0;
-        // margin-left: ;
-        top: 258px;
-        width: 29%;
-        // max-width: 390px;
+        display: none;
       }
       button {
         cursor: pointer;
@@ -195,7 +222,7 @@ $txt-light-blue: #cfe8ff;
     margin: 10px 0;
 
     @include responsive(bigphone) {
-      width: 70%;
+      width: 55%;
       // max-width: 900px;
     }
     .cart-product-top {
@@ -204,17 +231,17 @@ $txt-light-blue: #cfe8ff;
 
       .img-con {
         // border: 2px solid rgb(0, 17, 255);
-        width: 45%;
-        max-width: 110px;
+        // width: 45%;
+        width: 100px;
         @include responsive(bigphone) {
-          max-width: 150px;
+          // max-width: 150px;
         }
         img {
           width: 100%;
-          height: 150px;
+          height: 100px;
 
           @include responsive(bigphone) {
-            height: 190px;
+            // height: 190px;
           }
         }
       }
@@ -222,11 +249,11 @@ $txt-light-blue: #cfe8ff;
       .cart-product-lower {
         // border: 2px solid red;
         @include flexDisplay(space-between, flex-start, column);
-        height: 150px;
+        height: 100%;
         width: 100%;
         margin-left: 10px;
         @include responsive(bigphone) {
-          height: 190px;
+          height: 100%;
         }
         .cart-product-lower-top {
           width: 100%;
@@ -234,7 +261,7 @@ $txt-light-blue: #cfe8ff;
           p {
             max-width: 200px;
             font-weight: bold;
-            line-height: 2;
+            line-height: 1.5;
             @include flexDisplay(space-between, center, row);
           }
         }
@@ -249,7 +276,6 @@ $txt-light-blue: #cfe8ff;
           }
           p {
             color: $txt-blue;
-            font-weight: bold;
             font-size: 15px;
 
             cursor: pointer;
@@ -262,14 +288,11 @@ $txt-light-blue: #cfe8ff;
             }
           }
           div {
-            // border: 1px solid red;
             @include flexDisplay(space-between, center, row);
 
             .icon {
-              color: whitesmoke;
-              background: $txt-blue;
-              border-radius: 50%;
-              font-size: 30px;
+              color: $txt-blue;
+              font-size: 25px;
               cursor: pointer;
               &:hover {
                 transform: scale(1.1);

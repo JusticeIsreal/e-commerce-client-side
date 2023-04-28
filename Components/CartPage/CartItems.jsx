@@ -82,6 +82,9 @@ function CartItems({ triger, setTriger }) {
       <div className="subtotal">
         <p>Subtotal</p>
         <h3> ₦ {totalAmount.toLocaleString()}</h3>
+        <div className="checkout" onClick={() => PayNow()}>
+          <button>CHECKOUT (₦ {totalAmount.toLocaleString()})</button>
+        </div>
       </div>
 
       <div className="single-product">
@@ -186,13 +189,13 @@ function CartProducts({
         </div>
         <div className="cart-product-lower">
           <div className="cart-product-lower-top">
-            <h3>{productname}</h3>
+            <h4>{productname}</h4>
             <p>₦ {priceNumber.toLocaleString()} </p>
             <span>{productnumber}</span>
           </div>
           <div className="cart-product-lower-lower">
             <p onClick={() => deleteCart(_id)}>
-              <ImBin /> REMOVE
+              <ImBin /> <sub>REMOVE</sub>
             </p>
             <div>
               {count < 1 ? (

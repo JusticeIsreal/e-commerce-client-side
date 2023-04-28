@@ -12,7 +12,7 @@ function cart() {
   const [cartLength, setCartLength] = useState([]);
 
   return (
-    <div>
+    <div className="cart-page">
       <Topbar triga={triger} />
 
       <div className="cart-page-con">
