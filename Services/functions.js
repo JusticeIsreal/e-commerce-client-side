@@ -70,11 +70,11 @@ export const changePassword = async (
 };
 
 // LOG IN API CALL
-export const logIN = async (setLoading, router, setErrMsg, dataInfo) => {
+export const logIN = async (setLoading, router, setErrMsg, details) => {
   axios
     .post(
       "https://api-j.onrender.com/api/v1/userverification/loginuser",
-      dataInfo
+      details
     )
     .then((resp) => {
       const token = resp.data.data;
