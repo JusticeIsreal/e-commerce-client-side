@@ -55,9 +55,6 @@ function Footer() {
           <a href="">
             <i></i> payment method
           </a>
-          <a href="">
-            <i></i> our serivces
-          </a>
           {userPosition === "admin" || userPosition === "staff" ? (
             <Link href="/Adminpage/AdminDashboard">
               <i></i>Admin Login

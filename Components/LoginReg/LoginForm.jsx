@@ -41,7 +41,11 @@ function LoginForm({ flipLogin }) {
   const [loading, setLoading] = useState(false);
   const onLogin = async (data) => {
     setLoading(true);
-    logIN(setLoading, router, setErrMsg, data);
+    let dataInfo = {
+      data: data.useremail.toLowerCas(),
+      password,
+    };
+    logIN(setLoading, router, setErrMsg, dataInfo);
   };
 
   return (

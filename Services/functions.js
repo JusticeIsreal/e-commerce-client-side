@@ -70,9 +70,12 @@ export const changePassword = async (
 };
 
 // LOG IN API CALL
-export const logIN = async (setLoading, router, setErrMsg, data) => {
+export const logIN = async (setLoading, router, setErrMsg, dataInfo) => {
   axios
-    .post("https://api-j.onrender.com/api/v1/userverification/loginuser", data)
+    .post(
+      "https://api-j.onrender.com/api/v1/userverification/loginuser",
+      dataInfo
+    )
     .then((resp) => {
       const token = resp.data.data;
       Cookies.set("JWTtoken", token);
