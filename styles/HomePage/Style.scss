@@ -142,10 +142,10 @@ $txt-light-blue: #cfe8ff;
     position: fixed;
     bottom: 0;
     left: 0;
-    top: 94%;
+    // top: 94%;
     width: 100vw;
     height: 60px;
-    padding-bottom: 15px;
+    // padding-bottom: 10px;
     @include flexDisplay(space-between, center, row);
 
     // top: 10%;
