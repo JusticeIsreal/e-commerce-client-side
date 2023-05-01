@@ -25,7 +25,7 @@ function orders() {
       setUserTransaction(userData?.user?.transaction);
       // console.log(userData);
 
-      if (userData.user.block === true) {
+      if (userData?.user.block === true) {
         router.push("/Login");
       }
     };
@@ -76,7 +76,7 @@ function orders() {
         </>
       )}
       <Pagination
-        itemsCount={userTransaction.length}
+        itemsCount={userTransaction?.length}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChange={handlePageChange}
