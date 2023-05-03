@@ -405,5 +405,5 @@ function admintransaction() {
     </div>
   );
 }
-admintransaction.requireAuth = true;
+// admintransaction.requireAuth = true;
 export default admintransaction;
