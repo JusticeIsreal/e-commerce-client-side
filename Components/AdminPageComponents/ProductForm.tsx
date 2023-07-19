@@ -6,7 +6,6 @@ import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import tester from "../AdminPageComponents/StoreItems";
 function ProductForm() {
-  
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef<HTMLInputElement>("" || null);
   const filePickerRef2 = useRef<HTMLInputElement>("" || null);
@@ -259,7 +258,7 @@ function ProductForm() {
         <input
           type="text"
           placeholder="Enter Product Specs"
-          {...register("productnumber", { required: true })}
+          {...register("productnumber")}
         />
         {errors.productnumber && (
           <span
