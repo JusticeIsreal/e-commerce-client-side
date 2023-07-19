@@ -190,7 +190,7 @@ function ProductForm() {
     };
 
     try {
-      const colRef = collection(db, "products");
+      const colRef = collection(db, "foodproducts");
       await addDoc(colRef, { ...productDetails });
       alert("Product added successfully!");
     } catch (error) {
